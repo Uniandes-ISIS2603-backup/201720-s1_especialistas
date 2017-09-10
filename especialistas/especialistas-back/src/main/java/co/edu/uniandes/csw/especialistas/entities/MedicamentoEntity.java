@@ -12,17 +12,17 @@ import javax.persistence.Entity;
  * @author rc.tejon
  */
 @Entity
-public class FarmaciaEntity extends BaseEntity{
+public class MedicamentoEntity extends BaseEntity{
     
-    private int radio;
+    private double precio;
     private String nombre;
 
-    public int getRadio() {
-        return radio;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setRadio(int precio) {
-        this.radio = precio;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public String getNombre() {
