@@ -13,7 +13,7 @@ import javax.persistence.Entity;
  * @author jl.patarroyo
  */
 @Entity
-public class ConsultorioEntity extends BaseEntity implements Serializable
+public class ConsultorioEntity implements Serializable
 {
     /**
      * Referencia del consultorio (e.g. W405)
