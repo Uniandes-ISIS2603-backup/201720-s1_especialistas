@@ -66,7 +66,7 @@ public class HoraEntity extends BaseEntity{
 
     public void setConsultorio(ConsultorioEntity consultorio) {
         this.consultorio = consultorio;
-        consultorio.getHoras().add(this);
+//        consultorio.getHoras().add(this);
     }
 
     public CitaEntity getCita() {

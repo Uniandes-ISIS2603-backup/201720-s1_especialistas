@@ -47,7 +47,7 @@ public class OrdenMedicaEntity {
     
     public void setExamenes(List <ExamenEntity> s)
     {
-        Examenes=s;
+        examenes=s;
     }
     
     public CitaEntity getCita()
