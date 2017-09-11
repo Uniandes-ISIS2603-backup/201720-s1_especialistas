@@ -29,7 +29,7 @@ public class HospitalPersistence
     /**
      * Manejador de las entidades
      */
-    @PersistenceContext(unitName = "consultorioPU")
+    @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
     
     /**
