@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -14,7 +15,8 @@ import javax.persistence.OneToMany;
  *
  * @author jr.restom10
  */
-public class OrdenMedicaEntity {
+@Entity
+public class OrdenMedicaEntity extends BaseEntity{
     
     private String descripcion;
     
