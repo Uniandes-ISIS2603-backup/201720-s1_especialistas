@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,6 +17,7 @@ import javax.persistence.OneToOne;
  *
  * @author jr.restom10
  */
+@Entity
 public class CitaEntity extends BaseEntity{
         
         
@@ -25,7 +27,7 @@ public class CitaEntity extends BaseEntity{
          @JoinColumn(name="HORA_ID")
          private HoraEntity hora;
          
-         @OneToMany(mappedBy="ordenMedica.cita")
+         @OneToMany(mappedBy="cita")
          @JoinColumn(name="ORDEN_ID")
          private List <OrdenMedicaEntity> ordenesMedicas;
         
