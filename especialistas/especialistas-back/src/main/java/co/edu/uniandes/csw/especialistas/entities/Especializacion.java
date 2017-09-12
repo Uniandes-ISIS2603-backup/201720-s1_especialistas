@@ -5,10 +5,14 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+
 /**
  *
  * @author js.diaz
  */
 public enum Especializacion {
-    
+    GENERAL,
+    ODONTOLOGIA,
+    CARDIOLOGIA,
+    CIRUGIA;
 }
