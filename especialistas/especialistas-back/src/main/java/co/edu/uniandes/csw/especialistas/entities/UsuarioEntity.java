@@ -29,48 +29,49 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
     */
     private int cedula;
     
-    @OneToMany(mappedBy="usuario")
-    @JoinColumn(name="CITA_ID")
-    private List <CitaEntity> citasMedicas;
-    
-    @OneToOne()
-    @JoinColumn(name="TARJETA_ID")
-    private TarjetaEntity tarjeta;
-    
-    
-    //Getters and setters
-    /**
-      * getter del atributo usuario
-      * @return usuario asociado
-      */
-     public TarjetaEntity getTarjeta(){
-         return this.tarjeta;
-     }
-     
-     /**
-      * setter del atributo usuario
-      * @param tarjeta 
-      */
-     public void setTarjeta(TarjetaEntity tarjeta){
-         this.tarjeta = tarjeta;
-     }
-    
-    /**
-     * getter del atributo citas
-     * @return una lista con las citas asociadas a un usuario
-     */
-    public List<CitaEntity> getCitas(){
-        return this.citasMedicas;
-    }
-    
-    /**
-     * setter del atributo citas
-     * @param citasMedicas 
-     */
-    public void setCitas(List<CitaEntity> citasMedicas){
-        this.citasMedicas = citasMedicas;
-    }
-    
+//    
+//    @OneToMany(mappedBy="usuario")
+//    @JoinColumn(name="CITA_ID")
+//    private List <CitaEntity> citasMedicas;
+//    
+//    @OneToOne()
+//    @JoinColumn(name="TARJETA_ID")
+//    private TarjetaEntity tarjeta;
+//    
+//    
+//    //Getters and setters
+//    /**
+//      * getter del atributo usuario
+//      * @return usuario asociado
+//      */
+//     public TarjetaEntity getTarjeta(){
+//         return this.tarjeta;
+//     }
+//     
+//     /**
+//      * setter del atributo usuario
+//      * @param tarjeta 
+//      */
+//     public void setTarjeta(TarjetaEntity tarjeta){
+//         this.tarjeta = tarjeta;
+//     }
+//    
+//    /**
+//     * getter del atributo citas
+//     * @return una lista con las citas asociadas a un usuario
+//     */
+//    public List<CitaEntity> getCitas(){
+//        return this.citasMedicas;
+//    }
+//    
+//    /**
+//     * setter del atributo citas
+//     * @param citasMedicas 
+//     */
+//    public void setCitas(List<CitaEntity> citasMedicas){
+//        this.citasMedicas = citasMedicas;
+//    }
+//    
     /**
      * getter del atributo nombre
      * @return 

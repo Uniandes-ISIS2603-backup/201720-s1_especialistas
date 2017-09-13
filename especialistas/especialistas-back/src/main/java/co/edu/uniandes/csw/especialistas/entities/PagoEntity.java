@@ -31,27 +31,27 @@ public class PagoEntity extends BaseEntity implements Serializable{
      */
     private int precio;
     
-    @OneToOne()
-    @JoinColumn(name="TARJETA_ID")
-    private TarjetaEntity tarjeta;
-    
-    
-    //Getters and setters
-    /**
-    * getter del atributo usuario
-    * @return usuario asociado
-    */
-    public TarjetaEntity getTarjeta(){
-       return this.tarjeta;
-    }
-
-    /**
-    * setter del atributo usuario
-    * @param tarjeta 
-    */
-    public void setTarjeta(TarjetaEntity tarjeta){
-       this.tarjeta = tarjeta;
-    }
+//    @OneToOne()
+//    @JoinColumn(name="TARJETA_ID")
+//    private TarjetaEntity tarjeta;
+//    
+//    
+//    //Getters and setters
+//    /**
+//    * getter del atributo usuario
+//    * @return usuario asociado
+//    */
+//    public TarjetaEntity getTarjeta(){
+//       return this.tarjeta;
+//    }
+//
+//    /**
+//    * setter del atributo usuario
+//    * @param tarjeta 
+//    */
+//    public void setTarjeta(TarjetaEntity tarjeta){
+//       this.tarjeta = tarjeta;
+//    }
 
     
     public int getRef(){
