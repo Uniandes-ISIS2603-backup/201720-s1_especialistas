@@ -50,7 +50,7 @@ public class HospitalPersistenceTest {
     public static JavaArchive createDeployment()
     {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(HospitalPersistence.class.getPackage())
+                .addPackage(HospitalEntity.class.getPackage())
                 .addPackage(HospitalPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
