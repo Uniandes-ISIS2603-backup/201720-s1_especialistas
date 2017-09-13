@@ -103,6 +103,7 @@ public class ConsultorioPersistence
     {
         LOGGER.log(Level.INFO, "Consultando consultorio con referencia: {0}", referencia);
         TypedQuery query = em.createQuery("Select c from ConsultorioEntity c where c.referenciaConsultorio = :referencia", ConsultorioEntity.class);
+        query = query.setParameter("referencia", referencia);
         List<ConsultorioEntity> list = query.getResultList();
         if(list.isEmpty())
         {

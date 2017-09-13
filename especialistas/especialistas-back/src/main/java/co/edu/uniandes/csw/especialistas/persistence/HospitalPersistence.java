@@ -101,12 +101,11 @@ public class HospitalPersistence
      */
     public HospitalEntity findByReference(String nombre)
     {
-        LOGGER.log(Level.INFO, "Consultando hospital con referencia: {0}", nombre);
         TypedQuery query = em.createQuery("select c from HospitalEntity c where c.nombre = :nombre", HospitalEntity.class);
+        query = query.setParameter("nombre", nombre);
         List<HospitalEntity> list = query.getResultList();
         if(list.isEmpty())
         {
-            LOGGER.log(Level.INFO, "No se encontró el hospital");
             return null;
         }
         return list.get(0);
