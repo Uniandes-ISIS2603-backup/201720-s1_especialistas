@@ -74,9 +74,9 @@ public class UsuarioPersistence {
     }
 
     /**
-     * Busca todos los examenes
+     * Busca todos los usuario
      *
-     * @return una lista con todos los examenes
+     * @return una lista con todos los usuarios
      */
     public List<UsuarioEntity> findAll() {
         LOGGER.info("Consultando todos los usuarios");
