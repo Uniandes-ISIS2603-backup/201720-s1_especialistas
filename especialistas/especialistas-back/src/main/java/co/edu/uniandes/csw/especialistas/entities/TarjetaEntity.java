@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /**
  *clase que modela la entidad tarjeta
@@ -19,7 +21,12 @@ public class TarjetaEntity extends BaseEntity implements Serializable{
     */
     private int numero;
     
+    
+    
+    
     //Getters y setters
+     
+     
     
     /**
      * getter del atributo numero
