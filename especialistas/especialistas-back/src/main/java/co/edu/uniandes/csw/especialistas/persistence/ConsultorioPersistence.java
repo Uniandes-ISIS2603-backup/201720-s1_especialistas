@@ -90,7 +90,7 @@ public class ConsultorioPersistence
     public List<ConsultorioEntity> findAll()
     {
         LOGGER.log(Level.INFO, "Consultando todos los consultorios");
-        TypedQuery query = em.createQuery("select u from ConsultorioEntity u", ConsultorioEntity.class);
+        TypedQuery query = em.createQuery("Select u from ConsultorioEntity u", ConsultorioEntity.class);
         return query.getResultList();
     }
     
@@ -102,7 +102,7 @@ public class ConsultorioPersistence
     public ConsultorioEntity findByReference(String referencia)
     {
         LOGGER.log(Level.INFO, "Consultando consultorio con referencia: {0}", referencia);
-        TypedQuery query = em.createQuery("select c from ConsultorioEntity c where c.referenciaConsultorio = :referencia", ConsultorioEntity.class);
+        TypedQuery query = em.createQuery("Select c from ConsultorioEntity c where c.referenciaConsultorio = :referencia", ConsultorioEntity.class);
         List<ConsultorioEntity> list = query.getResultList();
         if(list.isEmpty())
         {
