@@ -20,6 +20,7 @@ public class OrdenMedicaEntity extends BaseEntity{
     
     private String descripcion;
     
+    /*
     @ManyToOne
     @JoinColumn(name="CITA_ID")
     private CitaEntity cita;
@@ -61,7 +62,7 @@ public class OrdenMedicaEntity extends BaseEntity{
     {
         cita=s;
     }
-    
+    */
     public String getDescripcion()
     {
         return descripcion;

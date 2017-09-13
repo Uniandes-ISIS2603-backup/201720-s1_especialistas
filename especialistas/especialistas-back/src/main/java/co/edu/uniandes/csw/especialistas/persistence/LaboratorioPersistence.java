@@ -92,6 +92,7 @@ public class LaboratorioPersistence {
     public LaboratorioEntity findByName(String nombre) {
         LOGGER.log(Level.INFO, "Consultando laboratorio por nombre ", nombre);
         TypedQuery query = em.createQuery("select e from LaboratorioEntity e where e.nombre = :nombre", LaboratorioEntity.class);
+        query = query.setParameter("nombre", nombre);
         List<LaboratorioEntity> lista = query.getResultList();
         if (lista.isEmpty()) {
             return null;

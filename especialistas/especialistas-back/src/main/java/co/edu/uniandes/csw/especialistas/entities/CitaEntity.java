@@ -23,7 +23,7 @@ public class CitaEntity extends BaseEntity{
         
          private String comentarios;
          
-         @OneToOne()
+         /* @OneToOne()
          @JoinColumn(name="HORA_ID")
          private HoraEntity hora;
          
@@ -31,10 +31,10 @@ public class CitaEntity extends BaseEntity{
          @JoinColumn(name="ORDEN_ID")
          private List <OrdenMedicaEntity> ordenesMedicas;
         
-/*         @ManyToOne(fetch=FetchType.LAZY)
+       @ManyToOne(fetch=FetchType.LAZY)
          @JoinColumn(name="USUARIO_ID")
          private UsuarioEntity usuario;
-*/         
+        
          
          public void setHora(HoraEntity s)
         {

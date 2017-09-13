@@ -91,6 +91,7 @@ public class ExamenPersistence {
     public ExamenEntity findByName(String nombre) {
         LOGGER.log(Level.INFO, "Consultando examen por nombre ", nombre);
         TypedQuery query = em.createQuery("select e from ExamenEntity e where e.nombre = :nombre", ExamenEntity.class);
+        query = query.setParameter("nombre", nombre);
         List<ExamenEntity> lista = query.getResultList();
         if (lista.isEmpty()) {
             return null;
