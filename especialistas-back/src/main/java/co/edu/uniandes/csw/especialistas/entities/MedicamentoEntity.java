@@ -5,7 +5,10 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,6 +19,10 @@ public class MedicamentoEntity extends BaseEntity{
     
     private double precio;
     private String nombre;
+
+    @PodamExclude
+    @ManyToMany(mappedBy="medicamentos")
+    private List<FarmaciaEntity> farmacias;
 
     public double getPrecio() {
         return precio;
@@ -32,5 +39,16 @@ public class MedicamentoEntity extends BaseEntity{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    public void agregarMedicamento(FarmaciaEntity farmacia)
+    {
+        farmacias.add(farmacia);
+    }
+
+    public List<FarmaciaEntity> getFarmacias() {
+        return farmacias;
+    }
+    
+    
     
 }

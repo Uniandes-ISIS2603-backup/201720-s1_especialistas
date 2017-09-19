@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
+import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -91,5 +92,26 @@ public class MedicamentoPersistence {
         TypedQuery query = em.createQuery("select u from MedicamentoEntity u", MedicamentoEntity  .class);
         return query.getResultList();
     }
-    
+        public boolean agregarFarmaciasById(long id, FarmaciaEntity farmacia)
+    {
+                       
+        MedicamentoEntity medicamento=null;
+                
+        TypedQuery query = em.createQuery("Select e From MedicamentoEntity e where e.id = :id", FarmaciaEntity.class);
+
+        query = query.setParameter("id", id);
+        
+        List<MedicamentoEntity> sameId = query.getResultList();
+        if (!sameId.isEmpty()) {
+            medicamento= sameId.get(0);
+        }
+        
+        if(medicamento!=null)
+        {
+             medicamento.agregarMedicamento(farmacia);
+             return true;
+        }
+        return false;
+    }
+
 }
