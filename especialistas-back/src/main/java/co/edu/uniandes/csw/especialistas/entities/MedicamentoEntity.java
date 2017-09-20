@@ -48,7 +48,9 @@ public class MedicamentoEntity extends BaseEntity{
     public List<FarmaciaEntity> getFarmacias() {
         return farmacias;
     }
-    
-    
+
+    public void setFarmacias(List<FarmaciaEntity> farmacias) {
+        this.farmacias = farmacias;
+    } 
     
 }

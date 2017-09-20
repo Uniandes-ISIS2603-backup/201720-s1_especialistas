@@ -61,7 +61,9 @@ public class FarmaciaEntity extends BaseEntity{
     {
         medicamentos.add(med);
     }
-    
-    
+
+    public void setMedicamentos(List<MedicamentoEntity> medicamentos) {
+        this.medicamentos = medicamentos;
+    }
     
 }
