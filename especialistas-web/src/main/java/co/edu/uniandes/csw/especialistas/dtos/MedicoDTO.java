@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+import co.edu.uniandes.csw.especialistas.entities.Especializacion;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 
 /**
@@ -15,6 +16,7 @@ public class MedicoDTO {
     
     private Long id;
     private String nombre;
+    private String especializacion;
 
     public MedicoDTO() {
     }
@@ -22,6 +24,7 @@ public class MedicoDTO {
     public MedicoDTO(MedicoEntity entity) {
         this.id = entity.getId();
         this.nombre = entity.getNombre();
+        this.especializacion = entity.getEspecializacion().toString();
     }
 
     public Long getId() {
@@ -39,11 +42,20 @@ public class MedicoDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getEspecializacion() {
+        return especializacion;
+    }
+
+    public void setEspecializacion(String especializacion) {
+        this.especializacion = especializacion;
+    }
     
     public MedicoEntity toEntity(){
         MedicoEntity entity = new MedicoEntity();
         entity.setId(id);
         entity.setNombre(nombre);
+        entity.setEspecializacion(Enum.valueOf(Especializacion.class, especializacion));
         return entity;
     }
 }    

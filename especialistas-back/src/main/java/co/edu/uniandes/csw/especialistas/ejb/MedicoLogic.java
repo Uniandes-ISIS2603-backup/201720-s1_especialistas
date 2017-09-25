@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.ejb;
 
+import co.edu.uniandes.csw.especialistas.entities.Especializacion;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.MedicoPersistence;
 import java.util.List;
@@ -33,15 +34,11 @@ public class MedicoLogic {
     /**
      * Método encargado de eliminar un medico de la persistencia
      * @param id Id del medico
-     * @return true si la entidad fue eliminada, false de lo contrario
      */
-    public boolean deleteMedico(Long id)
+    public void deleteMedico(Long id)
     {
         persistence.delete(id);
         MedicoEntity entity = persistence.find(id);
-        
-        //Se comprueba si se eliminó la entidad
-        return entity == null;
     }
     
     /**
@@ -67,11 +64,13 @@ public class MedicoLogic {
     
     /**
      * Método encargado de actualizar la información de un medico
+     * @param id Id del medico a actualizar
      * @param entity Medico con la nueva información
      * @return Entidad con la información del medico actualizado
      */
-    public MedicoEntity updateMedico(MedicoEntity entity)
+    public MedicoEntity updateMedico(Long id, MedicoEntity entity)
     {
+        entity.setId(id);
         persistence.update(entity);
         return entity;
     }
@@ -83,9 +82,18 @@ public class MedicoLogic {
      */
     public MedicoEntity getMedicoByNombre(String nombre)
     {
-        MedicoEntity entity = persistence.findByNombre(nombre);
-        return entity;
+        return persistence.findByNombre(nombre);
     }
-
+    
+    /**
+     * Método encargado de buscar los medicos de una especializacion
+     * @param especializacion especializacion del medico
+     * @return  MedicoEntity correspondiente al medico
+     */
+    public List<MedicoEntity> getMedicosByEspecializacion(String especializacion)
+    {
+        return persistence.findByEspecializacion(Enum.valueOf(Especializacion.class, especializacion));
+    }
+    
     
 }

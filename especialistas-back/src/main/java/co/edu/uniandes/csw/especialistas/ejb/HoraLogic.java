@@ -33,15 +33,11 @@ public class HoraLogic {
     /**
      * Método encargado de eliminar una hora de la persistencia
      * @param id Id de la hora
-     * @return true si la entidad fue eliminada, false de lo contrario
      */
-    public boolean deleteHora(Long id)
+    public void deleteHora(Long id)
     {
         persistence.delete(id);
         HoraEntity entity = persistence.find(id);
-        
-        //Se comprueba si se eliminó la entidad
-        return entity == null;
     }
     
     /**
@@ -67,11 +63,13 @@ public class HoraLogic {
     
     /**
      * Método encargado de actualizar la información de una hora
+     * @param id Id de la hora a modificarse
      * @param entity Hora con la nueva información
      * @return Entidad con la información de la hora actualizada
      */
-    public HoraEntity updateHora(HoraEntity entity)
+    public HoraEntity updateHora(Long id, HoraEntity entity)
     {
+        entity.setId(id);
         persistence.update(entity);
         return entity;
     }

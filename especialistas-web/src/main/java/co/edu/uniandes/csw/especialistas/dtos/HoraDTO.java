@@ -14,6 +14,8 @@ import java.util.Date;
  */
 public class HoraDTO {
     
+    private Long id;
+    
     private Date horaInicio;
     
     private Date horaFin;
@@ -23,10 +25,19 @@ public class HoraDTO {
     }
     
    public HoraDTO(HoraEntity entity){
+       this.id = entity.getId();
        this.horaInicio = entity.getHoraInicio();
        this.horaFin = entity.getHoraFin();
    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+   
     public Date getHoraInicio() {
         return horaInicio;
     }
@@ -45,6 +56,7 @@ public class HoraDTO {
     
     public HoraEntity toEntity(){
         HoraEntity entity = new HoraEntity();
+        entity.setId(id);
         entity.setHoraInicio(horaInicio);
         entity.setHoraFin(horaFin);
         return entity;
