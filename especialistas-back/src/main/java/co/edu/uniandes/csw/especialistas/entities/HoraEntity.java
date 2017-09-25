@@ -22,22 +22,22 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class HoraEntity extends BaseEntity{
     
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date horaInicio;
     
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date horaFin;
     
-/*  @ManyToOne(fetch=FetchType.LAZY)
+    @PodamExclude
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="MEDICO_ID")
     private MedicoEntity medico;
     
-    
-   
+    @PodamExclude
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="CITA_ID")
     private CitaEntity cita;
-*/
+
     @PodamExclude
     @ManyToOne(fetch=FetchType.LAZY)
     private ConsultorioEntity consultorio;
@@ -67,15 +67,12 @@ public class HoraEntity extends BaseEntity{
     }
     
     
-/*
     public MedicoEntity getMedico() {
         return medico;
     }
 
     public void setMedico(MedicoEntity medico) {
         this.medico = medico;
-        if(medico != null)
-            medico.getAgenda().add(this);
     }
 
     public ConsultorioEntity getConsultorio() {
@@ -84,7 +81,6 @@ public class HoraEntity extends BaseEntity{
 
     public void setConsultorio(ConsultorioEntity consultorio) {
         this.consultorio = consultorio;
-        consultorio.getHoras().add(this);
     }
 
     public CitaEntity getCita() {
@@ -93,25 +89,5 @@ public class HoraEntity extends BaseEntity{
 
     public void setCita(CitaEntity cita) {
         this.cita = cita;
-        if(cita != null && cita.getHora() == null)
-            cita.setHora(this);
-    }
- */
-
-    /**
-     * Getter del atributo consultorio
-     * @return ConsultorioEntity con la información
-     */
-    public ConsultorioEntity getConsultorio() {
-        return consultorio;
-    }
-
-    /**
-     * Setter del atributo consultorio
-     * @param consultorio ConsultorioEntity con la información
-     */
-    public void setConsultorio(ConsultorioEntity consultorio) {
-        this.consultorio = consultorio;
-    }
-    
+    }    
 }
