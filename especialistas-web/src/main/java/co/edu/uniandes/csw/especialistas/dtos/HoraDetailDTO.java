@@ -5,10 +5,39 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+
+import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
+
 /**
  *
- * @author jl.patarroyo
+ * @author JuanSebastian
  */
-public class HoraDetailDTO {
+public class HoraDetailDTO extends HoraDTO{
+    
+    private MedicoDTO medico;
+
+    public HoraDetailDTO() {
+    }
+
+    public HoraDetailDTO(HoraEntity entity) {
+        super(entity);
+        this.medico = new MedicoDTO(entity.getMedico());
+    }
+
+    public MedicoDTO getMedico() {
+        return medico;
+    }
+
+    public void setMedico(MedicoDTO medico) {
+        this.medico = medico;
+    }
+
+    @Override
+    public HoraEntity toEntity() {
+        HoraEntity entity = super.toEntity();
+        entity.setMedico(medico.toEntity());
+        return entity;
+    }
+
     
 }
