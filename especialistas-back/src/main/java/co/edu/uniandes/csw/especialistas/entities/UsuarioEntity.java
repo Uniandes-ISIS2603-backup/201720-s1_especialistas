@@ -103,4 +103,5 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
     public void setCedula(int cedula){
         this.cedula = cedula;
     }
+    
 }
