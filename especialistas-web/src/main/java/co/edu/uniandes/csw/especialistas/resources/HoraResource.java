@@ -64,9 +64,7 @@ public class HoraResource {
         if (entity == null) {
             throw new WebApplicationException("El recurso /horas/" + id + " no existe.", 404);
         }
-
-        HoraEntity newEntity = logic.getHora(id);
-        return new HoraDetailDTO(newEntity);
+        return new HoraDetailDTO(entity);
     }
     
     /**
@@ -90,7 +88,8 @@ public class HoraResource {
      * @return Hora actualizada
      */
     @PUT
-    public HoraDetailDTO updateHora(Long id, HoraDetailDTO hora)
+    @Path("{id: \\d+}")
+    public HoraDetailDTO updateHora(@PathParam("id") Long id, HoraDetailDTO hora)
     {
         HoraEntity newEntity = hora.toEntity();
         HoraEntity entity = logic.getHora(id);

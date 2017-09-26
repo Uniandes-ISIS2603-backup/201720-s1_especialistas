@@ -67,8 +67,7 @@ public class MedicoResource {
             throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
         }
 
-        MedicoEntity newEntity = logic.getMedico(id);
-        return new MedicoDetailDTO(newEntity);
+        return new MedicoDetailDTO(entity);
     }
     
     /**
