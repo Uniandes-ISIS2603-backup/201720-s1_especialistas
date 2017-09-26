@@ -5,20 +5,32 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
+import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
+import java.util.List;
 
 /**
  *
  * @author jl.patarroyo
  */
-public class HospitalDetailDTO extends HospitalDTO{
+public class HospitalDetailDTO extends HospitalDTO
+{
+    
+    /**
+     * Lista de consultorios
+     */
+    private List<ConsultorioEntity> consultorios;
+    
+    /**
+     * Ubicacion del hospital
+     */
+    private UbicacionEntity ubicacion;
     
     /**
      * Constructor por defecto
      */
-    public HospitalDetailDTO()
-    {
-        
+    public HospitalDetailDTO(){      
     }
     
     /**
@@ -37,6 +49,43 @@ public class HospitalDetailDTO extends HospitalDTO{
     @Override
     public HospitalEntity toEntity()
     {
-        return super.toEntity();
+        HospitalEntity entity = super.toEntity();
+        entity.setConsultorios(this.consultorios);
+        entity.setUbicacion(this.ubicacion);
+        return entity;
     }
+
+    /**
+     * Getter de los consultorios
+     * @return 
+     */
+    public List<ConsultorioEntity> getConsultorios() {
+        return consultorios;
+    }
+
+    /**
+     * Setter de los consultorios
+     * @param consultorios Lista de consultorios
+     */
+    public void setConsultorios(List<ConsultorioEntity> consultorios) {
+        this.consultorios = consultorios;
+    }
+
+    /**
+     * Getter de la ubicación
+     * @return Ubicación del hospital
+     */
+    public UbicacionEntity getUbicacion() {
+        return ubicacion;
+    }
+
+    /**
+     * Setter de la ubicación
+     * @param ubicacion Ubicación del hospital
+     */
+    public void setUbicacion(UbicacionEntity ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+    
+    
 }
