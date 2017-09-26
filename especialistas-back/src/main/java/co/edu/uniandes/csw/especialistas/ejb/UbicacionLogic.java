@@ -5,10 +5,13 @@
  */
 package co.edu.uniandes.csw.especialistas.ejb;
 
+import javax.ejb.Stateless;
+
 /**
  *
  * @author rc.tejon
  */
+@Stateless
 public class UbicacionLogic {
     
 }

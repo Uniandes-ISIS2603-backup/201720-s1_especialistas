@@ -8,6 +8,8 @@ package co.edu.uniandes.csw.especialistas.entities;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -15,6 +17,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author rc.tejon
  */
 @Entity
+@XmlRootElement
 public class MedicamentoEntity extends BaseEntity{
     
     private double precio;
@@ -45,6 +48,7 @@ public class MedicamentoEntity extends BaseEntity{
         farmacias.add(farmacia);
     }
 
+    @XmlTransient
     public List<FarmaciaEntity> getFarmacias() {
         return farmacias;
     }

@@ -6,12 +6,14 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import javax.persistence.Entity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author jl.patarroyo
  */
 @Entity
+@XmlRootElement
 public class UbicacionEntity extends BaseEntity{
     
     public double latitud;

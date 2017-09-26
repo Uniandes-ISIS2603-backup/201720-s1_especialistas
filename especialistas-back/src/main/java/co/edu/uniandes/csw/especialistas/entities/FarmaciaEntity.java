@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -18,6 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author rc.tejon
  */
 @Entity
+@XmlRootElement
 public class FarmaciaEntity extends BaseEntity{
     
     private int radio;
@@ -45,6 +48,7 @@ public class FarmaciaEntity extends BaseEntity{
         this.nombre = nombre;
     }
 
+    @XmlTransient
     public List<MedicamentoEntity> getMedicamentos() {
         return medicamentos;
     }

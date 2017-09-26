@@ -21,7 +21,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class HoraPersistence {
     
-    private static final Logger LOGGER = Logger.getLogger(MedicoPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(HoraPersistence.class.getName());
 
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;

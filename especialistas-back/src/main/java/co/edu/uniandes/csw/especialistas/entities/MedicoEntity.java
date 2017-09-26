@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.especialistas.entities;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -20,9 +21,10 @@ public class MedicoEntity extends BaseEntity {
     
     private Especializacion especializacion;
     
-/*    @OneToMany(mappedBy="medico")
+    @PodamExclude
+    @OneToMany(mappedBy="medico")
     private List<HoraEntity> agenda;
-*/
+
     public String getNombre() {
         return nombre;
     }
@@ -39,11 +41,11 @@ public class MedicoEntity extends BaseEntity {
         this.especializacion = especializacion;
     }
 
-/*    public List<HoraEntity> getAgenda() {
+    public List<HoraEntity> getAgenda() {
         return agenda;
     }
 
-    public void addHora(HoraEntity hora) {
-        hora.setMedico(this);
-    }*/
+    public void setAgenda(List<HoraEntity> agenda) {
+        this.agenda = agenda;
+    }
 }
