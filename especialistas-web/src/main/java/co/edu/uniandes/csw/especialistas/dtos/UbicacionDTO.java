@@ -5,10 +5,15 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
+
 /**
  *
  * @author jl.patarroyo
  */
-public class UbicacionDTO {
+public class UbicacionDTO 
+{
+    public UbicacionDTO(UbicacionEntity entity){}
     
+    public UbicacionEntity toEntity(){return null;}
 }

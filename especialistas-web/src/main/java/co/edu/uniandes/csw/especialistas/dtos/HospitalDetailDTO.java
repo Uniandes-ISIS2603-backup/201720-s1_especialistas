@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.especialistas.dtos;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,17 +21,19 @@ public class HospitalDetailDTO extends HospitalDTO
     /**
      * Lista de consultorios
      */
-    private List<ConsultorioEntity> consultorios;
+    private List<ConsultorioDTO> consultorios;
     
     /**
      * Ubicacion del hospital
      */
-    private UbicacionEntity ubicacion;
+    private UbicacionDTO ubicacion;
     
     /**
      * Constructor por defecto
      */
-    public HospitalDetailDTO(){      
+    public HospitalDetailDTO()
+    {
+        super();
     }
     
     /**
@@ -40,6 +43,19 @@ public class HospitalDetailDTO extends HospitalDTO
     public HospitalDetailDTO(HospitalEntity entity)
     {
         super(entity);
+        if(entity.getUbicacion() != null)
+        {
+            UbicacionEntity ubicacionEntity = entity.getUbicacion();
+            this.ubicacion = new UbicacionDTO(ubicacionEntity);
+        }
+        if(entity.getConsultorios() != null)
+        {
+            consultorios = new ArrayList<>();
+            for(ConsultorioEntity consultorio: entity.getConsultorios())
+            {
+                consultorios.add(new ConsultorioDTO(consultorio));
+            }
+        }
     }
     
     /**
@@ -50,8 +66,19 @@ public class HospitalDetailDTO extends HospitalDTO
     public HospitalEntity toEntity()
     {
         HospitalEntity entity = super.toEntity();
-        entity.setConsultorios(this.consultorios);
-        entity.setUbicacion(this.ubicacion);
+        if(ubicacion != null)
+        {
+            entity.setUbicacion(ubicacion.toEntity());
+        }
+        if(consultorios != null)
+        {
+            List<ConsultorioEntity> lista = new ArrayList<>();
+            for(ConsultorioDTO consultorio: consultorios)
+            {
+                lista.add(consultorio.toEntity());
+            }
+            entity.setConsultorios(lista);
+        }
         return entity;
     }
 
@@ -59,7 +86,7 @@ public class HospitalDetailDTO extends HospitalDTO
      * Getter de los consultorios
      * @return 
      */
-    public List<ConsultorioEntity> getConsultorios() {
+    public List<ConsultorioDTO> getConsultorios() {
         return consultorios;
     }
 
@@ -67,7 +94,7 @@ public class HospitalDetailDTO extends HospitalDTO
      * Setter de los consultorios
      * @param consultorios Lista de consultorios
      */
-    public void setConsultorios(List<ConsultorioEntity> consultorios) {
+    public void setConsultorios(List<ConsultorioDTO> consultorios) {
         this.consultorios = consultorios;
     }
 
@@ -75,7 +102,7 @@ public class HospitalDetailDTO extends HospitalDTO
      * Getter de la ubicación
      * @return Ubicación del hospital
      */
-    public UbicacionEntity getUbicacion() {
+    public UbicacionDTO getUbicacion() {
         return ubicacion;
     }
 
@@ -83,9 +110,8 @@ public class HospitalDetailDTO extends HospitalDTO
      * Setter de la ubicación
      * @param ubicacion Ubicación del hospital
      */
-    public void setUbicacion(UbicacionEntity ubicacion) {
+    public void setUbicacion(UbicacionDTO ubicacion) {
         this.ubicacion = ubicacion;
     }
-    
     
 }
