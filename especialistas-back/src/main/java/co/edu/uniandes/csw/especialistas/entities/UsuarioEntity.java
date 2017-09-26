@@ -7,10 +7,12 @@ package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -29,31 +31,59 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
     */
     private int cedula;
     
-//    
-//    @OneToMany(mappedBy="usuario")
-//    @JoinColumn(name="CITA_ID")
+    /**
+     * atributo que modela las citas del usuario
+     */
+//    @PodamExclude
+//    @OneToMany(mappedBy="usuario", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List <CitaEntity> citasMedicas;
-//    
-//    @OneToOne()
-//    @JoinColumn(name="TARJETA_ID")
-//    private TarjetaEntity tarjeta;
-//    
-//    
-//    //Getters and setters
+    
+    /**
+     * atributo que modela la targeta del usuario
+     */
+    @PodamExclude
+    @OneToOne(mappedBy="usuario")
+    private TarjetaEntity tarjeta;
+    
+     
 //    /**
-//      * getter del atributo usuario
-//      * @return usuario asociado
+//     * Ubicacion del usuario
+//     */
+//    @PodamExclude
+//    @OneToOne(mappedBy = "usuario")
+//    private UbicacionEntity ubicacion;
+    
+    //Getters and setters
+    /**
+      * getter del atributo usuario
+      * @return usuario asociado
+      */
+     public TarjetaEntity getTarjeta(){
+         return this.tarjeta;
+     }
+     
+     /**
+      * setter del atributo usuario
+      * @param tarjeta 
+      */
+     public void setTarjeta(TarjetaEntity tarjeta){
+         this.tarjeta = tarjeta;
+     }
+     
+//     /**
+//      * getter del atributo ubicacion
+//      * @return 
 //      */
-//     public TarjetaEntity getTarjeta(){
-//         return this.tarjeta;
+//     public UbicacionEntity getUbicacion(){
+//         return this.ubicacion;
 //     }
 //     
 //     /**
-//      * setter del atributo usuario
-//      * @param tarjeta 
+//      * setter del atributo ubicacion
+//      * @param ubicacion 
 //      */
-//     public void setTarjeta(TarjetaEntity tarjeta){
-//         this.tarjeta = tarjeta;
+//     public void setUbicacion(UbicacionEntity ubicacion){
+//         this.ubicacion = ubicacion;
 //     }
 //    
 //    /**
@@ -71,7 +101,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
 //    public void setCitas(List<CitaEntity> citasMedicas){
 //        this.citasMedicas = citasMedicas;
 //    }
-//    
+    
     /**
      * getter del atributo nombre
      * @return 
@@ -103,4 +133,5 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
     public void setCedula(int cedula){
         this.cedula = cedula;
     }
+    
 }

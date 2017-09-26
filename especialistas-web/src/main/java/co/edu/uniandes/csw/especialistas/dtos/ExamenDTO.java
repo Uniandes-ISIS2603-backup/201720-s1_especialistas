@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.especialistas.resources;
-
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+package co.edu.uniandes.csw.especialistas.dtos;
 
 /**
  *
  * @author jl.patarroyo
  */
-@ApplicationPath("/api")
-public class RestConfig extends Application{
+public class ExamenDTO {
+    
 }
