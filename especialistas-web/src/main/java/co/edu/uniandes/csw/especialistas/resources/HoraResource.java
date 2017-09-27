@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.HoraDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HoraDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.HoraLogic;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
