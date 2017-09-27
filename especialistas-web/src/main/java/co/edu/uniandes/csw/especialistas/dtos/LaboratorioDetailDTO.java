@@ -5,10 +5,33 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
+
 /**
  *
- * @author jl.patarroyo
+ * @author dm.gutierrez11
  */
-public class LaboratorioDetailDTO {
+public class LaboratorioDetailDTO extends LaboratorioDTO {
     
+    public LaboratorioDetailDTO(){
+        
+    }
+    
+    /**
+     * Constructor para convertir un entity en DTO
+     * @param laboratorio 
+     */
+    public LaboratorioDetailDTO (LaboratorioEntity laboratorio){
+        super(laboratorio);
+    }
+    
+    /**
+     * Transforma un DTO a Entity
+     * @return 
+     */
+    @Override
+    public LaboratorioEntity toEntity() {
+        LaboratorioEntity laboratorio = super.toEntity();
+        return laboratorio;
+    }
 }

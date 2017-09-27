@@ -6,7 +6,11 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,11 +20,32 @@ import javax.persistence.Entity;
 public class LaboratorioEntity extends BaseEntity implements Serializable {
     
     /**
+     * Representa las exámenes con los que se asocia
+     */
+    @PodamExclude
+    @ManyToMany(mappedBy = "laboratorios")
+    private List<ExamenEntity> examenes;
+    
+    /**
+     * Representa el objeto ubiacación con el que se relaciona
+     */
+    @OneToOne
+    private UbicacionEntity ubicacion;
+    
+    /**
      * Representa el nombre del laboratorio
      */
     private String nombre;
 
-    // getter y setter
+    // getters y setters
+    
+    public List<ExamenEntity> getExamenes(){
+        return examenes;
+    }
+    
+    public void setExamenes(List<ExamenEntity> examenes){
+        this.examenes = examenes;
+    }
     
     public String getNombre() {
         return this.nombre;
@@ -28,6 +53,14 @@ public class LaboratorioEntity extends BaseEntity implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public UbicacionEntity getUbicacion(){
+        return this.ubicacion;
+    }
+    
+    public void setUbicacion(UbicacionEntity ubicacion){
+        this.ubicacion = ubicacion;
     }
 
 }
