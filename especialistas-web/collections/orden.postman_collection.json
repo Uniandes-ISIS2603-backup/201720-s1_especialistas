@@ -1,0 +1,259 @@
+{
+	"variables": [],
+	"info": {
+		"name": "orden",
+		"_postman_id": "3fc14605-4db3-ccc8-64a7-73fd7b74f16e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consultar orden medica por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/ordenesMedicas/100",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"descripcion\": \"jose\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Error al consultar orden medica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"]=responseCode.code===404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/ordenesMedicas/400",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"descripcion\": \"jose\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todas las ordenes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/ordenesMedicas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"descripcion\": \"jose\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear orden medica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/ordenesMedicas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"descripcion\": \"jose\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar orden medica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/ordenesMedicas/100",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"descripcion\": \"jose\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Error al actualizar orden medica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/ordenesMedicas/400",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"descripcion\": \"jose\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar orden medica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/ordenesMedicas/100",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"descripcion\": \"jose\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Error al eliminar orden medica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/ordenesMedicas/100",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"descripcion\": \"jose\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
