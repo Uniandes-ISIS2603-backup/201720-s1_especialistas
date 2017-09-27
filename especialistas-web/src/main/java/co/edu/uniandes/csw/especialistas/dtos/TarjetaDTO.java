@@ -5,23 +5,27 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
-import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
+import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 
 /**
  *
- * @author jr.restom10
+ * @author jl.patarroyo
  */
-public class OrdenMedicaDTO {
+public class TarjetaDTO {
+    /**
+    * Atributo que representa el numero de la targeta
+    */
+    private int numero;
     
-    
-    private String descripcion;
+    /**
+     * atributo que modela el id de la tarjeta
+     */
     private Long id;
     
-
     /**
      * Constructor por defecto
      */
-    public OrdenMedicaDTO()
+    public TarjetaDTO()
     {
         
     }
@@ -30,31 +34,31 @@ public class OrdenMedicaDTO {
      * Constructor a partir de una entidad
      * @param entity entidad que contiene la información
      */
-    public OrdenMedicaDTO(OrdenMedicaEntity entity)
+    public TarjetaDTO(TarjetaEntity entity)
     {
-        this.descripcion = entity.getDescripcion();
+        this.numero = entity.getNumero();
         this.id = entity.getId();
     }
     
     /**
-     * Getter del atributo descripcion
-     * @return descripcion del OrdenMedica
+     * Getter del atributo nombre
+     * @return cedula del usuario
      */
-    public String getDescripcion() {
-        return descripcion;
+    public int getNumero() {
+        return this.numero;
     }
     
     /**
-     * Setter del atributo descripcion
-     * @param descripcion descripcion del OrdenMedica
+     * Setter del atributo nombre
+     * @param cedula cedula del usuario
      */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
     
     /**
      * Getter del atributo id
-     * @return id del OrdenMedica
+     * @return id del usuario
      */
     public Long getId() {
         return id;
@@ -62,7 +66,7 @@ public class OrdenMedicaDTO {
     
     /**
      * Setter del atributo id
-     * @param id id del OrdenMedica
+     * @param id id del usuario
      */
     public void setId(Long id) {
         this.id = id;
@@ -70,14 +74,13 @@ public class OrdenMedicaDTO {
     
     /**
      * Método que convierte la clase a una entidad
-     * @return OrdenMedicaEntity con la información
+     * @return UsuarioEntity con la información
      */
-    public OrdenMedicaEntity toEntity()
+    public TarjetaEntity toEntity()
     {
-        OrdenMedicaEntity entity = new OrdenMedicaEntity();
+        TarjetaEntity entity = new TarjetaEntity();
         entity.setId(this.id);
-        entity.setDescripcion(this.descripcion);
+        entity.setNumero(this.numero);
         return entity;
     }
-    
 }

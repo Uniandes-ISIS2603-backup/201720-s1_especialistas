@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+
 import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
 
 /**
@@ -78,8 +79,5 @@ public class CitaDTO {
         entity.setComentarios(this.comentarios);
         return entity;
     }
-    
-    
-    
-    
+
 }

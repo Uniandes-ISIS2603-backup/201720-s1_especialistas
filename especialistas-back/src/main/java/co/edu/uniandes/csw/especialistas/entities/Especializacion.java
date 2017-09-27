@@ -14,5 +14,5 @@ public enum Especializacion {
     GENERAL,
     ODONTOLOGIA,
     CARDIOLOGIA,
-    CIRUGIA;
+    CIRUGIA;    
 }
