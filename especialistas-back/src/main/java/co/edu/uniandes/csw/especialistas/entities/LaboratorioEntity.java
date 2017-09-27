@@ -23,7 +23,7 @@ public class LaboratorioEntity extends BaseEntity implements Serializable {
      * Representa las exámenes con los que se asocia
      */
     @PodamExclude
-    @ManyToMany(mappedBy = "laboratorios")
+    @ManyToMany
     private List<ExamenEntity> examenes;
     
     /**
