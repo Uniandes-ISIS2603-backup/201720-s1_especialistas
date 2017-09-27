@@ -6,9 +6,6 @@
 package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
-import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -18,8 +15,17 @@ import java.util.List;
  * @author rc.tejon
  */
 public class FarmaciaDetailDTO extends FarmaciaDTO{
-    
 
+    public FarmaciaDetailDTO() {
+    }
+
+    
+    public FarmaciaDetailDTO(FarmaciaEntity entity) {
+        super(entity);
+      /*  entity.getMedicamentos().forEach((x) -> {
+            this.medicamentos.add(new MedicamentoDTO(x));
+        });*/
+    }
     private List<MedicamentoDTO> medicamentos;
 
     public List<MedicamentoDTO> getMedicamentos() {
@@ -30,20 +36,13 @@ public class FarmaciaDetailDTO extends FarmaciaDTO{
         this.medicamentos = medicamentos;
     }
 
+    @Override
     public FarmaciaEntity toEntity()
     {
         FarmaciaEntity entity = super.toEntity();
-        List<MedicamentoEntity> listMedicamentos=new ArrayList<MedicamentoEntity>();
-        
-        if(medicamentos!=null)
-        {
-        Iterator<MedicamentoDTO> iter=medicamentos.iterator();
-        while(iter.hasNext())
-        {
-            listMedicamentos.add(iter.next().toEntity());
-        }
-        entity.setMedicamentos(listMedicamentos); 
-        }
+        /*medicamentos.forEach((x) -> {
+            entity.getMedicamentos().add(x.toEntity());
+        });*/
         
         return entity;
     }

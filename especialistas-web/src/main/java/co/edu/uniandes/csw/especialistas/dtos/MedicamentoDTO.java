@@ -16,6 +16,11 @@ public class MedicamentoDTO extends EspecialistasDTO{
     private double precio;
     private String nombre;
 
+    public MedicamentoDTO(MedicamentoEntity entity) {
+        precio=entity.getPrecio();
+        nombre=entity.getNombre();
+    }
+
     public String getNombre() {
         return nombre;
     }

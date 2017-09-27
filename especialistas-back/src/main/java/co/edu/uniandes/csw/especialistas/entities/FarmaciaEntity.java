@@ -49,6 +49,13 @@ public class FarmaciaEntity extends BaseEntity{
 
     @XmlTransient
     public List<MedicamentoEntity> getMedicamentos() {
+<<<<<<< Updated upstream
+=======
+        if(medicamentos==null)
+        {
+            medicamentos=new ArrayList<>();
+        }
+>>>>>>> Stashed changes
         return medicamentos;
     }
 
@@ -62,6 +69,13 @@ public class FarmaciaEntity extends BaseEntity{
     
     public void agregarMedicamento(MedicamentoEntity med)
     {
+<<<<<<< Updated upstream
+=======
+        if(medicamentos==null)
+        {
+            medicamentos= new ArrayList<>();
+        }
+>>>>>>> Stashed changes
         medicamentos.add(med);
     }
 

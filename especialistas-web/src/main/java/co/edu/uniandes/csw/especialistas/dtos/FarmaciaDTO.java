@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
+import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 
 /**
  *
@@ -15,6 +16,20 @@ public class FarmaciaDTO  extends EspecialistasDTO{
     private int radio;
     private String nombre;
     private UbicacionDTO ubicacion;
+
+    public FarmaciaDTO() {
+    }
+    
+    
+
+    public FarmaciaDTO(FarmaciaEntity entity) {
+        radio=entity.getRadio();
+        nombre=entity.getNombre();
+        UbicacionEntity u =entity.getUbicacion();
+        ubicacion=new UbicacionDTO(u);
+    }
+    
+    
     
     public String getNombre() {
         return nombre;

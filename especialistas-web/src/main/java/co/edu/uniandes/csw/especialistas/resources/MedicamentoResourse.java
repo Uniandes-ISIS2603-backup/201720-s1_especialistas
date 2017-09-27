@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
 import javax.persistence.EntityManager;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -78,9 +79,12 @@ public class MedicamentoResourse {
      * @return Lista con todos los medicamentos
      */
     @GET
-    public List<MedicamentoEntity> getMedicamentos()
+    public List<MedicamentoDetailDTO> getMedicamentos()
     {
-        List<MedicamentoEntity> lista = logic.getMedicamentos();
+        List<MedicamentoDetailDTO> lista =  new ArrayList<>();
+        logic.getMedicamentos().forEach(x -> {
+            lista.add(new MedicamentoDetailDTO(x));
+        });
         return lista;
     }
     
@@ -90,14 +94,14 @@ public class MedicamentoResourse {
      * @return medicamento actualizado
      */
     @PUT
-    public MedicamentoEntity updateMedicamento(MedicamentoDetailDTO medicamento)throws Exception
+    public MedicamentoDetailDTO updateMedicamento(MedicamentoDetailDTO medicamento)throws Exception
     {
         MedicamentoEntity entity = medicamento.toEntity();
         if(logic.getMedicamento(entity.getId())==null)
         {
             throw new Exception("ponga el id");
         }
-        return logic.updateMedicamento(entity);
+        return new MedicamentoDetailDTO(logic.updateMedicamento(entity));
     }
     
     /**
