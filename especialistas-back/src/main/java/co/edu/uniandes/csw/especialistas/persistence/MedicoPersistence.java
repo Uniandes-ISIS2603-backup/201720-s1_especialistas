@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
+import co.edu.uniandes.csw.especialistas.entities.Especializacion;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -87,6 +88,20 @@ public class MedicoPersistence {
         } else {
             return sameNombre.get(0);
         }
+    }
+    
+    /**
+     * Busca los médicos con la especializacion que se envía de argumento
+     *
+     * @param especializacion: Especializacion que se está buscando
+     * @return lista con los médicos con la especialización buscada.
+     */
+    public List<MedicoEntity> findByEspecializacion(Especializacion especializacion) {
+        LOGGER.log(Level.INFO, "Consultando medico por especializacion ", especializacion);
+
+        TypedQuery query = em.createQuery("Select e From MedicoEntity e where e.especializacion = :especializacion", MedicoEntity.class);
+        query = query.setParameter("especializacion", especializacion);
+        return query.getResultList();
     }
 
     /**
