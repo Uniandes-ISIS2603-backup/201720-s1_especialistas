@@ -36,6 +36,11 @@ public class ConsultorioEntity extends BaseEntity implements Serializable
     private List<HoraEntity> horas = new ArrayList<>();
     
     /**
+     * Especializacion del consultorio
+     */
+    private Especializacion especializacion;
+    
+    /**
      * Referencia del consultorio (e.g. W405)
      */
     private String referenciaConsultorio;
@@ -86,6 +91,22 @@ public class ConsultorioEntity extends BaseEntity implements Serializable
      */
     public void setHoras(List<HoraEntity> horas) {
         this.horas = horas;
+    }
+
+    /**
+     * Getter del atributo especialización
+     * @return especialización del consultorio
+     */
+    public Especializacion getEspecializacion() {
+        return especializacion;
+    }
+
+    /**
+     * Setter del atributo especialización
+     * @param especializacion especialización del consultorio
+     */
+    public void setEspecializacion(Especializacion especializacion) {
+        this.especializacion = especializacion;
     }
     
     
