@@ -18,3 +18,8 @@ delete from OrdenMedicaEntity;
 
 insert into OrdenMedicaEntity (id, descripcion) values (100,'xxxxxx');
 insert into OrdenMedicaEntity (id, descripcion) values (200,' ');
+
+
+delete from HoraEntity;
+
+delete from MedicoEntity;
