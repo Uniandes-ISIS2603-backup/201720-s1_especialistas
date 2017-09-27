@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
@@ -29,7 +30,7 @@ public class LaboratorioEntity extends BaseEntity implements Serializable {
     /**
      * Representa el objeto ubiacación con el que se relaciona
      */
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private UbicacionEntity ubicacion;
     
     /**
