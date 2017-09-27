@@ -6,7 +6,10 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,6 +19,13 @@ import javax.persistence.Entity;
 @Entity
 public class ExamenEntity extends BaseEntity implements Serializable {
 
+    /**
+     * Lista que representa los objetos Laboratorio con los que se relaciona
+     */
+    @PodamExclude
+    @ManyToMany(mappedBy = "examenes")
+    private List<LaboratorioEntity> laboratorios;
+    
    /**
     * Atributo que representa el nombre del examen
     */
@@ -32,6 +42,14 @@ public class ExamenEntity extends BaseEntity implements Serializable {
     private String recomendacion;
     
     //Getters y setters
+    
+    public void setLaboratorios(List<LaboratorioEntity> laboratorios){
+        this.laboratorios = laboratorios;
+    }
+    
+    public List<LaboratorioEntity> getLaboratorios(){
+        return laboratorios;
+    }
     
     public String getnombre(){
         return this.nombre;

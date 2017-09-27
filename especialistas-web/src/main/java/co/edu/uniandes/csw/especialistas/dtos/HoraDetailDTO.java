@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 
 /**
@@ -37,8 +38,6 @@ public class HoraDetailDTO extends HoraDTO{
         entity.setMedico(medico.toEntity());
         return entity;
     }
-    
-    
-    
+
     
 }

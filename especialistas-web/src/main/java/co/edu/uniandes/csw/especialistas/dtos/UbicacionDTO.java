@@ -16,7 +16,12 @@ public class UbicacionDTO extends EspecialistasDTO {
     private double longitd;
     private double latitud;
     private String nombre;
-
+    
+    public UbicacionDTO(UbicacionEntity entity) {
+        nombre=entity.getNombre();
+        latitud=entity.getLatitud();
+        longitd=entity.getLongitud();
+    }
     public double getLatitud() {
         return latitud;
     }

@@ -34,9 +34,9 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
     /**
      * atributo que modela las citas del usuario
      */
-//    @PodamExclude
-//    @OneToMany(mappedBy="usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List <CitaEntity> citasMedicas;
+    @PodamExclude
+    @OneToMany(mappedBy="usuario")
+    private List <CitaEntity> citasMedicas;
     
     /**
      * atributo que modela la targeta del usuario
@@ -86,21 +86,21 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
 //         this.ubicacion = ubicacion;
 //     }
 //    
-//    /**
-//     * getter del atributo citas
-//     * @return una lista con las citas asociadas a un usuario
-//     */
-//    public List<CitaEntity> getCitas(){
-//        return this.citasMedicas;
-//    }
-//    
-//    /**
-//     * setter del atributo citas
-//     * @param citasMedicas 
-//     */
-//    public void setCitas(List<CitaEntity> citasMedicas){
-//        this.citasMedicas = citasMedicas;
-//    }
+    /**
+     * getter del atributo citas
+     * @return una lista con las citas asociadas a un usuario
+     */
+    public List<CitaEntity> getCitas(){
+        return this.citasMedicas;
+    }
+    
+    /**
+     * setter del atributo citas
+     * @param citasMedicas 
+     */
+    public void setCitas(List<CitaEntity> citasMedicas){
+        this.citasMedicas = citasMedicas;
+    }
     
     /**
      * getter del atributo nombre
@@ -133,4 +133,5 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
     public void setCedula(int cedula){
         this.cedula = cedula;
     }
+    
 }

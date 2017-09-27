@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+
 import co.edu.uniandes.csw.especialistas.entities.Especializacion;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 
@@ -59,4 +60,4 @@ public class MedicoDTO {
         return entity;
     }
 }    
-    
+

@@ -5,10 +5,34 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+import co.edu.uniandes.csw.especialistas.entities.ExamenEntity;
+
 /**
  *
- * @author jl.patarroyo
+ * @author dm.gutierrez11
  */
-public class ExamenDetailDTO {
+public class ExamenDetailDTO extends ExamenDTO {
+    
+    public ExamenDetailDTO(){
+        
+    }
+    
+    /**
+     * Constructor para convertir un entity en DTO
+     * @param examen 
+     */
+    public ExamenDetailDTO (ExamenEntity examen){
+        super(examen);
+    }
+    
+    /**
+     * Transforma un DTO a Entity
+     * @return 
+     */
+    @Override
+    public ExamenEntity toEntity() {
+        ExamenEntity examen = super.toEntity();
+        return examen;
+    }
     
 }

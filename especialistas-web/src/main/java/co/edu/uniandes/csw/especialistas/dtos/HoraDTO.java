@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import java.util.Date;
 
 /**
- *
  * @author JuanSebastian
  */
 public class HoraDTO {
@@ -61,5 +60,4 @@ public class HoraDTO {
         entity.setHoraFin(horaFin);
         return entity;
     }
-    
 }
