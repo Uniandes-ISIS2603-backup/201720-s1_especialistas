@@ -54,7 +54,7 @@ public class MedicamentoLogic {
      * Método que retorna la lista de todos los medicamentos
      * @return Lista con todas las entidades de los medicamentos
      */
-        public List<MedicamentoEntity> getFarmacias()
+        public List<MedicamentoEntity> getMedicamentos()
     {
         List<MedicamentoEntity> lista = persistence.findAll();
         return lista;
@@ -65,7 +65,7 @@ public class MedicamentoLogic {
      * @param id id del medicamento
      * @return MedicamentoEntity del medicamento buscado
      */
-    public MedicamentoEntity getFarmacia(Long id)
+    public MedicamentoEntity getMedicamento(Long id)
     {
         MedicamentoEntity entity = persistence.findById(id);
         return entity;
@@ -76,7 +76,7 @@ public class MedicamentoLogic {
      * @param entity medicamento con la nueva información
      * @return MedicamentoEntity con la información del medicamento actualizado
      */
-    public MedicamentoEntity updateFarmacia(MedicamentoEntity entity)
+    public MedicamentoEntity updateMedicamento(MedicamentoEntity entity)
     {
         persistence.update(entity);
         return entity;

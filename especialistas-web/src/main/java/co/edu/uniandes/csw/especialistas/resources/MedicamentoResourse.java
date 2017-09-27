@@ -5,10 +5,15 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
+import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDetailDTO;
+import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
 import javax.persistence.EntityManager;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import java.net.URI;
 import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.Query;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
@@ -28,37 +33,82 @@ import org.springframework.transaction.annotation.Transactional;
  * @author rc.tejon
  */
 @Path("medicamentos")
+@Produces("application/json")
+@Stateless
 public class MedicamentoResourse {
 
 
     public MedicamentoResourse() {
     }
 
-    @POST
-
-    public boolean create(MedicamentoEntity entity) {
-         return false;
-    }
-
-    @PUT
-    public void edit(MedicamentoEntity entity) {
-        
-    }
-
-    @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") Long id) {
+    /**
+     * Clase de la lógica
+     */
+    @Inject
+    MedicamentoLogic logic;
     
+    /**
+     * Recurso que crea un medicamento
+     * @param medicamento JSON con la información del medicamento
+     * @return Entidad del medicamento creado
+     */
+    @POST
+    public MedicamentoEntity createMedicamento(MedicamentoDTO medicamento)
+    {
+        MedicamentoEntity entity = medicamento.toEntity();
+        logic.createMedicamento(entity);
+        return entity;
     }
-
+    
+    /**
+     * Recurso que obtiene un medicamento por su id
+     * @param id id del medicamento
+     * @return MedicamentoEntity del medicamento
+     */
     @GET
-    @Path("{id}")
-    public MedicamentoEntity find(@PathParam("id") Long id) {
-        return null;
+    @Path("{id: \\d+}")
+    public MedicamentoEntity getMedicamento(@PathParam("id") Long id)
+    {
+        MedicamentoEntity entity = logic.getMedicamento(id);
+        return entity;
     }
-
+    
+    /**
+     * Recurso que obtiene todos los medicamentos
+     * @return Lista con todos los medicamentos
+     */
     @GET
-    public List<MedicamentoEntity> findAll() {
-        return null;
+    public List<MedicamentoEntity> getMedicamentos()
+    {
+        List<MedicamentoEntity> lista = logic.getMedicamentos();
+        return lista;
+    }
+    
+    /**
+     * Recurso para actualizar un medicamento
+     * @param medicamento JSON con los detalles del medicamento
+     * @return medicamento actualizado
+     */
+    @PUT
+    public MedicamentoEntity updateMedicamento(MedicamentoDetailDTO medicamento)throws Exception
+    {
+        MedicamentoEntity entity = medicamento.toEntity();
+        if(logic.getMedicamento(entity.getId())==null)
+        {
+            throw new Exception("ponga el id");
+        }
+        return logic.updateMedicamento(entity);
+    }
+    
+    /**
+     * Recurso que elimina un medicamento
+     * @param id id del medicamento
+     * @return true si se eliminó el medicamento, false de lo contrario
+     */
+    @Path("{id:\\d+}")
+    @DELETE
+    public boolean deleteFarmacia(@PathParam("id") Long id)
+    {
+        return logic.deleteMedicamento(id);
     }
 }

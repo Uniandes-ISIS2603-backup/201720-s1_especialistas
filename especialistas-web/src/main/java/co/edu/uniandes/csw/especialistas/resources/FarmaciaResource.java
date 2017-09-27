@@ -5,11 +5,15 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDTO;
+import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDetailDTO;
+import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
 import javax.persistence.EntityManager;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import java.net.URI;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.Query;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
@@ -36,34 +40,75 @@ public class FarmaciaResource {
     public FarmaciaResource() {
     }
 
+    /**
+     * Clase de la lógica
+     */
+    @Inject
+    FarmaciaLogic logic;
+    
+    /**
+     * Recurso que crea un farmacia
+     * @param farmacia JSON con la información del farmacia
+     * @return Entidad del hospital creado
+     */
     @POST
-    public boolean create(FarmaciaEntity entity) {
-        //TODO
-        return false;
+    public FarmaciaEntity createFarmacia(FarmaciaDTO farmacia)
+    {
+        FarmaciaEntity entity = farmacia.toEntity();
+        logic.createFarmacia(entity);
+        return entity;
     }
-
+    
+    /**
+     * Recurso que obtiene un farmacia por su id
+     * @param id id del farmacia
+     * @return FarmaciaEntity del hospital
+     */
+    @GET
+    @Path("{id: \\d+}")
+    public FarmaciaEntity getFarmacia(@PathParam("id") Long id)
+    {
+        FarmaciaEntity entity = logic.getFarmacia(id);
+        return entity;
+    }
+    
+    /**
+     * Recurso que obtiene todos los hospitales
+     * @return Lista con todos los hospitales
+     */
+    @GET
+    public List<FarmaciaEntity> getFarmacias()
+    {
+        List<FarmaciaEntity> lista = logic.getFarmacias();
+        return lista;
+    }
+    
+    /**
+     * Recurso para actualizar un farmacia
+     * @param farmacia JSON con los detalles del framacia
+     * @return farmacia actualizado
+     */
     @PUT
-    public void edit(FarmaciaEntity entity) {
-
+    public FarmaciaEntity updateFarmacia(FarmaciaDetailDTO farmacia)throws Exception
+    {
+        FarmaciaEntity entity = farmacia.toEntity();
+        if(logic.getFarmacia(entity.getId())==null)
+        {
+            throw new Exception("ponga el id");
+        }
+        return logic.updateFarmacia(entity);
     }
-
+    
+    /**
+     * Recurso que elimina un farmacia
+     * @param id id del farmacia
+     * @return true si se eliminó el farmacia, false de lo contrario
+     */
+    @Path("{id:\\d+}")
     @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") Long id) {
-
-    }
-
-    @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Transactional
-    public FarmaciaEntity find(@PathParam("id") Long id) {
-        return null;
-    }
-
-    @GET
-    public List<FarmaciaEntity> findAll() {
-        return null;
+    public boolean deleteFarmacia(@PathParam("id") Long id)
+    {
+        return logic.deleteFarmacia(id);
     }
     
 }

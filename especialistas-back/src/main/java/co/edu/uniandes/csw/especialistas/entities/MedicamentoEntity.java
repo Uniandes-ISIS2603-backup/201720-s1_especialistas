@@ -17,14 +17,13 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author rc.tejon
  */
 @Entity
-@XmlRootElement
 public class MedicamentoEntity extends BaseEntity{
     
     private double precio;
     private String nombre;
 
     @PodamExclude
-    @ManyToMany(mappedBy="medicamentos")
+    @ManyToMany
     private List<FarmaciaEntity> farmacias;
 
     public double getPrecio() {

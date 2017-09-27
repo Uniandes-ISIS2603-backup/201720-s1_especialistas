@@ -14,7 +14,7 @@ import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 public class FarmaciaDTO  extends EspecialistasDTO{
     private int radio;
     private String nombre;
-    private UbicacionDetailDTO ubicacion;
+    private UbicacionDTO ubicacion;
     
     public String getNombre() {
         return nombre;
@@ -32,11 +32,11 @@ public class FarmaciaDTO  extends EspecialistasDTO{
         this.radio = radio;
     }
     
-    public UbicacionDetailDTO getUbicacion() {
+    public UbicacionDTO getUbicacion() {
         return ubicacion;
     }
 
-    public void setUbicacion(UbicacionDetailDTO ubicacion) {
+    public void setUbicacion(UbicacionDTO ubicacion) {
         this.ubicacion = ubicacion;
     }
     
@@ -47,6 +47,7 @@ public class FarmaciaDTO  extends EspecialistasDTO{
         entity.setNombre(this.nombre);
         entity.setId(this.id);
         entity.setRadio(this.radio);
+        System.err.println(ubicacion.getNombre());
         entity.setUbicacion(this.ubicacion.toEntity());
         return entity;
     }

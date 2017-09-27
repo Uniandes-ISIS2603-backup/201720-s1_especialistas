@@ -11,7 +11,7 @@ import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
  *
  * @author rc.tejon
  */
-public class UbicacionDetailDTO extends EspecialistasDTO {
+public class UbicacionDTO extends EspecialistasDTO {
     
     private double longitd;
     private double latitud;

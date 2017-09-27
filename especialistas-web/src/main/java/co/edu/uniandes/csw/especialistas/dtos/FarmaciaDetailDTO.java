@@ -34,12 +34,16 @@ public class FarmaciaDetailDTO extends FarmaciaDTO{
     {
         FarmaciaEntity entity = super.toEntity();
         List<MedicamentoEntity> listMedicamentos=new ArrayList<MedicamentoEntity>();
+        
+        if(medicamentos!=null)
+        {
         Iterator<MedicamentoDTO> iter=medicamentos.iterator();
         while(iter.hasNext())
         {
             listMedicamentos.add(iter.next().toEntity());
         }
-        entity.setMedicamentos(listMedicamentos);
+        entity.setMedicamentos(listMedicamentos); 
+        }
         
         return entity;
     }
