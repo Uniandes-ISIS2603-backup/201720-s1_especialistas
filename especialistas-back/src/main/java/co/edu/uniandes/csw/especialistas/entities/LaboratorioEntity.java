@@ -26,12 +26,11 @@ public class LaboratorioEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @ManyToMany
     private List<ExamenEntity> examenes;
-    
+   
     /**
-     * Representa el objeto ubiacación con el que se relaciona
+     * radio que abarca el alcance del laboratorio
      */
-    @OneToOne (cascade = CascadeType.ALL)
-    private UbicacionEntity ubicacion;
+    private double radio;
     
     /**
      * Representa el nombre del laboratorio
@@ -56,12 +55,11 @@ public class LaboratorioEntity extends BaseEntity implements Serializable {
         this.nombre = nombre;
     }
     
-    public UbicacionEntity getUbicacion(){
-        return this.ubicacion;
-    }
-    
-    public void setUbicacion(UbicacionEntity ubicacion){
-        this.ubicacion = ubicacion;
-    }
-
+   public void setRadio(double radio){
+       this.radio = radio;
+   }
+   
+   public double getRadio(){
+       return this.radio;
+   }
 }
