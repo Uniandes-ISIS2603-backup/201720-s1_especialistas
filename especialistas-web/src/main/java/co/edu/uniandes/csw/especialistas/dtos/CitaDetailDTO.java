@@ -9,6 +9,8 @@ package co.edu.uniandes.csw.especialistas.dtos;
  *
  * @author jl.patarroyo
  */
-public class CitaDetailDTO {
+public class CitaDetailDTO extends CitaDTO{
+    
+    
     
 }
