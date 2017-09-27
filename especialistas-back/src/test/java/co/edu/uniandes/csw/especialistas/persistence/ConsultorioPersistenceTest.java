@@ -182,7 +182,7 @@ public class ConsultorioPersistenceTest
      * Test of findByReference method, of class ConsultorioPersistence.
      */
     @Test
-    public void testFindByNumber() throws Exception 
+    public void testFindByReference() throws Exception 
     {
         ConsultorioEntity entity = data.get(0);
         ConsultorioEntity newEntity = persistence.findByReference(entity.getReferenciaConsultorio());

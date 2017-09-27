@@ -8,11 +8,9 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.HospitalDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
-import exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -25,11 +23,10 @@ import javax.ws.rs.Produces;
  *
  * @author jl.patarroyo
  */
-@Path("/hospitales")
+@Path("hospitales")
 @Produces("application/json")
-@Consumes("application/json")
 @Stateless
-public class HospitalResource
+public class HospitalResource 
 {
     /**
      * Clase de la lógica
@@ -41,10 +38,9 @@ public class HospitalResource
      * Recurso que crea un hospital
      * @param hospital JSON con la información del hospital
      * @return Entidad del hospital creado
-     * @throws exceptions.BusinessLogicException
      */
     @POST
-    public HospitalEntity createHospital(HospitalDetailDTO hospital) throws BusinessLogicException
+    public HospitalEntity createHospital(HospitalDetailDTO hospital)
     {
         HospitalEntity entity = hospital.toEntity();
         logic.createHospital(entity);
@@ -55,11 +51,10 @@ public class HospitalResource
      * Recurso que obtiene un hospital por su id
      * @param id id del hospital
      * @return HospitalEntity del hospital
-     * @throws exceptions.BusinessLogicException
      */
     @GET
     @Path("{id: \\d+}")
-    public HospitalEntity getHospital(@PathParam("id") Long id) throws BusinessLogicException
+    public HospitalEntity getHospital(@PathParam("id") Long id)
     {
         HospitalEntity entity = logic.getHospital(id);
         return entity;
@@ -80,10 +75,9 @@ public class HospitalResource
      * Recurso para actualizar un hospital
      * @param hospital JSON con los detalles del hospital
      * @return Hospital actualizado
-     * @throws exceptions.BusinessLogicException
      */
     @PUT
-    public HospitalEntity updateHospital(HospitalDetailDTO hospital) throws BusinessLogicException
+    public HospitalEntity updateHospital(HospitalDetailDTO hospital)
     {
         HospitalEntity entity = hospital.toEntity();
         return logic.updateHospital(entity);
@@ -93,10 +87,9 @@ public class HospitalResource
      * Recurso que elimina un hospital
      * @param id id del hospital
      * @return true si se eliminó el hospital, false de lo contrario
-     * @throws exceptions.BusinessLogicException
      */
     @DELETE
-    public boolean deleteHospital(@PathParam("id") Long id) throws BusinessLogicException
+    public boolean deleteHospital(@PathParam("id") Long id)
     {
         return logic.deleteHospital(id);
     }

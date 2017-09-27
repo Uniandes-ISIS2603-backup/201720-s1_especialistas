@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *clase que modela la entidad tarjeta
@@ -22,18 +21,7 @@ public class TarjetaEntity extends BaseEntity implements Serializable{
     */
     private int numero;
     
-    /**
-     * 
-     */
-    @PodamExclude
-    private PagoEntity pago;
     
-    
-    /**
-     * 
-     */
-    @PodamExclude
-    private UsuarioEntity usuario;
     
     
     //Getters y setters
