@@ -162,7 +162,7 @@ public class MedicoPersistenceTest {
         MedicoEntity entity = data.get(0);
         MedicoEntity result = persistence.findByNombre(entity.getNombre());
         assertNotNull(result);
-        assertEquals(entity.getNombre(), result.getNombre());
+        assertEquals(entity, result);
     }
 
     /**
