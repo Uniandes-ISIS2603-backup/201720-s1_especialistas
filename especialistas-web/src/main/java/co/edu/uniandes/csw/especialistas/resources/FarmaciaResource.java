@@ -7,9 +7,13 @@ package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDetailDTO;
+import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
 import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
+import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
 import javax.persistence.EntityManager;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
+import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import java.net.URI;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -46,6 +50,9 @@ public class FarmaciaResource {
     @Inject
     FarmaciaLogic logic;
     
+    @Inject
+    MedicamentoLogic logicMedicamento;
+    
     /**
      * Recurso que crea un farmacia
      * @param farmacia JSON con la información del farmacia
@@ -71,6 +78,55 @@ public class FarmaciaResource {
         FarmaciaEntity entity = logic.getFarmacia(id);
         return entity;
     }
+    
+        /**
+     * Recurso que obtiene una farmacia por su id
+     * @param id id de la farmacia
+     * @return UbicacionEntity de la farmacia
+     */
+    @GET
+    @Path("{id: \\d+}/ubicacion")
+    public UbicacionEntity getUbicacionFarmacia(@PathParam("id") Long id)
+    {
+        UbicacionEntity entity = logic.getFarmacia(id).getUbicacion();
+        return entity;
+    }
+    
+      
+    /**
+     * Recurso para actualizar un farmacia
+     * @param farmacia JSON con los detalles del framacia
+     * @return farmacia actualizado
+     
+    @PUT
+    @Path("{id: \\d+}/medicamentos/{idMed: \\d+}")
+    public FarmaciaEntity addMedicamentoFarmacia(@PathParam("id") Long id,@PathParam("idMed") Long idMed)throws Exception
+    {
+        FarmaciaEntity entity = logic.getFarmacia(id);
+        MedicamentoEntity medEntity=logicMedicamento.getMedicamento(idMed);
+        if(entity==null || medEntity==null)
+        {
+            throw new Exception("no existe la entidad");
+        }
+        entity.agregarMedicamento(medEntity);
+        medEntity.agregarFarmacia(entity);
+        logicMedicamento.updateMedicamento(medEntity);
+        return logic.updateFarmacia(entity);
+    }
+    */
+    
+    @GET
+    @Path("{id: \\d+}/medicamentos")
+    public List<MedicamentoEntity> addMedicamentoFarmacia(@PathParam("id") Long id)throws Exception
+    {
+        FarmaciaEntity entity = logic.getFarmacia(id);
+        if(entity==null)
+        {
+            throw new Exception("no existe la entidad");
+        }
+        return entity.getMedicamentos();
+    }
+    
     
     /**
      * Recurso que obtiene todos los hospitales

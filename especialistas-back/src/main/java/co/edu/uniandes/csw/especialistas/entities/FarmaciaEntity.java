@@ -47,8 +47,11 @@ public class FarmaciaEntity extends BaseEntity{
         this.nombre = nombre;
     }
 
-    @XmlTransient
     public List<MedicamentoEntity> getMedicamentos() {
+        if(medicamentos==null)
+        {
+            medicamentos=new ArrayList<MedicamentoEntity>();
+        }
         return medicamentos;
     }
 
@@ -62,6 +65,10 @@ public class FarmaciaEntity extends BaseEntity{
     
     public void agregarMedicamento(MedicamentoEntity med)
     {
+        if(medicamentos==null)
+        {
+            medicamentos= new ArrayList<MedicamentoEntity>();
+        }
         medicamentos.add(med);
     }
 

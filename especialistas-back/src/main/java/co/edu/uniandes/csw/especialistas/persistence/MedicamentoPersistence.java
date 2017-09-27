@@ -108,7 +108,7 @@ public class MedicamentoPersistence {
         
         if(medicamento!=null)
         {
-             medicamento.agregarMedicamento(farmacia);
+             medicamento.agregarFarmacia(farmacia);
              return true;
         }
         return false;

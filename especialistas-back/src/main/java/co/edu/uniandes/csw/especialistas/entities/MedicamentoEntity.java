@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -42,12 +43,15 @@ public class MedicamentoEntity extends BaseEntity{
         this.nombre = nombre;
     }
     
-    public void agregarMedicamento(FarmaciaEntity farmacia)
+    public void agregarFarmacia(FarmaciaEntity farmacia)
     {
+        if(farmacias==null)
+        {
+            farmacias=new ArrayList<FarmaciaEntity>();
+        }
         farmacias.add(farmacia);
     }
 
-    @XmlTransient
     public List<FarmaciaEntity> getFarmacias() {
         return farmacias;
     }
