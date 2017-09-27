@@ -1,0 +1,148 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Test MedicoResource",
+		"_postman_id": "d4954159-c65d-3b59-3d76-287f5f49c6c2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dar todos los medicos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/medicos",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\" : \"Pedro\",\n\t\"especializacion\" : \"GENERAL\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un medico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/medicos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\n\t\"nombre\" : \"Juan Perez\",\n\t\"especializacion\" : \"GENERAL\",\n\t\"agenda\" : [\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 PM\", \"horaFin\" : \"sep 26, 2017 9:57:34 PM\" },\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 AM\", \"horaFin\" : \"sep 26, 2017 9:57:34 AM\" },\n\t\t{ \"horaInicio\" : \"sep 25, 2017 8:57:34 PM\", \"horaFin\" : \"sep 25, 2017 9:57:34 PM\" }\n\t]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Dar un medico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/medicos/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar un medico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/medicos/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\n\t\"nombre\" : \"Juan Perez\",\n\t\"especializacion\" : \"ODONTOLOGIA\",\n\t\"agenda\" : [\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 PM\", \"horaFin\" : \"sep 26, 2017 9:57:34 PM\" },\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 AM\", \"horaFin\" : \"sep 26, 2017 9:57:34 AM\" },\n\t\t{ \"horaInicio\" : \"sep 25, 2017 8:57:34 PM\", \"horaFin\" : \"sep 25, 2017 9:57:34 PM\" }\n\t]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar un medico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/medicos/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
