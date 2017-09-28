@@ -33,10 +33,10 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class CitaPersistenceTest {
-    
-      /**
-     * Inyección de la dependencia a la clase CitaPersistence cuyos métodos
-     * se van a probar.
+
+    /**
+     * Inyección de la dependencia a la clase CitaPersistence cuyos métodos se
+     * van a probar.
      */
     @Inject
     private CitaPersistence persistence;
@@ -55,17 +55,16 @@ public class CitaPersistenceTest {
     @Inject
     UserTransaction utx;
 
-     /**
+    /**
      *
      */
     private List<CitaEntity> data = new ArrayList<CitaEntity>();
-    
-     /**
+
+    /**
      *
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
-     * embebido. El jar contiene las clases de Cita, el descriptor de la
-     * base de datos y el archivo beans.xml para resolver la inyección de
-     * dependencias.
+     * embebido. El jar contiene las clases de Cita, el descriptor de la base de
+     * datos y el archivo beans.xml para resolver la inyección de dependencias.
      */
     @Deployment
     public static JavaArchive createDeployment() {
@@ -75,19 +74,18 @@ public class CitaPersistenceTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
-  
+
     public CitaPersistenceTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         try {
@@ -105,13 +103,12 @@ public class CitaPersistenceTest {
             }
         }
     }
-    
+
     private void clearData() {
         em.createQuery("delete from CitaEntity").executeUpdate();
     }
 
-
- private void insertData() {
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             CitaEntity entity = factory.manufacturePojo(CitaEntity.class);
@@ -120,9 +117,7 @@ public class CitaPersistenceTest {
             data.add(entity);
         }
     }
-    
-    
-    
+
     @After
     public void tearDown() {
     }
@@ -131,73 +126,75 @@ public class CitaPersistenceTest {
      * Test of create method, of class CitaPersistence.
      */
     @Test
-public void createCitaEntityTest() {
-    PodamFactory factory = new PodamFactoryImpl();
-    CitaEntity newEntity = factory.manufacturePojo(CitaEntity.class);
-    CitaEntity result = persistence.create(newEntity);
+    public void createCitaEntityTest() {
+        PodamFactory factory = new PodamFactoryImpl();
+        
+        CitaEntity newEntity = factory.manufacturePojo(CitaEntity.class);
+        
+        CitaEntity result = persistence.create(newEntity);
 
-    Assert.assertNotNull(result);
-    CitaEntity entity = em.find(CitaEntity.class, result.getId());
-    Assert.assertNotNull(entity);
-    Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertNotNull(result);
+        CitaEntity entity = em.find(CitaEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
 
     /**
      * Test of findById method, of class CitaPersistence.
      */
     @Test
-public void getCitaTest() {
-    CitaEntity entity = data.get(0);
-    CitaEntity newEntity = persistence.findById(entity.getId());
-    Assert.assertNotNull(newEntity);
-    Assert.assertEquals(entity.getId(), newEntity.getId());
+    public void getCitaTest() {
+        CitaEntity entity = data.get(0);
+        CitaEntity newEntity = persistence.findById(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
     }
 
     /**
      * Test of deleteById method, of class CitaPersistence.
      */
     @Test
-public void deleteCitaTest() {
-    CitaEntity entity = data.get(0);
-    persistence.deleteById(entity.getId());
-    CitaEntity deleted = em.find(CitaEntity.class, entity.getId());
-    Assert.assertNull(deleted);
+    public void deleteCitaTest() {
+        CitaEntity entity = data.get(0);
+        persistence.deleteById(entity.getId());
+        CitaEntity deleted = em.find(CitaEntity.class, entity.getId());
+        Assert.assertNull(deleted);
     }
 
     /**
      * Test of update method, of class CitaPersistence.
      */
     @Test
-public void updateCitaTest() {
-    CitaEntity entity = data.get(0);
-    PodamFactory factory = new PodamFactoryImpl();
-    CitaEntity newEntity = factory.manufacturePojo(CitaEntity.class);
+    public void updateCitaTest() {
+        CitaEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        CitaEntity newEntity = factory.manufacturePojo(CitaEntity.class);
 
-    newEntity.setId(entity.getId());
+        newEntity.setId(entity.getId());
 
-    persistence.update(newEntity);
+        persistence.update(newEntity);
 
-    CitaEntity resp = em.find(CitaEntity.class, entity.getId());
+        CitaEntity resp = em.find(CitaEntity.class, entity.getId());
 
-    Assert.assertEquals(newEntity.getId(), resp.getId());
+        Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 
     /**
      * Test of findAll method, of class CitaPersistence.
      */
-   @Test
-public void getCitasTest() {
-    List<CitaEntity> list = persistence.findAll();
-    Assert.assertEquals(data.size(), list.size());
-    for (CitaEntity ent : list) {
-        boolean found = false;
-        for (CitaEntity entity : data) {
-            if (ent.getId().equals(entity.getId())) {
-                found = true;
+    @Test
+    public void getCitasTest() {
+        List<CitaEntity> list = persistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (CitaEntity ent : list) {
+            boolean found = false;
+            for (CitaEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
             }
+            Assert.assertTrue(found);
         }
-        Assert.assertTrue(found);
     }
-    }
-    
+
 }
