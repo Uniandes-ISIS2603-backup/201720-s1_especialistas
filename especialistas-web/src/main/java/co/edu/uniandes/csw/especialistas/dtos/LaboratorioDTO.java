@@ -16,7 +16,7 @@ public class LaboratorioDTO {
 
     private Long id;
     private String nombre;
-    private double radio;
+    private UbicacionEntity ubicacion;
 
     public LaboratorioDTO() {
 
@@ -30,7 +30,7 @@ public class LaboratorioDTO {
     public LaboratorioDTO(LaboratorioEntity laboratorio) {
         this.id = laboratorio.getId();
         this.nombre = laboratorio.getNombre();
-        this.radio = laboratorio.getRadio();
+        this.ubicacion = laboratorio.getUbicacion();
     }
 
     /**
@@ -52,12 +52,12 @@ public class LaboratorioDTO {
         return this.nombre;
     }
 
-    public void setRadio(double radio){
-        this.radio = radio;
+    public void setUbicacion( UbicacionEntity ubicacion){
+        this.ubicacion = ubicacion;
     }
     
-    public double getRadio(){
-        return radio;
+    public UbicacionEntity getUbicacion(){
+        return this.ubicacion;
     }
     /**
      * Convierte un DTO a un Entity
@@ -68,7 +68,7 @@ public class LaboratorioDTO {
         LaboratorioEntity laboratorio = new LaboratorioEntity();
         laboratorio.setId(id);
         laboratorio.setNombre(nombre);
-        laboratorio.setRadio(radio);
+        laboratorio.setUbicacion(ubicacion);
         return laboratorio;
     }
 

@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
+import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -98,8 +100,21 @@ public class FarmaciaPersitenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 100; i++) {
             FarmaciaEntity entity = factory.manufacturePojo(FarmaciaEntity.class);
-
+            
+            UbicacionEntity ubicacion = factory.manufacturePojo(UbicacionEntity.class);
+            MedicamentoEntity medicamento = factory.manufacturePojo(MedicamentoEntity.class);
+            MedicamentoEntity medicamento1 = factory.manufacturePojo(MedicamentoEntity.class);
+            MedicamentoEntity medicamento2 = factory.manufacturePojo(MedicamentoEntity.class);
+            List<MedicamentoEntity> medicamentos = new ArrayList<>();
+           medicamentos.add(medicamento);
+           medicamentos.add(medicamento1);
+           medicamentos.add(medicamento2);
+           
             em.persist(entity);
+            em.persist(ubicacion);
+            em.persist(medicamento);
+            em.persist(medicamento1);
+            em.persist(medicamento2);
             data.add(entity);
         }
     }
