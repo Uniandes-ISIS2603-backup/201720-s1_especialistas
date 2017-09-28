@@ -9,12 +9,14 @@ import co.edu.uniandes.csw.especialistas.entities.Especializacion;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.MedicoPersistence;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author JuanSebastian
  */
+@Stateless
 public class MedicoLogic {
            
     @Inject

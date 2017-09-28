@@ -8,12 +8,14 @@ package co.edu.uniandes.csw.especialistas.ejb;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.persistence.HoraPersistence;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author JuanSebastian
  */
+@Stateless
 public class HoraLogic {
                
     @Inject

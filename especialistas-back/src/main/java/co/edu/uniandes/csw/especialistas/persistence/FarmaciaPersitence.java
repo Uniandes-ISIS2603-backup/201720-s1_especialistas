@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
+import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -93,5 +95,92 @@ public class FarmaciaPersitence {
         TypedQuery query = em.createQuery("select u from FarmaciaEntity u", FarmaciaEntity.class);
         return query.getResultList();
     }
+    
+    public List<MedicamentoEntity> findMedicamentosById(long id) {
+               
+        FarmaciaEntity farmacia=null;
+                
+        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+
+        query = query.setParameter("id", id);
+        
+        List<FarmaciaEntity> sameId = query.getResultList();
+        if (!sameId.isEmpty()) {
+            farmacia= sameId.get(0);
+        }
+        
+        if(farmacia!=null)
+        {
+        return farmacia.getMedicamentos();
+        }
+        return null;
+    }
+    
+    public UbicacionEntity findUbicacionById(long id) {
+               
+        FarmaciaEntity farmacia=null;
+                
+        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+
+        query = query.setParameter("id", id);
+        
+        List<FarmaciaEntity> sameId = query.getResultList();
+        if (!sameId.isEmpty()) {
+            farmacia= sameId.get(0);
+        }
+        
+        if(farmacia!=null)
+        {
+        return farmacia.getUbicacion();
+        }
+        return null;
+    }
+    
+    public boolean agregarMedicamentoById(long id, MedicamentoEntity med)
+    {
+                       
+        FarmaciaEntity farmacia=null;
+                
+        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+
+        query = query.setParameter("id", id);
+        
+        List<FarmaciaEntity> sameId = query.getResultList();
+        if (!sameId.isEmpty()) {
+            farmacia= sameId.get(0);
+        }
+        
+        if(farmacia!=null)
+        {
+             farmacia.agregarMedicamento(med);
+             return true;
+        }
+        return false;
+    }
+    
+        public boolean setUbicacionById(long id, UbicacionEntity ubicacion)
+    {
+                       
+        FarmaciaEntity farmacia=null;
+                
+        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+
+        query = query.setParameter("id", id);
+        
+        List<FarmaciaEntity> sameId = query.getResultList();
+        if (!sameId.isEmpty()) {
+            farmacia= sameId.get(0);
+        }
+        
+        if(farmacia!=null)
+        {
+             farmacia.setUbicacion(ubicacion);
+             return true;
+        }
+        return false;
+    }
+    
+    
+    
     
 }

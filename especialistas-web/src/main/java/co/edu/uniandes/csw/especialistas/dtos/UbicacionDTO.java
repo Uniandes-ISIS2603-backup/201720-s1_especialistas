@@ -9,11 +9,50 @@ import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 
 /**
  *
- * @author jl.patarroyo
+ * @author rc.tejon
  */
-public class UbicacionDTO 
-{
-    public UbicacionDTO(UbicacionEntity entity){}
+public class UbicacionDTO extends EspecialistasDTO {
     
-    public UbicacionEntity toEntity(){return null;}
+    private double longitd;
+    private double latitud;
+    private String nombre;
+    
+    public UbicacionDTO(UbicacionEntity entity) {
+        nombre=entity.getNombre();
+        latitud=entity.getLatitud();
+        longitd=entity.getLongitud();
+    }
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitd() {
+        return longitd;
+    }
+
+    public void setLongitd(double longitd) {
+        this.longitd = longitd;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public UbicacionEntity toEntity()
+    {
+        UbicacionEntity entity = new UbicacionEntity();
+        entity.setId(this.id);
+        entity.setNombre(this.nombre);
+        entity.setLatitud(this.latitud);
+        entity.setLongitud(this.longitd);
+        return entity;
+    }
 }

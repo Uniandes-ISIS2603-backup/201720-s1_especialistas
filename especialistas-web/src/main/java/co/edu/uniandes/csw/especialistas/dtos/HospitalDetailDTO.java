@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -31,9 +32,7 @@ public class HospitalDetailDTO extends HospitalDTO
     /**
      * Constructor por defecto
      */
-    public HospitalDetailDTO()
-    {
-        super();
+    public HospitalDetailDTO(){      
     }
     
     /**
@@ -50,7 +49,7 @@ public class HospitalDetailDTO extends HospitalDTO
         }
         if(entity.getConsultorios() != null)
         {
-            consultorios = new ArrayList<>();
+            consultorios = new ArrayList<ConsultorioDTO>();
             for(ConsultorioEntity consultorio: entity.getConsultorios())
             {
                 consultorios.add(new ConsultorioDTO(consultorio));
@@ -66,19 +65,14 @@ public class HospitalDetailDTO extends HospitalDTO
     public HospitalEntity toEntity()
     {
         HospitalEntity entity = super.toEntity();
-        if(ubicacion != null)
+        List<ConsultorioEntity> list= new ArrayList<ConsultorioEntity>();
+        Iterator<ConsultorioDTO> iter = consultorios.iterator();
+        while(iter.hasNext())
         {
-            entity.setUbicacion(ubicacion.toEntity());
+            list.add(iter.next().toEntity());
         }
-        if(consultorios != null)
-        {
-            List<ConsultorioEntity> lista = new ArrayList<>();
-            for(ConsultorioDTO consultorio: consultorios)
-            {
-                lista.add(consultorio.toEntity());
-            }
-            entity.setConsultorios(lista);
-        }
+        entity.setConsultorios(list);
+        entity.setUbicacion(this.ubicacion.toEntity());
         return entity;
     }
 
@@ -86,16 +80,28 @@ public class HospitalDetailDTO extends HospitalDTO
      * Getter de los consultorios
      * @return 
      */
-    public List<ConsultorioDTO> getConsultorios() {
-        return consultorios;
+    public List<ConsultorioEntity> getConsultorios() {
+        List<ConsultorioEntity> list= new ArrayList<ConsultorioEntity>();
+        Iterator<ConsultorioDTO> iter = consultorios.iterator();
+        while(iter.hasNext())
+        {
+            list.add(iter.next().toEntity());
+        }
+        return list;
     }
 
     /**
      * Setter de los consultorios
      * @param consultorios Lista de consultorios
      */
-    public void setConsultorios(List<ConsultorioDTO> consultorios) {
-        this.consultorios = consultorios;
+    public void setConsultorios(List<ConsultorioEntity> consultorios) {
+        List<ConsultorioDTO> list= new ArrayList<ConsultorioDTO>();
+        Iterator<ConsultorioEntity> iter = consultorios.iterator();
+        while(iter.hasNext())
+        {
+            list.add(new ConsultorioDTO(iter.next()));
+        }
+        this.consultorios = list;
     }
 
     /**
@@ -110,8 +116,9 @@ public class HospitalDetailDTO extends HospitalDTO
      * Setter de la ubicación
      * @param ubicacion Ubicación del hospital
      */
-    public void setUbicacion(UbicacionDTO ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setUbicacion(UbicacionEntity ubicacion) {
+        this.ubicacion = new UbicacionDTO(ubicacion);
     }
+    
     
 }

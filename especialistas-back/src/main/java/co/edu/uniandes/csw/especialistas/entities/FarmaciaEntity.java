@@ -5,7 +5,15 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlTransient;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,7 +24,13 @@ public class FarmaciaEntity extends BaseEntity{
     
     private int radio;
     private String nombre;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="ubicadionID")
+    private UbicacionEntity ubicacion;
+    
+    @PodamExclude
+    @ManyToMany(mappedBy="farmacias")
+    private List<MedicamentoEntity> medicamentos;
     public int getRadio() {
         return radio;
     }
@@ -31,6 +45,35 @@ public class FarmaciaEntity extends BaseEntity{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<MedicamentoEntity> getMedicamentos() {
+        if(medicamentos==null)
+        {
+            medicamentos=new ArrayList<MedicamentoEntity>();
+        }
+        return medicamentos;
+    }
+
+    public UbicacionEntity getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(UbicacionEntity ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+    
+    public void agregarMedicamento(MedicamentoEntity med)
+    {
+        if(medicamentos==null)
+        {
+            medicamentos= new ArrayList<MedicamentoEntity>();
+        }
+        medicamentos.add(med);
+    }
+
+    public void setMedicamentos(List<MedicamentoEntity> medicamentos) {
+        this.medicamentos = medicamentos;
     }
     
 }

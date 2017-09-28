@@ -5,10 +5,41 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+
 /**
  *
- * @author jl.patarroyo
+ * @author rc.tejon
  */
-public class MedicamentoDTO {
+public class MedicamentoDTO extends EspecialistasDTO{
+        
+    private double precio;
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    
+    public MedicamentoEntity toEntity()
+    {
+        MedicamentoEntity entity =new MedicamentoEntity();
+        entity.setId(this.id);
+        entity.setNombre(this.nombre);
+        entity.setPrecio(this.precio);
+        return entity;
+    }
+    
     
 }

@@ -5,10 +5,21 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+import co.edu.uniandes.csw.especialistas.entities.BaseEntity;
+
 /**
  *
  * @author wr.ravelo
  */
 public class EspecialistasDTO {
-    
+   
+    protected long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
