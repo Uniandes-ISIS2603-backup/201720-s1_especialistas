@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
-import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import java.util.ArrayList;
@@ -101,6 +100,11 @@ public class HospitalPersistenceTest {
         for (int i = 0; i < 50; i++) {
             HospitalEntity entity = factory.manufacturePojo(HospitalEntity.class);
 
+            List<ConsultorioEntity> consultorios = createConsultorios();
+            UbicacionEntity ubicacion = createUbicacion();
+            entity.setConsultorios(consultorios);
+            entity.setUbicacion(ubicacion);
+
             em.persist(entity);
             data.add(entity);
         }
@@ -117,20 +121,16 @@ public class HospitalPersistenceTest {
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         HospitalEntity newEntity = factory.manufacturePojo(HospitalEntity.class);
-        
-        //Se crean las clases relacionadas al hospital
-        List<ConsultorioEntity> consultorios = createConsultorios();
-        UbicacionEntity ubicacion = createUbicacion();
-        newEntity.setConsultorios(consultorios);
-        newEntity.setUbicacion(ubicacion);
-        
+
         HospitalEntity result = persistence.create(newEntity);
-        
+
         Assert.assertNotNull(result);
 
         HospitalEntity entity = em.find(HospitalEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getConsultorios(), entity.getConsultorios());
+        Assert.assertEquals(newEntity.getUbicacion(), entity.getUbicacion());
     }
 
     /**
@@ -202,6 +202,12 @@ public class HospitalPersistenceTest {
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
 
+    /**
+     * Método encargado de crear una llista de consultorios y persistir sus
+     * entidades
+     *
+     * @return Lista de consultorioEntity
+     */
     private List<ConsultorioEntity> createConsultorios() {
         PodamFactory factory = new PodamFactoryImpl();
         List<ConsultorioEntity> list = new ArrayList<>();
@@ -215,6 +221,11 @@ public class HospitalPersistenceTest {
         return list;
     }
 
+    /**
+     * Método encargado de crear una ubicación y persistirla
+     *
+     * @return UbicacionEntity creada
+     */
     private UbicacionEntity createUbicacion() {
         PodamFactory factory = new PodamFactoryImpl();
         UbicacionEntity ubicacion = factory.manufacturePojo(UbicacionEntity.class);

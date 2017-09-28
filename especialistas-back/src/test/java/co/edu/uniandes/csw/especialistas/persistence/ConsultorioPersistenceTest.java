@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
+import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
+import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -39,6 +41,12 @@ public class ConsultorioPersistenceTest
     
     @Inject
     UserTransaction utx;
+    
+    @Inject
+    private HospitalPersistence hospitalPersistence;
+    
+    @Inject
+    private HoraPersistence horaPersistence;
     
     
     
@@ -94,7 +102,11 @@ public class ConsultorioPersistenceTest
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 100; i++) {
             ConsultorioEntity entity = factory.manufacturePojo(ConsultorioEntity.class);
-
+            List<HoraEntity> horas = crearHoras();
+            HospitalEntity hospital = crearHospital();
+            entity.setHoras(horas);
+            entity.setHospital(hospital);
+            
             em.persist(entity);
             data.add(entity);
         }
@@ -121,6 +133,8 @@ public class ConsultorioPersistenceTest
         ConsultorioEntity entity = em.find(ConsultorioEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getReferenciaConsultorio(), entity.getReferenciaConsultorio());
+        Assert.assertEquals(newEntity.getHoras(), entity.getHoras());
+        Assert.assertEquals(newEntity.getHospital(), entity.getHospital());
     }
 
     /**
@@ -190,4 +204,35 @@ public class ConsultorioPersistenceTest
         Assert.assertEquals(entity.getReferenciaConsultorio(), newEntity.getReferenciaConsultorio());
     }
     
+    /**
+     * Método encargado de crear un hospital y persistirlo
+     * @return HospitalEntity creado
+     */
+    private HospitalEntity crearHospital()
+    {
+        PodamFactory factory = new PodamFactoryImpl();
+        HospitalEntity hospital = factory.manufacturePojo(HospitalEntity.class);
+        if(hospitalPersistence.find(hospital.getId()) == null){
+            hospitalPersistence.create(hospital);
+        }
+        return hospital;
+    }
+    
+    /**
+     * Método encargado de crear una lista con horas
+     * @return Lista con horaEntity
+     */
+    private List<HoraEntity> crearHoras()
+    {
+        PodamFactory factory = new PodamFactoryImpl();
+        List<HoraEntity> list = new ArrayList<>();
+        for(int i=0; i < 10; i++){
+            HoraEntity hora = factory.manufacturePojo(HoraEntity.class);
+            list.add(hora);
+            if(horaPersistence.find(hora.getId()) == null){
+                horaPersistence.create(hora);
+            }
+        }
+        return list;
+    }
 }
