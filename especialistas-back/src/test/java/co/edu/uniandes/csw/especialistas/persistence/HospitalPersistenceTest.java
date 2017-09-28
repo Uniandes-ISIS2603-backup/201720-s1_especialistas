@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
+import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
+import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -34,39 +36,44 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class HospitalPersistenceTest {
-    
+
     @Inject
     private HospitalPersistence persistence;
-    
+
+    @Inject
+    private ConsultorioPersistence consultorioPersistence;
+
+    @Inject
+    private UbicacionPersistence ubicacionPersistence;
+
     @PersistenceContext
     private EntityManager em;
-    
+
     @Inject
     UserTransaction utx;
-    
+
     private List<HospitalEntity> data = new ArrayList<HospitalEntity>();
-    
+
     @Deployment
-    public static JavaArchive createDeployment()
-    {
+    public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(HospitalEntity.class.getPackage())
                 .addPackage(HospitalPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
-    public HospitalPersistenceTest(){
+
+    public HospitalPersistenceTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         try {
@@ -84,11 +91,11 @@ public class HospitalPersistenceTest {
             }
         }
     }
-    
+
     private void clearData() {
         em.createQuery("delete from HospitalEntity").executeUpdate();
     }
-    
+
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 50; i++) {
@@ -98,7 +105,7 @@ public class HospitalPersistenceTest {
             data.add(entity);
         }
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -107,12 +114,18 @@ public class HospitalPersistenceTest {
      * Test of create method, of class HospitalPersistence.
      */
     @Test
-    public void testCreate() throws Exception 
-    {
+    public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         HospitalEntity newEntity = factory.manufacturePojo(HospitalEntity.class);
+        
+        //Se crean las clases relacionadas al hospital
+        List<ConsultorioEntity> consultorios = createConsultorios();
+        UbicacionEntity ubicacion = createUbicacion();
+        newEntity.setConsultorios(consultorios);
+        newEntity.setUbicacion(ubicacion);
+        
         HospitalEntity result = persistence.create(newEntity);
-
+        
         Assert.assertNotNull(result);
 
         HospitalEntity entity = em.find(HospitalEntity.class, result.getId());
@@ -137,16 +150,16 @@ public class HospitalPersistenceTest {
     @Test
     public void testUpadte() throws Exception {
         HospitalEntity entity = data.get(0);
-    PodamFactory factory = new PodamFactoryImpl();
-    HospitalEntity newEntity = factory.manufacturePojo(HospitalEntity.class);
+        PodamFactory factory = new PodamFactoryImpl();
+        HospitalEntity newEntity = factory.manufacturePojo(HospitalEntity.class);
 
-    newEntity.setId(entity.getId());
+        newEntity.setId(entity.getId());
 
-    persistence.upadte(newEntity);
+        persistence.upadte(newEntity);
 
-    HospitalEntity resp = em.find(HospitalEntity.class, entity.getId());
+        HospitalEntity resp = em.find(HospitalEntity.class, entity.getId());
 
-    Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
+        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
     }
 
     /**
@@ -168,14 +181,14 @@ public class HospitalPersistenceTest {
         List<HospitalEntity> list = persistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (HospitalEntity ent : list) {
-        boolean found = false;
-        for (HospitalEntity entity : data) {
-            if (ent.getId().equals(entity.getId())) {
-                found = true;
+            boolean found = false;
+            for (HospitalEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
             }
+            Assert.assertTrue(found);
         }
-        Assert.assertTrue(found);
-    }
     }
 
     /**
@@ -183,10 +196,32 @@ public class HospitalPersistenceTest {
      */
     @Test
     public void testFindByName() throws Exception {
-       HospitalEntity entity = data.get(0);
+        HospitalEntity entity = data.get(0);
         HospitalEntity newEntity = persistence.findByReference(entity.getNombre());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
-    
+
+    private List<ConsultorioEntity> createConsultorios() {
+        PodamFactory factory = new PodamFactoryImpl();
+        List<ConsultorioEntity> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            ConsultorioEntity consultorio = factory.manufacturePojo(ConsultorioEntity.class);
+            list.add(consultorio);
+            if (consultorioPersistence.find(consultorio.getId()) == null) {
+                consultorioPersistence.create(consultorio);
+            }
+        }
+        return list;
+    }
+
+    private UbicacionEntity createUbicacion() {
+        PodamFactory factory = new PodamFactoryImpl();
+        UbicacionEntity ubicacion = factory.manufacturePojo(UbicacionEntity.class);
+        if (ubicacionPersistence.findById(ubicacion.getId()) == null) {
+            ubicacionPersistence.create(ubicacion);
+        }
+        return ubicacion;
+    }
+
 }
