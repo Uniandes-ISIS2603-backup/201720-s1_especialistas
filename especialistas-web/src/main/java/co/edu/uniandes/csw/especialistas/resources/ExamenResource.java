@@ -62,7 +62,7 @@ public class ExamenResource {
     }
 
     @GET
-    @Path("{nombre}") //cómo se pasa un string por param?
+    @Path("{nombre}") 
     public ExamenDetailDTO getExamenByName(@PathParam("nombre") String nombre) throws Exception {
         ExamenEntity entity = logic.getExamen(nombre);
         if (entity == null) {

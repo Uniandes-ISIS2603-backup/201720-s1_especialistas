@@ -19,34 +19,32 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class LaboratorioEntity extends BaseEntity implements Serializable {
-    
+
     /**
      * Representa las exámenes con los que se asocia
      */
     @PodamExclude
-    @ManyToMany
+    @ManyToMany 
     private List<ExamenEntity> examenes;
-   
-    /**
-     * radio que abarca el alcance del laboratorio
-     */
-    private double radio;
-    
+
+   @PodamExclude
+    @OneToOne (cascade = CascadeType.ALL)
+    private UbicacionEntity ubicacion;
+
     /**
      * Representa el nombre del laboratorio
      */
     private String nombre;
 
     // getters y setters
-    
-    public List<ExamenEntity> getExamenes(){
+    public List<ExamenEntity> getExamenes() {
         return examenes;
     }
-    
-    public void setExamenes(List<ExamenEntity> examenes){
+
+    public void setExamenes(List<ExamenEntity> examenes) {
         this.examenes = examenes;
     }
-    
+
     public String getNombre() {
         return this.nombre;
     }
@@ -54,12 +52,12 @@ public class LaboratorioEntity extends BaseEntity implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-   public void setRadio(double radio){
-       this.radio = radio;
-   }
-   
-   public double getRadio(){
-       return this.radio;
-   }
+
+    public void setUbicacion(UbicacionEntity ub) {
+        this.ubicacion = ub;
+    }
+
+    public UbicacionEntity getUbicacion() {
+        return this.ubicacion;
+    }
 }
