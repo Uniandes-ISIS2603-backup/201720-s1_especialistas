@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -33,14 +34,17 @@ public class CitaEntity implements Serializable{
     
          private String comentarios;
          
+         @PodamExclude
          @OneToOne()
          @JoinColumn(name="HORA_ID")
          private HoraEntity hora;
          
+         @PodamExclude
          @OneToMany(mappedBy="cita")
          @JoinColumn(name="ORDEN_ID")
          private List <OrdenMedicaEntity> ordenesMedicas;
         
+         @PodamExclude
          @ManyToOne(fetch=FetchType.LAZY)
          @JoinColumn(name="USUARIO_ID")
          private UsuarioEntity usuario;

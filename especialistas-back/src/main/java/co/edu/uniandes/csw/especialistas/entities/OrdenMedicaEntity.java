@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -31,15 +32,17 @@ public class OrdenMedicaEntity implements Serializable{
     
     private String descripcion;
     
-    
+    @PodamExclude
     @ManyToOne
     @JoinColumn(name="CITA_ID")
     private CitaEntity cita;
     
+    @PodamExclude
     @OneToMany
     @JoinColumn(name="MEDICAMENTO_ID")
     private List <MedicamentoEntity> medicamentos;
     
+    @PodamExclude
     @OneToMany
     @JoinColumn(name="EXAMEN_ID")
     private List <ExamenEntity> examenes;
