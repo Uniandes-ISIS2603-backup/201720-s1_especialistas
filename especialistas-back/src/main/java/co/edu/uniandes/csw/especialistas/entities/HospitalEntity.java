@@ -11,9 +11,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -23,15 +20,8 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author jl.patarroyo
  */
 @Entity
-public class HospitalEntity implements Serializable 
+public class HospitalEntity extends BaseEntity implements Serializable 
 {
-    /**
-     * Id del usuario.
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
     /**
      * Nombre del hospital
      */
@@ -44,14 +34,6 @@ public class HospitalEntity implements Serializable
     @PodamExclude
     @OneToOne(fetch = FetchType.LAZY)
     private UbicacionEntity ubicacion;
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }  
     
     /**
      * Getter del atributo nombre
@@ -103,29 +85,6 @@ public class HospitalEntity implements Serializable
         this.ubicacion = ubicacion;
     }
     
-    @Override
-    public boolean equals(Object obj) 
-    {
-        if(obj != null)
-        {
-        if (this.getId() != null && ((HospitalEntity)obj).getId() != null) {
-            return this.getId().equals(((HospitalEntity)obj).getId());
-        }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
-    @Override
-    public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
-    }
     
    
 }

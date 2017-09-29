@@ -5,13 +5,9 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -23,15 +19,9 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author jr.restom10
  */
 @Entity
-public class CitaEntity implements Serializable{
+public class CitaEntity extends BaseEntity{
         
-        /**
-     * Id del usuario.
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+        
          private String comentarios;
          
          @PodamExclude
@@ -49,13 +39,6 @@ public class CitaEntity implements Serializable{
          @JoinColumn(name="USUARIO_ID")
          private UsuarioEntity usuario;
         
-         public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }  
          
          public void setHora(HoraEntity s)
         {
@@ -97,28 +80,6 @@ public class CitaEntity implements Serializable{
             return comentarios;
         }
 
-         @Override
-    public boolean equals(Object obj) 
-    {
-        if(obj != null)
-        {
-        if (this.getId() != null && ((CitaEntity)obj).getId() != null) {
-            return this.getId().equals(((CitaEntity)obj).getId());
-        }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
-    @Override
-    public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
-    }
+
     
 }

@@ -105,7 +105,7 @@ public class UbicacionPersistenceTest {
     }
 
     @Test
-    public void createUbicacionTest() {
+    public void testCreate() {
         PodamFactory factory = new PodamFactoryImpl();
         UbicacionEntity newEntity = factory.manufacturePojo(UbicacionEntity.class);
         UbicacionEntity result = ubicacionPersistence.create(newEntity);
@@ -125,7 +125,7 @@ public class UbicacionPersistenceTest {
      *
      */
     @Test
-    public void getUbicacionTest() {
+    public void testFind() {
         UbicacionEntity entity = data.get(0);
         UbicacionEntity newEntity = ubicacionPersistence.findById(entity.getId());
         Assert.assertNotNull(newEntity);
@@ -135,7 +135,7 @@ public class UbicacionPersistenceTest {
 
 
     @Test
-    public void deleteUbicacionTest() {
+    public void testDelete() {
         UbicacionEntity entity = data.get(0);
         boolean b=ubicacionPersistence.deleteById(entity.getId());
         UbicacionEntity deleted = em.find(UbicacionEntity.class, entity.getId());
@@ -143,7 +143,7 @@ public class UbicacionPersistenceTest {
     }
 
     @Test
-    public void updateUbicacionTest() {
+    public void testUpdate() {
         UbicacionEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         UbicacionEntity newEntity = factory.manufacturePojo(UbicacionEntity.class);

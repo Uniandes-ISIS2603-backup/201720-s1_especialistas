@@ -22,4 +22,14 @@ insert into OrdenMedicaEntity (id, descripcion) values (200,' ');
 
 delete from HoraEntity;
 
-delete from MedicoEntity;
+delete from MedicoEntity
+
+delete from HospitalEntity;
+
+delete from ConsultorioEntity;
+
+insert into HospitalEntity(id, nombre) values (1, 'Reina');
+insert into HospitalEntity(id, nombre) values (2, 'Casa');
+
+insert into ConsultorioEntity(id, referenciaConsultorio) values (1, 'aaa');
+insert into ConsultorioEntity(id, referenciaConsultorio) values (2, 'bbb');

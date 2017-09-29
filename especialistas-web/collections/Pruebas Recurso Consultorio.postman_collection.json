@@ -1,0 +1,228 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Pruebas Recurso Consultorio",
+		"_postman_id": "c107fc11-b190-aeee-250f-31a18c979177",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET inicial de consultorios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code == 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/consultorios",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET de un consultorio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code == 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/consultorios/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET de un consultorio no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code == 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/consultorios/27",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST de un consultorio ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code == 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/consultorios",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":22, \"numero\": \"asdasf5\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT de un consultorio ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code == 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/consultorios",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":22, \"numero\": \"asasfasfasg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT de un consultorio no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code == 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/consultorios",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":29, \"numero\": \"asasfasfasg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE de un consultorio no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code == 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/consultorios/32",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.persistence.ConsultorioPersistence;
+import exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -32,8 +33,13 @@ public class ConsultorioLogic {
      *
      * @param entity entidad con la información
      * @return entidad del consultorio creado
+     * @throws exceptions.BusinessLogicException
      */
-    public ConsultorioEntity createConsultorio(ConsultorioEntity entity) {
+    public ConsultorioEntity createConsultorio(ConsultorioEntity entity) throws BusinessLogicException{
+        ConsultorioEntity consultorio = getConsultorio(entity.getId());
+        if(consultorio != null){
+            throw new BusinessLogicException("ya existe un elemento con el id proporcionado");
+        }
         persistence.create(entity);
         return entity;
     }
@@ -42,18 +48,9 @@ public class ConsultorioLogic {
      * Método encargado de eliminar un consultorio por su id
      *
      * @param id id del consultorio
-     * @return true si lo eliminó, false de lo contrario
      */
-    public boolean deleteConsultorioEntity(Long id) {
-        boolean deleted = false;
+    public void deleteConsultorioEntity(Long id) {
         persistence.delete(id);
-        ConsultorioEntity entity = persistence.find(id);
-
-        //Se comprueba si se eliminó la entidad
-        if (entity == null) {
-            deleted = true;
-        }
-        return deleted;
     }
 
     /**

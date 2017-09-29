@@ -9,9 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -21,15 +18,8 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author dm.gutierrez11
  */
 @Entity
-public class LaboratorioEntity implements Serializable {
+public class LaboratorioEntity extends BaseEntity implements Serializable {
 
-    /**
-     * Id del usuario.
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
     /**
      * Representa las exámenes con los que se asocia
      */
@@ -50,14 +40,7 @@ public class LaboratorioEntity implements Serializable {
     public List<ExamenEntity> getExamenes() {
         return examenes;
     }
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }  
-    
     public void setExamenes(List<ExamenEntity> examenes) {
         this.examenes = examenes;
     }
@@ -76,29 +59,5 @@ public class LaboratorioEntity implements Serializable {
 
     public UbicacionEntity getUbicacion() {
         return this.ubicacion;
-    }
-    
-    @Override
-    public boolean equals(Object obj) 
-    {
-        if(obj != null)
-        {
-        if (this.getId() != null && ((LaboratorioEntity)obj).getId() != null) {
-            return this.getId().equals(((LaboratorioEntity)obj).getId());
-        }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
-    @Override
-    public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
     }
 }

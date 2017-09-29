@@ -5,13 +5,11 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.UsuarioDTO;
 import co.edu.uniandes.csw.especialistas.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.UsuarioLogic;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -29,25 +27,22 @@ import javax.ws.rs.Produces;
  */
 @Path("usuarios")
 @Produces("application/json")
-@Stateless
+@Consumes("application/json")
+@RequestScoped
 public class UsuarioResource {
     @Inject
     UsuarioLogic logic;
     
     @POST
-    public UsuarioEntity createUsuario(UsuarioDTO usuario) throws Exception {
-        UsuarioEntity usuarioEntity = null;
-        if(usuario.getId()!=null)
-        {
-            usuarioEntity = logic.getUsuario(usuario.getId());
-        }
+    public UsuarioDetailDTO createUsuario(UsuarioDetailDTO usuario) throws Exception {
+        UsuarioEntity usuarioEntity = logic.getUsuario(usuario.getId());
         if (usuarioEntity != null) {
-            Exception e = new Exception("Ya existe un usuario con el id " + usuario.getId());
+            Exception e = new Exception("Ya existe un usuario con el nombre " + usuario.getNombre());
             throw e;
         }
-        UsuarioEntity nuevoUsuario = logic.createUsuario(usuario.toEntity());
+        UsuarioEntity nuevoUsuario = logic.createUsuario(usuarioEntity);
 
-        return nuevoUsuario;
+        return new UsuarioDetailDTO(nuevoUsuario);
     }
     
     @GET
