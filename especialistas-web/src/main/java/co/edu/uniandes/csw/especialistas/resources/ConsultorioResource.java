@@ -68,6 +68,10 @@ public class ConsultorioResource {
     @Path("{id: \\d+}")
     public ConsultorioDetailDTO getConsultorio(@PathParam("id") Long id)
     {
+        ConsultorioEntity consultorio = logic.getConsultorio(id);
+        if(consultorio == null){
+            throw new WebApplicationException("El elemento no existe", 404);
+        }
         return new ConsultorioDetailDTO(logic.getConsultorio(id));
     }
     
