@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.dtos.HospitalDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -20,14 +21,16 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author jl.patarroyo
  */
 @Path("/hospitales")
-@Produces("application/json")
-@Consumes("application/json")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @Stateless
 public class HospitalResource
 {
@@ -36,6 +39,15 @@ public class HospitalResource
      */
     @Inject
     HospitalLogic logic;
+    
+    private List<HospitalDetailDTO> listEntity2DTO(List<HospitalEntity> listaEntidades){
+        List<HospitalDetailDTO> list =  new ArrayList<>();
+        for(HospitalEntity entity: listaEntidades){
+            HospitalDetailDTO dto = new HospitalDetailDTO(entity);
+            list.add(dto);
+        }
+        return list;
+    }
     
     /**
      * Recurso que crea un hospital
@@ -54,15 +66,17 @@ public class HospitalResource
     /**
      * Recurso que obtiene un hospital por su id
      * @param id id del hospital
-     * @return HospitalEntity del hospital
-     * @throws exceptions.BusinessLogicException
+     * @return HospitalDetailDTO del hospital
      */
     @GET
     @Path("{id: \\d+}")
-    public HospitalEntity getHospital(@PathParam("id") Long id) throws BusinessLogicException
+    public HospitalDetailDTO getHospital(@PathParam("id") Long id)
     {
         HospitalEntity entity = logic.getHospital(id);
-        return entity;
+        if(entity == null){
+            throw new WebApplicationException("El elemento no existe",404);
+        }
+        return new HospitalDetailDTO(entity);
     }
     
     /**
@@ -70,10 +84,10 @@ public class HospitalResource
      * @return Lista con todos los hospitales
      */
     @GET
-    public List<HospitalEntity> getHospitales()
+    public List<HospitalDetailDTO> getHospitales()
     {
         List<HospitalEntity> lista = logic.getHospitales();
-        return lista;
+        return listEntity2DTO(lista);
     }
     
     /**

@@ -84,13 +84,9 @@ public class HospitalLogic {
      * @return HospitalEntity del hospital buscado
      * @throws BusinessLogicException
      */
-    public HospitalEntity getHospital(Long id) throws BusinessLogicException {
+    public HospitalEntity getHospital(Long id) {
         HospitalEntity entity = persistence.find(id);
-        if (entity != null) {
-            return entity;
-        } else {
-            throw new BusinessLogicException("No existe un hospital con el id especificado");
-        }
+        return entity;
     }
 
     /**
