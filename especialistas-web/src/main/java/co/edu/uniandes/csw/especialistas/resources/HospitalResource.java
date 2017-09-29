@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.HospitalDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HospitalDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
@@ -40,8 +41,8 @@ public class HospitalResource
     @Inject
     HospitalLogic logic;
     
-    private List<HospitalDetailDTO> listEntity2DTO(List<HospitalEntity> listaEntidades){
-        List<HospitalDetailDTO> list =  new ArrayList<>();
+    private List<HospitalDTO> listEntity2DTO(List<HospitalEntity> listaEntidades){
+        List<HospitalDTO> list =  new ArrayList<>();
         for(HospitalEntity entity: listaEntidades){
             HospitalDetailDTO dto = new HospitalDetailDTO(entity);
             list.add(dto);
@@ -56,11 +57,11 @@ public class HospitalResource
      * @throws exceptions.BusinessLogicException
      */
     @POST
-    public HospitalEntity createHospital(HospitalDetailDTO hospital) throws BusinessLogicException
+    public HospitalDTO createHospital(HospitalDTO hospital) throws BusinessLogicException
     {
         HospitalEntity entity = hospital.toEntity();
         logic.createHospital(entity);
-        return entity;
+        return new HospitalDTO(entity);
     }
     
     /**
@@ -70,13 +71,13 @@ public class HospitalResource
      */
     @GET
     @Path("{id: \\d+}")
-    public HospitalDetailDTO getHospital(@PathParam("id") Long id)
+    public HospitalDTO getHospital(@PathParam("id") Long id)
     {
         HospitalEntity entity = logic.getHospital(id);
         if(entity == null){
             throw new WebApplicationException("El elemento no existe",404);
         }
-        return new HospitalDetailDTO(entity);
+        return new HospitalDTO(entity);
     }
     
     /**
@@ -84,7 +85,7 @@ public class HospitalResource
      * @return Lista con todos los hospitales
      */
     @GET
-    public List<HospitalDetailDTO> getHospitales()
+    public List<HospitalDTO> getHospitales()
     {
         List<HospitalEntity> lista = logic.getHospitales();
         return listEntity2DTO(lista);
@@ -94,24 +95,30 @@ public class HospitalResource
      * Recurso para actualizar un hospital
      * @param hospital JSON con los detalles del hospital
      * @return Hospital actualizado
-     * @throws exceptions.BusinessLogicException
      */
     @PUT
-    public HospitalEntity updateHospital(HospitalDetailDTO hospital) throws BusinessLogicException
+    public HospitalDTO updateHospital(HospitalDTO hospital)
     {
-        HospitalEntity entity = hospital.toEntity();
-        return logic.updateHospital(entity);
+        HospitalEntity newEntity = hospital.toEntity();
+        HospitalEntity entity = logic.getHospital(newEntity.getId());
+        if(entity == null){
+            throw new WebApplicationException("El elemento no existe",404);
+        }
+        return new HospitalDTO(logic.updateHospital(newEntity));
     }
     
     /**
      * Recurso que elimina un hospital
      * @param id id del hospital
-     * @return true si se eliminó el hospital, false de lo contrario
-     * @throws exceptions.BusinessLogicException
      */
     @DELETE
-    public boolean deleteHospital(@PathParam("id") Long id) throws BusinessLogicException
+    @Path("{id: \\d+}")
+    public void deleteHospital(@PathParam("id") Long id)
     {
-        return logic.deleteHospital(id);
+        HospitalEntity hospital = logic.getHospital(id);
+        if(hospital == null){
+            throw new WebApplicationException("El elemento no existe", 404);
+        }
+        logic.deleteHospital(id);
     }
 }
