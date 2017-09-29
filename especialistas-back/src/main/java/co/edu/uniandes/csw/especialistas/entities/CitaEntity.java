@@ -5,40 +5,53 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
  * @author jr.restom10
  */
 @Entity
-public class CitaEntity extends BaseEntity{
+public class CitaEntity implements Serializable{
         
-        
+        /**
+     * Id del usuario.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
          private String comentarios;
          
-         @PodamExclude
          @OneToOne()
          @JoinColumn(name="HORA_ID")
          private HoraEntity hora;
          
-         @PodamExclude
          @OneToMany(mappedBy="cita")
          @JoinColumn(name="ORDEN_ID")
          private List <OrdenMedicaEntity> ordenesMedicas;
         
-         @PodamExclude
          @ManyToOne(fetch=FetchType.LAZY)
          @JoinColumn(name="USUARIO_ID")
          private UsuarioEntity usuario;
         
+         public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }  
          
          public void setHora(HoraEntity s)
         {
@@ -80,6 +93,27 @@ public class CitaEntity extends BaseEntity{
             return comentarios;
         }
 
-
+         @Override
+    public boolean equals(Object obj) 
+    {
+        if(obj != null)
+        {
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((CitaEntity)obj).getId() != null) {
+                return this.getId().equals(((CitaEntity)obj).getId());
+            }
+        }
+        return false;
+    }
+    
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
     
 }

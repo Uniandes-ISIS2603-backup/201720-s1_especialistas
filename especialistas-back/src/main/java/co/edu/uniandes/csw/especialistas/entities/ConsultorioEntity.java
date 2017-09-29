@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -19,8 +22,15 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author jl.patarroyo
  */
 @Entity
-public class ConsultorioEntity extends BaseEntity implements Serializable
+public class ConsultorioEntity implements Serializable
 {
+    /**
+     * Id del usuario.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     /**
      * Hospital que contiene al consultorio
      */
@@ -44,6 +54,14 @@ public class ConsultorioEntity extends BaseEntity implements Serializable
      * Referencia del consultorio (e.g. W405)
      */
     private String referenciaConsultorio;
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }  
     
     /**
      * Getter del atributo referenciaConsultorio;
@@ -109,6 +127,27 @@ public class ConsultorioEntity extends BaseEntity implements Serializable
         this.especializacion = especializacion;
     }
     
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if(obj != null)
+        {
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((ConsultorioEntity)obj).getId() != null) {
+                return this.getId().equals(((ConsultorioEntity)obj).getId());
+            }
+        }
+        return false;
+    }
     
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
     
 }

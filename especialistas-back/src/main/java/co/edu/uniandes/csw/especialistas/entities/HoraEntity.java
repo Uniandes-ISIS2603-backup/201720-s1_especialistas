@@ -5,9 +5,13 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -20,7 +24,14 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author js.diaz
  */
 @Entity
-public class HoraEntity extends BaseEntity{
+public class HoraEntity implements Serializable{
+    
+    /**
+     * Id del usuario.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     @Temporal(TemporalType.TIMESTAMP)
     private Date horaInicio;
@@ -41,6 +52,14 @@ public class HoraEntity extends BaseEntity{
     @PodamExclude
     @ManyToOne(fetch=FetchType.LAZY)
     private ConsultorioEntity consultorio;
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }  
     
     public Date getHoraInicio() {
         return horaInicio;
@@ -89,5 +108,27 @@ public class HoraEntity extends BaseEntity{
 
     public void setCita(CitaEntity cita) {
         this.cita = cita;
-    }    
+    }
+    
+    public boolean equals(Object obj) 
+    {
+        if(obj != null)
+        {
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((HoraEntity)obj).getId() != null) {
+                return this.getId().equals(((HoraEntity)obj).getId());
+            }
+        }
+        return false;
+    }
+    
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
 }

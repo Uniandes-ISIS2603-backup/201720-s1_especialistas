@@ -10,6 +10,12 @@
 
 delete from CitaEntity;
 
+delete from UsuarioEntity;
+
+delete from TarjetaEntity;
+
+delete from PagoEntity;
+
 insert into CitaEntity (id, comentarios) values (100,'xxxxxx');
 insert into CitaEntity (id, comentarios) values (200,' ');
 
