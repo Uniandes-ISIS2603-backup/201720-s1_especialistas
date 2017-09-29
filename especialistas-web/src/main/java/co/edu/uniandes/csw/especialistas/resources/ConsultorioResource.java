@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.ConsultorioLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
-import exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -79,7 +79,7 @@ public class ConsultorioResource {
      * Método encargado de crear un consultorio
      * @param entity entidad con la información
      * @return entidad creada
-     * @throws exceptions.BusinessLogicException
+     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
      */
     @POST
     public ConsultorioDetailDTO createConsultorio(ConsultorioDetailDTO entity) throws BusinessLogicException

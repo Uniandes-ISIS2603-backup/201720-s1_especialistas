@@ -28,7 +28,16 @@ insert into OrdenMedicaEntity (id, descripcion) values (200,' ');
 
 delete from HoraEntity;
 
-delete from MedicoEntity
+delete from MedicoEntity;
+
+insert into MedicoEntity(id, nombre, especializacion, ) values (204, 'Juan Perez', 'GENERAL');
+insert into MedicoEntity(id, nombre, especializacion) values (205, 'Pedro Perez', 'GENERAL');
+insert into MedicoEntity(id, nombre, especializacion) values (206, 'Juan Rodriguez', 'ODONTOLOGIA');
+
+insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (101, to_date('sep 26, 2017 8:57:34 PM'), to_date('sep 26, 2017 9:17:34 PM'), 204);
+insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (102, to_date('sep 26, 2017 9:57:34 PM'), to_date('sep 26, 2017 10:17:34 PM'), 204);
+insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (103, to_date('sep 27, 2017 8:57:34 PM'), to_date('sep 27, 2017 9:17:34 PM'), 204);
+
 
 delete from HospitalEntity;
 
