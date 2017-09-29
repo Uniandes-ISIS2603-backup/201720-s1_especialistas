@@ -18,10 +18,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -35,15 +32,6 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class UsuarioPersistenceTest {
-    @Deployment
-    public static JavaArchive CreateDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(UsuarioEntity.class.getPackage())
-                .addPackage(UsuarioPersistence.class.getPackage())
-                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
-                .addAsManifestResource("META-INF/beans.xml","beans.xml");
-    }
-    
     @Inject
     private UsuarioPersistence persistence;
     
@@ -53,10 +41,21 @@ public class UsuarioPersistenceTest {
     @Inject
     UserTransaction utx;
     
-    private List<UsuarioEntity> data = new ArrayList<>();
+    private List<UsuarioEntity> data = new ArrayList<UsuarioEntity>();
     
     public UsuarioPersistenceTest() {
     }
+    @Deployment
+    public static JavaArchive CreateDeployment() {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(UsuarioEntity.class.getPackage())
+                .addPackage(UsuarioPersistence.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml","beans.xml");
+    }
+    
+    
+    
     
     @BeforeClass
     public static void setUpClass() {
@@ -64,6 +63,24 @@ public class UsuarioPersistenceTest {
     
     @AfterClass
     public static void tearDownClass() {
+    }
+    
+     private void clearData() {
+        em.createQuery("delete from UsuarioEntity").executeUpdate();
+    }
+    
+    
+    
+   
+    
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for(int i = 0; i < 100; i++){
+            UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
+            
+            em.persist(entity);
+            data.add(entity);
+        }
     }
     
     @Before
@@ -84,21 +101,6 @@ public class UsuarioPersistenceTest {
         }
     }
     
-    
-    private void clearData() {
-        em.createQuery("delete from UsuarioEntity").executeUpdate();
-    }
-    
-    private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();
-        for(int i = 0; i < 100; i++){
-            UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
-            
-            em.persist(entity);
-            data.add(entity);
-        }
-    }
-    
     @After
     public void tearDown() {
     }
@@ -107,22 +109,25 @@ public class UsuarioPersistenceTest {
      * Test of create method, of class UsuarioPersistence.
      */
     @Test
-    public void createUsuarioTest() throws Exception {
+    public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         UsuarioEntity result = persistence.create(newEntity);
         
-        assertNotNull(result);
+        Assert.assertNotNull(result);
         UsuarioEntity entity = em.find(UsuarioEntity.class, result.getId());
-        assertNotNull(entity);
-        assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getCedula(), entity.getCedula());
+        Assert.assertEquals(newEntity.getCitas(), entity.getCitas());
+        Assert.assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
     }
     
     /**
      * Test of update method, of class UsuarioPersistence.
      */
     @Test
-    public void updateUsuarioTest() throws Exception {
+    public void testUpdate() throws Exception {
         UsuarioEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
@@ -132,38 +137,44 @@ public class UsuarioPersistenceTest {
         
         UsuarioEntity result = em.find(UsuarioEntity.class, entity.getId());
         
-        assertEquals(newEntity.getNombre(), result.getNombre());
+        Assert.assertEquals(newEntity.getNombre(), result.getNombre());
+        Assert.assertEquals(newEntity.getCedula(), result.getCedula());
+        Assert.assertEquals(newEntity.getCitas(), result.getCitas());
+        Assert.assertEquals(newEntity.getTarjeta(), result.getTarjeta());
     }
     
     /**
      * Test of delete method, of class UsuarioPersistence.
      */
     @Test
-    public void deleteUsuarioTest() throws Exception {
+    public void testDelete() throws Exception {
         UsuarioEntity entity = data.get(0);
         persistence.delete(entity.getId());
         UsuarioEntity deleted = em.find(UsuarioEntity.class, entity.getId());
-        assertNull(deleted);
+        Assert.assertNull(deleted);
     }
     
     /**
      * Test of find method, of class UsuarioPersistence.
      */
     @Test
-    public void getUsuarioTest() throws Exception {
+    public void testFind() throws Exception {
         UsuarioEntity entity = data.get(0);
         UsuarioEntity result = persistence.find(entity.getId());
-        assertNotNull(result);
-        assertEquals(entity.getNombre(), result.getNombre());
+        Assert.assertNotNull(result);
+        Assert.assertEquals(entity.getNombre(), result.getNombre());
+        Assert.assertEquals(entity.getCedula(), result.getCedula());
+        Assert.assertEquals(entity.getCitas(), result.getCitas());
+        Assert.assertEquals(entity.getTarjeta(), result.getTarjeta());
     }
     
     /**
      * Test of findAll method, of class UsuarioPersistence.
      */
     @Test
-    public void getUsuariosTest() throws Exception {
+    public void testFindAll() throws Exception {
         List<UsuarioEntity> list = persistence.findAll();
-        assertEquals(data.size(), list.size());
+        Assert.assertEquals(data.size(), list.size());
         for(UsuarioEntity ent : list){
             boolean found = false;
             for(UsuarioEntity entity : data){
@@ -172,7 +183,7 @@ public class UsuarioPersistenceTest {
                     break;
                 }
             }
-            assertTrue(found);
+            Assert.assertTrue(found);
         }
         
     }

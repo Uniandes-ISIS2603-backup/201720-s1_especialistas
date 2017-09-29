@@ -49,7 +49,7 @@ public class HospitalDetailDTO extends HospitalDTO
         }
         if(entity.getConsultorios() != null)
         {
-            consultorios = new ArrayList<ConsultorioDTO>();
+            consultorios = new ArrayList<>();
             for(ConsultorioEntity consultorio: entity.getConsultorios())
             {
                 consultorios.add(new ConsultorioDTO(consultorio));
@@ -65,15 +65,18 @@ public class HospitalDetailDTO extends HospitalDTO
     public HospitalEntity toEntity()
     {
         HospitalEntity entity = super.toEntity();
-        List<ConsultorioEntity> list= new ArrayList<ConsultorioEntity>();
-        Iterator<ConsultorioDTO> iter = consultorios.iterator();
-        while(iter.hasNext())
-        {
-            list.add(iter.next().toEntity());
-        }
-        entity.setConsultorios(list);
-        entity.setUbicacion(this.ubicacion.toEntity());
-        return entity;
+        List<ConsultorioEntity> consultoriosEntities = new ArrayList<>();
+       if(consultorios != null){
+           for(ConsultorioDTO consultorio: consultorios){
+               ConsultorioEntity entityConsultorio = consultorio.toEntity();
+               consultoriosEntities.add(entityConsultorio);
+           }
+       }
+       entity.setConsultorios(consultoriosEntities);
+       if(ubicacion != null){
+           entity.setUbicacion(ubicacion.toEntity());
+       }
+       return entity;
     }
 
     /**
@@ -81,7 +84,7 @@ public class HospitalDetailDTO extends HospitalDTO
      * @return 
      */
     public List<ConsultorioEntity> getConsultorios() {
-        List<ConsultorioEntity> list= new ArrayList<ConsultorioEntity>();
+        List<ConsultorioEntity> list= new ArrayList<>();
         Iterator<ConsultorioDTO> iter = consultorios.iterator();
         while(iter.hasNext())
         {
@@ -95,11 +98,10 @@ public class HospitalDetailDTO extends HospitalDTO
      * @param consultorios Lista de consultorios
      */
     public void setConsultorios(List<ConsultorioEntity> consultorios) {
-        List<ConsultorioDTO> list= new ArrayList<ConsultorioDTO>();
-        Iterator<ConsultorioEntity> iter = consultorios.iterator();
-        while(iter.hasNext())
-        {
-            list.add(new ConsultorioDTO(iter.next()));
+        List<ConsultorioDTO> list= new ArrayList<>();
+        for(ConsultorioEntity entity:consultorios){
+            ConsultorioDTO dto = new ConsultorioDTO(entity);
+            list.add(dto);
         }
         this.consultorios = list;
     }

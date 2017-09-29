@@ -107,7 +107,7 @@ public class TarjetaPersistenceTest {
      * Test of create method, of class TarjetaPersistence.
      */
     @Test
-    public void createTarjetaTest() throws Exception {
+    public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         TarjetaEntity newEntity = factory.manufacturePojo(TarjetaEntity.class);
         TarjetaEntity result = persistence.create(newEntity);
@@ -122,7 +122,7 @@ public class TarjetaPersistenceTest {
      * Test of update method, of class TarjetaPersistence.
      */
     @Test
-    public void updateTarjetaTest() throws Exception {
+    public void testUpdate() throws Exception {
         TarjetaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         TarjetaEntity newEntity = factory.manufacturePojo(TarjetaEntity.class);
@@ -139,7 +139,7 @@ public class TarjetaPersistenceTest {
      * Test of delete method, of class TarjetaPersistence.
      */
     @Test
-    public void deleteTarjetaTest() throws Exception {
+    public void testDelete() throws Exception {
         TarjetaEntity entity = data.get(0);
         persistence.delete(entity.getId());
         TarjetaEntity deleted = em.find(TarjetaEntity.class, entity.getId());
@@ -150,7 +150,7 @@ public class TarjetaPersistenceTest {
      * Test of find method, of class TarjetaPersistence.
      */
     @Test
-    public void getTarjetaTest() throws Exception {
+    public void testFind() throws Exception {
         TarjetaEntity entity = data.get(0);
         TarjetaEntity result = persistence.find(entity.getId());
         assertNotNull(result);
@@ -161,7 +161,7 @@ public class TarjetaPersistenceTest {
      * Test of findAll method, of class TarjetaPersistence.
      */
     @Test
-    public void getTarjetasTest() throws Exception {
+    public void testFindAll() throws Exception {
         List<TarjetaEntity> list = persistence.findAll();
         assertEquals(data.size(), list.size());
         for(TarjetaEntity ent : list){

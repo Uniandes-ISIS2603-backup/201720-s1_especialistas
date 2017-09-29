@@ -8,16 +8,20 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.ConsultorioLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * Recurso del consultorio
@@ -36,14 +40,23 @@ public class ConsultorioResource {
     @Inject
     ConsultorioLogic logic;
     
+    private List<ConsultorioDetailDTO> entitiesList2DTO(List<ConsultorioEntity> listaEntities){
+        List<ConsultorioDetailDTO> list = new ArrayList<>();
+        for(ConsultorioEntity consultorio: listaEntities){
+            ConsultorioDetailDTO dto = new ConsultorioDetailDTO(consultorio);
+            list.add(dto);
+        }
+        return list;
+    }
+    
     /**
      * Método encargado de listar los consultorios
      * @return Lista de consultorios
      */
     @GET
-    public List<ConsultorioEntity> getConsultorios()
+    public List<ConsultorioDetailDTO> getConsultorios()
     {
-        return logic.getConsultorios();
+        return entitiesList2DTO(logic.getConsultorios());
     }
     
     /**
@@ -53,20 +66,25 @@ public class ConsultorioResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public ConsultorioEntity getConsultorio(@PathParam("id") Long id)
+    public ConsultorioDetailDTO getConsultorio(@PathParam("id") Long id)
     {
-        return logic.getConsultorio(id);
+        ConsultorioEntity consultorio = logic.getConsultorio(id);
+        if(consultorio == null){
+            throw new WebApplicationException("El elemento no existe", 404);
+        }
+        return new ConsultorioDetailDTO(logic.getConsultorio(id));
     }
     
     /**
      * Método encargado de crear un consultorio
      * @param entity entidad con la información
      * @return entidad creada
+     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
      */
     @POST
-    public ConsultorioEntity createConsultorio(ConsultorioEntity entity)
+    public ConsultorioDetailDTO createConsultorio(ConsultorioDetailDTO entity) throws BusinessLogicException
     {
-        return logic.createConsultorio(entity);
+        return new ConsultorioDetailDTO(logic.createConsultorio(entity.toEntity()));
     }
     
     /**
@@ -75,10 +93,24 @@ public class ConsultorioResource {
      * @return ConsultorioEntity con la información actualizada
      */
     @PUT
-    public ConsultorioEntity upadeConsultorio(ConsultorioDetailDTO dto)
+    public ConsultorioDetailDTO upadeConsultorio(ConsultorioDetailDTO dto)
     {
-        ConsultorioEntity entity = dto.toEntity();
-        return logic.updateConsultorio(entity);
+        ConsultorioEntity newEntity = dto.toEntity();
+        ConsultorioEntity entity = logic.getConsultorio(newEntity.getId());
+        if(entity == null){
+            throw new WebApplicationException("El elemento no existe", 404);
+        }
+        return new ConsultorioDetailDTO(logic.updateConsultorio(newEntity));
+    }
+    
+    @DELETE
+    @Path("{id: \\d+}")
+    public void deleteConsultorio(@PathParam("id") Long id){
+        ConsultorioEntity entity = logic.getConsultorio(id);
+        if(entity == null){
+            throw new WebApplicationException("El elemento no existe", 404);
+        }
+        logic.deleteConsultorioEntity(id);
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
+import co.edu.uniandes.csw.especialistas.entities.Especializacion;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +105,7 @@ public class MedicoPersistenceTest {
      * Test of create method, of class MedicoPersistence.
      */
     @Test
-    public void createMedicoTest() throws Exception {
+    public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         MedicoEntity newEntity = factory.manufacturePojo(MedicoEntity.class);
         MedicoEntity result = persistence.create(newEntity);
@@ -119,7 +120,7 @@ public class MedicoPersistenceTest {
      * Test of update method, of class MedicoPersistence.
      */
     @Test
-    public void updateMedicoTest() throws Exception {
+    public void testUpdate() throws Exception {
         MedicoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         MedicoEntity newEntity = factory.manufacturePojo(MedicoEntity.class);
@@ -136,7 +137,7 @@ public class MedicoPersistenceTest {
      * Test of delete method, of class MedicoPersistence.
      */
     @Test
-    public void deleteMedicoTest() throws Exception {
+    public void testDelete() throws Exception {
         MedicoEntity entity = data.get(0);
         persistence.delete(entity.getId());
         MedicoEntity deleted = em.find(MedicoEntity.class, entity.getId());
@@ -147,7 +148,7 @@ public class MedicoPersistenceTest {
      * Test of find method, of class MedicoPersistence.
      */
     @Test
-    public void getMedicoTest() throws Exception {
+    public void testFind() throws Exception {
         MedicoEntity entity = data.get(0);
         MedicoEntity result = persistence.find(entity.getId());
         assertNotNull(result);
@@ -158,18 +159,39 @@ public class MedicoPersistenceTest {
      * Test of findByNombre method, of class MedicoPersistence.
      */
     @Test
-    public void getMedicoByNombreTest() throws Exception {
+    public void testFindByNombre() throws Exception {
         MedicoEntity entity = data.get(0);
         MedicoEntity result = persistence.findByNombre(entity.getNombre());
         assertNotNull(result);
         assertEquals(entity.getNombre(), result.getNombre());
+        MedicoEntity resultFail = persistence.findByNombre("nombrenacslnkasnvas");
+        assertNull(resultFail);
+    }
+
+    /**
+     * Test of findByEspecializacion method, of class MedicoPersistence.
+     */    
+    @Test
+    public void testFindByEspecializacion() throws Exception {
+        List<MedicoEntity> list = persistence.findByEspecializacion(Especializacion.GENERAL);
+        assertEquals(data.size(), list.size());
+        for(MedicoEntity ent : list){
+            boolean found = false;
+            for(MedicoEntity entity : data){
+                if(ent.equals(entity)) {
+                    found = true;
+                    break;
+                }
+            }
+            assertTrue(found);
+        }
     }
 
     /**
      * Test of findAll method, of class MedicoPersistence.
      */
     @Test
-    public void getMedicosTest() throws Exception {
+    public void testFindAll() throws Exception {
         List<MedicoEntity> list = persistence.findAll();
         assertEquals(data.size(), list.size());
         for(MedicoEntity ent : list){
