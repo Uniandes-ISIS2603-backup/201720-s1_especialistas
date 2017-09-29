@@ -107,15 +107,14 @@ public class PagoEntity implements Serializable{
     {
         if(obj != null)
         {
-        if (this.getId() != null && ((PagoEntity)obj).getId() != null) {
-            return this.getId().equals(((PagoEntity)obj).getId());
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((PagoEntity)obj).getId() != null) {
+                return this.getId().equals(((PagoEntity)obj).getId());
+            }
         }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     @Override

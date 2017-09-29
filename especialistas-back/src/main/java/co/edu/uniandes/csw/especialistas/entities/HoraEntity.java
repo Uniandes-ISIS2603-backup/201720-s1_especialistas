@@ -110,20 +110,18 @@ public class HoraEntity implements Serializable{
         this.cita = cita;
     }
     
-    @Override
     public boolean equals(Object obj) 
     {
         if(obj != null)
         {
-        if (this.getId() != null && ((HoraEntity)obj).getId() != null) {
-            return this.getId().equals(((HoraEntity)obj).getId());
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((HoraEntity)obj).getId() != null) {
+                return this.getId().equals(((HoraEntity)obj).getId());
+            }
         }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     @Override

@@ -98,15 +98,14 @@ public class ExamenEntity implements Serializable {
     {
         if(obj != null)
         {
-        if (this.getId() != null && ((ExamenEntity)obj).getId() != null) {
-            return this.getId().equals(((ExamenEntity)obj).getId());
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((ExamenEntity)obj).getId() != null) {
+                return this.getId().equals(((ExamenEntity)obj).getId());
+            }
         }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     @Override

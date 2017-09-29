@@ -35,15 +35,6 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class UsuarioPersistenceTest {
-    @Deployment
-    public static JavaArchive CreateDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(UsuarioEntity.class.getPackage())
-                .addPackage(UsuarioPersistence.class.getPackage())
-                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
-                .addAsManifestResource("META-INF/beans.xml","beans.xml");
-    }
-    
     @Inject
     private UsuarioPersistence persistence;
     
@@ -57,6 +48,17 @@ public class UsuarioPersistenceTest {
     
     public UsuarioPersistenceTest() {
     }
+    @Deployment
+    public static JavaArchive CreateDeployment() {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(UsuarioEntity.class.getPackage())
+                .addPackage(UsuarioPersistence.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml","beans.xml");
+    }
+    
+    
+    
     
     @BeforeClass
     public static void setUpClass() {
@@ -64,6 +66,24 @@ public class UsuarioPersistenceTest {
     
     @AfterClass
     public static void tearDownClass() {
+    }
+    
+     private void clearData() {
+        em.createQuery("delete from UsuarioEntity").executeUpdate();
+    }
+    
+    
+    
+   
+    
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for(int i = 0; i < 100; i++){
+            UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
+            
+            em.persist(entity);
+            data.add(entity);
+        }
     }
     
     @Before
@@ -84,21 +104,6 @@ public class UsuarioPersistenceTest {
         }
     }
     
-    
-    private void clearData() {
-        em.createQuery("delete from UsuarioEntity").executeUpdate();
-    }
-    
-    private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();
-        for(int i = 0; i < 100; i++){
-            UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
-            
-            em.persist(entity);
-            data.add(entity);
-        }
-    }
-    
     @After
     public void tearDown() {
     }
@@ -107,7 +112,7 @@ public class UsuarioPersistenceTest {
      * Test of create method, of class UsuarioPersistence.
      */
     @Test
-    public void createUsuarioTest() throws Exception {
+    public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         UsuarioEntity result = persistence.create(newEntity);
@@ -125,7 +130,7 @@ public class UsuarioPersistenceTest {
      * Test of update method, of class UsuarioPersistence.
      */
     @Test
-    public void updateUsuarioTest() throws Exception {
+    public void testUpdate() throws Exception {
         UsuarioEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
@@ -145,7 +150,7 @@ public class UsuarioPersistenceTest {
      * Test of delete method, of class UsuarioPersistence.
      */
     @Test
-    public void deleteUsuarioTest() throws Exception {
+    public void testDelete() throws Exception {
         UsuarioEntity entity = data.get(0);
         persistence.delete(entity.getId());
         UsuarioEntity deleted = em.find(UsuarioEntity.class, entity.getId());
@@ -156,7 +161,7 @@ public class UsuarioPersistenceTest {
      * Test of find method, of class UsuarioPersistence.
      */
     @Test
-    public void getUsuarioTest() throws Exception {
+    public void testFind() throws Exception {
         UsuarioEntity entity = data.get(0);
         UsuarioEntity result = persistence.find(entity.getId());
         assertNotNull(result);
@@ -170,7 +175,7 @@ public class UsuarioPersistenceTest {
      * Test of findAll method, of class UsuarioPersistence.
      */
     @Test
-    public void getUsuariosTest() throws Exception {
+    public void testFindAll() throws Exception {
         List<UsuarioEntity> list = persistence.findAll();
         assertEquals(data.size(), list.size());
         for(UsuarioEntity ent : list){

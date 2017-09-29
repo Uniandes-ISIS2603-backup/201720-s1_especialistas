@@ -65,15 +65,14 @@ public class UbicacionEntity implements Serializable{
     {
         if(obj != null)
         {
-        if (this.getId() != null && ((UbicacionEntity)obj).getId() != null) {
-            return this.getId().equals(((UbicacionEntity)obj).getId());
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((UbicacionEntity)obj).getId() != null) {
+                return this.getId().equals(((UbicacionEntity)obj).getId());
+            }
         }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     @Override

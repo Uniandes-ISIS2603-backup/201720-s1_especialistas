@@ -74,15 +74,14 @@ public class MedicoEntity implements Serializable{
     {
         if(obj != null)
         {
-        if (this.getId() != null && ((MedicoEntity)obj).getId() != null) {
-            return this.getId().equals(((MedicoEntity)obj).getId());
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((MedicoEntity)obj).getId() != null) {
+                return this.getId().equals(((MedicoEntity)obj).getId());
+            }
         }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     @Override

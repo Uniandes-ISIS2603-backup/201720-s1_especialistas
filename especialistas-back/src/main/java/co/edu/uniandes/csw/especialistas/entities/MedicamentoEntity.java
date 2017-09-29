@@ -83,15 +83,14 @@ public class MedicamentoEntity implements Serializable{
     {
         if(obj != null)
         {
-        if (this.getId() != null && ((MedicamentoEntity)obj).getId() != null) {
-            return this.getId().equals(((MedicamentoEntity)obj).getId());
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((MedicamentoEntity)obj).getId() != null) {
+                return this.getId().equals(((MedicamentoEntity)obj).getId());
+            }
         }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     @Override

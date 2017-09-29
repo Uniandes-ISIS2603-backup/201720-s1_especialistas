@@ -101,15 +101,14 @@ public class FarmaciaEntity implements Serializable{
     {
         if(obj != null)
         {
-        if (this.getId() != null && ((FarmaciaEntity)obj).getId() != null) {
-            return this.getId().equals(((FarmaciaEntity)obj).getId());
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((FarmaciaEntity)obj).getId() != null) {
+                return this.getId().equals(((FarmaciaEntity)obj).getId());
+            }
         }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     @Override

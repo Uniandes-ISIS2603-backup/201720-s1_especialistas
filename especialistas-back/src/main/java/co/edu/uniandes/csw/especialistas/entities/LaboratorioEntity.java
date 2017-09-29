@@ -83,15 +83,14 @@ public class LaboratorioEntity implements Serializable {
     {
         if(obj != null)
         {
-        if (this.getId() != null && ((LaboratorioEntity)obj).getId() != null) {
-            return this.getId().equals(((LaboratorioEntity)obj).getId());
+            if(obj.getClass()!=this.getClass()){
+                return false;
+            }
+            if (this.getId() != null && ((LaboratorioEntity)obj).getId() != null) {
+                return this.getId().equals(((LaboratorioEntity)obj).getId());
+            }
         }
-        return super.equals(obj);
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     @Override
