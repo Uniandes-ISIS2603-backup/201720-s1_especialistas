@@ -1,0 +1,172 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Pruebas Examen",
+		"_postman_id": "cc9123c1-2dc5-03d0-4494-d82692c74e36",
+		"description": "Estas son las pruebas del recurso Examen\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pruebas Examen",
+			"description": "",
+			"item": [
+				{
+					"name": "Crear un examen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"examen\",\r\n\t\"precio\":20000,\r\n\t\"recomendacion\": \"esto es un examen\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar todos los examenes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"examen\",\r\n\t\"precio\":20000,\r\n\t\"recomendacion\": \"esto es un examen\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar el examen por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"examen\",\r\n\t\"precio\":20000,\r\n\t\"recomendacion\": \"esto es un examen\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un examen ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"otro\",\r\n\t\"precio\":20000,\r\n\t\"recomendacion\": \"esto es diferente\"\r\n}"
+						},
+						"description": "Actualiza el examen con el ID dado"
+					},
+					"response": []
+				},
+				{
+					"name": "Elimina el examen con el id dado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
