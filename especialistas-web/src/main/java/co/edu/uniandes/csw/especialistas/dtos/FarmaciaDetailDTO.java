@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,9 +23,9 @@ public class FarmaciaDetailDTO extends FarmaciaDTO{
     
     public FarmaciaDetailDTO(FarmaciaEntity entity) {
         super(entity);
-      /*  entity.getMedicamentos().forEach((x) -> {
+        entity.getMedicamentos().forEach((x) -> {
             this.medicamentos.add(new MedicamentoDTO(x));
-        });*/
+        });
     }
     private List<MedicamentoDTO> medicamentos;
 
@@ -40,9 +41,13 @@ public class FarmaciaDetailDTO extends FarmaciaDTO{
     public FarmaciaEntity toEntity()
     {
         FarmaciaEntity entity = super.toEntity();
-        /*medicamentos.forEach((x) -> {
+        if(medicamentos==null)
+        {
+            medicamentos=new ArrayList<>();
+        }
+        medicamentos.forEach((x) -> {
             entity.getMedicamentos().add(x.toEntity());
-        });*/
+        });
         
         return entity;
     }

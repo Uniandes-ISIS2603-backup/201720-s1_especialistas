@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+import exceptions.BusinessLogicException;
 import javax.inject.Inject;
 
 /**
@@ -31,6 +32,19 @@ public class Medicamento_FarmaciaLogic {
         }
         entityF.agregarMedicamento(entityM);
         entityM.agregarFarmacia(entityF);
+        return true;
+    }
+    
+        public boolean eliminarRelacion(Long idFarmacia, Long idMedicamento)throws BusinessLogicException
+    {
+        MedicamentoEntity entityM = logicMedicamento.getMedicamento(idMedicamento);
+        FarmaciaEntity entityF= logicFarmacia.getFarmacia(idFarmacia);
+        if(entityF==null||entityM==null)
+        {
+            return false;
+        }
+        entityF.eliminarMedicamento(entityM);
+        entityM.eliminarFarmcia(entityF);
         return true;
     }
     

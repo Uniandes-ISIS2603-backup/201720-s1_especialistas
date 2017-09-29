@@ -23,3 +23,16 @@ insert into OrdenMedicaEntity (id, descripcion) values (200,' ');
 delete from HoraEntity;
 
 delete from MedicoEntity;
+
+
+
+
+delete from FarmaciaEntity;
+
+insert into FarmaciaEntity (id, nombre, radio) values (100,'xxxxxx',2);
+insert into FarmaciaEntity (id, nombre, radio) values (200,'yyyyyy',3);
+
+delete from MedicamentoEntity;
+
+insert into MedicamentoEntity (id, nombre, precio) values (100,'xxxxxx',2.213);
+insert into MedicamentoEntity (id, nombre, precio) values (200,'yyyyyy',3.131);

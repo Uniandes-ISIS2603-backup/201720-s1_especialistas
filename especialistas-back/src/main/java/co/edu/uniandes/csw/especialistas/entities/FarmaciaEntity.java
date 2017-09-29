@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -47,15 +48,11 @@ public class FarmaciaEntity extends BaseEntity{
         this.nombre = nombre;
     }
 
-    @XmlTransient
     public List<MedicamentoEntity> getMedicamentos() {
-<<<<<<< Updated upstream
-=======
         if(medicamentos==null)
         {
             medicamentos=new ArrayList<>();
         }
->>>>>>> Stashed changes
         return medicamentos;
     }
 
@@ -69,14 +66,22 @@ public class FarmaciaEntity extends BaseEntity{
     
     public void agregarMedicamento(MedicamentoEntity med)
     {
-<<<<<<< Updated upstream
-=======
+
         if(medicamentos==null)
         {
             medicamentos= new ArrayList<>();
         }
->>>>>>> Stashed changes
         medicamentos.add(med);
+    }
+    
+    public void eliminarMedicamento(MedicamentoEntity med)throws BusinessLogicException
+    {
+
+        if(medicamentos==null || !medicamentos.contains(med))
+        {
+            throw new BusinessLogicException("no existe el medicamento");
+        }
+        medicamentos.remove(med);
     }
 
     public void setMedicamentos(List<MedicamentoEntity> medicamentos) {

@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -42,9 +44,23 @@ public class MedicamentoEntity extends BaseEntity{
         this.nombre = nombre;
     }
     
-    public void agregarMedicamento(FarmaciaEntity farmacia)
+    public void agregarFarmacia(FarmaciaEntity farmacia)
     {
+        if(farmacias==null)
+        {
+            farmacias=new ArrayList<>();
+        }
         farmacias.add(farmacia);
+    }
+    
+    public void eliminarFarmcia(FarmaciaEntity farmacia)throws BusinessLogicException
+    {
+
+        if(farmacias==null || !farmacias.contains(farmacia))
+        {
+            throw new BusinessLogicException("no existe el medicamento");
+        }
+        farmacias.remove(farmacia);
     }
 
     @XmlTransient

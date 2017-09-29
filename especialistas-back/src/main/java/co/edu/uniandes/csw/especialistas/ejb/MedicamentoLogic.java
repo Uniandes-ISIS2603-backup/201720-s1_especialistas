@@ -45,6 +45,7 @@ public class MedicamentoLogic {
         //Se comprueba si se eliminó la entidad
         if(entity == null)
         {
+            System.out.println("co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic.deleteMedicamento()");
             deleted = true;
         }
         return deleted;

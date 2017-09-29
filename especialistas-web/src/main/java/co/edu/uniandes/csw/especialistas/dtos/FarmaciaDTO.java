@@ -23,6 +23,7 @@ public class FarmaciaDTO  extends EspecialistasDTO{
     
 
     public FarmaciaDTO(FarmaciaEntity entity) {
+        id=entity.getId();
         radio=entity.getRadio();
         nombre=entity.getNombre();
         UbicacionEntity u =entity.getUbicacion();
@@ -58,11 +59,11 @@ public class FarmaciaDTO  extends EspecialistasDTO{
     public FarmaciaEntity toEntity()
     {
         FarmaciaEntity entity = new FarmaciaEntity();
+        entity.setId(this.id);
         entity.setRadio(this.radio);
         entity.setNombre(this.nombre);
         entity.setId(this.id);
         entity.setRadio(this.radio);
-        System.err.println(ubicacion.getNombre());
         entity.setUbicacion(this.ubicacion.toEntity());
         return entity;
     }
