@@ -9,6 +9,11 @@
  */
 
 delete from CitaEntity;
+delete from UsuarioEntity;
+
+delete from TarjetaEntity;
+
+delete from PagoEntity;
 
 insert into CitaEntity (id, comentarios) values (100,'xxxxxx');
 insert into CitaEntity (id, comentarios) values (200,' ');
@@ -18,6 +23,7 @@ delete from OrdenMedicaEntity;
 
 insert into OrdenMedicaEntity (id, descripcion) values (100,'xxxxxx');
 insert into OrdenMedicaEntity (id, descripcion) values (200,' ');
+
 
 
 delete from HoraEntity;
