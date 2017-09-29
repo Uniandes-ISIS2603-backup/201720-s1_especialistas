@@ -18,10 +18,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -44,7 +41,7 @@ public class UsuarioPersistenceTest {
     @Inject
     UserTransaction utx;
     
-    private List<UsuarioEntity> data = new ArrayList<>();
+    private List<UsuarioEntity> data = new ArrayList<UsuarioEntity>();
     
     public UsuarioPersistenceTest() {
     }
@@ -117,13 +114,13 @@ public class UsuarioPersistenceTest {
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         UsuarioEntity result = persistence.create(newEntity);
         
-        assertNotNull(result);
+        Assert.assertNotNull(result);
         UsuarioEntity entity = em.find(UsuarioEntity.class, result.getId());
-        assertNotNull(entity);
-        assertEquals(newEntity.getNombre(), entity.getNombre());
-        assertEquals(newEntity.getCedula(), entity.getCedula());
-        assertEquals(newEntity.getCitas(), entity.getCitas());
-        assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getCedula(), entity.getCedula());
+        Assert.assertEquals(newEntity.getCitas(), entity.getCitas());
+        Assert.assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
     }
     
     /**
@@ -140,10 +137,10 @@ public class UsuarioPersistenceTest {
         
         UsuarioEntity result = em.find(UsuarioEntity.class, entity.getId());
         
-        assertEquals(newEntity.getNombre(), result.getNombre());
-        assertEquals(newEntity.getCedula(), result.getCedula());
-        assertEquals(newEntity.getCitas(), result.getCitas());
-        assertEquals(newEntity.getTarjeta(), result.getTarjeta());
+        Assert.assertEquals(newEntity.getNombre(), result.getNombre());
+        Assert.assertEquals(newEntity.getCedula(), result.getCedula());
+        Assert.assertEquals(newEntity.getCitas(), result.getCitas());
+        Assert.assertEquals(newEntity.getTarjeta(), result.getTarjeta());
     }
     
     /**
@@ -154,7 +151,7 @@ public class UsuarioPersistenceTest {
         UsuarioEntity entity = data.get(0);
         persistence.delete(entity.getId());
         UsuarioEntity deleted = em.find(UsuarioEntity.class, entity.getId());
-        assertNull(deleted);
+        Assert.assertNull(deleted);
     }
     
     /**
@@ -164,11 +161,11 @@ public class UsuarioPersistenceTest {
     public void testFind() throws Exception {
         UsuarioEntity entity = data.get(0);
         UsuarioEntity result = persistence.find(entity.getId());
-        assertNotNull(result);
-        assertEquals(entity.getNombre(), result.getNombre());
-        assertEquals(entity.getCedula(), result.getCedula());
-        assertEquals(entity.getCitas(), result.getCitas());
-        assertEquals(entity.getTarjeta(), result.getTarjeta());
+        Assert.assertNotNull(result);
+        Assert.assertEquals(entity.getNombre(), result.getNombre());
+        Assert.assertEquals(entity.getCedula(), result.getCedula());
+        Assert.assertEquals(entity.getCitas(), result.getCitas());
+        Assert.assertEquals(entity.getTarjeta(), result.getTarjeta());
     }
     
     /**
@@ -177,7 +174,7 @@ public class UsuarioPersistenceTest {
     @Test
     public void testFindAll() throws Exception {
         List<UsuarioEntity> list = persistence.findAll();
-        assertEquals(data.size(), list.size());
+        Assert.assertEquals(data.size(), list.size());
         for(UsuarioEntity ent : list){
             boolean found = false;
             for(UsuarioEntity entity : data){
@@ -186,7 +183,7 @@ public class UsuarioPersistenceTest {
                     break;
                 }
             }
-            assertTrue(found);
+            Assert.assertTrue(found);
         }
         
     }

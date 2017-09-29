@@ -135,7 +135,7 @@ public class OrdenMedicaPersistenceTest {
      * Test of create method, of class OrdenMedicaPersistence.
      */
     @Test
-    public void createOrdenMedicaEntityTest()  {
+    public void testCreate()  {
        PodamFactory factory = new PodamFactoryImpl();
     OrdenMedicaEntity newEntity = factory.manufacturePojo(OrdenMedicaEntity.class);
     OrdenMedicaEntity result = persistence.create(newEntity);
@@ -150,7 +150,7 @@ public class OrdenMedicaPersistenceTest {
      * Test of findById method, of class OrdenMedicaPersistence.
      */
     @Test
-public void getOrdenMedicaTest() {
+public void testFind() {
     OrdenMedicaEntity entity = data.get(0);
     OrdenMedicaEntity newEntity = persistence.findById(entity.getId());
     Assert.assertNotNull(newEntity);
@@ -161,7 +161,7 @@ public void getOrdenMedicaTest() {
      * Test of deleteById method, of class OrdenMedicaPersistence.
      */
     @Test
-public void deleteOrdenMedicaTest() {
+public void testDelete() {
     OrdenMedicaEntity entity = data.get(0);
     persistence.deleteById(entity.getId());
     OrdenMedicaEntity deleted = em.find(OrdenMedicaEntity.class, entity.getId());
@@ -172,7 +172,7 @@ public void deleteOrdenMedicaTest() {
      * Test of update method, of class OrdenMedicaPersistence.
      */
     @Test
-public void updateOrdenMedicaTest() {
+public void testUpdate() {
     OrdenMedicaEntity entity = data.get(0);
     PodamFactory factory = new PodamFactoryImpl();
     OrdenMedicaEntity newEntity = factory.manufacturePojo(OrdenMedicaEntity.class);
@@ -190,7 +190,7 @@ public void updateOrdenMedicaTest() {
      * Test of findAll method, of class OrdenMedicaPersistence.
      */
    @Test
-public void getOrdenMedicasTest() {
+public void testFindAll() {
     List<OrdenMedicaEntity> list = persistence.findAll();
     Assert.assertEquals(data.size(), list.size());
     for (OrdenMedicaEntity ent : list) {
