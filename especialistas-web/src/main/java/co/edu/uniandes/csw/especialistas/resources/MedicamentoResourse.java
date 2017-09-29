@@ -128,7 +128,6 @@ public class MedicamentoResourse {
     
     /**
      * Recurso para actualizar un farmacia
-     * @param farmacia JSON con los detalles del framacia
      * @return farmacia actualizado
      */
     @PUT
@@ -145,7 +144,6 @@ public class MedicamentoResourse {
     /**
      * Recurso que elimina un farmacia
      * @param id id del farmacia
-     * @return true si se eliminó el farmacia, false de lo contrario
      */
     @Path("{id:\\d+}")
     @DELETE

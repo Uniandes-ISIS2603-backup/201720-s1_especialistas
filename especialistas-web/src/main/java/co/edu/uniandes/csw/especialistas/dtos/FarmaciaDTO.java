@@ -27,7 +27,10 @@ public class FarmaciaDTO  extends EspecialistasDTO{
         radio=entity.getRadio();
         nombre=entity.getNombre();
         UbicacionEntity u =entity.getUbicacion();
+        if(u!=null)
+        {
         ubicacion=new UbicacionDTO(u);
+        }
     }
     
     

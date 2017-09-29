@@ -209,7 +209,6 @@ public class FarmaciaResource {
     /**
      * Recurso que elimina un farmacia
      * @param id id del farmacia
-     * @return true si se eliminó el farmacia, false de lo contrario
      */ 
     @Path("{id:\\d+}")
     @DELETE
