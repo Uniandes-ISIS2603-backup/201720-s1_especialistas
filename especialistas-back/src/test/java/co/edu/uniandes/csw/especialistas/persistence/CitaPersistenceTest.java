@@ -6,6 +6,9 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
+import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
+import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
+import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -54,6 +57,15 @@ public class CitaPersistenceTest {
      */
     @Inject
     UserTransaction utx;
+
+    @Inject
+    private OrdenMedicaPersistence ordenPersistencia;
+
+    @Inject
+    private HoraPersistence horaPersistencia;
+    
+    @Inject
+    private UsuarioPersistence usuarioPersistencia;
 
     /**
      *
@@ -110,9 +122,15 @@ public class CitaPersistenceTest {
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i <10 ; i++) {
             CitaEntity entity = factory.manufacturePojo(CitaEntity.class);
-
+            //List<OrdenMedicaEntity> ordenes = createOrdenesMedicas();
+            UsuarioEntity usuario = createUsuario();
+            HoraEntity hora = createHora();
+            entity.setHora(hora);
+            //entity.setOrdenMedica(ordenes);
+            entity.setUsuario(usuario);
+            
             em.persist(entity);
             data.add(entity);
         }
@@ -128,15 +146,19 @@ public class CitaPersistenceTest {
     @Test
     public void createCitaEntityTest() {
         PodamFactory factory = new PodamFactoryImpl();
-        
+
         CitaEntity newEntity = factory.manufacturePojo(CitaEntity.class);
-        
+
         CitaEntity result = persistence.create(newEntity);
 
         Assert.assertNotNull(result);
         CitaEntity entity = em.find(CitaEntity.class, result.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getUsuario(), entity.getUsuario());
+        Assert.assertEquals(newEntity.getHora(), entity.getHora());
+        //Assert.assertEquals(newEntity.getOrdenesMedicas(), entity.getOrdenesMedicas());
+        
     }
 
     /**
@@ -197,4 +219,48 @@ public class CitaPersistenceTest {
         }
     }
 
+    /**
+     * Método encargado de crear una lista de ordenes médicas y persistirlas
+     *
+     * @return Lista con OrdenMedicaEntity
+     */
+    private List<OrdenMedicaEntity> createOrdenesMedicas() {
+        PodamFactory factory = new PodamFactoryImpl();
+        List<OrdenMedicaEntity> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            OrdenMedicaEntity orden = factory.manufacturePojo(OrdenMedicaEntity.class);
+            list.add(orden);
+            if (ordenPersistencia.findById(orden.getId()) == null) {
+                ordenPersistencia.create(orden);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * Método encargado de crear y persistir una hora
+     *
+     * @return Entidad de la hora
+     */
+    private HoraEntity createHora() {
+        PodamFactory factory = new PodamFactoryImpl();
+        HoraEntity hora = factory.manufacturePojo(HoraEntity.class);
+        if (horaPersistencia.find(hora.getId()) == null) {
+            horaPersistencia.create(hora);
+        }
+        return hora;
+    }
+
+    /**
+     * Método encargado de crear un usuario y persistirlo
+     * @return Usuario creado
+     */
+    private UsuarioEntity createUsuario() {
+        PodamFactory factory = new PodamFactoryImpl();
+        UsuarioEntity usuario = factory.manufacturePojo(UsuarioEntity.class);
+        if (usuarioPersistencia.find(usuario.getId()) == null) {
+            usuarioPersistencia.create(usuario);
+        }
+        return usuario;
+    }
 }
