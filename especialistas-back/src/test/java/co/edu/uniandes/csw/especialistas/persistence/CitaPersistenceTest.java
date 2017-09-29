@@ -144,13 +144,13 @@ public class CitaPersistenceTest {
      * Test of create method, of class CitaPersistence.
      */
     @Test
-    public void createCitaEntityTest() {
+    public void testCreate() {
         PodamFactory factory = new PodamFactoryImpl();
-
+        
         CitaEntity newEntity = factory.manufacturePojo(CitaEntity.class);
-
+        
         CitaEntity result = persistence.create(newEntity);
-
+        
         Assert.assertNotNull(result);
         CitaEntity entity = em.find(CitaEntity.class, result.getId());
         Assert.assertNotNull(entity);
