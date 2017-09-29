@@ -116,6 +116,9 @@ public class UsuarioPersistenceTest {
         UsuarioEntity entity = em.find(UsuarioEntity.class, result.getId());
         assertNotNull(entity);
         assertEquals(newEntity.getNombre(), entity.getNombre());
+        assertEquals(newEntity.getCedula(), entity.getCedula());
+        assertEquals(newEntity.getCitas(), entity.getCitas());
+        assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
     }
     
     /**
@@ -133,6 +136,9 @@ public class UsuarioPersistenceTest {
         UsuarioEntity result = em.find(UsuarioEntity.class, entity.getId());
         
         assertEquals(newEntity.getNombre(), result.getNombre());
+        assertEquals(newEntity.getCedula(), result.getCedula());
+        assertEquals(newEntity.getCitas(), result.getCitas());
+        assertEquals(newEntity.getTarjeta(), result.getTarjeta());
     }
     
     /**
@@ -155,6 +161,9 @@ public class UsuarioPersistenceTest {
         UsuarioEntity result = persistence.find(entity.getId());
         assertNotNull(result);
         assertEquals(entity.getNombre(), result.getNombre());
+        assertEquals(entity.getCedula(), result.getCedula());
+        assertEquals(entity.getCitas(), result.getCitas());
+        assertEquals(entity.getTarjeta(), result.getTarjeta());
     }
     
     /**
