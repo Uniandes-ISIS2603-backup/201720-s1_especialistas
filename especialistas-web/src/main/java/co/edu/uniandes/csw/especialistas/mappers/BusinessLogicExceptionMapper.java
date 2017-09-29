@@ -24,7 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.especialistas.mappers;
 
 
-import exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
+import co.edu.uniandes.csw.especialistas.entities.Especializacion;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -163,6 +164,27 @@ public class MedicoPersistenceTest {
         MedicoEntity result = persistence.findByNombre(entity.getNombre());
         assertNotNull(result);
         assertEquals(entity.getNombre(), result.getNombre());
+        MedicoEntity resultFail = persistence.findByNombre("nombrenacslnkasnvas");
+        assertNull(resultFail);
+    }
+
+    /**
+     * Test of findByEspecializacion method, of class MedicoPersistence.
+     */    
+    @Test
+    public void testFindByEspecializacion() throws Exception {
+        List<MedicoEntity> list = persistence.findByEspecializacion(Especializacion.GENERAL);
+        assertEquals(data.size(), list.size());
+        for(MedicoEntity ent : list){
+            boolean found = false;
+            for(MedicoEntity entity : data){
+                if(ent.equals(entity)) {
+                    found = true;
+                    break;
+                }
+            }
+            assertTrue(found);
+        }
     }
 
     /**

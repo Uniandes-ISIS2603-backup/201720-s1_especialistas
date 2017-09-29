@@ -1,14 +1,14 @@
 {
 	"variables": [],
 	"info": {
-		"name": "Test MedicoResource",
-		"_postman_id": "d4954159-c65d-3b59-3d76-287f5f49c6c2",
+		"name": "HoraResource",
+		"_postman_id": "20ad00b0-7af7-4216-2d60-5ebf76f7b1b1",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Dar todos los medicos",
+			"name": "dar todas las horas",
 			"event": [
 				{
 					"listen": "test",
@@ -21,7 +21,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/especialistas-web/api/medicos",
+				"url": "http://localhost:8080/especialistas-web/api/horas",
 				"method": "GET",
 				"header": [
 					{
@@ -39,7 +39,7 @@
 			"response": []
 		},
 		{
-			"name": "Crear un medico",
+			"name": "agregar una hora",
 			"event": [
 				{
 					"listen": "test",
@@ -52,7 +52,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/especialistas-web/api/medicos",
+				"url": "http://localhost:8080/especialistas-web/api/horas",
 				"method": "POST",
 				"header": [
 					{
@@ -63,14 +63,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\t\n\t\"nombre\" : \"Juan Perez\",\n\t\"especializacion\" : \"GENERAL\",\n\t\"agenda\" : [\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 PM\", \"horaFin\" : \"sep 26, 2017 9:57:34 PM\" },\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 AM\", \"horaFin\" : \"sep 26, 2017 9:57:34 AM\" },\n\t\t{ \"horaInicio\" : \"sep 25, 2017 8:57:34 PM\", \"horaFin\" : \"sep 25, 2017 9:57:34 PM\" }\n\t]\n}"
+					"raw": "{\t\n\t\"horaInicio\" : \"sep 28, 2017 8:57:34 PM\",\n\t\"horaFin\" : \"sep 28, 2017 9:17:34 PM\",\n\t\"consultorio\" : { \"numero\" : 101 , \"especializacion\" : \"GENERAL\" },\n\t\"medico\" : { \"nombre\" : \"Juan Perez\", \"especializacion\" : \"GENERAL\"}\n}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "Dar un medico",
+			"name": "dar una hora",
 			"event": [
 				{
 					"listen": "test",
@@ -83,7 +83,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/especialistas-web/api/medicos/1",
+				"url": "http://localhost:8080/especialistas-web/api/horas/101",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -92,7 +92,7 @@
 			"response": []
 		},
 		{
-			"name": "Cambiar un medico",
+			"name": "modificar una hora",
 			"event": [
 				{
 					"listen": "test",
@@ -105,7 +105,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/especialistas-web/api/medicos/1",
+				"url": "http://localhost:8080/especialistas-web/api/horas/101",
 				"method": "PUT",
 				"header": [
 					{
@@ -116,14 +116,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\t\n\t\"nombre\" : \"Juan Perez\",\n\t\"especializacion\" : \"ODONTOLOGIA\",\n\t\"agenda\" : [\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 PM\", \"horaFin\" : \"sep 26, 2017 9:57:34 PM\" },\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 AM\", \"horaFin\" : \"sep 26, 2017 9:57:34 AM\" },\n\t\t{ \"horaInicio\" : \"sep 25, 2017 8:57:34 PM\", \"horaFin\" : \"sep 25, 2017 9:57:34 PM\" }\n\t]\n}"
+					"raw": "{\t\n\t\"horaInicio\" : \"sep 26, 2017 8:57:34 PM\",\n\t\"horaFin\" : \"sep 26, 2017 9:40:34 PM\",\n\t\"consultorio\" : { \"numero\" : 101 , \"especializacion\" : \"GENERAL\" },\n\t\"medico\" : { \"nombre\" : \"Juan Perez\", \"especializacion\" : \"GENERAL\"}\n}"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "eliminar un medico",
+			"name": "eliminar una hora",
 			"event": [
 				{
 					"listen": "test",
@@ -136,7 +136,51 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/especialistas-web/api/medicos/1",
+				"url": "http://localhost:8080/especialistas-web/api/horas/101",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Dar una hora inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/horas/3000",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una hora inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/horas/3000",
 				"method": "DELETE",
 				"header": [],
 				"body": {},

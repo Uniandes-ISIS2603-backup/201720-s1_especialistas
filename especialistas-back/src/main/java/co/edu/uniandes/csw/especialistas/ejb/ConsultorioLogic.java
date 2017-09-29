@@ -9,7 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.persistence.ConsultorioPersistence;
-import exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -33,7 +33,7 @@ public class ConsultorioLogic {
      *
      * @param entity entidad con la información
      * @return entidad del consultorio creado
-     * @throws exceptions.BusinessLogicException
+     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
      */
     public ConsultorioEntity createConsultorio(ConsultorioEntity entity) throws BusinessLogicException{
         ConsultorioEntity consultorio = getConsultorio(entity.getId());

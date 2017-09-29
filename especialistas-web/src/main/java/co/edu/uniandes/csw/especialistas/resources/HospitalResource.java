@@ -9,7 +9,7 @@ import co.edu.uniandes.csw.especialistas.dtos.HospitalDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HospitalDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
-import exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -54,7 +54,7 @@ public class HospitalResource
      * Recurso que crea un hospital
      * @param hospital JSON con la información del hospital
      * @return Entidad del hospital creado
-     * @throws exceptions.BusinessLogicException
+     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
      */
     @POST
     public HospitalDTO createHospital(HospitalDTO hospital) throws BusinessLogicException
