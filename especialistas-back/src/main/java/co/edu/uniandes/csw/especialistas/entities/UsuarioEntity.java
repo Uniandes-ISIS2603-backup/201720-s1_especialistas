@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -19,7 +22,13 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author ce.quintero
  */
 @Entity
-public class UsuarioEntity extends BaseEntity implements Serializable{
+public class UsuarioEntity implements Serializable{
+    /**
+     * Id del usuario.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     /*
     *Atributo que representa el nombre del usuario
@@ -86,7 +95,15 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
 //         this.ubicacion = ubicacion;
 //     }
 //    
-    /**
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }  
+     
+     /**
      * getter del atributo citas
      * @return una lista con las citas asociadas a un usuario
      */
@@ -132,6 +149,30 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
      */
     public void setCedula(int cedula){
         this.cedula = cedula;
+    }
+    
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if(obj != null)
+        {
+        if (this.getId() != null && ((UsuarioEntity)obj).getId() != null) {
+            return this.getId().equals(((UsuarioEntity)obj).getId());
+        }
+        return super.equals(obj);
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
     }
     
 }

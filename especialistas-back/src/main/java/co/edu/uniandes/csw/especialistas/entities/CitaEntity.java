@@ -5,9 +5,13 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,9 +22,15 @@ import javax.persistence.OneToOne;
  * @author jr.restom10
  */
 @Entity
-public class CitaEntity extends BaseEntity{
+public class CitaEntity implements Serializable{
         
-        
+        /**
+     * Id del usuario.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
          private String comentarios;
          
          @OneToOne()
@@ -35,6 +45,13 @@ public class CitaEntity extends BaseEntity{
          @JoinColumn(name="USUARIO_ID")
          private UsuarioEntity usuario;
         
+         public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }  
          
          public void setHora(HoraEntity s)
         {
@@ -76,6 +93,28 @@ public class CitaEntity extends BaseEntity{
             return comentarios;
         }
 
-
+         @Override
+    public boolean equals(Object obj) 
+    {
+        if(obj != null)
+        {
+        if (this.getId() != null && ((CitaEntity)obj).getId() != null) {
+            return this.getId().equals(((CitaEntity)obj).getId());
+        }
+        return super.equals(obj);
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
     
 }

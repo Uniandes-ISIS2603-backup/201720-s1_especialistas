@@ -5,8 +5,12 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -16,7 +20,14 @@ import javax.persistence.OneToMany;
  * @author jr.restom10
  */
 @Entity
-public class OrdenMedicaEntity extends BaseEntity{
+public class OrdenMedicaEntity implements Serializable{
+    
+    /**
+     * Id del usuario.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     private String descripcion;
     
@@ -32,6 +43,15 @@ public class OrdenMedicaEntity extends BaseEntity{
     @OneToMany
     @JoinColumn(name="EXAMEN_ID")
     private List <ExamenEntity> examenes;
+    
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }  
     
     public List <MedicamentoEntity> getMedicamentos()
     {
@@ -73,6 +93,29 @@ public class OrdenMedicaEntity extends BaseEntity{
         descripcion=s;
     }
     
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if(obj != null)
+        {
+        if (this.getId() != null && ((OrdenMedicaEntity)obj).getId() != null) {
+            return this.getId().equals(((OrdenMedicaEntity)obj).getId());
+        }
+        return super.equals(obj);
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
     
     
 }
