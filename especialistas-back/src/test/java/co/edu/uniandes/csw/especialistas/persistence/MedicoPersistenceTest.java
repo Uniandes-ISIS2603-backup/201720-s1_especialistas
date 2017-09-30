@@ -174,7 +174,11 @@ public class MedicoPersistenceTest {
     @Test
     public void testFindByEspecializacion() throws Exception {
         List<MedicoEntity> list = persistence.findByEspecializacion(Especializacion.GENERAL);
-        assertEquals(data.size(), list.size());
+        int size = 0;
+        for(MedicoEntity medico : data)
+            if(medico.getEspecializacion() == Especializacion.GENERAL)
+                size++;
+        assertEquals(size, list.size());
         for(MedicoEntity ent : list){
             boolean found = false;
             for(MedicoEntity entity : data){
