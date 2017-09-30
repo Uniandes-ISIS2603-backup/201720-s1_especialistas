@@ -1,14 +1,14 @@
 {
 	"variables": [],
 	"info": {
-		"name": "especialistasMedicamentos",
-		"_postman_id": "1aacf804-6820-360f-d3fb-ff33a5b035a0",
+		"name": "Medicamento",
+		"_postman_id": "abf1035d-d116-aaec-b05a-4a2baa1a5cb3",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Get todos",
+			"name": "get todos los medicamentos",
 			"event": [
 				{
 					"listen": "test",
@@ -21,7 +21,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/especialistas-web/api/medicamentos/",
+				"url": "http://localhost:8080/especialistas-web/api/medicamentos/200",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -205,7 +205,10 @@
 				"url": "http://localhost:8080/especialistas-web/api/medicamentos/100",
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
