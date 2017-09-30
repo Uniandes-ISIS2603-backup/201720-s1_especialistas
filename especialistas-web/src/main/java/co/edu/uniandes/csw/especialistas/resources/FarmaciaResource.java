@@ -219,9 +219,10 @@ public class FarmaciaResource {
      */ 
     @Path("{id:\\d+}")
     @DELETE
-    public  boolean deleteFarmacia(@PathParam("id") Long id) 
+    public  void deleteFarmacia(@PathParam("id") Long id) throws BusinessLogicException
     {
-        return logic.deleteFarmacia(id);
+        logic.deleteFarmacia(id);
     }
     
 }
+
