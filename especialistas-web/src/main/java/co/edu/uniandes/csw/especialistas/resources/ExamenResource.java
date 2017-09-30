@@ -41,7 +41,7 @@ public class ExamenResource {
             WebApplicationException e = new WebApplicationException("Ya existe un examen con el nombre " + examen.getNombre());
             throw e;
         }
-        ExamenEntity nuevoExamen = logic.createExamen(examenEntity);
+        ExamenEntity nuevoExamen = logic.createExamen(examen.toEntity());
 
         return new ExamenDetailDTO(nuevoExamen);
     }
