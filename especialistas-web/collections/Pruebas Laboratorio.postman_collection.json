@@ -56,7 +56,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/laboratorios",
+						"url": "http://localhost:8080/especialistas-web/api/laboratotios",
 						"method": "POST",
 						"header": [
 							{
@@ -67,7 +67,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"nombre\": \"nuevo lab\"}"
+							"raw": "{\n\t\"nombre\": \"Es un lab\"\n}"
 						},
 						"description": ""
 					},
@@ -98,7 +98,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"nombre\": \"nuevo lab\"}"
+							"raw": "{\"nombre\": \"es un lab\"\n}"
 						},
 						"description": ""
 					},
@@ -118,7 +118,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/laboratorios/1",
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/2",
 						"method": "DELETE",
 						"header": [
 							{
@@ -149,7 +149,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/laboratorios/1",
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/20",
 						"method": "PUT",
 						"header": [
 							{
@@ -180,7 +180,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/laboratorios/1",
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/2",
 						"method": "GET",
 						"header": [
 							{

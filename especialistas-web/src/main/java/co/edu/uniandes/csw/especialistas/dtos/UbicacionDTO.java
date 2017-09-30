@@ -13,14 +13,21 @@ import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
  */
 public class UbicacionDTO extends EspecialistasDTO {
     
-    private double longitd;
+    
+    private double longitud;
     private double latitud;
     private String nombre;
+
+    public UbicacionDTO() {
+    }
+    
+    
     
     public UbicacionDTO(UbicacionEntity entity) {
+        id=entity.getId();
         nombre=entity.getNombre();
         latitud=entity.getLatitud();
-        longitd=entity.getLongitud();
+        longitud=entity.getLongitud();
     }
     public double getLatitud() {
         return latitud;
@@ -30,12 +37,12 @@ public class UbicacionDTO extends EspecialistasDTO {
         this.latitud = latitud;
     }
 
-    public double getLongitd() {
-        return longitd;
+    public double getLongitud() {
+        return longitud;
     }
 
-    public void setLongitd(double longitd) {
-        this.longitd = longitd;
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
     }
 
     public String getNombre() {
@@ -52,7 +59,7 @@ public class UbicacionDTO extends EspecialistasDTO {
         entity.setId(this.id);
         entity.setNombre(this.nombre);
         entity.setLatitud(this.latitud);
-        entity.setLongitud(this.longitd);
+        entity.setLongitud(this.longitud);
         return entity;
     }
 }

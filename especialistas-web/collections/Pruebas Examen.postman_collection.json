@@ -87,7 +87,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/examenes/1",
+						"url": "http://localhost:8080/especialistas-web/api/examenes/3",
 						"method": "GET",
 						"header": [
 							{
@@ -118,7 +118,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/examenes/1",
+						"url": "http://localhost:8080/especialistas-web/api/examenes/3",
 						"method": "PUT",
 						"header": [
 							{
@@ -149,7 +149,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/examenes/1",
+						"url": "http://localhost:8080/especialistas-web/api/examenes/54",
 						"method": "DELETE",
 						"header": [
 							{
