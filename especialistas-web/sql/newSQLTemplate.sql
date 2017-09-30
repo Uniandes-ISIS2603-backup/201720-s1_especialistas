@@ -15,9 +15,18 @@ insert into CitaEntity (id, comentarios) values (200,' ');
 
 delete from UsuarioEntity;
 
+delete from LaboratorioEntity;
+
+delete from ExamenEntity;
+
+insert into UsuarioEntity (id, cedula, nombre) values (8,123456,'juan');
+
+
 delete from TarjetaEntity;
+insert into TarjetaEntity (id, numero) values (8,123456);
 
 delete from PagoEntity;
+insert into PagoEntity (id, ref) values (8,123456);
 
 delete from OrdenMedicaEntity;
 
@@ -59,3 +68,11 @@ insert into HospitalEntity(id, nombre) values (2, 'Casa');
 
 insert into ConsultorioEntity(id, referenciaConsultorio) values (1, 'aaa');
 insert into ConsultorioEntity(id, referenciaConsultorio) values (2, 'bbb');
+
+
+
+insert into LaboratorioEntity (id, nombre) values (2, 'nuevo lab');
+insert into LaboratorioEntity (id, nombre) values (20, 'Laboratorio Central');
+
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(3, 'sangre', 2000, 'ir sin miedo');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(54, 'examen', 548000, 'ninguna');
