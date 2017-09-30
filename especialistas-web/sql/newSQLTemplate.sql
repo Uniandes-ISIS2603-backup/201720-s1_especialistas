@@ -11,10 +11,14 @@
 delete from CitaEntity;
 
 delete from UsuarioEntity;
+insert into UsuarioEntity (id, cedula, nombre) values (8,123456,'juan');
+
 
 delete from TarjetaEntity;
+insert into TarjetaEntity (id, numero) values (8,123456);
 
 delete from PagoEntity;
+insert into PagoEntity (id, ref) values (8,123456);
 
 insert into CitaEntity (id, comentarios) values (100,'xxxxxx');
 insert into CitaEntity (id, comentarios) values (200,' ');
