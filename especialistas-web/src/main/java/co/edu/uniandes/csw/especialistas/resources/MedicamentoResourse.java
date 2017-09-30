@@ -90,12 +90,12 @@ public class MedicamentoResourse {
     
     @GET
     @Path("{id: \\d+}/farmacias")
-    public List<FarmaciaDTO> getMedicamentoFarmacia(@PathParam("id") Long id)throws Exception
+    public List<FarmaciaDTO> getMedicamentoFarmacia(@PathParam("id") Long id)throws WebApplicationException
     {
         MedicamentoEntity entity = logic.getMedicamento(id);
         if(entity==null)
         {
-            throw new Exception("no existe la entidad");
+            throw new WebApplicationException("no existe la entidad");
         }
         List<FarmaciaDTO> list= new ArrayList<>();
         Iterator<FarmaciaEntity> iter=entity.getFarmacias().iterator();

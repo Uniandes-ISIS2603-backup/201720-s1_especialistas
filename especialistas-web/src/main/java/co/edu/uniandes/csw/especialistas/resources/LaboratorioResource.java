@@ -36,7 +36,7 @@ public class LaboratorioResource {
     LaboratorioLogic logic;
 
     @POST
-    public LaboratorioDetailDTO createLaboratorio(LaboratorioDetailDTO laboratorio) throws WebApplicationException, Exception {
+    public LaboratorioDetailDTO createLaboratorio(LaboratorioDetailDTO laboratorio) throws WebApplicationException {
         LaboratorioEntity laboratorioEntity = logic.getLaboratorio(laboratorio.getNombre());
         if (laboratorioEntity != null) {
             WebApplicationException e = new WebApplicationException("Ya existe un laboratorio con el nombre " + laboratorio.getNombre());
@@ -65,7 +65,7 @@ public class LaboratorioResource {
 
     @GET
     @Path("{nombre}")
-    public LaboratorioDetailDTO getLaboratorioByName(@PathParam("nombre") String nombre) throws WebApplicationException, Exception {
+    public LaboratorioDetailDTO getLaboratorioByName(@PathParam("nombre") String nombre) throws WebApplicationException {
         LaboratorioEntity entity = logic.getLaboratorio(nombre);
         if (entity == null) {
             WebApplicationException e = new WebApplicationException("No existe un laboratorio con el nombre " + nombre);

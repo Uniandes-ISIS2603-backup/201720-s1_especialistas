@@ -27,7 +27,8 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
+						"description": "",
+						"disabled": true
 					}
 				],
 				"body": {
@@ -63,7 +64,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\t\n\t\"horaInicio\" : \"sep 28, 2017 8:57:34 PM\",\n\t\"horaFin\" : \"sep 28, 2017 9:17:34 PM\",\n\t\"consultorio\" : { \"numero\" : 101 , \"especializacion\" : \"GENERAL\" },\n\t\"medico\" : { \"nombre\" : \"Juan Perez\", \"especializacion\" : \"GENERAL\"}\n}"
+					"raw": "{\t\n\t\"horaInicio\" : \"2017-08-22T18:00:00\",\n\t\"horaFin\" : \"2017-08-22T18:20:00\",\n\t\"consultorio\" : { \"id\" : 1 , \"referenciaConsultorio\" : \"aaa\" },\n\t\"medico\" : { \"id\" : 204, \"nombre\" : \"Juan Perez\", \"especializacion\" : \"GENERAL\"}\n}"
 				},
 				"description": ""
 			},
@@ -116,7 +117,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\t\n\t\"horaInicio\" : \"sep 26, 2017 8:57:34 PM\",\n\t\"horaFin\" : \"sep 26, 2017 9:40:34 PM\",\n\t\"consultorio\" : { \"numero\" : 101 , \"especializacion\" : \"GENERAL\" },\n\t\"medico\" : { \"nombre\" : \"Juan Perez\", \"especializacion\" : \"GENERAL\"}\n}"
+					"raw": "{\t\n\t\"horaInicio\" : \"2017-08-22T18:00:00\",\n\t\"horaFin\" : \"2017-08-22T18:50:00\",\n\t\"consultorio\" : { \"id\" : 1 , \"referenciaConsultorio\" : \"aaa\" },\n\t\"medico\" : { \"id\" : 204, \"nombre\" : \"Juan Perez\", \"especializacion\" : \"GENERAL\"}\n}"
 				},
 				"description": ""
 			},
@@ -130,7 +131,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
 						]
 					}
 				}

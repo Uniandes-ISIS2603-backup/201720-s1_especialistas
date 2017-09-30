@@ -63,7 +63,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\t\n\t\"nombre\" : \"Martin Reyes\",\n\t\"especializacion\" : \"GENERAL\",\n\t\"agenda\" : [\n\t\t{ \"id\" : 101, \"horaInicio\" : \"sep 26, 2017 8:57:34 PM\", \"horaFin\" : \"sep 26, 2017 9:17:34 PM\" },\n\t\t{ \"id\" : 102, \"horaInicio\" : \"sep 26, 2017 9:57:34 AM\", \"horaFin\" : \"sep 26, 2017 10:17:34 AM\" },\n\t\t{ \"id\" : 103, \"horaInicio\" : \"sep 25, 2017 8:57:34 PM\", \"horaFin\" : \"sep 25, 2017 9:17:34 PM\" }\n\t]\n}"
+					"raw": "{\t\n\t\"nombre\" : \"Martin Reyes\",\n\t\"especializacion\" : \"GENERAL\",\n\t\"agenda\" : [\n\t\t{ \"id\" : 101, \"horaInicio\" : \"2017-07-22T03:00:00\", \"horaFin\" : \"2017-07-22T05:00:00\" },\n\t\t{ \"id\" : 102, \"horaInicio\" : \"2018-07-22T12:00:00\", \"horaFin\" : \"2018-07-22T15:00:00\" },\n\t\t{ \"id\" : 103, \"horaInicio\" : \"2017-08-22T18:00:00\", \"horaFin\" : \"2017-08-22T21:00:00\" }\n\t]\n}"
 				},
 				"description": ""
 			},
@@ -138,30 +138,8 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\t\n\t\"nombre\" : \"Juan Perez\",\n\t\"especializacion\" : \"ODONTOLOGIA\",\n\t\"agenda\" : [\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 PM\", \"horaFin\" : \"sep 26, 2017 9:57:34 PM\" },\n\t\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 AM\", \"horaFin\" : \"sep 26, 2017 9:57:34 AM\" },\n\t\t{ \"horaInicio\" : \"sep 25, 2017 8:57:34 PM\", \"horaFin\" : \"sep 25, 2017 9:57:34 PM\" }\n\t]\n}"
+					"raw": "{\t\n\t\"nombre\" : \"Juan Perez\",\n\t\"especializacion\" : \"ODONTOLOGIA\",\n\t\"agenda\" : [\n\t\t{ \"id\" : 101, \"horaInicio\" : \"2017-07-22T03:00:00\", \"horaFin\" : \"2017-07-22T05:00:00\" },\n\t\t{ \"id\" : 102, \"horaInicio\" : \"2018-07-22T12:00:00\", \"horaFin\" : \"2018-07-22T15:00:00\" }\n\t]\n}"
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "eliminar un medico",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 204\"] = responseCode.code === 204;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/especialistas-web/api/medicos/204",
-				"method": "DELETE",
-				"header": [],
-				"body": {},
 				"description": ""
 			},
 			"response": []
@@ -213,8 +191,30 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 PM\", \"horaFin\" : \"sep 26, 2017 9:57:34 PM\" },\n\t{ \"horaInicio\" : \"sep 26, 2017 8:57:34 AM\", \"horaFin\" : \"sep 26, 2017 9:57:34 AM\" },\n]"
+					"raw": "[\n\t\t{ \"id\" : 101, \"horaInicio\" : \"2017-07-22T03:00:00\", \"horaFin\" : \"2017-07-22T05:00:00\" },\n\t\t{ \"id\" : 102, \"horaInicio\" : \"2018-07-22T12:00:00\", \"horaFin\" : \"2018-07-22T15:00:00\" },\n\t\t{ \"id\" : 103, \"horaInicio\" : \"2017-08-22T18:00:00\", \"horaFin\" : \"2017-08-22T21:00:00\" }\n]"
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar un medico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/medicos/204",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []
