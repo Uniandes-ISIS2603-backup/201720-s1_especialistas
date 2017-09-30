@@ -5,11 +5,13 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.TarjetaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.TarjetaDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.TarjetaLogic;
 import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -28,22 +30,25 @@ import javax.ws.rs.WebApplicationException;
  */
 @Path("tarjetas")
 @Produces("application/json")
-@Consumes("application/json")
-@RequestScoped
+@Stateless
 public class TargetaResource {
     @Inject
     TarjetaLogic logic;
     
     @POST
-    public TarjetaDetailDTO createTarjeta(TarjetaDetailDTO Tarjeta) throws WebApplicationException {
-        TarjetaEntity tarjetaEntity = logic.getTarjeta(Tarjeta.getId());
+    public TarjetaEntity createTarjeta(TarjetaDTO tarjeta) throws Exception {
+        TarjetaEntity tarjetaEntity = null;
+        if(tarjeta.getId()!=null)
+        {
+            tarjetaEntity = logic.getTarjeta(tarjeta.getId());
+        }
         if (tarjetaEntity != null) {
-            WebApplicationException e = new WebApplicationException("Ya existe un Tarjeta con el id " + Tarjeta.getId());
+            WebApplicationException e = new WebApplicationException("Ya existe un usuario con el id " + tarjeta.getId());
             throw e;
         }
-        TarjetaEntity nuevoTarjeta = logic.createTarjeta(tarjetaEntity);
+        TarjetaEntity nuevaTarjeta = logic.createTarjeta(tarjeta.toEntity());
 
-        return new TarjetaDetailDTO(nuevoTarjeta);
+        return nuevaTarjeta;
     }
     
     @GET

@@ -5,11 +5,13 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.PagoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.PagoDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.PagoLogic;
 import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -28,22 +30,25 @@ import javax.ws.rs.WebApplicationException;
  */
 @Path("pagos")
 @Produces("application/json")
-@Consumes("application/json")
-@RequestScoped
+@Stateless
 public class PagoResource {
     @Inject
     PagoLogic logic;
     
     @POST
-    public PagoDetailDTO createPago(PagoDetailDTO Pago) throws WebApplicationException {
-        PagoEntity pagoEntity = logic.getPago(Pago.getId());
-        if (pagoEntity != null) {
-            WebApplicationException e = new WebApplicationException("Ya existe un Pago con el id " + Pago.getId());
+    public PagoEntity createPago(PagoDTO pago) throws Exception {
+        PagoEntity tarjetaEntity = null;
+        if(pago.getId()!=null)
+        {
+            tarjetaEntity = logic.getPago(pago.getId());
+        }
+        if (tarjetaEntity != null) {
+            WebApplicationException e = new WebApplicationException("Ya existe un usuario con el id " + pago.getId());
             throw e;
         }
-        PagoEntity nuevoPago = logic.createPago(pagoEntity);
+        PagoEntity nuevaTarjeta = logic.createPago(pago.toEntity());
 
-        return new PagoDetailDTO(nuevoPago);
+        return nuevaTarjeta;
     }
     
     @GET
