@@ -5,12 +5,18 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
+import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
+import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import javax.persistence.EntityManager;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -34,82 +40,118 @@ import org.springframework.transaction.annotation.Transactional;
  * @author rc.tejon
  */
 @Path("medicamentos")
+@Consumes(MediaType.APPLICATION_JSON)
 @Produces("application/json")
 @Stateless
 public class MedicamentoResourse {
 
-
-    public MedicamentoResourse() {
-    }
-
     /**
-     * Clase de la lógica
+     * Clase de la lógica   
      */
     @Inject
     MedicamentoLogic logic;
     
+
+    @Inject
+    Medicamento_FarmaciaLogic logicMF;
+    
+
     /**
-     * Recurso que crea un medicamento
-     * @param medicamento JSON con la información del medicamento
-     * @return Entidad del medicamento creado
+     * Recurso que crea un farmacia
+     * @param farmacia JSON con la información del farmacia
+     * @return Entidad del hospital creado
      */
     @POST
-    public MedicamentoEntity createMedicamento(MedicamentoDTO medicamento)
+    public MedicamentoDetailDTO createMedicamento(MedicamentoDetailDTO farmacia)
     {
-        MedicamentoEntity entity = medicamento.toEntity();
-        logic.createMedicamento(entity);
-        return entity;
+        MedicamentoEntity entity = farmacia.toEntity();
+        return new MedicamentoDetailDTO(logic.createMedicamento(entity));
     }
     
     /**
-     * Recurso que obtiene un medicamento por su id
-     * @param id id del medicamento
-     * @return MedicamentoEntity del medicamento
+     * Recurso que obtiene un farmacia por su id
+     * @param id id del farmacia
+     * @return FarmaciaEntity del hospital
      */
     @GET
     @Path("{id: \\d+}")
-    public MedicamentoEntity getMedicamento(@PathParam("id") Long id)
+    public MedicamentoDetailDTO getFarmacia(@PathParam("id") Long id)throws BusinessLogicException
     {
         MedicamentoEntity entity = logic.getMedicamento(id);
-        return entity;
+        if(entity==null)
+        {
+            throw new BusinessLogicException("no existe la entidad con el id dado");
+        }
+        return new MedicamentoDetailDTO(entity);
     }
     
+    
+    
+    
+    @GET
+    @Path("{id: \\d+}/farmacias")
+    public List<FarmaciaDTO> getMedicamentoFarmacia(@PathParam("id") Long id)throws Exception
+    {
+        MedicamentoEntity entity = logic.getMedicamento(id);
+        if(entity==null)
+        {
+            throw new Exception("no existe la entidad");
+        }
+        List<FarmaciaDTO> list= new ArrayList<>();
+        Iterator<FarmaciaEntity> iter=entity.getFarmacias().iterator();
+        while(iter.hasNext())
+        {
+            list.add(new FarmaciaDTO(iter.next()));
+        }
+        return list;
+    }
+    
+    
     /**
-     * Recurso que obtiene todos los medicamentos
-     * @return Lista con todos los medicamentos
+     * Recurso que obtiene todos los hospitales
+     * @return Lista con todos los hospitales
      */
     @GET
-    public List<MedicamentoEntity> getMedicamentos()
+    public List<MedicamentoDetailDTO> getFarmacias()
     {
-        List<MedicamentoEntity> lista = logic.getMedicamentos();
-        return lista;
+        return listToList(logic.getMedicamentos());
+        
+    }
+    
+    private List<MedicamentoDetailDTO> listToList(List<MedicamentoEntity> entityList) {
+        List<MedicamentoDetailDTO> listDTO=new ArrayList<>();
+        System.out.println("co.edu.uniandes.csw.especialistas.resources.MedicamentoResourse.listToList()");
+        for(MedicamentoEntity entity: entityList) {
+            listDTO.add(new MedicamentoDetailDTO(entity));
+        }
+        return listDTO;
     }
     
     /**
-     * Recurso para actualizar un medicamento
-     * @param medicamento JSON con los detalles del medicamento
-     * @return medicamento actualizado
+     * Recurso para actualizar un farmacia
+     * @return farmacia actualizado
      */
     @PUT
-    public MedicamentoEntity updateMedicamento(MedicamentoDetailDTO medicamento)throws WebApplicationException
+    public MedicamentoDetailDTO updateFarmacia(MedicamentoDetailDTO medicamento)throws BusinessLogicException
     {
         MedicamentoEntity entity = medicamento.toEntity();
         if(logic.getMedicamento(entity.getId())==null)
         {
-            throw new WebApplicationException("ponga el id");
+            throw new BusinessLogicException("ponga el id");
+
         }
-        return logic.updateMedicamento(entity);
+        return new MedicamentoDetailDTO(logic.updateMedicamento(entity));
     }
     
     /**
-     * Recurso que elimina un medicamento
-     * @param id id del medicamento
-     * @return true si se eliminó el medicamento, false de lo contrario
+     * Recurso que elimina un farmacia
+     * @param id id del farmacia
      */
     @Path("{id:\\d+}")
     @DELETE
-    public boolean deleteFarmacia(@PathParam("id") Long id)
+    public void deleteFarmacia(@PathParam("id") Long id)throws BusinessLogicException
     {
-        return logic.deleteMedicamento(id);
+         logic.deleteMedicamento(id);
     }
+    
 }

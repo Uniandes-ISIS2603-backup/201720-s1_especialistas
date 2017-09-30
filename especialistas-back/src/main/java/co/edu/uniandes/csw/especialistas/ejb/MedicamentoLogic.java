@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.MedicamentoPersistence;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -36,7 +37,7 @@ public class MedicamentoLogic {
      * @param id Id del medicamento
      * @return true si la entidad fue eliminada, false de lo contrario
      */
-    public boolean deleteMedicamento(Long id)
+    public boolean deleteMedicamento(Long id)throws BusinessLogicException
     {
         boolean deleted = false;
         persistence.deleteById(id);

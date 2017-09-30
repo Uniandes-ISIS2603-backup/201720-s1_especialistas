@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.especialistas.persistence;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -169,7 +170,7 @@ public class FarmaciaPersitenceTest {
 
 
     @Test
-    public void deleteFarmaciaTest() {
+    public void deleteFarmaciaTest() throws BusinessLogicException{
         FarmaciaEntity entity = data.get(0);
         boolean b=medicamentoPersistence.deleteById(entity.getId());
         FarmaciaEntity deleted = em.find(FarmaciaEntity.class, entity.getId());

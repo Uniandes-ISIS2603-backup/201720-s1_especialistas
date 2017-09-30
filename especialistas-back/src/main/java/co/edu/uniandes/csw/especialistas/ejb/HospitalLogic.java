@@ -70,7 +70,6 @@ public class HospitalLogic {
      *
      * @param id id del hospital
      * @return HospitalEntity del hospital buscado
-     * @throws BusinessLogicException
      */
     public HospitalEntity getHospital(Long id) {
         HospitalEntity entity = persistence.find(id);

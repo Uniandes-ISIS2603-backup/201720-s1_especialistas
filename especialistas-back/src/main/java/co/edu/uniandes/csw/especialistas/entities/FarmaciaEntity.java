@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,24 +93,19 @@ public class FarmaciaEntity implements Serializable{
         medicamentos.add(med);
     }
 
+    public void eliminarMedicamento(MedicamentoEntity med)throws BusinessLogicException
+    {
+    
+        if(medicamentos==null || !medicamentos.contains(med))
+    {
+            throw new BusinessLogicException("no existe el medicamento");
+            }
+        medicamentos.remove(med);
+            }
+
     public void setMedicamentos(List<MedicamentoEntity> medicamentos) {
         this.medicamentos = medicamentos;
-    }
-    
-    @Override
-    public boolean equals(Object obj) 
-    {
-        if(obj != null)
-        {
-            if(obj.getClass()!=this.getClass()){
-                return false;
-            }
-            if (this.getId() != null && ((FarmaciaEntity)obj).getId() != null) {
-                return this.getId().equals(((FarmaciaEntity)obj).getId());
-            }
-        }
-        return false;
-    }
+       }
     
     @Override
     public int hashCode() {

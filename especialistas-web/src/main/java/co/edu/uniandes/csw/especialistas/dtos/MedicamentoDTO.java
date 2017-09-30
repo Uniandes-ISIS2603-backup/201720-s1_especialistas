@@ -11,10 +11,23 @@ import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
  *
  * @author rc.tejon
  */
+
+
 public class MedicamentoDTO extends EspecialistasDTO{
         
     private double precio;
     private String nombre;
+
+    public MedicamentoDTO() {
+    }
+
+    
+    
+    public MedicamentoDTO(MedicamentoEntity entity) {
+        id=entity.getId();
+        precio=entity.getPrecio();
+        nombre=entity.getNombre();
+    }
 
     public String getNombre() {
         return nombre;
