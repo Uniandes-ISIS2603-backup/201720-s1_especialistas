@@ -12,6 +12,68 @@
 			"description": "",
 			"item": [
 				{
+					"name": "Actualización de un laboratorio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/20",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"otro Lab\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar laboratorio por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/2",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"otro Lab\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "Consultar todos los laboratorios.",
 					"event": [
 						{
@@ -81,7 +143,9 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
+									"tests[\"No crea con el mismo nombre\"] = responseCode.code === 500;",
+									"",
+									"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Ya existe un laboratorio con el nombre \");"
 								]
 							}
 						}
@@ -130,68 +194,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Actualización de un laboratorio",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/laboratorios/20",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"nombre\" : \"otro Lab\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Consultar laboratorio por ID",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/laboratorios/2",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"nombre\" : \"otro Lab\"\n}"
 						},
 						"description": ""
 					},
