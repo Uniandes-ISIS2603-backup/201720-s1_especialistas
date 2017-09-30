@@ -25,9 +25,8 @@ public class ExamenLogic {
      * Se encarga de la creación de un examen
      * @param entity
      * @return
-     * @throws Exception 
      */
-    public ExamenEntity createExamen(ExamenEntity entity) throws Exception{
+    public ExamenEntity createExamen(ExamenEntity entity){
         persistence.create(entity);
         return entity;
     }
@@ -44,9 +43,8 @@ public class ExamenLogic {
      * Busca el examen con el nombre dado por parámetro
      * @param name
      * @return
-     * @throws Exception 
      */
-    public ExamenEntity getExamen(String name) throws Exception{
+    public ExamenEntity getExamen(String name){
         ExamenEntity examen = persistence.findByName(name);
         return examen;
     }

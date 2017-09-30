@@ -26,9 +26,8 @@ public class LaboratorioLogic {
      * Se encarga de la creación de un laboratorio
      * @param entity
      * @return
-     * @throws Exception 
      */
-    public LaboratorioEntity createLaboratorio(LaboratorioEntity entity) throws Exception{
+    public LaboratorioEntity createLaboratorio(LaboratorioEntity entity){
         persistence.create(entity);
         return entity;
     }
@@ -45,9 +44,8 @@ public class LaboratorioLogic {
      * Busca el laboratorio con el nombre dado por parámetro
      * @param name
      * @return
-     * @throws Exception 
      */
-    public LaboratorioEntity getLaboratorio(String name) throws Exception{
+    public LaboratorioEntity getLaboratorio(String name){
         LaboratorioEntity laboratorio = persistence.findByName(name);
         return laboratorio;
     }
