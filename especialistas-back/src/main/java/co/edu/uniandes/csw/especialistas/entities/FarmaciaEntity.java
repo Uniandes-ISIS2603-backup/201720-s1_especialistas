@@ -105,13 +105,5 @@ public class FarmaciaEntity implements Serializable{
 
     public void setMedicamentos(List<MedicamentoEntity> medicamentos) {
         this.medicamentos = medicamentos;
-       }
-    
-    @Override
-    public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
-    }
+       }    
 }

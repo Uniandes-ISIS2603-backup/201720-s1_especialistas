@@ -36,7 +36,7 @@ public class PagoResource {
     PagoLogic logic;
     
     @POST
-    public PagoEntity createPago(PagoDTO pago) throws Exception {
+    public PagoEntity createPago(PagoDTO pago) throws WebApplicationException {
         PagoEntity tarjetaEntity = null;
         if(pago.getId()!=null)
         {
