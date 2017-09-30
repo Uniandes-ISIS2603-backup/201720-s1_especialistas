@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+import exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -153,7 +154,7 @@ public class MedicamentoPersistenceTest {
 
 
     @Test
-    public void deleteMedicamentoTest() {
+    public void deleteMedicamentoTest() throws BusinessLogicException{
         MedicamentoEntity entity = data.get(0);
         medicamentoPersistence.deleteById(entity.getId());
         MedicamentoEntity deleted = em.find(MedicamentoEntity.class, entity.getId());

@@ -50,21 +50,9 @@ public class HospitalLogic {
      * Método encargadod de eliminar un hospital de la persistencia
      *
      * @param id Id del hospital
-     * @return true si la entidad fue eliminada, false de lo contrario
-     * @throws BusinessLogicException si no se elimina el hospital
      */
-    public boolean deleteHospital(Long id) throws BusinessLogicException {
-        boolean deleted = false;
+    public void deleteHospital(Long id) {
         persistence.delete(id);
-        HospitalEntity entity = persistence.find(id);
-
-        //Se comprueba si se eliminó la entidad
-        if (entity == null) {
-            deleted = true;
-        } else {
-            throw new BusinessLogicException("No se elimino el hospital");
-        }
-        return deleted;
     }
 
     /**
@@ -82,15 +70,10 @@ public class HospitalLogic {
      *
      * @param id id del hospital
      * @return HospitalEntity del hospital buscado
-     * @throws BusinessLogicException
      */
-    public HospitalEntity getHospital(Long id) throws BusinessLogicException {
+    public HospitalEntity getHospital(Long id) {
         HospitalEntity entity = persistence.find(id);
-        if (entity != null) {
-            return entity;
-        } else {
-            throw new BusinessLogicException("No existe un hospital con el id especificado");
-        }
+        return entity;
     }
 
     /**
@@ -98,16 +81,11 @@ public class HospitalLogic {
      *
      * @param entity Hospital con la nueva información
      * @return Entidad con la información del hospital actualizado
-     * @throws BusinessLogicException
      */
-    public HospitalEntity updateHospital(HospitalEntity entity) throws BusinessLogicException {
-        HospitalEntity hospital = getHospital(entity.getId());
-        if (hospital != null) {
-            persistence.upadte(entity);
-            return entity;
-        } else {
-            throw new BusinessLogicException("No existe un hospital con el id especificado");
-        }
+    public HospitalEntity updateHospital(HospitalEntity entity) {
+
+        return persistence.upadte(entity);
+
     }
 
     /**
@@ -150,7 +128,7 @@ public class HospitalLogic {
      * @throws BusinessLogicException
      */
     public void removeConsultorio(Long idHospital, Long idConsultorio) throws BusinessLogicException {
-        
+
         HospitalEntity hospital = getHospital(idHospital);
         ConsultorioEntity consultorio = new ConsultorioEntity();
         consultorio.setId(idConsultorio);
@@ -159,23 +137,25 @@ public class HospitalLogic {
 
     /**
      * Método encargado de retornar la ubicación de un hospital
+     *
      * @param idHospital id del hospital
      * @return UbicaciónEntity con la información
      * @throws BusinessLogicException
      */
-    public UbicacionEntity getUbicacionHospital(Long idHospital) throws BusinessLogicException{
+    public UbicacionEntity getUbicacionHospital(Long idHospital) throws BusinessLogicException {
         HospitalEntity hospital = getHospital(idHospital);
         return hospital.getUbicacion();
     }
 
     /**
      * Metodo encargado de agregar un consultorio a un hospital
+     *
      * @param idHospital id del hospital
      * @param consultorio ConsultorioEntity con la información
      * @return ConsultorioEntity agregado
      * @throws BusinessLogicException
      */
-    public ConsultorioEntity addConsultorio(Long idHospital, ConsultorioEntity consultorio) throws BusinessLogicException{
+    public ConsultorioEntity addConsultorio(Long idHospital, ConsultorioEntity consultorio) throws BusinessLogicException {
         HospitalEntity hospital = getHospital(idHospital);
         hospital.getConsultorios().add(consultorio);
         return consultorio;

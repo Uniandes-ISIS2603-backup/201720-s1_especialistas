@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.especialistas.persistence;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
+import exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -66,7 +67,7 @@ public class FarmaciaPersitence {
             return sameId.get(0);
         }
     }
-    public boolean deleteById(long id) {
+    public boolean deleteById(long id) throws BusinessLogicException{
                
         FarmaciaEntity farmacia=null;
                 
@@ -83,8 +84,10 @@ public class FarmaciaPersitence {
         {
         em.remove(farmacia);
         return true;
+        }else
+        {
+            throw new BusinessLogicException("no existe farmacia con el id dado");
         }
-        return false;
     }
         
     public void update(FarmaciaEntity Farmacia) {

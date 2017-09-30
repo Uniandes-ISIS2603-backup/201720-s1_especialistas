@@ -7,9 +7,13 @@ package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDetailDTO;
+import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
 import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
+import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
 import javax.persistence.EntityManager;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
+import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import java.net.URI;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDetailDTO;
@@ -53,6 +57,9 @@ public class FarmaciaResource {
      */
     @Inject
     FarmaciaLogic logic;
+    
+    @Inject
+    MedicamentoLogic logicMedicamento;
     
     /**
      * Clase de la logica de los metodos que comparten medicamento y faracia
@@ -212,9 +219,9 @@ public class FarmaciaResource {
      */ 
     @Path("{id:\\d+}")
     @DELETE
-    public  void deleteFarmacia(@PathParam("id") Long id)
+    public  void deleteFarmacia(@PathParam("id") Long id) throws BusinessLogicException
     {
-         logic.deleteFarmacia(id);
+        FarmaciaEntity ent =logic.deleteFarmacia(id);
     }
     
 }

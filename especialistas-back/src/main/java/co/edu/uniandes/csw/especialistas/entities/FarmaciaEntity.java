@@ -6,10 +6,14 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import exceptions.BusinessLogicException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
@@ -21,7 +25,14 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author rc.tejon
  */
 @Entity
-public class FarmaciaEntity extends BaseEntity{
+public class FarmaciaEntity implements Serializable{
+    
+    /**
+     * Id del usuario.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     private int radio;
     private String nombre;
@@ -32,6 +43,15 @@ public class FarmaciaEntity extends BaseEntity{
     @PodamExclude
     @ManyToMany(mappedBy="farmacias")
     private List<MedicamentoEntity> medicamentos;
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }  
+    
     public int getRadio() {
         return radio;
     }
@@ -51,7 +71,7 @@ public class FarmaciaEntity extends BaseEntity{
     public List<MedicamentoEntity> getMedicamentos() {
         if(medicamentos==null)
         {
-            medicamentos=new ArrayList<>();
+            medicamentos=new ArrayList<MedicamentoEntity>();
         }
         return medicamentos;
     }
@@ -66,26 +86,32 @@ public class FarmaciaEntity extends BaseEntity{
     
     public void agregarMedicamento(MedicamentoEntity med)
     {
-
         if(medicamentos==null)
         {
-            medicamentos= new ArrayList<>();
+            medicamentos= new ArrayList<MedicamentoEntity>();
         }
         medicamentos.add(med);
     }
-    
+
     public void eliminarMedicamento(MedicamentoEntity med)throws BusinessLogicException
     {
-
+    
         if(medicamentos==null || !medicamentos.contains(med))
-        {
+    {
             throw new BusinessLogicException("no existe el medicamento");
-        }
+            }
         medicamentos.remove(med);
-    }
+            }
 
     public void setMedicamentos(List<MedicamentoEntity> medicamentos) {
         this.medicamentos = medicamentos;
-    }
+       }
     
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
 }

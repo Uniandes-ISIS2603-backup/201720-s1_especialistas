@@ -10,6 +10,12 @@
 
 delete from CitaEntity;
 
+delete from UsuarioEntity;
+
+delete from TarjetaEntity;
+
+delete from PagoEntity;
+
 insert into CitaEntity (id, comentarios) values (100,'xxxxxx');
 insert into CitaEntity (id, comentarios) values (200,' ');
 
@@ -36,3 +42,17 @@ delete from MedicamentoEntity;
 
 insert into MedicamentoEntity (id, nombre, precio) values (100,'xxxxxx',2.213);
 insert into MedicamentoEntity (id, nombre, precio) values (200,'yyyyyy',3.131);
+
+delete from MedicoEntity;
+
+
+delete from ConsultorioEntity;
+
+
+delete from HospitalEntity;
+
+insert into HospitalEntity(id, nombre) values (1, 'Reina');
+insert into HospitalEntity(id, nombre) values (2, 'Casa');
+
+insert into ConsultorioEntity(id, referenciaConsultorio) values (1, 'aaa');
+insert into ConsultorioEntity(id, referenciaConsultorio) values (2, 'bbb');

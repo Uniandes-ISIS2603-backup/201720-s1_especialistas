@@ -1,0 +1,197 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Pruebas Recurso Hospital",
+		"_postman_id": "44428e67-2d33-d97c-f981-bd2f2bc6868b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET inicial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code == 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/hospitales",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":13, \"nombre\": \"blasj\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET de un hospital",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code == 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/hospitales/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":13, \"nombre\": \"blasj\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET de un hospital no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code == 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/hospitales/4",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":13, \"nombre\": \"blasj\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST de un hospital",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code == 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/hospitales",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":13, \"nombre\": \"blasj\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT de un hospital no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code == 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/hospitales",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":13, \"nombre\": \"blasdasfasg\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE de un hospital no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code == 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/especialistas-web/api/hospitales/17",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

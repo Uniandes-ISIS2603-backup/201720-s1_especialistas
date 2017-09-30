@@ -131,12 +131,12 @@ public class MedicamentoResourse {
      * @return farmacia actualizado
      */
     @PUT
-    public MedicamentoDetailDTO updateFarmacia(MedicamentoDetailDTO medicamento)throws Exception
+    public MedicamentoDetailDTO updateFarmacia(MedicamentoDetailDTO medicamento)throws BusinessLogicException
     {
         MedicamentoEntity entity = medicamento.toEntity();
         if(logic.getMedicamento(entity.getId())==null)
         {
-            throw new Exception("ponga el id");
+            throw new BusinessLogicException("ponga el id");
         }
         return new MedicamentoDetailDTO(logic.updateMedicamento(entity));
     }
@@ -147,10 +147,9 @@ public class MedicamentoResourse {
      */
     @Path("{id:\\d+}")
     @DELETE
-    public void deleteFarmacia(@PathParam("id") Long id)
+    public void deleteFarmacia(@PathParam("id") Long id)throws BusinessLogicException
     {
-         System.out.println("co.edu.uniandes.csw.especialistas.resources.MedicamentoResourse.deleteFarmacia()");  
-         System.out.println(logic.deleteMedicamento(id));
+         logic.deleteMedicamento(id);
     }
     
 }

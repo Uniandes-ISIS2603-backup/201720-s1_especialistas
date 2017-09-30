@@ -107,7 +107,7 @@ public class PagoPersistenceTest {
      * Test of create method, of class PagoPersistence.
      */
     @Test
-    public void createPagoTest() throws Exception {
+    public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
         PagoEntity result = persistence.create(newEntity);
@@ -122,7 +122,7 @@ public class PagoPersistenceTest {
      * Test of update method, of class PagoPersistence.
      */
     @Test
-    public void updatePagoTest() throws Exception {
+    public void testUpdate() throws Exception {
         PagoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
@@ -139,7 +139,7 @@ public class PagoPersistenceTest {
      * Test of delete method, of class PagoPersistence.
      */
     @Test
-    public void deletePagoTest() throws Exception {
+    public void testDelete() throws Exception {
         PagoEntity entity = data.get(0);
         persistence.delete(entity.getId());
         PagoEntity deleted = em.find(PagoEntity.class, entity.getId());
@@ -150,7 +150,7 @@ public class PagoPersistenceTest {
      * Test of find method, of class PagoPersistence.
      */
     @Test
-    public void getPagoTest() throws Exception {
+    public void testFind() throws Exception {
         PagoEntity entity = data.get(0);
         PagoEntity result = persistence.find(entity.getId());
         assertNotNull(result);
@@ -161,7 +161,7 @@ public class PagoPersistenceTest {
      * Test of findAll method, of class PagoPersistence.
      */
     @Test
-    public void getPagosTest() throws Exception {
+    public void testFindAll() throws Exception {
         List<PagoEntity> list = persistence.findAll();
         assertEquals(data.size(), list.size());
         for(PagoEntity ent : list){

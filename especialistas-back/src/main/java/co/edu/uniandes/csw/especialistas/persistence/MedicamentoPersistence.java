@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+import exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -65,7 +66,7 @@ public class MedicamentoPersistence {
             return sameId.get(0);
         }
     }
-    public void deleteById(long id) {
+    public void deleteById(long id) throws BusinessLogicException{
         
         MedicamentoEntity medicamento=null;
                 
@@ -81,6 +82,10 @@ public class MedicamentoPersistence {
         if(medicamento!=null)
         {
         em.remove(medicamento);
+        }
+        else
+        {
+            throw new BusinessLogicException("no existe medicamento con el id dado");
         }
     }
         
