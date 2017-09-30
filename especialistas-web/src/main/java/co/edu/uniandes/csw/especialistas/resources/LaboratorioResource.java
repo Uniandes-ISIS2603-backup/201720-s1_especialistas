@@ -42,7 +42,7 @@ public class LaboratorioResource {
             WebApplicationException e = new WebApplicationException("Ya existe un laboratorio con el nombre " + laboratorio.getNombre());
             throw e;
         }
-        LaboratorioEntity nuevoLab = logic.createLaboratorio(laboratorioEntity);
+        LaboratorioEntity nuevoLab = logic.createLaboratorio( laboratorio.toEntity());
 
         return new LaboratorioDetailDTO(nuevoLab);
     }
