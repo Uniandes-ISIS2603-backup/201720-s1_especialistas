@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
-import exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import javax.inject.Inject;
 
 /**

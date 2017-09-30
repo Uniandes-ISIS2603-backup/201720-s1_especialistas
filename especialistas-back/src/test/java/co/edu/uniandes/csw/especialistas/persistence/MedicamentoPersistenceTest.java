@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
-import exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;

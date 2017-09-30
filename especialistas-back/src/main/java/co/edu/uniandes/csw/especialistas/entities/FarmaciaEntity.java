@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
-import exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

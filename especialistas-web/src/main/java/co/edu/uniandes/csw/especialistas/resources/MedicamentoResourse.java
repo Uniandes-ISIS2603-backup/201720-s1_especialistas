@@ -13,7 +13,7 @@ import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import javax.persistence.EntityManager;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
-import exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;

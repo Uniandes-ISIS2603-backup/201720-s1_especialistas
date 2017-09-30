@@ -9,7 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.persistence.HospitalPersistence;
-import exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;

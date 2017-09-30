@@ -9,8 +9,13 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 /**
+ * Clase que indica que este proyecto web ofrece servicios REST. Adicionalmente,
+ * esta clase define el prefijo por defecto de las rutas a los recursos.
  *
- * @author jl.patarroyo
+ * (non-Javadoc)
+ *
+ * @see javax.ws.rs.core.Application
+ * @author js.diaz
  */
 @ApplicationPath("/api")
 public class RestConfig extends Application{
