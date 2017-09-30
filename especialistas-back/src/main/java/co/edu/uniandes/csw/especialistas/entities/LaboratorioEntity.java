@@ -37,7 +37,6 @@ public class LaboratorioEntity implements Serializable {
     @ManyToMany 
     private List<ExamenEntity> examenes;
 
-   @PodamExclude
     @OneToOne (cascade = CascadeType.ALL)
     private UbicacionEntity ubicacion;
 

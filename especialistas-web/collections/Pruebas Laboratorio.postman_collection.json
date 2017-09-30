@@ -1,0 +1,203 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Pruebas Laboratorio",
+		"_postman_id": "e72edb50-0481-8052-708e-a3d48cc74860",
+		"description": "Estas son las pruebas del recurso Laboratorio.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pruebas Laboratorio",
+			"description": "",
+			"item": [
+				{
+					"name": "Consultar todos los laboratorios.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"nombre\": \"nuevo lab\"}"
+						},
+						"description": "Consulta todos los laboratorios que hay."
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un laboratorio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"nombre\": \"nuevo lab\"}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Error al crear un laboratorio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"nombre\": \"nuevo lab\"}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar un laboratorio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Actualización de un laboratorio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"otro Lab\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar laboratorio por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code ===200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"otro Lab\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
