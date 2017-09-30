@@ -5,10 +5,8 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
-import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -18,21 +16,35 @@ import java.util.List;
 public class MedicamentoDetailDTO extends MedicamentoDTO{
     
     private List<FarmaciaDTO> farmacias;
+
+    public MedicamentoDetailDTO() {
+    }
+
+    
+    public MedicamentoDetailDTO(MedicamentoEntity entity) {
+        super(entity);
+        if(entity.getFarmacias()==null)
+        {
+            entity.setFarmacias(new ArrayList<>());
+            System.out.println("*********************************************************************************"+ entity.getFarmacias().toString());
+        }
+        entity.getFarmacias().forEach((x)->{
+            this.farmacias.add(new FarmaciaDTO(x));
+    });
+    }
+    
     
     
     public MedicamentoEntity toEntity()
     {
         MedicamentoEntity entity = super.toEntity();
-        List<FarmaciaEntity> listFarmacias=new ArrayList<FarmaciaEntity>();
-        if(farmacias!=null)
+        if(farmacias==null)
         {
-             Iterator<FarmaciaDTO> iter=farmacias.iterator();
-             while(iter.hasNext())
-             {
-                listFarmacias.add(iter.next().toEntity());
-             }
-             entity.setFarmacias(listFarmacias);
+                        farmacias= new ArrayList<>();
         }
+        farmacias.forEach((x) -> {
+            entity.getFarmacias().add(x.toEntity());
+        });
         return entity;
     }
     

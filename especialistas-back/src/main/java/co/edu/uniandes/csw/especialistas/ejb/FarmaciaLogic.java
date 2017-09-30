@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.persistence.FarmaciaPersitence;
+import co.edu.uniandes.csw.especialistas.persistence.UbicacionPersistence;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -21,6 +23,9 @@ public class FarmaciaLogic {
     @Inject
     private FarmaciaPersitence persistence;
     
+    @Inject 
+    UbicacionPersistence up;
+    
         /**
      * Método encargado de persistir un farmacia nuevo
      * @param entity Entidad del farmacia
@@ -28,6 +33,7 @@ public class FarmaciaLogic {
      */
     public FarmaciaEntity createFarmacia(FarmaciaEntity entity)
     {
+        up.create(entity.getUbicacion());
         persistence.create(entity);
         return entity;
     }
@@ -37,18 +43,11 @@ public class FarmaciaLogic {
      * @param id Id del farmacia
      * @return true si la entidad fue eliminada, false de lo contrario
      */
-    public boolean deleteFarmacia(Long id)
+    public FarmaciaEntity deleteFarmacia(Long id)throws BusinessLogicException
     {
-        boolean deleted = false;
         persistence.deleteById(id);
         FarmaciaEntity entity = persistence.findById(id);
-        
-        //Se comprueba si se eliminó la entidad
-        if(entity == null)
-        {
-            deleted = true;
-        }
-        return deleted;
+        return  entity;
     }
     
     /**

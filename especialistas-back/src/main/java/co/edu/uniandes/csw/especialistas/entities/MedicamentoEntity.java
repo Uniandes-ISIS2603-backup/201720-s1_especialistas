@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.entities;
 
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,17 @@ public class MedicamentoEntity implements Serializable{
         farmacias.add(farmacia);
     }
 
+    public void eliminarFarmcia(FarmaciaEntity farmacia)throws BusinessLogicException
+    {
+
+        if(farmacias==null || !farmacias.contains(farmacia))
+        {
+            throw new BusinessLogicException("no existe el medicamento");
+        }
+        farmacias.remove(farmacia);
+    }
+
+    @XmlTransient
     public List<FarmaciaEntity> getFarmacias() {
         return farmacias;
     }
