@@ -36,17 +36,17 @@ public class CitaEntity implements Serializable{
          
          @PodamExclude
          @OneToOne()
-         @JoinColumn(name="HORA_ID")
+         
          private HoraEntity hora;
          
          @PodamExclude
          @OneToMany(mappedBy="cita")
-         @JoinColumn(name="ORDEN_ID")
+         
          private List <OrdenMedicaEntity> ordenesMedicas;
         
          @PodamExclude
          @ManyToOne(fetch=FetchType.LAZY)
-         @JoinColumn(name="USUARIO_ID")
+         
          private UsuarioEntity usuario;
         
     public Long getId() {
