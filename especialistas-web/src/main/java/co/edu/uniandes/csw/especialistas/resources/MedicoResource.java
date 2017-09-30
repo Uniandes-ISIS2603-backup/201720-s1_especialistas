@@ -123,6 +123,7 @@ public class MedicoResource {
      * @param id id del medico
      */
     @DELETE
+    @Path("{id: \\d+}")
     public void deleteMedico(@PathParam("id") Long id)
     {
         MedicoEntity entity = logic.getMedico(id);

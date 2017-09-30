@@ -103,6 +103,7 @@ public class HoraResource {
      * @param id id de la hora
      */
     @DELETE
+    @Path("{id: \\d+}")
     public void deleteHora(@PathParam("id") Long id)
     {
         HoraEntity entity = logic.getHora(id);
