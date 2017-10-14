@@ -19,7 +19,7 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
+									"tests[\"Código de error correcto\"] = responseCode.code ===200;"
 								]
 							}
 						}
@@ -37,6 +37,39 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"nombre\" : \"otro Lab\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Error al actualizar un laboratorio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Mensaje de error correcto\"] = responseBody.has(\"No existe un laboratorio\");",
+									"",
+									"tests[\"Código de error correcto\"] = responseCode.code === 500;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/200",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"Laboratorio actualizado\"\n}"
 						},
 						"description": ""
 					},
@@ -105,66 +138,70 @@
 					"response": []
 				},
 				{
-					"name": "Crear un laboratorio",
+					"name": "Consulta laboratorio por nombre",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
+									"tests[\"Código correcto\"] = responseCode.code === 200;"
 								]
 							}
 						}
 					],
 					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/laboratotios",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Es un lab\"\n}"
-						},
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/nuevo lab",
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Error al crear un laboratorio",
+					"name": "Error al consultar un laboratorio",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"tests[\"No crea con el mismo nombre\"] = responseCode.code === 500;",
-									"",
-									"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Ya existe un laboratorio con el nombre \");"
+									"tests[\"Código correcto de error\"] = responseCode.code = 500;",
+									"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No existe un laboratorio\");"
 								]
 							}
 						}
 					],
 					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/laboratorios",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/Lab Fake",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "El nombre dado no existe"
+					},
+					"response": []
+				},
+				{
+					"name": "Error al consultar un laboratorio por id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Código correcto de error\"] = responseCode.code = 500;",
+									"tests[\"E mensaje correcto de error es\"] = responseBody.has(\"No existe un laboratorio\");"
+								]
 							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"nombre\": \"es un lab\"\n}"
-						},
-						"description": ""
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/200",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "El id del laboratorio dado no existe."
 					},
 					"response": []
 				},
@@ -176,7 +213,7 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
+									"tests[\"status code is 204\"] = responseCode.code ===204;"
 								]
 							}
 						}
@@ -194,6 +231,165 @@
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar todos 1.0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 204\"] = responseCode.code ===204;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/20",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Error al eliminar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 500\"] = responseCode.code === 500;",
+									"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No existe un laboratorio\")"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios/210",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "El id dado no existe\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Error al consultar todos los laboratorios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"código correcto\"] = responseCode.code === 500;",
+									"tests[\"mensaje correcto\"] = responseBody.has(\"no hay\")"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"nombre\": \"nuevo lab\"}"
+						},
+						"description": "Error dado que no hay ningún laboratorio"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un laboratorio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Laboratorio nuevo\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Error al crear un laboratorio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Código de error correcto\"] = responseCode.code === 500;",
+									"",
+									"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Ya existe un laboratorio\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/laboratorios",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Laboratorio nuevo\"\n}"
 						},
 						"description": ""
 					},
