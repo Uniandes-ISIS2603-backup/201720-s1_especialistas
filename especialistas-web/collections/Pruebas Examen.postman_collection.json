@@ -12,37 +12,6 @@
 			"description": "",
 			"item": [
 				{
-					"name": "Crear un examen",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "http://localhost:8080/especialistas-web/api/examenes",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"nombre\": \"examen\",\r\n\t\"precio\":20000,\r\n\t\"recomendacion\": \"esto es un examen\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
 					"name": "Consultar todos los examenes",
 					"event": [
 						{
@@ -50,7 +19,7 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
+									"tests[\"status code is 200\"] = responseCode.code === 200;"
 								]
 							}
 						}
@@ -81,7 +50,7 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
+									"tests[\"status code is 200\"] = responseCode.code === 200;"
 								]
 							}
 						}
@@ -101,6 +70,74 @@
 							"raw": "{\r\n\t\"nombre\": \"examen\",\r\n\t\"precio\":20000,\r\n\t\"recomendacion\": \"esto es un examen\"\r\n}"
 						},
 						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Error al consultar por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"código de error correcto\"] = responseCode.code === 500;",
+									"tests[\"mensaje correcto de error\"] = responseBody.has(\"No existe un examen con el id\")"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes/850",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "No existe el examen con el id dado"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar por nombre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"código de error\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes/examen",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Error al consultar un examen por nombre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"código de error\"] = responseCode.code === 500;",
+									"tests[\"mensaje correcto de error\"] = responseBody.has(\"No existe un examen\")"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes/no existe",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "El nombre dado no existe"
 					},
 					"response": []
 				},
@@ -136,14 +173,46 @@
 					"response": []
 				},
 				{
-					"name": "Elimina el examen con el id dado",
+					"name": "Error al actualizar",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"tests[\"status code is 200\"] = responseCode.code ===200;"
+									"tests[\"código correcto de error\"] = responseCode.code === 500;",
+									"tests[\"mensaje correcto\"] = responseBody.has(\"No existe un examen\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes/625",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Laboratorio occidente\",\n\t\"precio\":20000,\n\t\"recomendacion\": \"ninguna\"\n}"
+						},
+						"description": "El id dado del examen a actualizar no existe."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar examen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"scódigo correcto de error\"] = responseCode.code ===204;"
 								]
 							}
 						}
@@ -161,6 +230,123 @@
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar todos 1.0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"scódigo correcto de error\"] = responseCode.code ===204;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes/3",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Error al consultar todos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"código correcto de error\"] = responseCode.code = 500;",
+									"tests[\"mensaje correcto de error\"] = responseBody.has(\"no hay examenes\")"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "No hay examenes para consultar"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un examen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"código correcto\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"examen\",\r\n\t\"precio\":20000,\r\n\t\"recomendacion\": \"esto es un examen\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Error al crear un examen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"código correcto de error\"] = responseCode.code === 500;",
+									"tests[\"mensaje correcto de error\"] = responseBody.has(\"Ya existe un examen\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/especialistas-web/api/examenes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"examen\",\r\n\t\"precio\":20000,\r\n\t\"recomendacion\": \"esto es un examen\"\r\n}"
 						},
 						"description": ""
 					},
