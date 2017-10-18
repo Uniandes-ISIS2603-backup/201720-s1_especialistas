@@ -5,8 +5,6 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-
-
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -19,6 +17,8 @@ import javax.ws.rs.Produces;
 import co.edu.uniandes.csw.especialistas.ejb.CitaLogic;
 import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
 import co.edu.uniandes.csw.especialistas.dtos.CitaDTO;
+import co.edu.uniandes.csw.especialistas.dtos.CitaDetailDTO;
+import javax.ws.rs.WebApplicationException;
 
 
 /**
@@ -58,6 +58,9 @@ public class CitaResource {
     public CitaEntity getCita(@PathParam("id") Long id)
     {
         CitaEntity entity = logic.getCita(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
+        }
         return entity;
     }
     
@@ -74,25 +77,35 @@ public class CitaResource {
     
     /**
      * Recurso para actualizar un Cita
+     * @param id Id de la cita a modificar
      * @param cita JSON con los detalles del Cita
      * @return Cita actualizado
      */
     @PUT
-    public CitaEntity updateCita(CitaDTO cita)
+    @Path("{id: \\d+}")
+    public CitaDetailDTO updateCita(@PathParam("id") Long id, CitaDetailDTO cita)
     {
         CitaEntity entity = cita.toEntity();
-        return logic.updateCita(entity);
+        CitaEntity e = logic.getCita(id);
+        if (e == null) {
+            throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
+        }
+        return new CitaDetailDTO(logic.updateCita(id,entity));
     }
     
     /**
      * Recurso que elimina un Cita
      * @param id id del Cita
-     * @return true si se eliminó el Cita, false de lo contrario
      */
     @DELETE
-    public boolean deleteCita(@PathParam("id") Long id)
+    @Path("{id: \\d+}")
+    public void deleteCita(@PathParam("id") Long id)
     {
-        return logic.deleteCita(id);
+        CitaEntity entity = logic.getCita(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
+        }
+        logic.deleteCita(id);
     }
     
     
