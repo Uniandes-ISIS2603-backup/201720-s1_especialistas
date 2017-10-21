@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.Especializacion;
+import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.MedicoPersistence;
 import java.util.List;
@@ -21,6 +22,9 @@ public class MedicoLogic {
            
     @Inject
     private MedicoPersistence persistence;
+    
+    @Inject
+    private HoraLogic horaLogic;
     
     /**
      * Método encargado de persistir un medico nuevo
@@ -39,8 +43,12 @@ public class MedicoLogic {
      */
     public void deleteMedico(Long id)
     {
+        MedicoEntity medico = getMedico(id);
+        for(HoraEntity hora : medico.getAgenda()){
+            hora.setMedico(null);
+            horaLogic.updateHora(hora.getId(), hora);
+        }
         persistence.delete(id);
-        MedicoEntity entity = persistence.find(id);
     }
     
     /**
