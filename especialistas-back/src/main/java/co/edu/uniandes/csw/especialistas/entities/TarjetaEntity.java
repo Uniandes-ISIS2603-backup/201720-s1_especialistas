@@ -40,19 +40,12 @@ public class TarjetaEntity implements Serializable{
     private PagoEntity pago;
     
     
-    /**
-     * 
-     */
-    @PodamExclude
-    private UsuarioEntity usuario;
-    
-    
     //Getters y setters
      
      public Long getId() {
         return id;
     }
-
+     
     public void setId(Long id) {
         this.id = id;
     }  

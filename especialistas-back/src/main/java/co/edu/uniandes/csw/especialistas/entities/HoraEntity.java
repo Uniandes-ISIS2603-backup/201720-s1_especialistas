@@ -110,6 +110,7 @@ public class HoraEntity implements Serializable{
         this.cita = cita;
     }
     
+    @Override
     public boolean equals(Object obj) 
     {
         if(obj != null)
