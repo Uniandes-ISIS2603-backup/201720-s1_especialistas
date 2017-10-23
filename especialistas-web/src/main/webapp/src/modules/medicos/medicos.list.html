@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Especializacion</th>  
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="medico in medicosRecords">
+                    <td id="{{$index}}-nombre">{{author.nombre}}</td>
+                    <td id="{{$index}}-especializacion">{{author.especializacion}}</td>                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
