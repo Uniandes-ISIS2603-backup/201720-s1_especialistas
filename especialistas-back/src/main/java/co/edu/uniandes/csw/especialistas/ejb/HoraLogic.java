@@ -39,7 +39,6 @@ public class HoraLogic {
     public void deleteHora(Long id)
     {
         persistence.delete(id);
-        HoraEntity entity = persistence.find(id);
     }
     
     /**

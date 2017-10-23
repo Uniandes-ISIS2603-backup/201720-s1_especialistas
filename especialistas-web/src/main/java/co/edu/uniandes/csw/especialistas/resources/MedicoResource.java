@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.HoraDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HoraDetailDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicoDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.MedicoLogic;
@@ -140,7 +141,7 @@ public class MedicoResource {
      */
     @GET
     @Path("{id: \\d+}/agenda")
-    public List<HoraDetailDTO> getAgenda(@PathParam("medicosid") Long id){
+    public List<HoraDetailDTO> getAgenda(@PathParam("id") Long id){
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
@@ -161,8 +162,8 @@ public class MedicoResource {
      * @return agenda cambiada
      */
     @PUT
-    @Path("{medicosid: \\d+}/agenda")
-    public List<HoraDetailDTO> cambiarAgenda(@PathParam("medicosid") Long id, List<HoraDetailDTO> agenda){
+    @Path("{id: \\d+}/agenda")
+    public List<HoraDetailDTO> cambiarAgenda(@PathParam("id") Long id, List<HoraDTO> agenda){
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
@@ -173,6 +174,7 @@ public class MedicoResource {
             lista.add(hora.toEntity());
         });
         newEntity.setAgenda(lista);
+        logic.updateMedico(id, newEntity);
         return getAgenda(id);
     }
 }

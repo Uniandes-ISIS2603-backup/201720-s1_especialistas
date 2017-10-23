@@ -27,7 +27,7 @@ public class TarjetaDTO {
      */
     public TarjetaDTO()
     {
-        
+        //crea una targeta vacia
     }
     
     /**

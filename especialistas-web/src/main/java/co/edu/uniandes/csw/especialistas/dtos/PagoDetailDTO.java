@@ -23,7 +23,7 @@ public class PagoDetailDTO extends PagoDTO{
      */
     public PagoDetailDTO()
     {
-        
+        //crea un pagoDetail vacio
     }
     
     /**
