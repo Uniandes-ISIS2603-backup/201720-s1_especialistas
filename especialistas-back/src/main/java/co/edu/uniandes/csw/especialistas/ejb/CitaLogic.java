@@ -72,11 +72,13 @@ public class CitaLogic {
     
     /**
      * Método encargado de actualizar la información de un Cita
+     * @param id Id de la cita a modificar
      * @param entity Cita con la nueva información
      * @return Entidad con la información del Cita actualizado
      */
-    public CitaEntity updateCita(CitaEntity entity)
+    public CitaEntity updateCita(Long id, CitaEntity entity)
     {
+        entity.setId(id);
         persistence.update(entity);
         return entity;
     }

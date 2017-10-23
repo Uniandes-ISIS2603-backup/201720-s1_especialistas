@@ -71,8 +71,8 @@ public class CitaPersistence {
         return false;
     }
         
-    public void update(CitaEntity Cita) {
-        em.merge(Cita);
+    public CitaEntity update(CitaEntity Cita) {
+        return em.merge(Cita);
     }
 
     public List<CitaEntity> findAll() {

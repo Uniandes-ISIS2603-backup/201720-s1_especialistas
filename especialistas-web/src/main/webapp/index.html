@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html ng-app="mainApp">
-    <head>
-        <title>Start Page</title>
+    <head>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Start Page</title>
 
         <!--Dependencias externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+           <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         
+        <!-- Medicos -->
+        <script src="src/modules/medicos/medicos.mod.js" type="text/javascript"></script>
+        <script src="src/modules/medicos/medicos.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/medicos/farmacias.mod.js" type="text/javascript"></script>
+        <script src="src/modules/medicos/farmacias.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/app.js" type="text/javascript"></script> 
 
     </head>
     <body>
@@ -25,10 +35,11 @@
                     <li><a href="#">Hospitales</a></li>
                     <li><a href="#">Usuarios</a></li>
                     <li><a ui-sref="farmaciaList" >Farmacias</a></li>
-                    <li><a href="#">Médicos</a></li>
+                    <li><a ui-sref="medicosList">Médicos</a></li>
                 </ul>
             </div>
-
+            <div ui-view="mainView">
+            </div> 
         </nav>
     </body>
 </html>

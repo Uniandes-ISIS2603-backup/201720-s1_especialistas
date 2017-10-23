@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
+import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
+import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,9 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class UsuarioPersistenceTest {
     @Inject
     private UsuarioPersistence persistence;
+    
+    @Inject
+    private TarjetaPersistence persistence2;
     
     @PersistenceContext
     private EntityManager em;
@@ -112,6 +117,16 @@ public class UsuarioPersistenceTest {
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
+        
+        CitaEntity newCita = new CitaEntity();
+        
+        newEntity.addCita(newCita);
+        
+        TarjetaEntity newTarjeta = new TarjetaEntity();
+        newTarjeta.setNumero(0001);
+        
+        newEntity.setTarjeta(newTarjeta);
+        
         UsuarioEntity result = persistence.create(newEntity);
         
         Assert.assertNotNull(result);
@@ -121,6 +136,10 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(newEntity.getCedula(), entity.getCedula());
         Assert.assertEquals(newEntity.getCitas(), entity.getCitas());
         Assert.assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
+        Assert.assertEquals(newEntity.getTarjeta().getNumero(), entity.getTarjeta().getNumero());
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals(newTarjeta));
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
     }
     
     /**
@@ -160,6 +179,7 @@ public class UsuarioPersistenceTest {
     @Test
     public void testFind() throws Exception {
         UsuarioEntity entity = data.get(0);
+        System.out.println("holi");
         UsuarioEntity result = persistence.find(entity.getId());
         Assert.assertNotNull(result);
         Assert.assertEquals(entity.getNombre(), result.getNombre());
