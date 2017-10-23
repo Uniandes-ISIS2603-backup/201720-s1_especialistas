@@ -36,7 +36,7 @@ public class UsuarioPersistence {
     public UsuarioEntity create(UsuarioEntity entity) {
         LOGGER.info("Creando un nuevo usuario");
         em.persist(entity);
-        LOGGER.info("Creado Examen nuevo");
+        LOGGER.info("Creado un usuario nuevo");
         return entity;
     }
     

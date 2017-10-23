@@ -38,7 +38,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
      */
     public UsuarioDetailDTO()
     {
-        
+        //crea un usuario detail vacio
     }
     
     /**
