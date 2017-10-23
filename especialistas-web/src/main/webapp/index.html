@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="mainApp">
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        
 
     </head>
     <body>
@@ -23,7 +24,7 @@
                     <li class="active"><a href="#">Página Principal <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Hospitales</a></li>
                     <li><a href="#">Usuarios</a></li>
-                    <li><a ui-sref="farmaciaList">Farmacias</a></li>
+                    <li><a ui-sref="farmaciaList" >Farmacias</a></li>
                     <li><a href="#">Médicos</a></li>
                 </ul>
             </div>
