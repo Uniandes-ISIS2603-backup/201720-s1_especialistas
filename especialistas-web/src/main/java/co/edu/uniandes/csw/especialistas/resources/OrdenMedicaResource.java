@@ -6,10 +6,10 @@
 package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.OrdenMedicaDTO;
+import co.edu.uniandes.csw.especialistas.dtos.OrdenMedicaDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.OrdenMedicaLogic;
 import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,6 +18,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -54,6 +55,9 @@ public class OrdenMedicaResource {
     public OrdenMedicaEntity getOrdenMedica(@PathParam("id") Long id)
     {
         OrdenMedicaEntity entity = logic.getOrdenMedica(id);
+         if (entity == null) {
+            throw new WebApplicationException("El recurso /ordenesMedicas/" + id + " no existe.", 404);
+        }
         return entity;
     }
     
@@ -70,25 +74,36 @@ public class OrdenMedicaResource {
     
     /**
      * Recurso para actualizar un OrdenMedica
+     * @param id
      * @param ordenMedica JSON con los detalles del OrdenMedica
      * @return OrdenMedica actualizado
      */
     @PUT
-    public OrdenMedicaEntity updateOrdenMedica(OrdenMedicaDTO ordenMedica)
+    @Path("{id: \\d+}")
+    public OrdenMedicaDetailDTO updateOrdenMedica(@PathParam("id") Long id,OrdenMedicaDetailDTO ordenMedica)
     {
         OrdenMedicaEntity entity = ordenMedica.toEntity();
-        return logic.updateOrdenMedica(entity);
+        OrdenMedicaEntity e = logic.getOrdenMedica(id);
+         if (e == null) {
+            throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
+        }
+        return new OrdenMedicaDetailDTO(logic.updateOrdenMedica(id,entity));
     }
     
     /**
      * Recurso que elimina un OrdenMedica
      * @param id id del OrdenMedica
-     * @return true si se eliminó el OrdenMedica, false de lo contrario
      */
     @DELETE
-    public boolean deleteOrdenMedica(@PathParam("id") Long id)
+    @Path("{id: \\d+}")
+    public void deleteOrdenMedica(@PathParam("id") Long id)
     {
-        return logic.deleteOrdenMedica(id);
+        
+        OrdenMedicaEntity entity = logic.getOrdenMedica(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /ordenesMedicas/" + id + " no existe.", 404);
+        }
+        logic.deleteOrdenMedica(id);
     }
     
     
