@@ -14,7 +14,7 @@ import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 public class TarjetaDetailDTO extends TarjetaDTO{
      public TarjetaDetailDTO()
     {
-        
+        //crea una targeta detail vacia
     }
     
     /**

@@ -33,7 +33,7 @@ public class UsuarioDTO {
      */
     public UsuarioDTO()
     {
-        
+        //crea un usuario vacio
     }
     
     /**

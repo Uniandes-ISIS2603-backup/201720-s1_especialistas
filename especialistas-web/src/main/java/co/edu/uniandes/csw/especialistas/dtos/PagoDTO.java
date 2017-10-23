@@ -39,7 +39,7 @@ public class PagoDTO {
      */
     public PagoDTO()
     {
-        
+       //crea un pago vacio 
     }
     
     /**

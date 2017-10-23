@@ -6,13 +6,14 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -44,23 +45,15 @@ public class UsuarioEntity implements Serializable{
      * atributo que modela las citas del usuario
      */
     @PodamExclude
-    @OneToMany(mappedBy="usuario")
-    private List <CitaEntity> citasMedicas;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
+    private List<CitaEntity> citasMedicas = new ArrayList<CitaEntity>();
     
     /**
      * atributo que modela la targeta del usuario
      */
     @PodamExclude
-    @OneToOne(mappedBy="usuario")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private TarjetaEntity tarjeta;
-    
-     
-//    /**
-//     * Ubicacion del usuario
-//     */
-//    @PodamExclude
-//    @OneToOne(mappedBy = "usuario")
-//    private UbicacionEntity ubicacion;
     
     //Getters and setters
     /**
@@ -78,23 +71,7 @@ public class UsuarioEntity implements Serializable{
      public void setTarjeta(TarjetaEntity tarjeta){
          this.tarjeta = tarjeta;
      }
-     
-//     /**
-//      * getter del atributo ubicacion
-//      * @return 
-//      */
-//     public UbicacionEntity getUbicacion(){
-//         return this.ubicacion;
-//     }
-//     
-//     /**
-//      * setter del atributo ubicacion
-//      * @param ubicacion 
-//      */
-//     public void setUbicacion(UbicacionEntity ubicacion){
-//         this.ubicacion = ubicacion;
-//     }
-//    
+  
     public Long getId() {
         return id;
     }
@@ -117,6 +94,14 @@ public class UsuarioEntity implements Serializable{
      */
     public void setCitas(List<CitaEntity> citasMedicas){
         this.citasMedicas = citasMedicas;
+    }
+    
+    /**
+     * agrega una cita individal al usuario
+     * @param cita 
+     */
+    public void addCita(CitaEntity cita){
+        this.citasMedicas.add(cita);
     }
     
     /**

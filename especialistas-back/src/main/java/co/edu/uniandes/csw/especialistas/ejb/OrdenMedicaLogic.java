@@ -72,11 +72,13 @@ public class OrdenMedicaLogic {
     
     /**
      * Método encargado de actualizar la información de un OrdenMedica
+     * @param id
      * @param entity OrdenMedica con la nueva información
      * @return Entidad con la información del OrdenMedica actualizado
      */
-    public OrdenMedicaEntity updateOrdenMedica(OrdenMedicaEntity entity)
+    public OrdenMedicaEntity updateOrdenMedica(Long id,OrdenMedicaEntity entity)
     {
+        entity.setId(id);
         persistence.update(entity);
         return entity;
     }
