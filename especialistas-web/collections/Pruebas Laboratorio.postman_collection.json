@@ -36,7 +36,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\" : \"otro Lab\"\n}"
+							"raw": "{\n\t\"nombre\": \"Actualizado lab\",\n\t\"ubicacion\":{\n\t\t\"nombre\" : \"en un lugar\",\n\t\t\"longitud\":7,\n\t\t\"latitud\":7.2\n\t}\n}"
 						},
 						"description": ""
 					},
@@ -356,7 +356,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Laboratorio nuevo\"\n}"
+							"raw": "{\n\t\"nombre\": \"Laborato nuevo\",\n\t\"ubicacion\":{\n\t\t\"nombre\" : \"ubicacion\",\n\t\t\"longitud\":6,\n\t\t\"latitud\":5\n\t}\n}"
 						},
 						"description": ""
 					},
@@ -389,7 +389,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Laboratorio nuevo\"\n}"
+							"raw": "{\n\t\"nombre\": \"Laborato nuevo\",\n\t\"ubicacion\":{\n\t\t\"nombre\" : \"ubicacion\",\n\t\t\"longitud\":6,\n\t\t\"latitud\":5\n\t}\n}"
 						},
 						"description": ""
 					},
