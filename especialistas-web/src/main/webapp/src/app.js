@@ -4,7 +4,8 @@
         'ui.router',
         'ui.bootstrap',
         // Internal modules dependencies       
-        'medicoModule'
+        'medicoModule',
+        'farmaciaModule'
 
     ]);
     // Resuelve problemas de las promesas

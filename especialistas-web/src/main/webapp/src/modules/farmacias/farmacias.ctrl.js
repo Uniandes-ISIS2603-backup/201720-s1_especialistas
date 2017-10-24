@@ -4,7 +4,7 @@
     mod.controller('farmaciaCtrl', ['$scope', '$http', 'farmaciasContext',
         function ($scope, $http,farmaciasContext) {
             $http.get(farmaciasContext).then(function (response) {
-                $scope.farmacia = response.data;
+                $scope.farmacias = response.data;
             });
         }
     ]);

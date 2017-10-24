@@ -6,12 +6,10 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/farmacias/';
-            // Mostrar la lista de autores será el estado por defecto del módulo
-            $urlRouterProvider.otherwise("farmaciasList");
             // Definición del estado 'authorsList' donde se listan los autores
-            $stateProvider.state('farmaciaList', {
+            $stateProvider.state('farmaciasList', {
                 // Url que aparecerá en el browser
-                url: '/farmacia/list',
+                url: '/farmacias/list',
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'farmacias.list.html',
