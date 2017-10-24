@@ -33,10 +33,10 @@ public class LaboratorioEntity implements Serializable {
     private Long id;
     
     /**
-     * Representa las exámenes con los que se asocia
+     * Representa los exámenes con los que se asocia
      */
     @PodamExclude
-    @ManyToMany 
+    @ManyToMany (cascade = CascadeType.PERSIST)
     private List<ExamenEntity> examenes;
 
     @OneToOne (cascade = CascadeType.ALL)
