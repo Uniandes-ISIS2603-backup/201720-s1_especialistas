@@ -1,14 +1,19 @@
-(function (ng) {
+(function(ng) {
     var app = angular.module('mainApp', [
-        // External dependencies
+        //External dependencies
         'ui.router',
         'ui.bootstrap',
-        // Internal modules dependencies       
-        'medicoModule'
-
+        //Internal modules dependencies
+        'medicoModule',
+        'laboratoriosModule',
+        'farmaciaModule',
+        'citasModule',
+        'consultoriosModule',
+        'hospitalesModule'
     ]);
-    // Resuelve problemas de las promesas
+    //Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
-            $qProvider.errorOnUnhandledRejections(false);
-        }]);
+            $qProvider.errorOnUnhandledRejections(false);               
+    }]);
+    
 })(window.angular);
