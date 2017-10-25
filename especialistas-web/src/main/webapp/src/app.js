@@ -6,7 +6,8 @@
         //Internal modules dependencies
         'medicoModule',
         'laboratoriosModule',
-        'farmaciaModule'
+        'farmaciaModule',
+        'citasModule'
     ]);
     //Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

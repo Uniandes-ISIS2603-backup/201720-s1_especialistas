@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Comentarios</th>                          
+                </tr>
+            </thead>
+       
+            <tbody>
+                <tr ng-repeat="cita in citas">
+                    <td id="{{$index}}-comentarios">{{cita.comentarios}}</td>
+                    <td> <button id="{{$index}}-reagendar-btn" class="btn btn-default btn-sm" href="#">Reagendar</button></td>
+                    <td> <button id="{{$index}}-cancelar-btn" class="btn btn-default btn-sm" href="#">Cancelar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
