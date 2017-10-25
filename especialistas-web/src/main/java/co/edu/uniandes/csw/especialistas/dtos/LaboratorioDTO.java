@@ -5,8 +5,11 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+import co.edu.uniandes.csw.especialistas.entities.ExamenEntity;
 import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,6 +19,8 @@ public class LaboratorioDTO {
 
     private Long id;
     private String nombre;
+    private UbicacionDTO ubicacion;
+    private List<ExamenDetailDTO> examenes;
 
     public LaboratorioDTO() {
 
@@ -29,11 +34,21 @@ public class LaboratorioDTO {
     public LaboratorioDTO(LaboratorioEntity laboratorio) {
         this.id = laboratorio.getId();
         this.nombre = laboratorio.getNombre();
+        UbicacionEntity lugar = laboratorio.getUbicacion();
+        if(lugar != null){
+            ubicacion = new UbicacionDTO(lugar);
+        }
+        if(laboratorio.getExamenes() == null){
+            laboratorio.setExamenes(new ArrayList<>());
+        }
+        else if(laboratorio.getExamenes() != null){
+        this.examenes = examsToDTO(laboratorio.getExamenes());}
     }
 
     /**
      * getters y setters
-     **/
+     *
+     */
     public void setId(Long id) {
         this.id = id;
     }
@@ -49,6 +64,23 @@ public class LaboratorioDTO {
     public String getNombre() {
         return this.nombre;
     }
+
+    public List<ExamenDetailDTO> getExamenes() {
+        return examenes;
+    }
+
+    public void setExamenes(List<ExamenDetailDTO> examenes) {
+        this.examenes = examenes;
+    }
+    
+    public UbicacionDTO getUbicacion(){
+        return ubicacion;
+    }
+    
+    public void setUbicacion(UbicacionDTO ubicacion){
+        this.ubicacion = ubicacion;
+    }
+
     /**
      * Convierte un DTO a un Entity
      *
@@ -58,7 +90,33 @@ public class LaboratorioDTO {
         LaboratorioEntity laboratorio = new LaboratorioEntity();
         laboratorio.setId(id);
         laboratorio.setNombre(nombre);
+        laboratorio.setUbicacion(this.ubicacion.toEntity());
+        if(examenes == null ){
+            examenes = new ArrayList<>();
+        }
+        else if (examenes != null){
+        laboratorio.setExamenes(examsToEntity(examenes));
+    }
+        
+        
+        
         return laboratorio;
+    }
+
+    public List<ExamenEntity> examsToEntity(List<ExamenDetailDTO> lista) {
+        List<ExamenEntity> exams = new ArrayList<>();
+        for (ExamenDetailDTO a : lista) {
+            exams.add(a.toEntity());
+        }
+        return exams;
+    }
+
+    public List<ExamenDetailDTO> examsToDTO(List<ExamenEntity> lista) {
+        List<ExamenDetailDTO> exams= new ArrayList<>();
+        for (ExamenEntity a : lista) {
+            exams.add(new ExamenDetailDTO(a));
+        }
+        return exams;
     }
 
 }

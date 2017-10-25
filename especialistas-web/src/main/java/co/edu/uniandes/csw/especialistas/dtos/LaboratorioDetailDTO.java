@@ -32,6 +32,7 @@ public class LaboratorioDetailDTO extends LaboratorioDTO {
     @Override
     public LaboratorioEntity toEntity() {
         LaboratorioEntity laboratorio = super.toEntity();
+        
         return laboratorio;
     }
 }

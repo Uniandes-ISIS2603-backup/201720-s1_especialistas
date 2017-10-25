@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.LaboratorioDetailDTO;
+import co.edu.uniandes.csw.especialistas.dtos.UbicacionDTO;
 import co.edu.uniandes.csw.especialistas.ejb.LaboratorioLogic;
 import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
 import java.util.ArrayList;
@@ -46,7 +47,6 @@ public class LaboratorioResource {
 
         return new LaboratorioDetailDTO(nuevoLab);
     }
-
     @GET
     public List<LaboratorioDetailDTO> getLaboratorios() throws WebApplicationException {
         List<LaboratorioEntity> labEntities = logic.getLaboratorios();

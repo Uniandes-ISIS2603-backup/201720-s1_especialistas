@@ -6,6 +6,9 @@
 package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.ExamenEntity;
+import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,6 +20,7 @@ public class ExamenDTO {
     private String nombre;
     private Double precio;
     private String recomendacion;
+    private List<LaboratorioDetailDTO> labs;
 
     public ExamenDTO() {
 
@@ -32,9 +36,21 @@ public class ExamenDTO {
         this.nombre = examen.getnombre();
         this.precio = examen.getPrecio();
         this.recomendacion = examen.getRecomedacion();
+        if(examen.getLaboratorios() == null){
+            examen.setLaboratorios(new ArrayList<>());
+        }
+        this.labs = labToDTO(examen.getLaboratorios());
     }
 
     //getters y setters
+    public void setLaboratorios(List<LaboratorioDetailDTO> laboratorios){
+    this.labs = laboratorios;    
+    }
+    
+    public List<LaboratorioDetailDTO> getLaboratorios(){
+        return this.labs;
+    }
+    
     public void setId(Long id) {
         this.id = id;
     }
@@ -81,4 +97,10 @@ public class ExamenDTO {
         return examen;
     }
 
+    private List<LaboratorioDetailDTO> labToDTO(List<LaboratorioEntity> lista){
+        List<LaboratorioDetailDTO> labs = new ArrayList<>();
+        for( LaboratorioEntity a : lista)
+            labs.add(new LaboratorioDetailDTO(a));
+        return labs;
+    }
 }

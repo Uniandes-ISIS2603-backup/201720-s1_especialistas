@@ -6,12 +6,14 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -31,13 +33,14 @@ public class LaboratorioEntity implements Serializable {
     private Long id;
     
     /**
-     * Representa las exámenes con los que se asocia
+     * Representa los exámenes con los que se asocia
      */
     @PodamExclude
-    @ManyToMany 
+    @ManyToMany (cascade = CascadeType.PERSIST)
     private List<ExamenEntity> examenes;
 
     @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "ubicacionID")
     private UbicacionEntity ubicacion;
 
     /**
@@ -47,6 +50,9 @@ public class LaboratorioEntity implements Serializable {
 
     // getters y setters
     public List<ExamenEntity> getExamenes() {
+        if(examenes == null){
+            examenes = new ArrayList<>();
+        }
         return examenes;
     }
     public Long getId() {
