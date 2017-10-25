@@ -7,7 +7,8 @@
         'medicoModule',
         'laboratoriosModule',
         'farmaciaModule',
-        'citasModule'
+        'citasModule',
+        'consultoriosModule'
     ]);
     //Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

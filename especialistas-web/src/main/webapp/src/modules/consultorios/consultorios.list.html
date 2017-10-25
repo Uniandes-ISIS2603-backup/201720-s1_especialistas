@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>     
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="consultorio in consultoriosRecords">
+                    <td id="{{$index}}-nombre">{{consultorio.nombre}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
