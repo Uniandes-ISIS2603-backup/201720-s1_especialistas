@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Referencia</th>    
+                    <th>Precio</th>  
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pago in pagosRecords">
+                    <td id="{{$index}}-ref">{{pago.ref}}</td>
+                    <td id="{{$index}}-precio">{{pago.precio}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
