@@ -38,10 +38,11 @@ public class LaboratorioDTO {
         if(lugar != null){
             ubicacion = new UbicacionDTO(lugar);
         }
+        
         if(laboratorio.getExamenes() == null){
             laboratorio.setExamenes(new ArrayList<>());
         }
-        else if(laboratorio.getExamenes() != null){
+        else if (laboratorio.getExamenes() != null) {
         this.examenes = examsToDTO(laboratorio.getExamenes());}
     }
 

@@ -12,9 +12,31 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('labCreate', {
+                url: '/laboratorios/create',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'post/labs.new.html',
+                        controller: 'labNewCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('labDelete', {
+                url: '/laboratorios/delete/{laboratorioId:int}',
+                parent: 'laboratorios',
+                param: {
+                    laboratorioId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/labs.delete.html',
+                        controller: 'labDeleteCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
-        }
-    ]);
+
+        }]);
 })(window.angular);
 
 

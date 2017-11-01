@@ -4,14 +4,22 @@
             <thead>
                 <tr>
                     <th>Nombre</th>     
+                    <th>Ubicacion</th>
 
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="laboratorio in laboratoriosRecords">
                     <td id="{{$index}}-nombre">{{laboratorio.nombre}}</td>
-                </tr>
+                    <td id ="{{$index}}-ubicacion}">{{laboratorio.ubicacion.nombre}}</td>
+                    <td>
+                        <button class="btn btn-default btn-sm">Actualizar</button>
+                        <button class="btn btn-default btn-sm" ui-sref="labDelete">Eliminar</button>
+                    </td>
+            </tr>
+            
             </tbody>
         </table>
+        <button type="button" ui-sref='labCreate'> Crear </button>
     </div>
 </div>
