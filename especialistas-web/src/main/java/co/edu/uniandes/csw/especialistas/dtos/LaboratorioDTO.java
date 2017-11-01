@@ -41,7 +41,7 @@ public class LaboratorioDTO {
         if(laboratorio.getExamenes() == null){
             laboratorio.setExamenes(new ArrayList<>());
         }
-        else if(laboratorio.getExamenes() != null){
+        else{
         this.examenes = examsToDTO(laboratorio.getExamenes());}
     }
 
