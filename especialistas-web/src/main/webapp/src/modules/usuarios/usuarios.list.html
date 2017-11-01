@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Cedula</th>  
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="usuario in usuariosRecords">
+                    <td id="{{$index}}-nombre">{{usuario.nombre}}</td>
+                    <td id="{{$index}}-cedula">{{usuario.cedula}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
