@@ -117,6 +117,11 @@ public class TarjetaPersistenceTest {
         TarjetaEntity entity = em.find(TarjetaEntity.class, result.getId());
         assertNotNull(entity);
         assertEquals(newEntity.getNumero(), entity.getNumero());
+        assertEquals(newEntity.getCodigoSeguridad(), entity.getCodigoSeguridad());
+        assertEquals(newEntity.getDireccion(), entity.getDireccion());
+        assertEquals(newEntity.getNumero(), entity.getNumero());
+        assertEquals(newEntity.getVencimiento(), entity.getVencimiento());
+        
         
         Assert.assertEquals(false, entity.equals(null));
         TarjetaEntity diferente = new TarjetaEntity();
@@ -124,6 +129,7 @@ public class TarjetaPersistenceTest {
         
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
         entity.setId(null);
+        Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
     
