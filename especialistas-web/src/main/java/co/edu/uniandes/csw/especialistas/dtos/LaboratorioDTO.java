@@ -94,7 +94,7 @@ public class LaboratorioDTO {
         if(examenes == null ){
             examenes = new ArrayList<>();
         }
-        else if (examenes != null){
+        else {
         laboratorio.setExamenes(examsToEntity(examenes));
     }
         
