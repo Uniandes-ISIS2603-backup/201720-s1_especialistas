@@ -129,6 +129,7 @@ public class TarjetaPersistenceTest {
         
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
         entity.setId(null);
+        Assert.assertEquals(false, newEntity.equals(entity));
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
