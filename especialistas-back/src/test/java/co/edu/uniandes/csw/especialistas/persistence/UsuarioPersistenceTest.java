@@ -120,6 +120,9 @@ public class UsuarioPersistenceTest {
         
         CitaEntity newCita = new CitaEntity();
         
+        ArrayList citasarr = new ArrayList<CitaEntity>();
+        
+        newEntity.setCitas(citasarr);
         newEntity.addCita(newCita);
         
         TarjetaEntity newTarjeta = new TarjetaEntity();
@@ -139,7 +142,10 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(newEntity.getTarjeta().getNumero(), entity.getTarjeta().getNumero());
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(false, entity.equals(newTarjeta));
+        Assert.assertEquals(true, entity.getTarjeta().equals(newTarjeta));
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
     
     /**

@@ -18,6 +18,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -116,6 +117,14 @@ public class TarjetaPersistenceTest {
         TarjetaEntity entity = em.find(TarjetaEntity.class, result.getId());
         assertNotNull(entity);
         assertEquals(newEntity.getNumero(), entity.getNumero());
+        
+        Assert.assertEquals(false, entity.equals(null));
+        TarjetaEntity diferente = new TarjetaEntity();
+        Assert.assertEquals(false, entity.equals(diferente));
+        
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
     
     /**
