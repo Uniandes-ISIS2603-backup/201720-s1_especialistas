@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
+import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -119,16 +120,19 @@ public class TarjetaPersistenceTest {
         assertEquals(newEntity.getNumero(), entity.getNumero());
         assertEquals(newEntity.getCodigoSeguridad(), entity.getCodigoSeguridad());
         assertEquals(newEntity.getDireccion(), entity.getDireccion());
-        assertEquals(newEntity.getNumero(), entity.getNumero());
+        assertEquals(newEntity.getNombre(), entity.getNombre());
         assertEquals(newEntity.getVencimiento(), entity.getVencimiento());
         
         
         Assert.assertEquals(false, entity.equals(null));
         TarjetaEntity diferente = new TarjetaEntity();
         Assert.assertEquals(false, entity.equals(diferente));
+        UsuarioEntity usuario = new UsuarioEntity();
+        Assert.assertEquals(false, entity.equals(usuario));
         
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
         entity.setId(null);
+        
         Assert.assertEquals(false, newEntity.equals(entity));
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(entity.hashCode(), entity.hashCode());
