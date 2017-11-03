@@ -2,38 +2,37 @@
 
     <form novalidate name="form" id="lab-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
 
-        <div ng-messages="form.$error">
+        <div ng-messages="form.$error" >
             <div ng-message="required">Ingrese un nombre</div><br/>
         </div>
 
         <fieldset>
-            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id" />
-            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}">
-                <label for="name" class="col-md-2 control-label">Nombre</label>
-                <div class="col-md-10">
-                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required /><br/>
-                </div>
+            <div class="col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}">
+                <label for="name" class="control-label">Nombre</label>
+                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.nombreLab" required /><br/>
             </div>
-
-            <div class="col-md-10">
+            
+            <!--Datos de la ubicación-->
+            <div class="col-md-12">
                 <div ng-messages="form.$error">
                     <div ng-message="required">Ingrese los datos de la ubicación</div><br/>
                 </div>
-                <label for="nombreUbi" class="col-md-2 control-label">Nombre:</label>
-                <input id="nombreUbi" type="text" class="form-control" name="nombre" ng-model="currentRecord.ubicacion.nombre"> <br>
-                <div class="col-md-6">
-                    <label for="longitud" class="control-label">Longitud:</label>
-                    <input id="longitud" type="number" class="form-control" name="longitud" ng-model="currentRecord.ubicacion.longitud"><br/>
-                </div> 
-                <div class="col-md-6">
-                <label for="latitud" class="control-label">Latitud:</label>
-                <input id="latitud" type="number" min="-90" max="90" class="form-control" name="latitud" ng-model="currentRecord.ubicacion.latitud">
-                </div>
-
+                <label for="nombreUbi" class="control-label">Nombre</label>
+                    <input id="nombreUbi" type="text" class="form-control" name="nombre" ng-model="currentRecord.ubicacion.nombre"required> <br>
             </div>
-            <div class="col-md-10">
-                <br><button type="button" ui-sref='laboratoriosList'>Cancelar</button>
-                <button type="submit" ui-sref='laboratoriosList'>Guardar</button>
+            <div class="col-md-6">
+                <label for="longitud" class="control-label">Longitud</label>
+                <input id="longitud" type="number" class="form-control" name="longitud" ng-model="currentRecord.ubicacion.longitud" required><br/>
+            </div> 
+            <div class="col-md-6">
+                <label for="latitud" class="control-label">Latitud</label>
+                <input id="latitud" type="number" min="-90" max="90" class="form-control" name="latitud" ng-model="currentRecord.ubicacion.latitud" required>
+            </div>
+
+            <div class="col-md-8">
+                <br><button type="button" class="btn btn-default btn-sm" ui-sref='laboratoriosList'>Cancelar</button>
+                <button type="submit" class="btn btn-default btn-sm" ui-sref='laboratoriosList'>Guardar</button>
             </div>
         </fieldset>
     </form>
+</div>

@@ -14,12 +14,14 @@
                     <td id ="{{$index}}-ubicacion}">{{laboratorio.ubicacion.nombre}}</td>
                     <td>
                         <button class="btn btn-default btn-sm">Actualizar</button>
-                        <button class="btn btn-default btn-sm" ui-sref="labDelete">Eliminar</button>
+                        <button class="btn btn-default btn-sm" ui-sref='labDelete'>Eliminar</button>
                     </td>
-            </tr>
-            
+                </tr>
+
             </tbody>
         </table>
-        <button type="button" ui-sref='labCreate'> Crear </button>
+        <div>
+            <button class="btn btn-default btn-sm"  type="button" ui-sref='labCreate'>Crear</button>
+        </div>
     </div>
 </div>

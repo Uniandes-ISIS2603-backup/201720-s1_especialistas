@@ -6,7 +6,7 @@
             var idLab = $state.params.laboratorioId;
             $scope.deleteLab = function () {
                 $http.delete(labsContext + '/' + idLab, {}).then(function (response) {
-                    $state.go('laboratoriosList', {labId: response.data.id}, {reload: true});
+                    $state.go('laboratoriosList', {id: response.data.id}, {reload: true});
                 });
             };
         }
