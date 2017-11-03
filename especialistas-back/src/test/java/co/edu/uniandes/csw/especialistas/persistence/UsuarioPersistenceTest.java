@@ -142,6 +142,7 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(newEntity.getTarjeta().getNumero(), entity.getTarjeta().getNumero());
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(false, entity.equals(newTarjeta));
+        Assert.assertEquals(true, entity.equals(entity));
         Assert.assertEquals(true, entity.getTarjeta().equals(newTarjeta));
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
         entity.setId(null);
