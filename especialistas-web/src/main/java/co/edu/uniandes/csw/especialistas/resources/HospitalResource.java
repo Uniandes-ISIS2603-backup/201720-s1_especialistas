@@ -72,13 +72,13 @@ public class HospitalResource
      */
     @GET
     @Path("{id: \\d+}")
-    public HospitalDTO getHospital(@PathParam("id") Long id)
+    public HospitalDetailDTO getHospital(@PathParam("id") Long id)
     {
         HospitalEntity entity = logic.getHospital(id);
         if(entity == null){
             throw new WebApplicationException("El elemento no existe",404);
         }
-        return new HospitalDTO(entity);
+        return new HospitalDetailDTO(entity);
     }
     
     /**
