@@ -189,7 +189,7 @@ public class UsuarioPersistenceTest {
     @Test
     public void testFind() throws Exception {
         UsuarioEntity entity = data.get(0);
-        System.out.println("holi");
+        
         UsuarioEntity result = persistence.find(entity.getId());
         Assert.assertNotNull(result);
         Assert.assertEquals(entity.getNombre(), result.getNombre());

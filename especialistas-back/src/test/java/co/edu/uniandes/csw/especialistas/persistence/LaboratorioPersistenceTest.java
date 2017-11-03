@@ -120,6 +120,8 @@ public class LaboratorioPersistenceTest {
         LaboratorioEntity newEntity = factory.manufacturePojo(LaboratorioEntity.class);
         LaboratorioEntity result = persistence.create(newEntity);
 
+        LaboratorioEntity laboratorio2 = new LaboratorioEntity();
+        
         Assert.assertNotNull(result);
         LaboratorioEntity entity = em.find(LaboratorioEntity.class, result.getId());
         Assert.assertNotNull(entity);
@@ -127,6 +129,7 @@ public class LaboratorioPersistenceTest {
         Assert.assertEquals(newEntity.getExamenes(), entity.getExamenes());
         Assert.assertEquals(newEntity.getUbicacion(), entity.getUbicacion());
         
+        Assert.assertEquals(true, laboratorio2.getExamenes().isEmpty());
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(false, entity.equals("objet"));
         Assert.assertEquals(true, entity.equals(entity)); 
