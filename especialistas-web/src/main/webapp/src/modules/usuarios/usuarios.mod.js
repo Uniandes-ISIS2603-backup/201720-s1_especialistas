@@ -12,10 +12,16 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('usuariosCrear', {
+                url: '/usuarios/nuevo',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'new/usuarios.new.html',
+                        controller: 'usuariosNewController',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
         }
     ]);
 })(window.angular);
-
-
-

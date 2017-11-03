@@ -20,6 +20,10 @@ delete from LaboratorioEntity;
 delete from ExamenEntity;
 
 insert into UsuarioEntity (id, cedula, nombre) values (8,123456,'juan');
+insert into UsuarioEntity (id, cedula, nombre) values (9,123456,'pedro');
+insert into UsuarioEntity (id, cedula, nombre) values (10,123456,'paulo');
+insert into UsuarioEntity (id, cedula, nombre) values (11,123456,'leon');
+insert into UsuarioEntity (id, cedula, nombre) values (12,123456,'kira');
 
 
 delete from TarjetaEntity;
