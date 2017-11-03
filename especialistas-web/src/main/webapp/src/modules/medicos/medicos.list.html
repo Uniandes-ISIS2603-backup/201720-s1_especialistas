@@ -1,4 +1,9 @@
 <div class="container-fluid">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-info" ui-sref="medicosCreate"><span class="glyphicon glyphicon-plus-sign"></span> Nuevo médico</a>
+        </div>
+    </div>
     <div class="col-md-4">
         <table class="table table-striped">
             <thead>
@@ -10,8 +15,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="medico in medicosRecords">
-                    <td id="{{$index}}-nombre">{{medico.nombre}}</td>
-                    <td id="{{$index}}-especializacion">{{medico.especializacion}}</td>
+                    <td id="{{$index}}-nombre"><a ui-sref="medicoDetail({medicoId: medico.id})">{{medico.nombre}}</a></td>
+                    <td id="{{$index}}-especializacion">{{medico.especializacion}}</td> 
                 </tr>
             </tbody>
         </table>

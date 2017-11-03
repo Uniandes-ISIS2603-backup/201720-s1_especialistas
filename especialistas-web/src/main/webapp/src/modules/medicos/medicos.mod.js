@@ -12,6 +12,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('medicoDetail', {
+                url: '/medicos/{medicoId:int}/detail',
+                params: {
+                    medicoId : null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'medicos.detail.html',
+                        controller: 'medicoCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
         }
     ]);
