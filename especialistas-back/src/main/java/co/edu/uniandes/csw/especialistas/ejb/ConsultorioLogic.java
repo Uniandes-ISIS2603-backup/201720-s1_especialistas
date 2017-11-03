@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.persistence.ConsultorioPersistence;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -133,6 +134,7 @@ public class ConsultorioLogic {
             consultorio.getHoras().remove(hora);
             return true;
         } catch (Exception e) {
+            LOGGER.info(e.getMessage());
             return false;
         }
     }

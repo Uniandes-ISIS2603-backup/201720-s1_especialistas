@@ -23,7 +23,7 @@ public class LaboratorioDTO {
     private List<ExamenDetailDTO> examenes;
 
     public LaboratorioDTO() {
-
+        //inicialmente vacio
     }
 
     /**

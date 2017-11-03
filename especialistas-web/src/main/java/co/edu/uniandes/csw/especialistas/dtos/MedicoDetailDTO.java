@@ -19,6 +19,7 @@ public class MedicoDetailDTO extends MedicoDTO
     private List<HoraDTO> agenda;
 
     public MedicoDetailDTO() {
+        //inicialmente vacio
     }
     
     public MedicoDetailDTO(MedicoEntity entity) {

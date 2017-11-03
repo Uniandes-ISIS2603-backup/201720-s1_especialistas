@@ -17,6 +17,7 @@ public class HoraDetailDTO extends HoraDTO{
     private MedicoDTO medico;
 
     public HoraDetailDTO() {
+        //inicialmente vacio
     }
 
     public HoraDetailDTO(HoraEntity entity) {

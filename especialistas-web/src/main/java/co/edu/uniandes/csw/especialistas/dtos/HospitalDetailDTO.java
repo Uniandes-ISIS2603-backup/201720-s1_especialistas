@@ -32,7 +32,8 @@ public class HospitalDetailDTO extends HospitalDTO
     /**
      * Constructor por defecto
      */
-    public HospitalDetailDTO(){      
+    public HospitalDetailDTO(){
+        //inicialmente vacio
     }
     
     /**

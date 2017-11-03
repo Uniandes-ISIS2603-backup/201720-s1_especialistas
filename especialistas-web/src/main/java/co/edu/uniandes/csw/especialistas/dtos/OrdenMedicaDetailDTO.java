@@ -22,6 +22,7 @@ public class OrdenMedicaDetailDTO extends OrdenMedicaDTO{
    
 
     public OrdenMedicaDetailDTO() {
+        //inicialmente vacio
     }
     
     public OrdenMedicaDetailDTO(OrdenMedicaEntity entity) {

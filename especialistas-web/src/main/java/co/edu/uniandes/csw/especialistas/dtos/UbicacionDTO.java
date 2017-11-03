@@ -19,6 +19,7 @@ public class UbicacionDTO extends EspecialistasDTO {
     private String nombre;
 
     public UbicacionDTO() {
+        //inicialmente vacio
     }
     
     
