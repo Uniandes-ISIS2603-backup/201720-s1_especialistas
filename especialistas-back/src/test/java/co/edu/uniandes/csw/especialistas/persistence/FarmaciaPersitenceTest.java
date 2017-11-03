@@ -143,7 +143,11 @@ public class FarmaciaPersitenceTest {
         
         
         Assert.assertEquals(entity, medicamentoPersistence.findByName("larebaja")); 
+        Assert.assertEquals(null, medicamentoPersistence.findByName("larebajaaa")); 
         Assert.assertEquals(entity.getMedicamentos(), medicamentoPersistence.findMedicamentosById(entity.getId()));
+        Assert.assertEquals(null, medicamentoPersistence.findMedicamentosById(314159265));
+        Assert.assertEquals(entity.getUbicacion(), medicamentoPersistence.findUbicacionById(entity.getId()));
+        Assert.assertEquals(null, medicamentoPersistence.findUbicacionById(31415926));
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
         entity.setId(null);
         Assert.assertEquals(false, entity.equals(entity));

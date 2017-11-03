@@ -5,8 +5,6 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
-import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
-import co.edu.uniandes.csw.especialistas.entities.ExamenEntity;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,7 +20,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class UsuarioPersistence {
-    private final static Logger LOGGER = Logger.getLogger(UsuarioPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(UsuarioPersistence.class.getName());
     
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
@@ -93,6 +91,7 @@ public class UsuarioPersistence {
     {
         LOGGER.log(Level.INFO, "Consultando consultorio con referencia: {0}", cedula);
         TypedQuery query = em.createQuery("select u from UsuarioEntity u where u.cedula = :cedula", UsuarioEntity.class);
+        query = query.setParameter("cedula", cedula);
         List<UsuarioEntity> list = query.getResultList();
         if(list.isEmpty())
         {

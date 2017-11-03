@@ -196,6 +196,8 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(entity.getCedula(), result.getCedula());
         Assert.assertEquals(entity.getCitas(), result.getCitas());
         Assert.assertEquals(entity.getTarjeta(), result.getTarjeta());
+        Assert.assertEquals(entity, persistence.findByCedula(entity.getCedula()));
+        Assert.assertEquals(null, persistence.findByCedula(314159265));
     }
     
     /**
