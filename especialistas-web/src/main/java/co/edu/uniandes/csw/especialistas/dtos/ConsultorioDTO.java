@@ -27,7 +27,7 @@ public class ConsultorioDTO {
      * Constructor por defecto
      */
     public ConsultorioDTO() {
-
+        //inicialmente vacio
     }
 
     /**

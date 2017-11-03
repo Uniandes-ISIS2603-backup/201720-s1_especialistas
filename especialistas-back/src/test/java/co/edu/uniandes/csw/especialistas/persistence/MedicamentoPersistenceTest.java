@@ -115,6 +115,19 @@ public class MedicamentoPersistenceTest {
         MedicamentoEntity entity = em.find(MedicamentoEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getFarmacias(), entity.getFarmacias());
+        Assert.assertTrue(newEntity.getPrecio()==entity.getPrecio());
+        
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals("objet"));
+        Assert.assertEquals(true, entity.equals(entity));
+        
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
      
     }
 

@@ -1,0 +1,30 @@
+<div class="col-sm-12">
+    <div class="usuario" ng-repeat="usuario in usuariosRecords">
+        <div class="col-sm-4 col-lg-3 pacman">
+            <div class="usuario-padre">
+                <img src="https://ep01.epimg.net/verne/imagenes/2017/02/07/articulo/1486460356_768109_1486460432_noticia_normal.jpg" alt="">
+                <div class="usuario-data">
+                    {{usuario.nombre}} <br>
+                    {{usuario.cedula}} 
+
+                    <a href="#" style="color: #f44">Eliminar</a>
+                    <a href="#">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-lg-3 pacman">
+        <div class="usuario-padre">
+            
+                <img src="https://ep01.epimg.net/verne/imagenes/2017/02/07/articulo/1486460356_768109_1486460432_noticia_normal.jpg" alt="">
+                <div class="usuario-data">
+                    <p></p><br>
+                    <a class="add" ui-sref="usuariosCrear">
+                        +
+                    </a>
+                    <a href="#">#</a>
+                </div>
+            
+        </div>
+    </div>
+</div>

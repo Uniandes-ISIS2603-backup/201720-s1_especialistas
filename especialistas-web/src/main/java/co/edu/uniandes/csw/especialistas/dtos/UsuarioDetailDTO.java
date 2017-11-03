@@ -59,7 +59,6 @@ public class UsuarioDetailDTO extends UsuarioDTO{
     {
         UsuarioEntity entity = super.toEntity();
         entity.setTarjeta(this.tarjeta);
-//      entity.setCitas(this.citasMedicas);
         return entity;
     }
     

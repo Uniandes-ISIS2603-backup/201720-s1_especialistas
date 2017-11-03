@@ -19,6 +19,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -114,6 +115,18 @@ public class MedicoPersistenceTest {
         MedicoEntity entity = em.find(MedicoEntity.class, result.getId());
         assertNotNull(entity);
         assertEquals(newEntity.getNombre(), entity.getNombre());
+        assertEquals(newEntity.getEspecializacion(), entity.getEspecializacion());
+        assertEquals(newEntity.getAgenda(), entity.getAgenda());
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals("objet"));
+        Assert.assertEquals(true, entity.equals(entity));
+        
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
 
     /**

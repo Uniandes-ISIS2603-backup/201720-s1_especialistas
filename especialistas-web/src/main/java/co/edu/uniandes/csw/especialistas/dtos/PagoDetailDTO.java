@@ -10,7 +10,7 @@ import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 
 /**
  *
- * @author jl.patarroyo
+ * @author ce.quintero
  */
 public class PagoDetailDTO extends PagoDTO{
     /**

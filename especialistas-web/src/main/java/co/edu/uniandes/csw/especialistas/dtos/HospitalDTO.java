@@ -21,7 +21,7 @@ public class HospitalDTO {
      * Constructor por defecto
      */
     public HospitalDTO() {
-
+        //inicialmente vacio
     }
 
     /**

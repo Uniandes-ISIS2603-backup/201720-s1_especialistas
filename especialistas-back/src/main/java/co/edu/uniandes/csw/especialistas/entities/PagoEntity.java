@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,7 +49,7 @@ public class PagoEntity implements Serializable{
      * atrubuto que modela una targeta
      */
     @PodamExclude
-    @OneToOne(mappedBy = "pago")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private TarjetaEntity tarjeta;
     
     

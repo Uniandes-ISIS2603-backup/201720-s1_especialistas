@@ -19,6 +19,7 @@ public class MedicamentoDTO extends EspecialistasDTO{
     private String nombre;
 
     public MedicamentoDTO() {
+        //inicialmente vacio
     }
 
     

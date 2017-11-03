@@ -114,6 +114,20 @@ public class HoraPersistenceTest {
         HoraEntity entity = em.find(HoraEntity.class, result.getId());
         assertNotNull(entity);
         assertEquals(newEntity.getHoraInicio(), entity.getHoraInicio());
+        assertEquals(newEntity.getConsultorio(), entity.getConsultorio());
+        assertEquals(newEntity.getHoraFin(), entity.getHoraFin());
+        assertEquals(newEntity.getMedico(), entity.getMedico());
+        
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals("objet"));
+        Assert.assertEquals(true, entity.equals(entity)); 
+        
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
 
     /**

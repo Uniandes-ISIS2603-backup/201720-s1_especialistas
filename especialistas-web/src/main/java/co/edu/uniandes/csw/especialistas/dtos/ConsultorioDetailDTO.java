@@ -28,7 +28,7 @@ public class ConsultorioDetailDTO extends ConsultorioDTO {
      * Constructor por defecto
      */
     public ConsultorioDetailDTO() {
-
+        //inicialmente vacio
     }
 
     /**

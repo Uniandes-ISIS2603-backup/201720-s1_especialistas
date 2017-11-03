@@ -18,6 +18,7 @@ public class MedicamentoDetailDTO extends MedicamentoDTO{
     private List<FarmaciaDTO> farmacias;
 
     public MedicamentoDetailDTO() {
+        //inicialmente vacio
     }
 
     

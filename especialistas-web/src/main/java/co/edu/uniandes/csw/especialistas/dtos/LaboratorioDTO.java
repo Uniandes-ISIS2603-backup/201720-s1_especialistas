@@ -23,7 +23,7 @@ public class LaboratorioDTO {
     private List<ExamenDetailDTO> examenes;
 
     public LaboratorioDTO() {
-
+        //inicialmente vacio
     }
 
     /**
@@ -42,7 +42,7 @@ public class LaboratorioDTO {
         if(laboratorio.getExamenes() == null){
             laboratorio.setExamenes(new ArrayList<>());
         }
-        else if (laboratorio.getExamenes() != null) {
+        else{
         this.examenes = examsToDTO(laboratorio.getExamenes());}
     }
 
@@ -95,7 +95,7 @@ public class LaboratorioDTO {
         if(examenes == null ){
             examenes = new ArrayList<>();
         }
-        else if (examenes != null){
+        else {
         laboratorio.setExamenes(examsToEntity(examenes));
     }
         

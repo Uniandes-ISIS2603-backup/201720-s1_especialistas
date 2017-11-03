@@ -20,6 +20,7 @@ public class MedicoDTO {
     private String especializacion;
 
     public MedicoDTO() {
+        //inicialmente vacio
     }
 
     public MedicoDTO(MedicoEntity entity) {

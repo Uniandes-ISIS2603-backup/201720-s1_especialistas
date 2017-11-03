@@ -135,6 +135,18 @@ public class ConsultorioPersistenceTest
         Assert.assertEquals(newEntity.getReferenciaConsultorio(), entity.getReferenciaConsultorio());
         Assert.assertEquals(newEntity.getHoras(), entity.getHoras());
         Assert.assertEquals(newEntity.getHospital(), entity.getHospital());
+        Assert.assertEquals(newEntity.getEspecializacion(), entity.getEspecializacion());
+        
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals("objet"));
+        Assert.assertEquals(true, entity.equals(entity)); 
+        
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
 
     /**

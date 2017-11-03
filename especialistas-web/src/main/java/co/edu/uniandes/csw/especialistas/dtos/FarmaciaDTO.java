@@ -18,6 +18,7 @@ public class FarmaciaDTO  extends EspecialistasDTO{
     private UbicacionDTO ubicacion;
 
     public FarmaciaDTO() {
+        //inicialmente vacio
     }
     
     

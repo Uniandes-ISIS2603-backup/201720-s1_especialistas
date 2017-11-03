@@ -14,7 +14,7 @@ import co.edu.uniandes.csw.especialistas.entities.ExamenEntity;
 public class ExamenDetailDTO extends ExamenDTO {
     
     public ExamenDetailDTO(){
-        
+        //inicialmente vacio
     }
     
     /**
