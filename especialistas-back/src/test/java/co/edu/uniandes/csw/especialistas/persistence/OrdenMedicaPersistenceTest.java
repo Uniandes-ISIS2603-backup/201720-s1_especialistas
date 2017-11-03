@@ -144,6 +144,21 @@ public class OrdenMedicaPersistenceTest {
     OrdenMedicaEntity entity = em.find(OrdenMedicaEntity.class, result.getId());
     Assert.assertNotNull(entity);
     Assert.assertEquals(newEntity.getId(), entity.getId());
+    Assert.assertEquals(newEntity.getCita(), entity.getCita());
+    Assert.assertEquals(newEntity.getDescripcion(), entity.getDescripcion());
+    Assert.assertEquals(newEntity.getExamenes(), entity.getExamenes());
+    Assert.assertEquals(newEntity.getMedicamentos(), entity.getMedicamentos());
+    
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals("objet"));
+        Assert.assertEquals(true, entity.equals(entity)); 
+        
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
 
     /**
