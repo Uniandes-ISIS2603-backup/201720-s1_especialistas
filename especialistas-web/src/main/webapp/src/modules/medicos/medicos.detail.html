@@ -6,5 +6,8 @@
                 <tr><td>Especialización:</td><td id="{{$index}}-especializacion">{{medico.especializacion}}</td></tr>
             </tbody>
         </table>
+        <a class="btn btn-default btn-sm" ui-sref="medicoUpdate({medicoId: medico.id})">Actualizar datos <span class="glyphicon glyphicon-edit"></span></a>
+        <a class="btn btn-danger btn-sm" ui-sref="medicoDelete({medicoId: medico.id})">Borrar Médico <span class="glyphicon glyphicon-trash"></span></a>
+        <div ui-view="extraView"></div> 
     </div>
 </div>

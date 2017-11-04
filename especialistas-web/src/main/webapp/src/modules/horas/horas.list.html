@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Hora Inicio</th>    
+                    <th>Hora Fin</th>  
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="hora in agenda">
+                    <td id="{{$index}}-inicio"><a ui-sref="horaDetail({horaId: hora.id})">{{hora.horaInicio}}</a></td>
+                    <td id="{{$index}}-fin">{{hora.horaFin}}</td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
