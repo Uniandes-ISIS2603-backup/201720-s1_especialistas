@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.Especializacion;
+import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -109,10 +110,17 @@ public class MedicoPersistenceTest {
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         MedicoEntity newEntity = factory.manufacturePojo(MedicoEntity.class);
+        
+        HoraEntity hora = new HoraEntity();
+        List horas = new ArrayList<HoraEntity>();
+        //posibles problemas al agregar
+        newEntity.setAgenda(horas);
+        
         MedicoEntity result = persistence.create(newEntity);
         
         assertNotNull(result);
         MedicoEntity entity = em.find(MedicoEntity.class, result.getId());
+        
         assertNotNull(entity);
         assertEquals(newEntity.getNombre(), entity.getNombre());
         assertEquals(newEntity.getEspecializacion(), entity.getEspecializacion());

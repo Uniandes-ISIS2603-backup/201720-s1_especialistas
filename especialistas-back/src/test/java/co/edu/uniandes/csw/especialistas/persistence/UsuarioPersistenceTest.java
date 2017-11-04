@@ -189,13 +189,15 @@ public class UsuarioPersistenceTest {
     @Test
     public void testFind() throws Exception {
         UsuarioEntity entity = data.get(0);
-        System.out.println("holi");
+        
         UsuarioEntity result = persistence.find(entity.getId());
         Assert.assertNotNull(result);
         Assert.assertEquals(entity.getNombre(), result.getNombre());
         Assert.assertEquals(entity.getCedula(), result.getCedula());
         Assert.assertEquals(entity.getCitas(), result.getCitas());
         Assert.assertEquals(entity.getTarjeta(), result.getTarjeta());
+        Assert.assertEquals(entity, persistence.findByCedula(entity.getCedula()));
+        Assert.assertEquals(null, persistence.findByCedula(314159265));
     }
     
     /**

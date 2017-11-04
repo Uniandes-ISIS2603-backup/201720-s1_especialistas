@@ -21,6 +21,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('usuariosDelete', {
+                url: '/usuarios/delete/{usuarioId:int}',
+                param: {
+                    authorId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + '/delete/usuarios.delete.html',
+                        controller: 'usuariosDeleteController',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
         }
     ]);
