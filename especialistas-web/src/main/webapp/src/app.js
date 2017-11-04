@@ -5,6 +5,7 @@
         'ui.bootstrap',
         //Internal modules dependencies
         'medicoModule',
+        'horaModule',
         'laboratoriosModule',
         'farmaciaModule',
         'citasModule',

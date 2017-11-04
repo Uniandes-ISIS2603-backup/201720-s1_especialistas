@@ -24,9 +24,9 @@ public class MedicoDetailDTO extends MedicoDTO
     public MedicoDetailDTO(MedicoEntity entity) {
         super(entity);
         agenda = new ArrayList<HoraDTO>();
-        entity.getAgenda().forEach((hora) -> {
+       for(HoraEntity hora : entity.getAgenda()){
             agenda.add(new HoraDTO(hora));
-        });
+        };
     }
 
     public List<HoraDTO> getAgenda() {
@@ -41,9 +41,9 @@ public class MedicoDetailDTO extends MedicoDTO
     public MedicoEntity toEntity() {
         MedicoEntity entity = super.toEntity();
         List<HoraEntity> agenda = new ArrayList<HoraEntity>();
-        this.agenda.forEach((hora) -> {
+        for(HoraDTO hora : this.agenda){
             agenda.add(hora.toEntity());
-        });
+        };
         entity.setAgenda(agenda);
         return entity;
     }
