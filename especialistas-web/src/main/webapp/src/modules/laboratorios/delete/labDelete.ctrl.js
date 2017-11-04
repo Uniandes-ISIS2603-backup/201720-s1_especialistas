@@ -4,7 +4,7 @@
     mod.controller('labDeleteCtrl', ['$scope', '$http', '$state', 'labsContext',
         function ($scope, $http, $state, labsContext) {
             $scope.deleteLab = function () {
-                $http.delete(labsContext + '/' + $state.params.laboratorioId).then(function (response) {
+                $http.delete(labsContext + '/' + $state.params.laboratorioId, {}).then(function (response) {
                     $state.go('laboratoriosList', {id: response.data.id}, {reload: true});
                 });
             };

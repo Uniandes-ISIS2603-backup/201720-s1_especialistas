@@ -19,7 +19,7 @@
                 },
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'delete/laboratorio.delete.html',
+                        templateUrl: basePath + '/delete/laboratorio.delete.html',
                         controller: 'labDeleteCtrl',
                         controllerAs: 'ctrl'
                     }

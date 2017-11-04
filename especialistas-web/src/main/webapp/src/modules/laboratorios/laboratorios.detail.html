@@ -2,11 +2,11 @@
     <div class="col-md-4">
         <h2>Nombre</h2>
         {{laboratorioActual.nombre}}
-        <h2>Ubicacion</h2>
+        <h2>Ubicación</h2>
         {{laboratorioActual.ubicacion.nombre}}
     </div>
     <div class="col-md-12"> <br>
-        <button id="eliminar-lab" ui-sref="labDelete">Eliminar</button>
+        <button id="eliminar-lab" ui-sref='labDelete({laboratorioId: laboratorioActual.id})'>Eliminar</button>
         <button id="crear-lab">Crear</button>
     </div>       
 </div>
