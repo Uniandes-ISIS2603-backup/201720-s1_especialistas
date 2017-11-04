@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
+import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -110,12 +112,31 @@ public class PagoPersistenceTest {
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
+        TarjetaEntity tarjeta = new TarjetaEntity();
+        
+        newEntity.setTarjeta(tarjeta);
+
         PagoEntity result = persistence.create(newEntity);
         
         assertNotNull(result);
         PagoEntity entity = em.find(PagoEntity.class, result.getId());
         assertNotNull(entity);
         assertEquals(newEntity.getRef(), entity.getRef());
+        assertEquals(newEntity.getPai(), entity.getPai());
+        assertEquals(newEntity.getPrecio(), entity.getPrecio());
+        assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
+        
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals(tarjeta));
+        Assert.assertEquals(true, entity.equals(entity));
+        Assert.assertEquals(true, entity.getTarjeta().equals(tarjeta));
+        
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
     
     /**

@@ -18,6 +18,7 @@ import java.util.List;
 public class FarmaciaDetailDTO extends FarmaciaDTO{
 
     public FarmaciaDetailDTO() {
+        //inicialmente vacio
     }
 
     

@@ -7,7 +7,9 @@ package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +35,7 @@ public class MedicoEntity implements Serializable{
     private Especializacion especializacion;
     
     @PodamExclude
-    @OneToMany(mappedBy="medico")
+    @OneToMany(mappedBy="medico", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
     private List<HoraEntity> agenda;
 
     

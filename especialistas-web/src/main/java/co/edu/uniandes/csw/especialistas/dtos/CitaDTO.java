@@ -23,7 +23,7 @@ public class CitaDTO {
      */
     public CitaDTO()
     {
-        
+        //inicialmente vacio
     }
     
     /**

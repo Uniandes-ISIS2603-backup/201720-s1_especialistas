@@ -124,13 +124,38 @@ public class FarmaciaPersitenceTest {
     public void createFarmaciaTest() {
         PodamFactory factory = new PodamFactoryImpl();
         FarmaciaEntity newEntity = factory.manufacturePojo(FarmaciaEntity.class);
+        newEntity.setNombre("larebaja");
         FarmaciaEntity result = medicamentoPersistence.create(newEntity);
+        
 
         Assert.assertNotNull(result);
 
         FarmaciaEntity entity = em.find(FarmaciaEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getMedicamentos(), entity.getMedicamentos());
+        Assert.assertEquals(newEntity.getRadio(), entity.getRadio());
+        Assert.assertEquals(newEntity.getUbicacion(), entity.getUbicacion());
+        
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals("objet"));
+        Assert.assertEquals(true, entity.equals(entity)); 
+        
+        
+        Assert.assertEquals(entity, medicamentoPersistence.findByName("larebaja")); 
+        Assert.assertEquals(null, medicamentoPersistence.findByName("larebajaaa")); 
+        Assert.assertEquals(entity.getMedicamentos(), medicamentoPersistence.findMedicamentosById(entity.getId()));
+        Assert.assertEquals(null, medicamentoPersistence.findMedicamentosById(314159265));
+        Assert.assertEquals(entity.getUbicacion(), medicamentoPersistence.findUbicacionById(entity.getId()));
+        Assert.assertEquals(null, medicamentoPersistence.findUbicacionById(31415926));
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
+        
+        
      
     }
 
@@ -192,5 +217,6 @@ public class FarmaciaPersitenceTest {
         Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
       
     }
+    
     
 }

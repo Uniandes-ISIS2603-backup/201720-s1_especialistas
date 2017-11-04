@@ -23,6 +23,7 @@ public class CitaDetailDTO extends CitaDTO{
      
      
      public CitaDetailDTO() {
+         //inicialmente vacio
     }
 
     public CitaDetailDTO(CitaEntity entity) {

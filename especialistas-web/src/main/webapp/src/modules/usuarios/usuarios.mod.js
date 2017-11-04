@@ -12,10 +12,28 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('usuariosCrear', {
+                url: '/usuarios/nuevo',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'new/usuarios.new.html',
+                        controller: 'usuariosNewController',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('usuariosDelete', {
+                url: '/usuarios/delete/{usuarioId:int}',
+                param: {
+                    authorId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + '/delete/usuarios.delete.html',
+                        controller: 'usuariosDeleteController',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
         }
     ]);
 })(window.angular);
-
-
-

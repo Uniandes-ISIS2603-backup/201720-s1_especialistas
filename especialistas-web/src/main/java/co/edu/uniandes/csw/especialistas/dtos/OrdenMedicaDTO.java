@@ -23,7 +23,7 @@ public class OrdenMedicaDTO {
      */
     public OrdenMedicaDTO()
     {
-        
+        //inicialmente vacio
     }
     
     /**

@@ -131,6 +131,17 @@ public class HospitalPersistenceTest {
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getConsultorios(), entity.getConsultorios());
         Assert.assertEquals(newEntity.getUbicacion(), entity.getUbicacion());
+        
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals("objet"));
+        Assert.assertEquals(true, entity.equals(entity)); 
+        
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
 
     /**

@@ -1,19 +1,30 @@
-<div class="container-fluid">
-    <div class="col-md-4">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nombre</th>    
-                    <th>Cedula</th>  
+<div class="col-sm-12">
+    <div class="usuario" ng-repeat="usuario in usuariosRecords">
+        <div class="col-sm-4 col-lg-3 pacman">
+            <div class="usuario-padre">
+                <img src="https://ep01.epimg.net/verne/imagenes/2017/02/07/articulo/1486460356_768109_1486460432_noticia_normal.jpg" alt="">
+                <div class="usuario-data">
+                    {{usuario.nombre}} <br>
+                    {{usuario.cedula}} 
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="usuario in usuariosRecords">
-                    <td id="{{$index}}-nombre">{{usuario.nombre}}</td>
-                    <td id="{{$index}}-cedula">{{usuario.cedula}}</td>
-                </tr>
-            </tbody>
-        </table>
+                    <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: usuario.id})">Eliminar</a>
+                    <a href="#">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-lg-3 pacman">
+        <div class="usuario-padre">
+            
+                <img src="https://ep01.epimg.net/verne/imagenes/2017/02/07/articulo/1486460356_768109_1486460432_noticia_normal.jpg" alt="">
+                <div class="usuario-data">
+                    <p></p><br>
+                    <a class="add" ui-sref="usuariosCrear">
+                        +
+                    </a>
+                    <a href="#">#</a>
+                </div>
+            
+        </div>
     </div>
 </div>

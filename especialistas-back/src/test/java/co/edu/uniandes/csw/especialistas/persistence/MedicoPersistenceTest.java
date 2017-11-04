@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.Especializacion;
+import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -108,12 +110,31 @@ public class MedicoPersistenceTest {
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         MedicoEntity newEntity = factory.manufacturePojo(MedicoEntity.class);
+        
+        HoraEntity hora = new HoraEntity();
+        List horas = new ArrayList<HoraEntity>();
+        //posibles problemas al agregar
+        newEntity.setAgenda(horas);
+        
         MedicoEntity result = persistence.create(newEntity);
         
         assertNotNull(result);
         MedicoEntity entity = em.find(MedicoEntity.class, result.getId());
+        
         assertNotNull(entity);
         assertEquals(newEntity.getNombre(), entity.getNombre());
+        assertEquals(newEntity.getEspecializacion(), entity.getEspecializacion());
+        assertEquals(newEntity.getAgenda(), entity.getAgenda());
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, entity.equals("objet"));
+        Assert.assertEquals(true, entity.equals(entity));
+        
+        Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
 
     /**

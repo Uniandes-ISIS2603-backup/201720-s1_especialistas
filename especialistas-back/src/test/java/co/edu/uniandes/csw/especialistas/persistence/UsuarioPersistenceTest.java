@@ -120,6 +120,9 @@ public class UsuarioPersistenceTest {
         
         CitaEntity newCita = new CitaEntity();
         
+        ArrayList citasarr = new ArrayList<CitaEntity>();
+        
+        newEntity.setCitas(citasarr);
         newEntity.addCita(newCita);
         
         TarjetaEntity newTarjeta = new TarjetaEntity();
@@ -139,7 +142,14 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(newEntity.getTarjeta().getNumero(), entity.getTarjeta().getNumero());
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(false, entity.equals(newTarjeta));
+        Assert.assertEquals(true, entity.equals(entity));
+        Assert.assertEquals(true, entity.getTarjeta().equals(newTarjeta));
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        entity.setId(null);
+        Assert.assertEquals(false, entity.equals(entity));
+        Assert.assertEquals(false, entity.equals(null));
+        Assert.assertEquals(false, newEntity.equals(entity));
+        Assert.assertEquals(entity.hashCode(), entity.hashCode());
     }
     
     /**
@@ -179,13 +189,15 @@ public class UsuarioPersistenceTest {
     @Test
     public void testFind() throws Exception {
         UsuarioEntity entity = data.get(0);
-        System.out.println("holi");
+        
         UsuarioEntity result = persistence.find(entity.getId());
         Assert.assertNotNull(result);
         Assert.assertEquals(entity.getNombre(), result.getNombre());
         Assert.assertEquals(entity.getCedula(), result.getCedula());
         Assert.assertEquals(entity.getCitas(), result.getCitas());
         Assert.assertEquals(entity.getTarjeta(), result.getTarjeta());
+        Assert.assertEquals(entity, persistence.findByCedula(entity.getCedula()));
+        Assert.assertEquals(null, persistence.findByCedula(314159265));
     }
     
     /**

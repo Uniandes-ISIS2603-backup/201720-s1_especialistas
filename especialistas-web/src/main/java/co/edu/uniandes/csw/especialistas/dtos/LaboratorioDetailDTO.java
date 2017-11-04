@@ -14,7 +14,7 @@ import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
 public class LaboratorioDetailDTO extends LaboratorioDTO {
     
     public LaboratorioDetailDTO(){
-        
+        //inicialmente vacio
     }
     
     /**
