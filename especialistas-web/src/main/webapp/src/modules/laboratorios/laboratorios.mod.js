@@ -12,6 +12,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('labDelete', {
+                url: '/delete/{laboratorioId:int}',
+                param: {
+                    laboratorioId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/laboratorio.delete.html',
+                        controller: 'labDeleteCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             }).state('labDetail', {
                 url: '/laboratorios/{laboratorioId:int}',
                 param: {
