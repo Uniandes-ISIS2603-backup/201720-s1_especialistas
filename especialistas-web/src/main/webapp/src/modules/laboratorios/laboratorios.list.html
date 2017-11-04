@@ -10,12 +10,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="laboratorio in laboratoriosRecords">
-                    <td id="{{$index}}-nombre">{{laboratorio.nombre}}</td>
-                    <td id ="{{$index}}-ubicacion}">{{laboratorio.ubicacion.nombre}}</td>
-                    <td>
-                        <button class="btn btn-default btn-sm">Actualizar</button>
-                        <button class="btn btn-default btn-sm" ui-sref='labDelete'>Eliminar</button>
+                    <td id="{{$index}}-nombre">
+                        <a ui-sref='labDetail({laboratorioId: laboratorio.id})'> {{laboratorio.nombre}}</a>
+                       
                     </td>
+                    <td id ="{{$index}}-ubicacion}">{{laboratorio.ubicacion.nombre}}</td>
                 </tr>
 
             </tbody>

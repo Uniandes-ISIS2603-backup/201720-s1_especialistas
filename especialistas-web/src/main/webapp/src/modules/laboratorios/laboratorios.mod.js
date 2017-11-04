@@ -12,25 +12,15 @@
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('labCreate', {
-                url: '/laboratorios/create',
-                views: {
-                    'mainView': {
-                        templateUrl: basePath + 'post/labs.new.html',
-                        controller: 'labNewCtrl',
-                        controllerAs: 'ctrl'
-                    }
-                }
-            }).state('labDelete', {
-                url: '/laboratorios/delete/{laboratorioId:int}',
-                parent: 'laboratorios',
+            }).state('labDetail', {
+                url: '/laboratorios/{laboratorioId:int}',
                 param: {
                     laboratorioId: null
                 },
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'delete/labs.delete.html',
-                        controller: 'labDeleteCtrl',
+                        templateUrl: basePath + 'laboratorios.detail.html',
+                        controller: 'labDetailCtrl',
                         controllerAs: 'ctrl'
                     }
                 }

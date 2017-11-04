@@ -34,7 +34,7 @@ public class LaboratorioDTO {
     public LaboratorioDTO(LaboratorioEntity laboratorio) {
         this.id = laboratorio.getId();
         this.nombre = laboratorio.getNombre();
-        UbicacionEntity lugar = laboratorio.getUbicacion();
+        UbicacionEntity lugar =laboratorio.getUbicacion();
         if(lugar != null){
             ubicacion = new UbicacionDTO(lugar);
         }
