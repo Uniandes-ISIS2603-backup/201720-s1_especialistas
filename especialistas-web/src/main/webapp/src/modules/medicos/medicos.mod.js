@@ -15,7 +15,7 @@
                     }
                 }
             }).state('medicosList', {
-                url: '/list',
+                url: '/todos',
                 parent: 'medicos',
                 views: {
                     'listView': {
@@ -25,7 +25,7 @@
                     }
                 }
             }).state('medicoDetail', {
-                url: '/{medicoId:int}/detail',
+                url: '/{medicoId:int}/informacion',
                 parent: 'medicos',                
                 params: {
                     medicoId : null
@@ -43,12 +43,38 @@
                     }
                 }
             }).state('medicosCreate', {
-                url: '/create',
+                url: '/nuevo',
                 parent: 'medicos',
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'create/medicos.create.html',
                         controller: 'medicoCreateCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('medicoUpdate', {
+                url: '/{medicoId:int}/cambiar_datos',
+                parent: 'medicos',                
+                params: {
+                    medicoId : null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'create/medicos.create.html',
+                        controller: 'medicoUpdateCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('medicoDelete', {
+                url: '/{medicoId:int}/borrar',
+                parent: 'medicos',                
+                params: {
+                    medicoId : null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'delete/medicos.delete.html',
+                        controller: 'medicoDeleteCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
