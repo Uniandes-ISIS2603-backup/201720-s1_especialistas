@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("medicoModule", ['ui.router']);
 
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    mod.config(['$stateProvider', function ($stateProvider) {
             var basePath = 'src/modules/medicos/';
             var basePathHora = 'src/modules/horas/';
             $stateProvider.state('medicos', {
