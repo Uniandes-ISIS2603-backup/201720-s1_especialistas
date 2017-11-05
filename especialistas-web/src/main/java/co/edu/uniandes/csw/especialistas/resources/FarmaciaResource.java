@@ -89,10 +89,10 @@ public class FarmaciaResource {
     @GET
     @Path("{id: \\d+}")
     public FarmaciaDetailDTO getFarmacia(@PathParam("id") Long id)throws BusinessLogicException
-    {
+    {        FarmaciaEntity entity = logic.getFarmacia(id);
+
         
-        FarmaciaEntity entity = logic.getFarmacia(id);
-                if(entity==null)
+        if(entity==null)
         {
             throw new BusinessLogicException("no existe la entidad");
         }

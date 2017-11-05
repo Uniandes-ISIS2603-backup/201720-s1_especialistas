@@ -1,42 +1,42 @@
 (function (ng) {
     // Definición del módulo
-    var mod = ng.module("farmaciaModule", ['ui.router']);
+    var mod = ng.module("medicamentoModule", ['ui.router']);
 
     // Configuración de los estados del módulo
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             // En basePath se encuentran los templates y controladores de módulo
-            var basePath = 'src/modules/farmacias/';
+            var basePath = 'src/modules/medicamentos/';
             // Definición del estado 'authorsList' donde se listan los autores
-            $stateProvider.state('farmaciasList', {
+            $stateProvider.state('medicamentosList', {
                 // Url que aparecerá en el browser
-                url: '/farmacias/list',
+                url: '/medicamentos/list',
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'farmacias.list.html',
-                        controller: 'farmaciaCtrl',
+                        templateUrl: basePath + 'medicamentos.list.html',
+                        controller: 'medicamentoCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('farmaciaCreate', {
-                url: '/farmacias/create',
+            }).state('medicamentoCreate', {
+                url: '/medicamentos/create',
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'create/farmacia.create.html',
-                        controller: 'farmaciaCreateController',
+                        templateUrl: basePath + 'create/medicamentos.create.html',
+                        controller: 'medicamentoCreateController',
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('farmaciaDetail', {
-                url: '/farmacias/:id',
+            }).state('medicamentoDetail', {
+                url: '/medicamentos/:id',
                 params:{
                     id:null
                 },
                         
                 views: {
                     'mainView': {
-                        controller: 'farmaciasDetailCtrl',
+                        controller: 'medicamentosDetailCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'detail/farmacias.detail.html'
+                        templateUrl: basePath + 'detail/medicamentos.detail.html'
                     }
                 }
             });

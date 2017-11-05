@@ -1,0 +1,25 @@
+<alert class="alert alert-danger" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+
+    <table class="table table-striped col-md-4">
+        <tbody>
+            <tr> <td>Name:</td> <td id="{{$index}}-farmaciaName">{{currentRecord.nombre}}</td> </tr> 
+            <tr>  <td>longitud</td><td id="{{$index}}-ubicacionLongitud">{{currentRecord.ubicacion.longitud}}</td></tr>>
+            <tr> <td>latitud</td>><td id="{{$index}}-ubicacionLatitud">{{currentRecord.ubicacion.latitud}} </td></tr>
+        </tbody>
+    </table>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Precio</th>    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="medicamento in currentMedicamentos">
+                    <td id="{{$index}}-nombreMedicamento"><a ui-sref="medicamentoDetail ({id: medicamento.id})">{{medicamento.nombre}}</a></td>
+                    <td id="{{$index}}-precioMedicamento">{{medicamento.precio}}</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
