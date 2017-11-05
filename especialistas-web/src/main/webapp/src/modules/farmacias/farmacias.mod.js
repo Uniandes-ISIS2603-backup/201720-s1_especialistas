@@ -17,6 +17,15 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('farmaciaCreate', {
+                url: '/farmacias/create',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'create/farmacia.create.html',
+                        controller: 'farmaciaCreateController',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
         }
     ]);
