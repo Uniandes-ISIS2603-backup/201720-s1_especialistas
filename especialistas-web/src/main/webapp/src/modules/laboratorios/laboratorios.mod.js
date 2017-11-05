@@ -36,6 +36,15 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('labCreate', {
+                url: '/laboratorios/create',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'post/laboratorio.new.html',
+                        controller: 'labNewCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
 
         }]);
