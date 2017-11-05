@@ -13,6 +13,7 @@
                         controllerAs: 'ctrl'
                     }
                 }
+
             }).state('hospitalesList', {
                 url: '/hospitales/list',
                 views: {
