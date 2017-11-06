@@ -26,6 +26,19 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('farmaciaDetail', {
+                url: '/farmacias/:id',
+                params:{
+                    id:null
+                },
+                        
+                views: {
+                    'mainView': {
+                        controller: 'farmaciasDetailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'detail/farmacias.detail.html'
+                    }
+                }
             });
         }
     ]);

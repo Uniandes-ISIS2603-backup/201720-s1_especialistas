@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="farmacia in farmacias">
-                    <td id="{{$index}}-nombre">{{farmacia.nombre}}</td>
+                    <td id="{{$index}}-nombre"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{farmacia.nombre}}</a></td>
                     <td id="{{$index}}-nombre">{{farmacia.ubicacion}}</td>
                 </tr>
             </tbody>
