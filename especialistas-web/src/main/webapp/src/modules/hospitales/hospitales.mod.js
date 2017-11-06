@@ -23,6 +23,15 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('hospitalesCreate', {
+                url: '/hospitales/create',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'create/hospitales.create.html',
+                        controller: 'hospitalesCreateController',
+                        controllerAs: 'ctrl'
+                    }
+                }
             }).state('hospitalDetail', {
                 url: '/{hospitalId:int}/detail',
                 parent: 'hospitales',
