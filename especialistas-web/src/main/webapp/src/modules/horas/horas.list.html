@@ -1,30 +1,20 @@
-<div class="container-fluid col-md-9">
-    <div class="panel-group">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><label>Semana</label></div>
-            <div class="panel-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Hora</th>
-                            <th>Lunes</th>    
-                            <th>Martes</th>  
-                            <th>Miercoles</th>  
-                            <th>Jueves</th>  
-                            <th>Viernes</th>  
-                            <th>Sábado</th>  
-                            <th>Domingo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="hora in agenda">
-                            <td id="{{$index}}-inicio"><a ui-sref="horaDetail({horaId: hora.id})">{{hora.horaInicio}}</a></td>
-                            <td id="{{$index}}-fin">{{hora.horaFin}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div ui-view="childrenView"></div>
-            </div>
-        </div>
-    </div>
-</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Hora</th>
+            <th>Lunes</th>    
+            <th>Martes</th>  
+            <th>Miercoles</th>  
+            <th>Jueves</th>  
+            <th>Viernes</th>  
+            <th>Sábado</th>  
+            <th>Domingo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="hora in agenda">
+            <td id="{{$index}}-inicio"><a ui-sref="horaDetail({horaId: hora.id})">{{hora.horaInicio}}</a></td>
+            <td id="{{$index}}-fin">{{hora.horaFin}}</td>
+        </tr>
+    </tbody>
+</table>

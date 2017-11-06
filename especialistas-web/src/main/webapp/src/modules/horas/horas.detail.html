@@ -1,7 +1,8 @@
 <div class="col-md-3">
-    <dl>     
+    <dl>
+        <hr>
         <dt>Hora</dt>
-        <dd>{{hora.horaInicio| time:'hh:mm:ss'}}</dd>        
+        <dd>{{hora.horaInicio| date:'hh:mm'}}</dd>        
 
         <hr>
         <dt>Consultorio</dt>
@@ -13,8 +14,11 @@
 
         <hr>
         <dt>Paciente</dt>
-        <dd ng-if="cita !== null">{{cita.usuario.nombre}}</dd>
-        <dd ng-if="cita === null">Cita sin asignar</dd>
+        <dd ng-if="!hayCita">Cita sin asignar</dd>
+        <dd ng-if="hayCita">{{cita.usuario.nombre}}</dd>
+
+        <hr>
+        <a class="btn btn-danger btn-sm" ui-sref="horaDelete({horaId: hora.id})"><span class="glyphicon glyphicon-trash"></span></a>
 
     </dl>
 </div>

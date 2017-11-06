@@ -1,3 +1,4 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
@@ -13,7 +14,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="medico in medicosRecords" ui-sref="medicoDetail({medicoId: medico.id})">
+                            <tr ng-repeat="medico in medicosRecords" ui-sref="horasList({medicoId: medico.id})">
                                 <td id="{{$index}}-nombre">{{medico.nombre}}</td>
                                 <td id="{{$index}}-especializacion">{{medico.especializacion}}</td> 
                             </tr>
