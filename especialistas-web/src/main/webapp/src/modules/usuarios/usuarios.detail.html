@@ -1,0 +1,28 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="thumb">
+                <img class="img-responsive" ng-src="{{currentUsuario.image}}"/>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <dl>     
+                <dt>{{currentUsuario.nombre}}</dt>
+                
+                <hr>
+                <dt>cedula</dt>
+                <dd>{{currentUsuario.cedula}}</dd>
+          
+                <hr>
+                <dt>nombre</dt>
+                <dd>{{currentUsuario.nombre}}</dd>
+                <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: usuario.id})">Eliminar</a>
+                <a href="#">Editar</a>
+
+            </dl>
+        </div>
+    </div>
+        </div>
+</div>
