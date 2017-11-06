@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-info" ui-sref="medicamentoCreate"><span class="glyphicon glyphicon-plus-sign"></span> Nuevo Medicamento</a>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>precio</th>    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="medicamento in medicamentos">
+                    <td id="{{$index}}-nombre"><a ui-sref="medicamentoDetail ({id: medicamento.id})">{{medicamento.nombre}}</a></td>
+                    <td id="{{$index}}-precio">{{medicamento.precio}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
