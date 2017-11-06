@@ -39,6 +39,30 @@
                         templateUrl: basePath + 'detail/farmacias.detail.html'
                     }
                 }
+            }).state('addMedicamento', {
+                url: '/farmacias/:id/medicamento/add/',
+                params:{
+                    id:null
+                },          
+                views: {
+                    'mainView': {
+                        controller: 'farmaciaAddMedicamentoCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'create/farmacias.addMedicamento.html'
+                    }
+                }
+            }).state('deleteMedicamento', {
+                url: '/farmacias/:id/medicamento/delete/',
+                params:{
+                    id:null
+                },          
+                views: {
+                    'mainView': {
+                        controller: 'farmaciaDeleteMedicamentoCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'delete/farmacias.deleteMedicamento.html'
+                    }
+                }
             });
         }
     ]);
