@@ -1,17 +1,23 @@
 (function (ng) {
     var mod = ng.module("horaModule");
     mod.constant("horasContext", "api/horas");
-    mod.controller('horaCtrl', ['$scope', '$state', '$http', 'horasContext',
-        function ($scope, $state, $http, horasContext) {
-            $http.get(horasContext).then(function (response) {
-                $scope.agenda = response.data;
-            });
-            
-            if($state.params.horaId !== undefined){
+    mod.constant("citasContext", "api/citas");
+    mod.constant("consultoriosContext", "api/consultorio");
+    mod.controller('horaCtrl', ['$scope', '$state', '$http', 'horasContext', 'citasContext', 'consultoriosContext',
+        function ($scope, $state, $http, horasContext, citasContext, consultoriosContext) {
+            if ($state.params.horaId !== undefined) {
                 $http.get(horasContext + '/' + $state.params.horaId).then(function (response) {
-                    $scope.horaActual = response.data;
+                    $scope.hora = response.data;
                 });
             }
+            if ($scope.horaActual.cita !== null) {
+                $http.get(citasContext + '/' + $scope.horaActual.cita.id).then(function (response) {
+                    $scope.cita = response.data;
+                });
+            }
+            $http.get(consultoriosContext + '/' + $scope.horaActual.consultorio.id).then(function (response) {
+                $scope.consultorio = response.data;
+            });
         }
     ]);
 }

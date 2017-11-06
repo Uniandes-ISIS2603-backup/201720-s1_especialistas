@@ -1,30 +1,20 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="col-md-3">
+    <dl>     
+        <dt>Hora</dt>
+        <dd>{{hora.horaInicio| time:'hh:mm:ss'}}</dd>        
+
+        <hr>
+        <dt>Consultorio</dt>
+        <dd>{{consultorio.numero}}</dd>
+
+        <hr>
+        <dt>Hospital</dt>
+        <dd>{{consultorio.hospital.nombre}}</dd>
+
+        <hr>
+        <dt>Paciente</dt>
+        <dd ng-if="cita !== null">{{cita.usuario.nombre}}</dd>
+        <dd ng-if="cita === null">Cita sin asignar</dd>
+
+    </dl>
+</div>

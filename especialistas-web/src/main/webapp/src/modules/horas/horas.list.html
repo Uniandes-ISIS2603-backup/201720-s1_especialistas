@@ -3,7 +3,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading"><label>Semana</label></div>
             <div class="panel-body">
-                <table class="table table-striped col-md-9">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Hora</th>
@@ -19,7 +19,7 @@
                     <tbody>
                         <tr ng-repeat="hora in agenda">
                             <td id="{{$index}}-inicio"><a ui-sref="horaDetail({horaId: hora.id})">{{hora.horaInicio}}</a></td>
-                            <td id="{{$index}}-fin">{{hora.horaFin}}</td> 
+                            <td id="{{$index}}-fin">{{hora.horaFin}}</td>
                         </tr>
                     </tbody>
                 </table>

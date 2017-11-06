@@ -1,19 +1,10 @@
 (function (ng) {
     var mod = ng.module("horaModule", ['medicoModule', 'ui.router']);
-
+ 
     mod.config(['$stateProvider', function ($stateProvider) {
             var basePath = 'src/modules/horas/';
-            $stateProvider.state('horasList', {
-                url: '/agenda',
-                views: {
-                    'mainView': {
-                        templateUrl: basePath + 'horas.list.html',
-                        controller: 'horaCtrl',
-                        controllerAs: 'ctrl'
-                    }
-                }
-            }).state('horaDetail', {
-                url: '/agenda',
+            $stateProvider.state('horaDetail', {
+            url: '/{horaId: int}/informacion',
                 parent: 'medicoDetail',
                 params : {
                     "horaId" : null
