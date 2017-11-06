@@ -2,7 +2,9 @@
     <div class="usuario" ng-repeat="usuario in usuariosRecords">
         <div class="col-sm-4 col-lg-3 pacman">
             <div class="usuario-padre">
-                <img src="https://ep01.epimg.net/verne/imagenes/2017/02/07/articulo/1486460356_768109_1486460432_noticia_normal.jpg" alt="">
+                <a ui-sref="usuarioDetail({usuarioId: usuario.id})">
+                    <img src="https://ep01.epimg.net/verne/imagenes/2017/02/07/articulo/1486460356_768109_1486460432_noticia_normal.jpg" alt="">
+                </a>
                 <div class="usuario-data">
                     {{usuario.nombre}} <br>
                     {{usuario.cedula}} 
