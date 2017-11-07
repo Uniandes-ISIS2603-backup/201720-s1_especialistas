@@ -45,6 +45,17 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('usuarioUpdate', {
+                url: '/update/{usuarioId:int}',
+                param: {
+                    usuarioId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'new/usuarios.new.html',
+                        controller: 'usuarioUpdateCtrl'
+                    }
+                }
             });
         }
     ]);
