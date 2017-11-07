@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createAuthor">Create new Author</label>
+                <label ng-if="edit" id="editAuthor">Editar Tarjeta</label></div>
+            <div class="panel-body">
+                <form ng-submit="createTarjeta()" name="tarjeta">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="tarjetaName" class="col-sm-2">Numero</label>
+                            <input id="tarjetaName" required ng-model="tarjetaNumero" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div ng-if="edit" class="panel-group" id="theCitas">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Associated citas</div>
+                            <div class="panel-body">
+                                <div id="div2" ondrop="angular.element(document.getElementById('theCitas')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('theCitas')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-show="edit" ng-repeat="cita in allCitasUsiario">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theCitas')).scope().drag(event)" id="{{cita.id}}">{{cita.comentarios}}</p>                                 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">All citas</div>
+                            <div class="panel-body">
+                                <div id="div1" ondrop="angular.element(document.getElementById('theCitas')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('theCitas')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-repeat="cita in allCitasShow">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theCitas')).scope().drag(event)" id="{{cita.id}}">{{cita.comentarios}}</p>                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!tarjeta.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>All inputs are required*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="tarjeta.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="tarjetasList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

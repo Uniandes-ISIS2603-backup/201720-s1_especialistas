@@ -13,6 +13,7 @@
         'hospitalesModule',
         'usuarioModule',
         'pagoModule',
+        'tarjetaModule',
         'medicamentoModule'
     ]);
     //Resuelve problemas de las promesas
