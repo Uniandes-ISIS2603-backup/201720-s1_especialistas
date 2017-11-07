@@ -149,9 +149,9 @@ public class MedicoResource {
 
         MedicoEntity newEntity = logic.getMedico(id);
         List<HoraDetailDTO> lista = new ArrayList<>();
-        newEntity.getAgenda().forEach((hora) -> {
+        for(HoraEntity hora : newEntity.getAgenda()){
             lista.add(new HoraDetailDTO(hora));
-        });
+        };
         return lista;
     }
     

@@ -1,15 +1,11 @@
 (function (ng) {
     var mod = ng.module("horaModule");
-    mod.constant("horasContext", "api/horas");
-    mod.controller('horaCtrl', ['$scope', '$state', '$http', 'horasContext',
-        function ($scope, $state, $http, horasContext) {
-            $http.get(horasContext).then(function (response) {
-                $scope.agenda = response.data;
-            });
-            
-            if($state.params.horaId !== undefined){
-                $http.get(horasContext + '/' + $state.params.horaId).then(function (response) {
-                    $scope.horaActual = response.data;
+    mod.constant("medicosContext", "api/medicos");
+    mod.controller('horaCtrl', ['$scope', '$state', '$http', 'medicosContext',
+        function ($scope, $state, $http, medicosContext) {
+            if($state.params.medicoId !== undefined){
+                $http.get(medicosContext + '/' + $state.params.medicoId + '/agenda').then(function (response) {
+                    $scope.agenda = response.data;
                 });
             }
         }
