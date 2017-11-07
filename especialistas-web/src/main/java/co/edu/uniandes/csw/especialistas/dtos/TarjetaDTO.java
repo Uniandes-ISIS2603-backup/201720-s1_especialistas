@@ -50,6 +50,7 @@ public class TarjetaDTO {
     
     /**
      * Setter del atributo nombre
+     * @param numero
      */
     public void setNumero(int numero) {
         this.numero = numero;

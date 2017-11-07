@@ -1,19 +1,6 @@
-<div class="container-fluid">
-    <div class="col-md-4">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Hora Inicio</th>    
-                    <th>Hora Fin</th>  
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="hora in agenda">
-                    <td id="{{$index}}-inicio"><a ui-sref="horaDetail({horaId: hora.id})">{{hora.horaInicio}}</a></td>
-                    <td id="{{$index}}-fin">{{hora.horaFin}}</td> 
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="list-group">
+  <button ng-repeat="hora in agenda" type="button" class="list-group-item" ui-sref="horaDetail({horaId: hora.id})">
+      {{hora.horaInicio| date:'MMM d, h:mm a'}}
+  </button>
+  <button type="button" class="list-group-item list-group-item-info" ui-sref="horasCreate">Añadir nueva</button>
 </div>

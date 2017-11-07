@@ -36,7 +36,7 @@ public class UsuarioResource {
     UsuarioLogic logic;
     
     @POST
-    public UsuarioEntity createUsuario(UsuarioDTO usuario) throws WebApplicationException {
+    public UsuarioEntity createUsuario(UsuarioDetailDTO usuario) throws WebApplicationException {
         UsuarioEntity usuarioEntity = null;
         if(usuario.getId()!=null)
         {

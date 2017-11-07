@@ -33,6 +33,29 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('usuarioDetail', {
+                url: '/{usuarioId:int}/detail',
+                param: {
+                    authorId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'usuarios.detail.html',
+                        controller: 'usuarioCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('usuarioUpdate', {
+                url: '/update/{usuarioId:int}',
+                param: {
+                    usuarioId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'new/usuarios.new.html',
+                        controller: 'usuarioUpdateCtrl'
+                    }
+                }
             });
         }
     ]);
