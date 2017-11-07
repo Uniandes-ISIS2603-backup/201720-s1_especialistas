@@ -1,17 +1,21 @@
 <div class="container-fluid">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th> 
                     <th>Referencia</th>    
-                    <th>Precio</th>  
+                    <th>Precio</th>
+                    <th>Paga</th>
 
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="pago in pagosRecords">
+                    <td id="{{$index}}-id">{{pago.id}}</td>
                     <td id="{{$index}}-ref">{{pago.ref}}</td>
                     <td id="{{$index}}-precio">{{pago.precio}}</td>
+                    <td id="{{$index}}-precio">{{pago.pai}}</td>
                 </tr>
             </tbody>
         </table>

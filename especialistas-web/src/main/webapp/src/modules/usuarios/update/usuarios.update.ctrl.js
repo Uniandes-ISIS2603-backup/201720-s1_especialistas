@@ -2,59 +2,57 @@
         function (ng) {
             var mod = ng.module("usuarioModule");
             mod.constant("usuariosContext", "api/usuarios");
-            mod.constant("booksContext", "api/books");
-            mod.controller('usuarioUpdateCtrl', ['$scope', '$http', 'usuariosContext', '$state', 'booksContext', '$rootScope', '$filter',
-                function ($scope, $http, usuariosContext, $state, booksContext, $rootScope, $filter) {
+            mod.constant("citasContext", "api/citas");
+            mod.controller('usuarioUpdateCtrl', ['$scope', '$http', 'usuariosContext', '$state', 'citasContext', '$rootScope', '$filter',
+                function ($scope, $http, usuariosContext, $state, citasContext, $rootScope, $filter) {
                     $rootScope.edit = true;
 
                     var idUsuario = $state.params.usuarioId;
 
-                    // Este arreglo guardara los ids de los books asociados y por asociar al autor.
-                    var idsBook = [];
+                    // Este arreglo guardara los ids de las citas asociadas a un usuario
+                    var idsCita = [];
 
-                    // Este arreglo mostrará los books una vez esten filtrados visualmente por lo que el autor ya tiene asociado.
-                    $scope.allBooksShow = [];
+                    // Este arreglo mostrará los citas una vez esten filtrados visualmente por lo que el autor ya tiene asociado.
+                    $scope.allCitasShow = [];
 
                     //Consulto el autor a editar.
                     $http.get(usuariosContext + '/' + idUsuario).then(function (response) {
                         var usuario = response.data;
                         $scope.usuarioName = usuario.nombre;
-                        $scope.usuarioBirthDate = new Date(usuario.birthDate);
-                        $scope.usuarioDescription = usuario.description;
-                        $scope.usuarioImage = usuario.image;
-                        $scope.allBooksUsuario = usuario.books;
-                        $scope.mergeBooks($scope.allBooksUsuario);
+                        $scope.usuarioCedula = usuario.cedula;
+                        $scope.allCitasUsuario = usuario.citas;
+                        $scope.mergeCitas($scope.allCitasUsuario);
                     });
 
                     /*
-                     * Esta función añade los ids de los books que ya tiene el autor asociado.
-                     * @param {type} books: Son los books que ya tiene asociado el autor.
+                     * Esta función añade los ids de los citas que ya tiene el autor asociado.
+                     * @param {type} citas: Son los citas que ya tiene asociado el autor.
                      * @returns {undefined}
                      */
-                    $scope.mergeBooks = function (books) {
-                        for (var item in books) {
-                            idsBook.push("" + books[item].id);
+                    $scope.mergeCitas = function (citas) {
+                        for (var item in citas) {
+                            idsCita.push("" + citas[item].id);
                         }
-                        $scope.getBooks(books);
+                        $scope.getCitas(citas);
                     };
 
                     /*
-                     * Esta función recibe como param los books que tiene el autor para hacer un filtro visual con todos los books que existen.
-                     * @param {type} books
+                     * Esta función recibe como param los citas que tiene el autor para hacer un filtro visual con todos los citas que existen.
+                     * @param {type} citas
                      * @returns {undefined}
                      */
-                    $scope.getBooks = function (books) {
-                        $http.get(booksContext).then(function (response) {
-                            $scope.Allbooks = response.data;
-                            $scope.booksUsuario = books;
+                    $scope.getCitas = function (citas) {
+                        $http.get(citasContext).then(function (response) {
+                            $scope.Allcitas = response.data;
+                            $scope.citasUsuario = citas;
 
-                            var filteredBooks = $scope.Allbooks.filter(function (Allbooks) {
-                                return $scope.booksUsuario.filter(function (booksUsuario) {
-                                    return booksUsuario.id == Allbooks.id;
+                            var filteredCitas = $scope.Allcitas.filter(function (Allcitas) {
+                                return $scope.citasUsuario.filter(function (citasUsuario) {
+                                    return citasUsuario.id == Allcitas.id;
                                 }).length == 0
                             });
 
-                            $scope.allBooksShow = filteredBooks;
+                            $scope.allCitasShow = filteredCitas;
 
                         });
                     };
@@ -73,34 +71,32 @@
                         ev.preventDefault();
                         var data = ev.dataTransfer.getData("text");
                         ev.target.appendChild(document.getElementById(data));
-                        //Cuando un book se añade al autor, se almacena su id en el array idsBook
-                        idsBook.push("" + data);
+                        //Cuando un cita se añade al autor, se almacena su id en el array idsCita
+                        idsCita.push("" + data);
                     };
 
                     $scope.dropDelete = function (ev) {
                         ev.preventDefault();
                         var data = ev.dataTransfer.getData("text");
                         ev.target.appendChild(document.getElementById(data));
-                        //Para remover el book que no se va asociar, por eso se usa el splice que quita el id del book en el array idsBook
-                        var index = idsBook.indexOf(data);
+                        //Para remover el cita que no se va asociar, por eso se usa el splice que quita el id del cita en el array idsCita
+                        var index = idsCita.indexOf(data);
                         if (index > -1) {
-                            idsBook.splice(index, 1);
+                            idsCita.splice(index, 1);
                         }
                     };
 
                     $scope.createUsuario = function () {
-                        /*Se llama a la función newBooks() para buscar cada uno de los ids de los books
-                         en el array que tiene todos los books y así saber como queda la lista final de los books asociados al autor.
+                        /*Se llama a la función newCitas() para buscar cada uno de los ids de los citas
+                         en el array que tiene todos los citas y así saber como queda la lista final de los citas asociados al autor.
                          */
-                        $scope.newBooks();
+                        $scope.newCitas();
                         $http.put(usuariosContext + "/" + idUsuario, {
                             nombre: $scope.usuarioName,
-                            birthDate: $scope.usuarioBirthDate,
-                            description: $scope.usuarioDescription,
-                            image: $scope.usuarioImage
+                            cedula: $scope.usuarioCedula
                         }).then(function (response) {
-                            if (idsBook.length >= 0) {
-                                $http.put(usuariosContext + "/" + response.data.id + "/books", $scope.allBooksUsuario).then(function (response) {
+                            if (idsCita.length >= 0) {
+                                $http.put(usuariosContext + "/" + response.data.id + "/citas", $scope.allCitasUsuario).then(function (response) {
                                 });
                             }
                             //Usuario created successfully
@@ -108,12 +104,12 @@
                         });
                     };
 
-                    $scope.newBooks = function () {
-                        $scope.allBooksUsuario = [];
-                        for (var ite in idsBook) {
-                            for (var all in $scope.Allbooks) {
-                                if ($scope.Allbooks[all].id === parseInt(idsBook[ite])) {
-                                    $scope.allBooksUsuario.push($scope.Allbooks[all]);
+                    $scope.newCitas = function () {
+                        $scope.allCitasUsuario = [];
+                        for (var ite in idsCita) {
+                            for (var all in $scope.Allcitas) {
+                                if ($scope.Allcitas[all].id === parseInt(idsCita[ite])) {
+                                    $scope.allCitasUsuario.push($scope.Allcitas[all]);
                                 }
                             }
                         }
