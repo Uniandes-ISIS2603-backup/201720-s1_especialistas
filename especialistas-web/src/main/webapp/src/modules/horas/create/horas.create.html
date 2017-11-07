@@ -1,12 +1,12 @@
 <div class="container-fluid">
     <div class="panel-group">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><label id="createHora">Agregar médico</label></div>
+        <div class="panel panel-info">
+            <div class="panel-heading"><label id="createHora">Agregar hora</label></div>
             <div class="panel-body">
                 <form ng-submit="createHora()" name="hora">
                     <div class="form-group">
                         <label for="horaInicio">Hora Inicio</label>
-                        <input id="horaInicio" required ng-model="horaInicio" class="form-control"/>
+                        <input type="datetime-local" id="horaInicio" required ng-model="horaInicio" class="form-control"/>
                     </div>
                         <div class="form-group">
                         <label for="consultorioHora">Consultorio</label>

@@ -1,20 +1,6 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Hora</th>
-            <th>Lunes</th>    
-            <th>Martes</th>  
-            <th>Miercoles</th>  
-            <th>Jueves</th>  
-            <th>Viernes</th>  
-            <th>Sábado</th>  
-            <th>Domingo</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="hora in agenda">
-            <td id="{{$index}}-inicio"><a ui-sref="horaDetail({horaId: hora.id})">{{hora.horaInicio}}</a></td>
-            <td id="{{$index}}-fin">{{hora.horaFin}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="list-group">
+  <button ng-repeat="hora in agenda" type="button" class="list-group-item" ui-sref="horaDetail({horaId: hora.id})">
+      {{hora.horaInicio| date:'MMM d, h:mm a'}}
+  </button>
+  <button type="button" class="list-group-item list-group-item-info" ui-sref="horasCreate">Añadir nueva</button>
+</div>

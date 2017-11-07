@@ -1,10 +1,10 @@
 (function (ng) {
     var mod = ng.module("medicoModule", ['ui.router']);
 
-    mod.config(['$stateProvider', function ($stateProvider) {
+    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/medicos/';
             $stateProvider.state('medicosList', {
-                url: 'medicos',
+                url: '/medicos',
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'medicos.list.html',
@@ -13,8 +13,7 @@
                     }
                 }
             }).state('medicoDetail', {
-                abstract : true,
-                url: 'medicos/{medicoId:int}/informacion',
+                url: '/medicos/{medicoId:int}/informacion',
                 params: {
                     medicoId : null
                 },
@@ -26,7 +25,7 @@
                     }
                 }
             }).state('medicosCreate', {
-                url: 'medicos/nuevo',
+                url: '/medicos/nuevo',
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'create/medicos.create.html',
@@ -35,7 +34,7 @@
                     }
                 }
             }).state('medicoUpdate', {
-                url: 'medicos/{medicoId:int}/cambiar_datos',
+                url: '/medicos/{medicoId:int}/cambiar_datos',
                 params: {
                     medicoId : null
                 },
@@ -47,7 +46,7 @@
                     }
                 }
             }).state('medicoDelete', {
-                url: 'medicos/{medicoId:int}/borrar',
+                url: '/medicos/{medicoId:int}/borrar',
                 params: {
                     medicoId : null
                 },

@@ -1,24 +1,29 @@
-<div class="col-md-3">
-    <dl>
-        <hr>
-        <dt>Hora</dt>
-        <dd>{{hora.horaInicio| date:'hh:mm'}}</dd>        
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <dl class="col-md-6">
+                <dt>Día y Hora</dt>
+                <dd>{{hora.horaInicio| date:'MMM d, h:mm a'}}</dd>        
+            </dl>
 
-        <hr>
-        <dt>Consultorio</dt>
-        <dd>{{consultorio.numero}}</dd>
+            <dl class="col-md-6">
+                <dt>Paciente</dt>
+                <dd ng-if="!hayCita">Cita sin asignar</dd>
+                <dd ng-if="hayCita">{{cita.usuario.nombre}}</dd>
+            </dl>
+        </div>
+        <div class="row">
+            <dl class="col-md-6">
+                <dt>Consultorio</dt>
+                <dd>{{consultorio.numero}}</dd>
+            </dl>
 
-        <hr>
-        <dt>Hospital</dt>
-        <dd>{{consultorio.hospital.nombre}}</dd>
-
-        <hr>
-        <dt>Paciente</dt>
-        <dd ng-if="!hayCita">Cita sin asignar</dd>
-        <dd ng-if="hayCita">{{cita.usuario.nombre}}</dd>
-
-        <hr>
-        <a class="btn btn-danger btn-sm" ui-sref="horaDelete({horaId: hora.id})"><span class="glyphicon glyphicon-trash"></span></a>
-
-    </dl>
+            <dl class="col-md-6">
+                <dt>Hospital</dt>
+                <dd>{{consultorio.hospital.nombre}}</dd>
+            </dl>
+        </div>
+        <div class="col-md-5"></div>
+        <a class="btn btn-danger btn-sm col-md-2" ui-sref="horaDelete({horaId: hora.id})">Borrar <span class="glyphicon glyphicon-trash"></span></a>
+    </div>
 </div>
