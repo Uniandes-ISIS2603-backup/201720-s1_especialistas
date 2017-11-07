@@ -28,3 +28,42 @@
     </div>
         </div>
 </div>
+
+<div class="panel panel-default col-sm-6">
+    <h4>
+        Tarjeta
+    </h4>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Numero</th>    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="numero-tarjeta"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{tarjeta.numero}}</a></td>
+                    <td id="numero-tarjeta"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{tarjeta.nombre}}</a></td>
+                </tr>
+            </tbody>
+    </table>
+</div>
+
+<div class="panel panel-default col-sm-6">
+    <h4>
+        Citas
+    </h4>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Comentarios</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cita in citas">
+                    <td id="numero-tarjeta"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{cita.id}}</a></td>
+                    <td id="numero-tarjeta"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{cita.comentarios}}</a></td>
+                </tr>
+            </tbody>
+    </table>
+</div>
