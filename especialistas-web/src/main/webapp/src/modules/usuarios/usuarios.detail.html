@@ -3,11 +3,11 @@
     <div class="row">
         <div class="col-md-3">
             <div class="thumb">
-                <img class="img-responsive" ng-src="{{currentUsuario.image}}"/>
+                <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5PiRLyIsW9zpkhazNEVeuuFcPvyjWLlfnSBkQOL2ZS_p8DTgP"/>
             </div>
 
         </div>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <dl>     
                 <dt>{{currentUsuario.nombre}}</dt>
                 
@@ -18,8 +18,10 @@
                 <hr>
                 <dt>nombre</dt>
                 <dd>{{currentUsuario.nombre}}</dd>
-                <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: currentUsuario.id})">Eliminar</a>
-                <a href="#">Editar</a>
+                <div class="usuario-data">
+                    <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: currentUsuario.id})">Eliminar</a>
+                    <a href="#">Editar</a>
+                </div>
 
             </dl>
         </div>
