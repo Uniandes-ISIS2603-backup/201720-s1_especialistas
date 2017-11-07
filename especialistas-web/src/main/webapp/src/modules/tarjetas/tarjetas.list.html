@@ -2,15 +2,15 @@
     <div class="usuario" ng-repeat="tarjeta in tarjetasRecords">
         <div class="col-sm-4 col-lg-3 pacman">
             <div class="usuario-padre">
-                <a ui-sref="usuarioDetail({usuarioId: usuario.id})">
+                <a ui-sref="tarjetaDetail({tarjetaId: tarjeta.id})">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/MasterCard_early_1990s_logo.png/220px-MasterCard_early_1990s_logo.png" alt="">
                 </a>
                 <div class="usuario-data">
                     {{tarjeta.id}} <br>
                     {{tarjeta.numero}} 
 
-                    <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: usuario.id})">Eliminar</a>
-                    <a href="#" ui-sref="usuarioUpdate({usuarioId: usuario.id})">Editar</a>
+                    <a href="#" style="color: #f44" ui-sref="tarjetasDelete({tarjetaId: tarjeta.id})">Eliminar</a>
+                    <a href="#" ui-sref="tarjetaUpdate({tarjetaId: tarjeta.id})">Editar</a>
                 </div>
             </div>
         </div>

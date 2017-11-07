@@ -24,7 +24,7 @@
             }).state('usuariosDelete', {
                 url: '/usuarios/delete/{usuarioId:int}',
                 param: {
-                    authorId: null
+                    usuarioId: null
                 },
                 views: {
                     'mainView': {
@@ -34,9 +34,9 @@
                     }
                 }
             }).state('usuarioDetail', {
-                url: '/{usuarioId:int}/detail',
+                url: '/usuarios/{usuarioId:int}/detail',
                 param: {
-                    authorId: null
+                    usuarioId: null
                 },
                 views: {
                     'mainView': {
@@ -46,7 +46,7 @@
                     }
                 }
             }).state('usuarioUpdate', {
-                url: '/update/{usuarioId:int}',
+                url: '/usuarios/update/{usuarioId:int}',
                 param: {
                     usuarioId: null
                 },

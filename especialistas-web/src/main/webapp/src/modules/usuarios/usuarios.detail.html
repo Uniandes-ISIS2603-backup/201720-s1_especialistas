@@ -36,13 +36,14 @@
     <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Numero</th>    
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td id="numero-tarjeta"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{tarjeta.numero}}</a></td>
-                    <td id="numero-tarjeta"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{tarjeta.nombre}}</a></td>
+                    <td id="numero-tarjeta"><a ui-sref="tarjetaDetail({tarjetaId: tarjeta.id})">{{tarjeta.id}}</a></td>
+                    <td id="numero-tarjeta"><a ui-sref="tarjetaDetail({tarjetaId: tarjeta.id})">{{tarjeta.numero}}</a></td>
                 </tr>
             </tbody>
     </table>
