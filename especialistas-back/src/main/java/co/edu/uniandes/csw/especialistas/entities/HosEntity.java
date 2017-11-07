@@ -42,7 +42,7 @@ public class HosEntity implements Serializable {
 
     @PodamExclude
     @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<ConsEntity> consultorios = new ArrayList<>();
+    private List<ConsEntity> consultorios = new ArrayList<ConsEntity>();
 
     public Long getId() {
         return id;

@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("hospitalesModule", ['ui.router']);
-    mod.constant("hospitalesContext", "api/hospitales");
+    mod.constant("hospitalesContext", "api/hos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/hospitales/';
             $urlRouterProvider.otherwise("/hospitalesList");

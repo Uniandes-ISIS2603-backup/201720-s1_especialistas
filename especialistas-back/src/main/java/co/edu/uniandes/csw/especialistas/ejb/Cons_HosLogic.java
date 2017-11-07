@@ -28,6 +28,7 @@ public class Cons_HosLogic {
         HosEntity entityF= logicHospital.getHospital(idHospital);
         if(entityF==null||entityM==null)
         {
+            System.out.println("co.edu.uniandes.csw.especialistas.ejb.Cons_HosLogic.agregarRelacion()");
             return false;
         }
         entityF.agregarConsultorio(entityM);

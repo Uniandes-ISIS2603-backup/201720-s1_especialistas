@@ -30,7 +30,8 @@ public class ConsDetailDTO extends ConsDTO {
         }
         this.hospital = new HosDTO(entity.getHospital());
     }
-
+    
+    @Override
     public ConsEntity toEntity() {
         ConsEntity entity = super.toEntity();
         if (hospital == null) {
