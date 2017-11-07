@@ -11,17 +11,13 @@ import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
  *
  * @author jl.patarroyo
  */
-public class ConsultorioDTO {
+public class ConsultorioDTO extends EspecialistasDTO{
 
     /**
      * Número del consultorio
      */
     protected String referenciaConsultorio;
 
-    /**
-     * Id del consultorio
-     */
-    protected Long id;
 
     /**
      * Constructor por defecto
@@ -56,24 +52,6 @@ public class ConsultorioDTO {
      */
     public void setNumero(String numero) {
         this.referenciaConsultorio = numero;
-    }
-
-    /**
-     * Getter del atributo Id
-     *
-     * @return Id del consultorio
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Setter del atributo id
-     *
-     * @param id id del consultorio
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public ConsultorioEntity toEntity() {
