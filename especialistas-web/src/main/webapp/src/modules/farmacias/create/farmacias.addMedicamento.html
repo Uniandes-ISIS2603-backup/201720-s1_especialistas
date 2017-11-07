@@ -6,7 +6,7 @@
                 <form ng-submit="addMedicamento(e)" name="farmacia">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <select ng-model="e" id="meds" class="col-sm-2" >
+                            <select style="color:black;" ng-model="e" id="meds" class="col-sm-6" >
                                 <option ng-repeat="medicamento in medicamentos" id="{{$index}}-nombre" value="{{medicamento.id}}">
                                     {{medicamento.nombre}}
                                  </option>                               
