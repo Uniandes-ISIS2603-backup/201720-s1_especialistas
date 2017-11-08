@@ -36,7 +36,7 @@ public class TargetaResource {
     TarjetaLogic logic;
     
     @POST
-    public TarjetaEntity createTarjeta(TarjetaDTO tarjeta) throws WebApplicationException {
+    public TarjetaEntity createTarjeta(TarjetaDetailDTO tarjeta) throws WebApplicationException {
         TarjetaEntity tarjetaEntity = null;
         if(tarjeta.getId()!=null)
         {

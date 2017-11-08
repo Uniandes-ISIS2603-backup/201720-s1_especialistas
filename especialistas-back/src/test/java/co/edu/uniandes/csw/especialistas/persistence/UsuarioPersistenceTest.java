@@ -71,6 +71,7 @@ public class UsuarioPersistenceTest {
     }
     
      private void clearData() {
+        em.createQuery("delete from TarjetaEntity").executeUpdate();
         em.createQuery("delete from CitaEntity").executeUpdate();
         em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
@@ -128,6 +129,7 @@ public class UsuarioPersistenceTest {
         
         TarjetaEntity newTarjeta = new TarjetaEntity();
         newTarjeta.setNumero(0001);
+        newTarjeta.setUsuario(newEntity);
         
         newEntity.setTarjeta(newTarjeta);
         
