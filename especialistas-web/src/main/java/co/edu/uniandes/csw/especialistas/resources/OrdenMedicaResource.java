@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.dtos.OrdenMedicaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.OrdenMedicaDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.OrdenMedicaLogic;
 import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -33,16 +34,16 @@ public class OrdenMedicaResource {
     OrdenMedicaLogic logic;
     
     /**
-     * Recurso que crea un ordenMedica
-     * @param ordenMedica JSON con la información del OrdenMedica
+     * Recurso que crea un cita
+     * @param cita JSON con la información del OrdenMedica
      * @return Entidad del OrdenMedica creado
      */
     @POST
-    public OrdenMedicaEntity createOrdenMedica(OrdenMedicaDTO ordenMedica)
+    public OrdenMedicaDetailDTO createOrdenMedica(OrdenMedicaDetailDTO cita)
     {
-        OrdenMedicaEntity entity = ordenMedica.toEntity();
+        OrdenMedicaEntity entity = cita.toEntity();
         logic.createOrdenMedica(entity);
-        return entity;
+        return new OrdenMedicaDetailDTO(entity);
     }
     
     /**
@@ -52,13 +53,14 @@ public class OrdenMedicaResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public OrdenMedicaEntity getOrdenMedica(@PathParam("id") Long id)
+    public OrdenMedicaDetailDTO getOrdenMedica(@PathParam("id") Long id)
     {
         OrdenMedicaEntity entity = logic.getOrdenMedica(id);
-         if (entity == null) {
+        if (entity == null) {
             throw new WebApplicationException("El recurso /ordenesMedicas/" + id + " no existe.", 404);
         }
-        return entity;
+
+        return new OrdenMedicaDetailDTO(entity);
     }
     
     /**
@@ -66,9 +68,12 @@ public class OrdenMedicaResource {
      * @return Lista con todos los OrdenMedicas
      */
     @GET
-    public List<OrdenMedicaEntity> getOrdenMedicas()
+    public List<OrdenMedicaDetailDTO> getOrdenMedicas()
     {
-        List<OrdenMedicaEntity> lista = logic.getOrdenesMedicas();
+        List<OrdenMedicaDetailDTO> lista = new ArrayList<>();
+        logic.getOrdenesMedicas().forEach((ordenMedica) -> {
+            lista.add(new OrdenMedicaDetailDTO(ordenMedica));
+        });
         return lista;
     }
     
@@ -87,7 +92,7 @@ public class OrdenMedicaResource {
          if (e == null) {
             throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
         }
-        return new OrdenMedicaDetailDTO(logic.updateOrdenMedica(id,entity));
+        return new OrdenMedicaDetailDTO(logic.updateOrdenMedica(entity));
     }
     
     /**

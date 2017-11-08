@@ -46,7 +46,7 @@ public class PagoEntity implements Serializable{
     private int precio;
     
     /**
-     * atrubuto que modela una targeta
+     * atrubuto que modela una tarjeta
      */
     @PodamExclude
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -64,15 +64,15 @@ public class PagoEntity implements Serializable{
     }  
     
     /**
-    * getter del atributo usuario
-    * @return usuario asociado
+    * getter del atributo tarjeta
+    * @return tarjeta asociado
     */
     public TarjetaEntity getTarjeta(){
        return this.tarjeta;
     }
 
     /**
-    * setter del atributo usuario
+    * setter del atributo tarjeta
     * @param tarjeta 
     */
     public void setTarjeta(TarjetaEntity tarjeta){

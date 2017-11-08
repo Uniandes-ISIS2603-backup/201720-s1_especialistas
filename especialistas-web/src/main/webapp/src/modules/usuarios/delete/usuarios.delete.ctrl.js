@@ -6,7 +6,7 @@
             var idUsuario = $state.params.usuarioId;
             $scope.deleteAuthor = function () {
                 $http.delete(usuarioContext + '/' + idUsuario, {}).then(function (response) {
-                    $state.go('usuariosList', {authorId: response.data.id}, {reload: true});
+                    $state.go('usuariosList', {usuarioId: response.data.id}, {reload: true});
                 });
             };
         }

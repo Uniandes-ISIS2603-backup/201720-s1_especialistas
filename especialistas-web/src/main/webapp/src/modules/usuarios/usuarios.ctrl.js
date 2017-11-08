@@ -8,11 +8,10 @@
             });
             
             if (($state.params.usuarioId !== undefined) && ($state.params.usuarioId !== null)) {
-                alert($state.params.usuarioId);
                 $http.get(usuariosContext + '/' + $state.params.usuarioId).then(function (response) {
-                    //$scope.booksRecords = response.data.books;
+                    $scope.tarjeta = response.data.tarjeta;
+                    $scope.citas = response.data.citas;
                     $scope.currentUsuario = response.data;
-                    alert(response.data);
                 });
             }
         }

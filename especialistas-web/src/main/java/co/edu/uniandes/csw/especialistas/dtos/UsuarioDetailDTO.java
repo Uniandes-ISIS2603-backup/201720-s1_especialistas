@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
 import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,12 +21,12 @@ public class UsuarioDetailDTO extends UsuarioDTO{
     /**
      * atributo que modela la targeta del usuario
      */
-    private TarjetaEntity tarjeta;
+    private TarjetaDTO tarjeta;
     
     /**
      * lista de citasmedicas de un usuario
      */
-    private List <CitaEntity> citasMedicas;
+    private List <CitaDTO> citasMedicas = new ArrayList<CitaDTO>();
     
     /**
      * Ubicacion del usuario
@@ -48,6 +49,21 @@ public class UsuarioDetailDTO extends UsuarioDTO{
     public UsuarioDetailDTO(UsuarioEntity entity)
     {
         super(entity);
+        if(entity != null)
+        {
+            if(entity.getTarjeta() != null)
+            {
+                TarjetaDTO tarjeta2 = new TarjetaDTO(entity.getTarjeta());
+                this.tarjeta = tarjeta2;
+            }
+            
+            citasMedicas = new ArrayList<>();
+            for (CitaEntity cita : entity.getCitas()) {
+                citasMedicas.add(new CitaDTO(cita));
+            }
+            
+        }
+            
     }
     
     /**
@@ -58,7 +74,16 @@ public class UsuarioDetailDTO extends UsuarioDTO{
     public UsuarioEntity toEntity()
     {
         UsuarioEntity entity = super.toEntity();
-        entity.setTarjeta(this.tarjeta);
+        if(tarjeta != null)
+            entity.setTarjeta(tarjeta.toEntity());
+        if(entity.getCitas()!= null)
+            {
+                List<CitaEntity> citaEntity = new ArrayList<>();
+                for (CitaDTO cita : citasMedicas){
+                    citaEntity.add(cita.toEntity());
+                }
+                entity.setCitas(citaEntity);
+            }
         return entity;
     }
     
@@ -66,7 +91,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
      * Getter de targeta
      * @return 
      */
-    public TarjetaEntity getTargeta() {
+    public TarjetaDTO getTarjeta() {
         return this.tarjeta;
     }
 
@@ -74,7 +99,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
      * Setter de targeta
      * @param tarjeta 
      */
-    public void setTarjeta(TarjetaEntity tarjeta) {
+    public void setTarjeta(TarjetaDTO tarjeta) {
         this.tarjeta = tarjeta;
     }
     
@@ -82,7 +107,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
      * Getter de los consultorios
      * @return 
      */
-    public List<CitaEntity> getCitas() {
+    public List<CitaDTO> getCitas() {
         return this.citasMedicas;
     }
 
@@ -90,7 +115,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
      * Setter de los consultorios
      * @param citasMedicas Lista de citas medicas
      */
-    public void setConsultorios(List<CitaEntity> citasMedicas) {
+    public void setCitas(List<CitaDTO> citasMedicas) {
         this.citasMedicas = citasMedicas;
     }
     

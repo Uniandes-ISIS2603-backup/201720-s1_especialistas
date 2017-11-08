@@ -14,9 +14,9 @@ import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
  */
 public class PagoDetailDTO extends PagoDTO{
     /**
-     * atributo que modela la targeta
+     * atributo que modela la tarjeta
      */
-    private TarjetaEntity tarjeta;
+    private TarjetaDTO tarjeta;
     
     /**
      * Constructor por defecto
@@ -33,6 +33,11 @@ public class PagoDetailDTO extends PagoDTO{
     public PagoDetailDTO(PagoEntity entity)
     {
         super(entity);
+        if(entity.getTarjeta() != null)
+            {
+                TarjetaDTO tarjeta2 = new TarjetaDTO(entity.getTarjeta());
+                this.tarjeta = tarjeta2;
+            }
     }
     
     /**
@@ -43,23 +48,24 @@ public class PagoDetailDTO extends PagoDTO{
     public PagoEntity toEntity()
     {
         PagoEntity entity = super.toEntity();
-        entity.setTarjeta(this.tarjeta);
+        if(tarjeta != null)
+            entity.setTarjeta(this.tarjeta.toEntity());
         return entity;
     }
     
     /**
-     * Getter de targeta
+     * Get de tarjeta
      * @return 
      */
-    public TarjetaEntity getTargeta() {
+    public TarjetaDTO getTarjeta() {
         return this.tarjeta;
     }
 
     /**
-     * Setter de targeta
+     * Set de tarjeta
      * @param tarjeta 
      */
-    public void setTarjeta(TarjetaEntity tarjeta) {
+    public void setTarjeta(TarjetaDTO tarjeta) {
         this.tarjeta = tarjeta;
     }
     

@@ -67,7 +67,7 @@ public class CitaEntity implements Serializable{
             return hora;
         }
          
-         public void setOrdenMedica(List <OrdenMedicaEntity> s)
+         public void setOrdenesMedicas(List <OrdenMedicaEntity> s)
         {
             ordenesMedicas=s;
         }

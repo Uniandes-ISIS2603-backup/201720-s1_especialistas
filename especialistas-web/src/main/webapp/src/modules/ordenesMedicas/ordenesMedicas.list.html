@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ordenes</th>                          
+                </tr>
+            </thead>       
+            <tbody>
+                <tr ng-repeat="orden in ordenesMedicas">
+                    <td id="{{$index}}-descripcion"><a ui-sref="ordenesMedicasDetail({ordenesMedicasId: orden.id})">{{orden.descripcion}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
