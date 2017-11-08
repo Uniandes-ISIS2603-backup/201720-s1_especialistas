@@ -1,8 +1,14 @@
 <div class="panel panel-default"> 
-    <h3>Número:</h3><br>
-    {{currentConsultorio.nombre}}
-    <br>
-    <h3>ID</h3><br>
-    {{currentConsultorio.id}}
-    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NÚMERO</th>
+            </tr>
+        </thead>
+        <tr>
+            <td id="{{$index}}-consultorioId">{{currentConsultorio.id}}</td>
+            <td id="{{$index}}-consultoriosName">{{currentConsultorio.numero}}</td>
+        </tr>
+    </table>
 </div>

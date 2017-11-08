@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("hospitalesModule", ['ui.router']);
-    mod.constant("hospitalesContext", "api/hospitales");
+    mod.constant("hospitalesContext", "api/hos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/hospitales/';
             $urlRouterProvider.otherwise("/hospitalesList");
@@ -32,6 +32,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('hospitalDelete', {
+                url: '/hospitales/delete/{hospitalId:int}',
+                param: {
+                    authorId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + '/delete/hospitales.delete.html',
+                        controller: 'hospitalDeleteController',
+                        controllerAs: 'ctrl'
+                    }
+                }
             }).state('hospitalDetail', {
                 url: '/{hospitalId:int}/detail',
                 parent: 'hospitales',
@@ -42,6 +54,19 @@
                     'detailView': {
                         templateUrl: basePath + 'hospitales.detail.html',
                         controller: 'hospitalCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('hospitalUpdate', {
+                url: '/{hospitalId:int}/udpate',
+                parent: 'hospitales',                
+                params: {
+                    medicoId : null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'create/hospitales.create.html',
+                        controller: 'hospitalUpdateCtrl',
                         controllerAs: 'ctrl'
                     }
                 }

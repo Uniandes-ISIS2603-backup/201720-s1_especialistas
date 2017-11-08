@@ -71,6 +71,8 @@ public class UsuarioPersistenceTest {
     }
     
      private void clearData() {
+        em.createQuery("delete from TarjetaEntity").executeUpdate();
+        em.createQuery("delete from CitaEntity").executeUpdate();
         em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
     
@@ -119,7 +121,7 @@ public class UsuarioPersistenceTest {
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         
         CitaEntity newCita = new CitaEntity();
-        
+        newCita.setUsuario(newEntity);
         ArrayList citasarr = new ArrayList<CitaEntity>();
         
         newEntity.setCitas(citasarr);
@@ -127,6 +129,7 @@ public class UsuarioPersistenceTest {
         
         TarjetaEntity newTarjeta = new TarjetaEntity();
         newTarjeta.setNumero(0001);
+        newTarjeta.setUsuario(newEntity);
         
         newEntity.setTarjeta(newTarjeta);
         

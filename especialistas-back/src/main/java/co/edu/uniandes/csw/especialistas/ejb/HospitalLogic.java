@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.persistence.HospitalPersistence;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -36,12 +37,11 @@ public class HospitalLogic {
      * @throws BusinessLogicException
      */
     public HospitalEntity createHospital(HospitalEntity entity) throws BusinessLogicException {
-        HospitalEntity hospital = getHospital(entity.getId());
+        HospitalEntity hospital = persistence.findByReference(entity.getNombre());
         if (hospital == null) {
-            persistence.create(entity);
-            return entity;
+            return persistence.create(entity);
         } else {
-            throw new BusinessLogicException("Ya existe un hospital con el id");
+            throw new BusinessLogicException("Ya existe un hospital con el nombre dado");
         }
 
     }
@@ -155,10 +155,12 @@ public class HospitalLogic {
      * @return ConsultorioEntity agregado
      * @throws BusinessLogicException
      */
-    public ConsultorioEntity addConsultorio(Long idHospital, ConsultorioEntity consultorio) throws BusinessLogicException {
+    public HospitalEntity addConsultorio(Long idHospital, ConsultorioEntity consultorio) throws BusinessLogicException {
         HospitalEntity hospital = getHospital(idHospital);
-        hospital.getConsultorios().add(consultorio);
-        return consultorio;
+        List<ConsultorioEntity> consultorios = hospital.getConsultorios();
+        consultorios.add(consultorio);
+        hospital.setConsultorios(consultorios);
+        return hospital;
     }
 
 }

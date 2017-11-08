@@ -1,0 +1,95 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package co.edu.uniandes.csw.especialistas.ejb;
+
+import co.edu.uniandes.csw.especialistas.entities.HosEntity;
+import co.edu.uniandes.csw.especialistas.persistence.UbicacionPersistence;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.persistence.HosPersistence;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
+/**
+ *
+ * @author rc.tejon
+ */
+@Stateless
+public class HosLogic {
+
+    @Inject
+    private HosPersistence persistence;
+    
+    @Inject 
+    UbicacionPersistence up;
+    
+        /**
+     * Método encargado de persistir un farmacia nuevo
+     * @param entity Entidad del farmacia
+     * @return Farmacia persistido
+     */
+    public HosEntity createHospital(HosEntity entity)
+    {
+        up.create(entity.getUbicacion());
+        persistence.create(entity);
+        return entity;
+    }
+    
+    /**
+     * Método encargadod de eliminar un farmacia de la persistencia
+     * @param id Id del farmacia
+     * @return true si la entidad fue eliminada, false de lo contrario
+     */
+    public HosEntity deleteHospital(Long id)throws BusinessLogicException
+    {
+        persistence.deleteById(id);
+        HosEntity entity = persistence.findById(id);
+        return  entity;
+    }
+    
+    /**
+     * Método que retorna la lista de todos los farmacias
+     * @return Lista con todas las entidades de los farmacias
+     */
+        public List<HosEntity> getHospitales()
+    {
+        List<HosEntity> lista = persistence.findAll();
+        return lista;
+    }
+    
+    /**
+     * Método que retorna un farmacia por su id
+     * @param id id del farmacia
+     * @return FarmaciaEntity del farmacia buscado
+     */
+    public HosEntity getHospital(Long id)
+    {
+        HosEntity entity = persistence.findById(id);
+        return entity;
+    }
+    
+    /**
+     * Método encargado de actualizar la información de un farmacia
+     * @param entity Farmacia con la nueva información
+     * @return FarmaciaEntity con la información del farmacia actualizado
+     */
+    public HosEntity updateHospital(HosEntity entity)
+    {
+        persistence.update(entity);
+        return entity;
+    }
+    
+    /**
+     * Método encargado de buscar un farmacia por su nombre
+     * @param nombre nombre del farmacia
+     * @return  FarmaciaEntity correspondiente al farmacia
+     */
+    public HosEntity getHospitalByName(String nombre)
+    {
+        HosEntity entity = persistence.findByName(nombre);
+        return entity;
+    }
+}

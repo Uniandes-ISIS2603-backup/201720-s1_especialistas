@@ -112,9 +112,9 @@ public class PagoPersistenceTest {
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
-        TarjetaEntity tarjeta = new TarjetaEntity();
         
-        newEntity.setTarjeta(tarjeta);
+        
+        
 
         PagoEntity result = persistence.create(newEntity);
         
@@ -124,12 +124,12 @@ public class PagoPersistenceTest {
         assertEquals(newEntity.getRef(), entity.getRef());
         assertEquals(newEntity.getPai(), entity.getPai());
         assertEquals(newEntity.getPrecio(), entity.getPrecio());
-        assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
+        assertEquals(newEntity.getMetodo(), entity.getMetodo());
         
         Assert.assertEquals(false, entity.equals(null));
-        Assert.assertEquals(false, entity.equals(tarjeta));
+        Assert.assertEquals(false, entity.equals("alfa"));
         Assert.assertEquals(true, entity.equals(entity));
-        Assert.assertEquals(true, entity.getTarjeta().equals(tarjeta));
+
         
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
         entity.setId(null);

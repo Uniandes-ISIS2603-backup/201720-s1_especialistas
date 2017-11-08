@@ -45,14 +45,22 @@ public class UsuarioEntity implements Serializable{
      * atributo que modela las citas del usuario
      */
     @PodamExclude
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
     private List<CitaEntity> citasMedicas = new ArrayList<CitaEntity>();
+    
+    
+    /**
+     * atributo que modela los pagos del usuario
+     */
+    @PodamExclude
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
+    private List<PagoEntity> pagos = new ArrayList<PagoEntity>();
     
     /**
      * atributo que modela la targeta del usuario
      */
     @PodamExclude
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private TarjetaEntity tarjeta;
     
     //Getters and setters
@@ -71,6 +79,7 @@ public class UsuarioEntity implements Serializable{
      public void setTarjeta(TarjetaEntity tarjeta){
          this.tarjeta = tarjeta;
      }
+     
   
     public Long getId() {
         return id;
@@ -94,6 +103,22 @@ public class UsuarioEntity implements Serializable{
      */
     public void setCitas(List<CitaEntity> citasMedicas){
         this.citasMedicas = citasMedicas;
+    }
+    
+    /**
+     * getter del atributo citas
+     * @return una lista con las citas asociadas a un usuario
+     */
+    public List<PagoEntity> getPagos(){
+        return this.pagos;
+    }
+    
+    /**
+     * setter del atributo citas
+     * @param pagos 
+     */
+    public void setPagos(List<PagoEntity> pagos){
+        this.pagos = pagos;
     }
     
     /**

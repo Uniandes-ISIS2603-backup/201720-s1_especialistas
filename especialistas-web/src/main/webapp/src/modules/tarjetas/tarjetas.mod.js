@@ -14,11 +14,49 @@
                     }
                 }
             }).state('tarjetasCrear', {
-                url: '/tarjetas/nuevo',
+                url: '/tarjetas/nuevo/{usuarioId:int}',
+                param:{
+                  usuarioId: null  
+                },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'new/tarjetas.new.html',
                         controller: 'tarjetasNewController',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('tarjetasDelete', {
+                url: '/tarjetas/delete/{tarjetaId:int}',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/tarjetas.delete.html',
+                        controller: 'tarjetasDeleteController',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('tarjetaUpdate', {
+                url: '/tarjetas/update/{tarjetaId:int}',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'new/tarjetas.new.html',
+                        controller: 'tarjetaUpdateCtrl'
+                    }
+                }
+            }).state('tarjetaDetail', {
+                url: '/tarjetas/{tarjetaId:int}/detail',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'tarjetas.detail.html',
+                        controller: 'tarjetaCtrl',
                         controllerAs: 'ctrl'
                     }
                 }

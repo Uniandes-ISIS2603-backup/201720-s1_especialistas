@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -46,11 +47,16 @@ public class PagoEntity implements Serializable{
     private int precio;
     
     /**
-     * atrubuto que modela una tarjeta
+     * metodo de pago usado
+     */
+    private String metodo;
+    
+    /**
+     * atributo que reprecenta la relacion con el usuario
      */
     @PodamExclude
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private TarjetaEntity tarjeta;
+    @ManyToOne(fetch=FetchType.LAZY)     
+    private UsuarioEntity usuario;
     
     
     //Getters and setters
@@ -63,22 +69,21 @@ public class PagoEntity implements Serializable{
         this.id = id;
     }  
     
-    /**
-    * getter del atributo tarjeta
-    * @return tarjeta asociado
-    */
-    public TarjetaEntity getTarjeta(){
-       return this.tarjeta;
+    public String getMetodo() {
+        return metodo;
     }
 
-    /**
-    * setter del atributo tarjeta
-    * @param tarjeta 
-    */
-    public void setTarjeta(TarjetaEntity tarjeta){
-       this.tarjeta = tarjeta;
+    public void setMetodo(String metodo) {
+        this.metodo = metodo;
+    }
+    
+    public UsuarioEntity getUsuario() {
+        return usuario;
     }
 
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
+    }
     
     public int getRef(){
         return this.ref;

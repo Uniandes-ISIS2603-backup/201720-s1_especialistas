@@ -42,7 +42,7 @@ public class HospitalPersistence
         LOGGER.info("Creando nuevo hospital");
         em.persist(entity);
         LOGGER.info("Hospital persistido");
-        return entity;
+        return find(entity.getId());
     }
     
     /**

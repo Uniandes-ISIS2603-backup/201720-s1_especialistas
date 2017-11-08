@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
+import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
 import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
@@ -27,6 +28,11 @@ public class UsuarioDetailDTO extends UsuarioDTO{
      * lista de citasmedicas de un usuario
      */
     private List <CitaDTO> citasMedicas = new ArrayList<CitaDTO>();
+    
+    /**
+     * lista de pagos de un usuario
+     */
+    private List <PagoDTO> pagos = new ArrayList<PagoDTO>();
     
     /**
      * Ubicacion del usuario
@@ -62,6 +68,11 @@ public class UsuarioDetailDTO extends UsuarioDTO{
                 citasMedicas.add(new CitaDTO(cita));
             }
             
+            pagos = new ArrayList<>();
+            for (PagoEntity pago : entity.getPagos()) {
+                pagos.add(new PagoDTO(pago));
+            }
+            
         }
             
     }
@@ -84,6 +95,14 @@ public class UsuarioDetailDTO extends UsuarioDTO{
                 }
                 entity.setCitas(citaEntity);
             }
+        if(entity.getPagos()!= null)
+            {
+                List<PagoEntity> pagoEntity = new ArrayList<>();
+                for (PagoDTO pago : pagos){
+                    pagoEntity.add(pago.toEntity());
+                }
+                entity.setPagos(pagoEntity);
+            }
         return entity;
     }
     
@@ -104,7 +123,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
     }
     
     /**
-     * Getter de los consultorios
+     * Getter de los citas
      * @return 
      */
     public List<CitaDTO> getCitas() {
@@ -112,11 +131,27 @@ public class UsuarioDetailDTO extends UsuarioDTO{
     }
 
     /**
-     * Setter de los consultorios
+     * Setter de los citas
      * @param citasMedicas Lista de citas medicas
      */
     public void setCitas(List<CitaDTO> citasMedicas) {
         this.citasMedicas = citasMedicas;
+    }
+    
+    /**
+     * Getter de los pagos
+     * @return 
+     */
+    public List<PagoDTO> getPagos() {
+        return this.pagos;
+    }
+
+    /**
+     * Setter de los pagos
+     * @param pagos Lista de pagos
+     */
+    public void setPagos(List<PagoDTO> pagos) {
+        this.pagos = pagos;
     }
     
     /**

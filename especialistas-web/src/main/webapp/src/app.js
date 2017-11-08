@@ -15,7 +15,8 @@
         'pagoModule',
         'tarjetaModule',
         'medicamentoModule',
-        'ordenesMedicasModule'
+        'ordenesMedicasModule',
+        'consultoriosModule'
         
     ]);
     //Resuelve problemas de las promesas

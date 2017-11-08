@@ -80,3 +80,13 @@ insert into LaboratorioEntity (id, nombre) values (20, 'Laboratorio Central');
 
 insert into ExamenEntity (id, nombre, precio, recomendacion ) values(3, 'sangre', 2000, 'ir en ayunas');
 insert into ExamenEntity (id, nombre, precio, recomendacion ) values(54, 'examen', 548000, 'ninguna');
+
+delete from HosEntity;
+
+insert into HosEntity (id, nombre) values (500, 'Hospital de muñecos');
+insert into HosEntity (id, nombre) values (600, 'Hospital de carros');
+
+delete from ConsEntity;
+
+insert into ConsEntity (id, numero,hospital_id) values (600, 'ABC123',500);
+insert into ConsEntity (id, numero,hospital_id) values (700, 'BCD234',600);

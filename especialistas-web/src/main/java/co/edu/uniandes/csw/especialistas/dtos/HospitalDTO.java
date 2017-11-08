@@ -11,10 +11,9 @@ import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
  *
  * @author jl.patarroyo
  */
-public class HospitalDTO {
+public class HospitalDTO extends EspecialistasDTO{
 
     private String nombre;
-    private Long id;
     //private UbicacionEntity ubicacion;
 
     /**
@@ -50,24 +49,6 @@ public class HospitalDTO {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    /**
-     * Getter del atributo id
-     *
-     * @return id del hospital
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Setter del atributo id
-     *
-     * @param id id del hospital
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /**

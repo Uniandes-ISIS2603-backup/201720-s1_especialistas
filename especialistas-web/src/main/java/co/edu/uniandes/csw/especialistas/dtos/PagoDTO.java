@@ -27,6 +27,10 @@ public class PagoDTO {
      */
     private int precio;
     
+    /**
+     * Atributo que reprecenta el metodo de pago de una factura
+     */
+    private String metodo;
     
     /**
      * Atributo que reprecenta el id del usuario
@@ -52,6 +56,7 @@ public class PagoDTO {
         this.precio = entity.getPrecio();
         this.pai = entity.getPai();
         this.id = entity.getId();
+        this.metodo = entity.getMetodo();
     }
     
     /**
@@ -68,6 +73,23 @@ public class PagoDTO {
      */
     public void setRef(int ref) {
         this.ref = ref;
+    }
+    
+    
+    /**
+     * Getter del atributo metodo
+     * @return referencia del pago
+     */
+    public String getMetodo() {
+        return this.metodo;
+    }
+    
+    /**
+     * Setter del atributo nombre
+     * @param metodo referencia del pago
+     */
+    public void setMetodo(String metodo) {
+        this.metodo = metodo;
     }
     
     /**
@@ -129,6 +151,8 @@ public class PagoDTO {
         entity.setRef(this.ref);
         entity.setPrecio(this.precio);
         entity.setPai(this.pai);
+        entity.setMetodo(this.metodo);
         return entity;
     }
 }
+

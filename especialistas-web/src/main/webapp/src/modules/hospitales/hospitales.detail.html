@@ -1,8 +1,20 @@
 <div class="panel panel-default"> 
-    <h3>Nombre:</h3><br>
-    {{currentHospital.nombre}}
-    <br>
-    <h3>ID</h3><br>
-    {{currentHospital.id}}
-    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">UBICACION</th>
+                <th scope="col">LATITUD</th>
+                <th scope="col">LONGITUD</th>
+            </tr>
+        </thead>
+        <tr>
+            <td id="{{$index}}-hospitalId">{{currentHospital.id}}</td>
+            <td id="{{$index}}-hospitalName">{{currentHospital.nombre}}</td>
+            <td id="{{$index}}-hospitalUbicacion">{{currentHospital.ubicacion.nombre}}</td>
+            <td id="{{$index}}-hospitalUbicacionLatitud">{{currentHospital.ubicacion.latitud}}</td>
+            <td id="{{$index}}-hospitalUbicacionLongitud">{{currentHospital.ubicacion.longitud}}</td>
+        </tr>
+    </table>
 </div>
