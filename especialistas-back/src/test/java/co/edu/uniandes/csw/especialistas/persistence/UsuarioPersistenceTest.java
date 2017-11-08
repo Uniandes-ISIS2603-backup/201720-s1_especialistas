@@ -71,6 +71,7 @@ public class UsuarioPersistenceTest {
     }
     
      private void clearData() {
+        em.createQuery("delete from CitaEntity").executeUpdate();
         em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
     
@@ -119,7 +120,7 @@ public class UsuarioPersistenceTest {
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         
         CitaEntity newCita = new CitaEntity();
-        
+        newCita.setUsuario(newEntity);
         ArrayList citasarr = new ArrayList<CitaEntity>();
         
         newEntity.setCitas(citasarr);
