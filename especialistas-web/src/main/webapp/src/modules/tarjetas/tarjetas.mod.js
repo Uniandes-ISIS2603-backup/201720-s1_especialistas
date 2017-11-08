@@ -14,7 +14,10 @@
                     }
                 }
             }).state('tarjetasCrear', {
-                url: '/tarjetas/nuevo',
+                url: '/tarjetas/nuevo/{usuarioId:int}',
+                param:{
+                  usuarioId: null  
+                },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'new/tarjetas.new.html',

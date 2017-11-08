@@ -48,7 +48,7 @@
             </tbody>
     </table>
     <div class="usuario-data">
-        <a href="#" ui-sref="usuariosDelete({usuarioId: currentUsuario.id})">Agregar</a>
+        <a ng-show="tarjeta == null" href="#" ui-sref="tarjetasCrear({usuarioId: currentUsuario.id})">Agregar</a>
     </div>
 </div>
 

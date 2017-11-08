@@ -52,7 +52,7 @@ public class UsuarioEntity implements Serializable{
      * atributo que modela la targeta del usuario
      */
     @PodamExclude
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private TarjetaEntity tarjeta;
     
     //Getters and setters
