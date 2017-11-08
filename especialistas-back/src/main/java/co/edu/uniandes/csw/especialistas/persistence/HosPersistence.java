@@ -99,25 +99,6 @@ public class HosPersistence {
         return query.getResultList();
     }
 
-    public List<ConsEntity> findConsultoriosById(long id) {
-
-        HosEntity hospital = null;
-
-        TypedQuery query = em.createQuery("Select e From HosEntity e where e.id = :id", HosEntity.class);
-
-        query = query.setParameter("id", id);
-
-        List<HosEntity> sameId = query.getResultList();
-        if (!sameId.isEmpty()) {
-            hospital = sameId.get(0);
-        }
-
-        if (hospital != null) {
-            return hospital.getConsultorios();
-        }
-        return null;
-    }
-
     public UbicacionEntity findUbicacionById(long id) {
 
         HosEntity hospital = null;
@@ -135,26 +116,6 @@ public class HosPersistence {
             return hospital.getUbicacion();
         }
         return null;
-    }
-
-    public boolean agregarConsultorioById(long id, ConsEntity con) {
-
-        HosEntity hospital = null;
-
-        TypedQuery query = em.createQuery("Select e From HosEntity e where e.id = :id", HosEntity.class);
-
-        query = query.setParameter("id", id);
-
-        List<HosEntity> sameId = query.getResultList();
-        if (!sameId.isEmpty()) {
-            hospital = sameId.get(0);
-        }
-
-        if (hospital != null) {
-            hospital.agregarConsultorio(con);
-            return true;
-        }
-        return false;
     }
 
     public boolean setUbicacionById(long id, UbicacionEntity ubicacion) {

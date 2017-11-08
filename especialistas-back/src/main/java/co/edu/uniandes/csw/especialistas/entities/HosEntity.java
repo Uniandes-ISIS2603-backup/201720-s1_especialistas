@@ -40,10 +40,6 @@ public class HosEntity implements Serializable {
     @JoinColumn(name = "ubicadionID")
     private UbicacionEntity ubicacion;
 
-    @PodamExclude
-    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<ConsEntity> consultorios = new ArrayList<ConsEntity>();
-
     public Long getId() {
         return id;
     }
@@ -60,38 +56,12 @@ public class HosEntity implements Serializable {
         this.nombre = nombre;
     }
 
-    public List<ConsEntity> getConsultorios() {
-        if (consultorios == null) {
-            consultorios = new ArrayList<>();
-        }
-        return consultorios;
-    }
-
     public UbicacionEntity getUbicacion() {
         return ubicacion;
     }
 
     public void setUbicacion(UbicacionEntity ubicacion) {
         this.ubicacion = ubicacion;
-    }
-
-    public void agregarConsultorio(ConsEntity con) {
-        if (consultorios == null) {
-            consultorios = new ArrayList<>();
-        }
-        consultorios.add(con);
-    }
-
-    public void eliminarConsultorio(ConsEntity con) throws BusinessLogicException {
-
-        if (consultorios == null || !consultorios.contains(con)) {
-            throw new BusinessLogicException("no existe el consultorio");
-        }
-        consultorios.remove(con);
-    }
-
-    public void setConsultorios(List<ConsEntity> consultorios) {
-        this.consultorios = consultorios;
     }
 
     @Override

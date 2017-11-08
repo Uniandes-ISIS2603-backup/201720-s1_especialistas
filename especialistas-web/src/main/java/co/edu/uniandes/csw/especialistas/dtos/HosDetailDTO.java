@@ -22,9 +22,7 @@ public class HosDetailDTO extends HosDTO {
 
     public HosDetailDTO(HosEntity entity) {
         super(entity);
-        entity.getConsultorios().forEach((x) -> {
-            this.consultorios.add(new ConsDTO(x));
-        });
+        
     }
     private List<ConsDTO> consultorios;
 
@@ -39,12 +37,7 @@ public class HosDetailDTO extends HosDTO {
     @Override
     public HosEntity toEntity() {
         HosEntity entity = super.toEntity();
-        if (consultorios == null) {
-            consultorios = new ArrayList<>();
-        }
-        consultorios.forEach((x) -> {
-            entity.getConsultorios().add(x.toEntity());
-        });
+        
 
         return entity;
     }

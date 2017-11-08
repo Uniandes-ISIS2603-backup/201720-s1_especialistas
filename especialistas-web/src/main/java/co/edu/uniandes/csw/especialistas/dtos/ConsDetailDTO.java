@@ -17,7 +17,6 @@ import java.util.List;
  */
 public class ConsDetailDTO extends ConsDTO {
 
-    private HosDTO hospital;
 
     public ConsDetailDTO() {
         //inicialmente vacio
@@ -25,19 +24,11 @@ public class ConsDetailDTO extends ConsDTO {
 
     public ConsDetailDTO(ConsEntity entity) {
         super(entity);
-        if (entity.getHospital() == null) {
-            entity.setHospital(new HosEntity());
-        }
-        this.hospital = new HosDTO(entity.getHospital());
     }
     
     @Override
     public ConsEntity toEntity() {
         ConsEntity entity = super.toEntity();
-        if (hospital == null) {
-            hospital = new HosDTO();
-        }
-        entity.setHospital(this.hospital.toEntity());
         return entity;
     }
 

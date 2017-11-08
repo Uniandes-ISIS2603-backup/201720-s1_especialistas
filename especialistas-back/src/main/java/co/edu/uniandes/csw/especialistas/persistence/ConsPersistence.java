@@ -112,7 +112,6 @@ public class ConsPersistence {
         }
 
         if (consultorio != null) {
-            consultorio.setHospital(hospital);
             return true;
         }
         return false;

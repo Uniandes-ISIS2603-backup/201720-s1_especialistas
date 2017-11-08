@@ -31,10 +31,6 @@ public class ConsEntity implements Serializable{
     
     private String numero;
 
-    @PodamExclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private HosEntity hospital;
-
     public Long getId() {
         return id;
     }
@@ -51,13 +47,6 @@ public class ConsEntity implements Serializable{
         this.numero = numero;
     }
     
-    public void setHospital(HosEntity hospital){
-        this.hospital = hospital;
-    }
-    
-    public HosEntity getHospital(){
-        return hospital;
-    }
     
     @Override
     public boolean equals(Object obj) 

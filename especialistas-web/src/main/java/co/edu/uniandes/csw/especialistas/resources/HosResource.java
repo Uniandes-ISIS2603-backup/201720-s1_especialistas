@@ -160,20 +160,6 @@ public class HosResource {
      * @return la lista de medicamentos de la farmacia
      * @throws BusinessLogicException si no existe la farmacia con el id dado
      */
-    @GET
-    @Path("{id: \\d+}/consultorios")
-    public List<ConsDTO> getConsultorioHospital(@PathParam("id") Long id) throws BusinessLogicException {
-        HosEntity entity = logic.getHospital(id);
-        if (entity == null) {
-            throw new BusinessLogicException("no existe la entidad");
-        }
-        List<ConsDTO> list = new ArrayList<>();
-        Iterator<ConsEntity> iter = entity.getConsultorios().iterator();
-        while (iter.hasNext()) {
-            list.add(new ConsDTO(iter.next()));
-        }
-        return list;
-    }
 
     /**
      * Recurso que obtiene todos los hospitales

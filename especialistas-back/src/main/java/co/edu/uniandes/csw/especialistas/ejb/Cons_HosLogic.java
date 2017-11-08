@@ -31,8 +31,6 @@ public class Cons_HosLogic {
             System.out.println("co.edu.uniandes.csw.especialistas.ejb.Cons_HosLogic.agregarRelacion()");
             return false;
         }
-        entityF.agregarConsultorio(entityM);
-        entityM.setHospital(entityF);
         return true;
     }
     
@@ -44,7 +42,6 @@ public class Cons_HosLogic {
         {
             return false;
         }
-        entityF.eliminarConsultorio(entityM);
         return true;
     }
     

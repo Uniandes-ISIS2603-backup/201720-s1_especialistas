@@ -91,22 +91,6 @@ public class ConsResource {
     }
     
     
-    
-    
-    @GET
-    @Path("{id: \\d+}/hospital")
-    public HosDTO getHospitalConsultorio(@PathParam("id") Long id)throws WebApplicationException
-    {
-        ConsEntity entity = logic.getConsultorio(id);
-        if(entity==null)
-        {
-            throw new WebApplicationException("no existe la entidad");
-        }
-        HosDTO hospital = new HosDTO(entity.getHospital());
-        return hospital;
-    }
-    
-    
     /**
      * Recurso que obtiene todos los hospitales
      * @return Lista con todos los hospitales
