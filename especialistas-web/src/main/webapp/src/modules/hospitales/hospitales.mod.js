@@ -32,19 +32,6 @@
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('hospitalDelete', {
-                url: '/{hospitalId:int}/delete',
-                parent: 'hospitales',
-                param: {
-                    hospitalId: null
-                },
-                views: {
-                    'detailView': {
-                        templateUrl: basePath + 'hospitales.delete.html',
-                        controller: 'hospitalDeleteCtrl',
-                        controllerAs: 'ctrl'
-                    }
-                }
             }).state('hospitalDetail', {
                 url: '/{hospitalId:int}/detail',
                 parent: 'hospitales',

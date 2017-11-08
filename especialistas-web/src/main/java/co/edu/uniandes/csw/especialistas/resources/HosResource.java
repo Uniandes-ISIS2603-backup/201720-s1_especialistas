@@ -204,7 +204,7 @@ public class HosResource {
     public HosDetailDTO updateHospital(HosDetailDTO hospital) throws BusinessLogicException {
         HosEntity entity = hospital.toEntity();
         if (logic.getHospital(entity.getId()) == null) {
-            throw new BusinessLogicException("no existe farmacia con el id dado");
+            throw new BusinessLogicException("no existe hospital con el id: " + entity.getId());
         }
         return new HosDetailDTO(logic.updateHospital(entity));
     }
