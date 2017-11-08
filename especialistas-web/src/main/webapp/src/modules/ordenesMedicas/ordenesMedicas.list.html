@@ -9,8 +9,9 @@
             <tbody>
                 <tr ng-repeat="orden in ordenesMedicas">
                     <td id="{{$index}}-descripcion"><a ui-sref="ordenesMedicasDetail({ordenesMedicasId: orden.id})">{{orden.descripcion}}</td>
-                    
+                    <td> <button id="{{$index}}-cancelar-btn" class="btn btn-default btn-sm" ui-sref="ordenesMedicasDelete({ordenesMedicasId: orden.id})">Cancelar</button></td>
                 </tr>
+                <tr class="info" ui-sref="ordenesMedicasCreate"><td>Añadir nueva</td><td></td></tr>
             </tbody>
         </table>
     </div>

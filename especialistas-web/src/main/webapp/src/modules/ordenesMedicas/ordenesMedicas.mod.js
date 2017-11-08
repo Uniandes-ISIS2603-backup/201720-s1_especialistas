@@ -41,6 +41,28 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            })
+            .state('ordenesMedicasDelete', {
+                url: '/ordenesMedicas/{ordenesMedicasId:int}/borrar',
+                params: {
+                    ordenId : null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/ordenesMedicas.delete.html',
+                        controller: 'ordenesMedicasDeleteCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('ordenesMedicasCreate', {
+                url: '/ordenesMedicas/nuevo',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'create/ordenesMedicas.create.html',
+                        controller: 'ordenesMedicasCreateCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
         }
         

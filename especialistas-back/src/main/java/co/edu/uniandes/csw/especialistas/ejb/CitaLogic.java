@@ -6,6 +6,9 @@
 package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
+import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
+import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
+import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import co.edu.uniandes.csw.especialistas.persistence.CitaPersistence;
 import java.util.List;
 import javax.inject.Inject;
@@ -18,6 +21,14 @@ public class CitaLogic {
     
     @Inject
     private CitaPersistence persistence;
+    
+    @Inject
+    private HoraLogic horaLogic;
+    @Inject
+    private UsuarioLogic usuarioLogic;
+     @Inject
+    private OrdenMedicaLogic ordenMedicaLogic;
+    
     
     /**
      * Método encargado de persistir un Cita nuevo
@@ -35,18 +46,35 @@ public class CitaLogic {
      * @param id Id del Cita
      * @return true si la entidad fue eliminada, false de lo contrario
      */
-    public boolean deleteCita(Long id)
+    public void deleteCita(Long id)
     {
-        boolean deleted = false;
-        persistence.deleteById(id);
-        CitaEntity entity = persistence.findById(id);
         
-        //Se comprueba si se eliminó la entidad
-        if(entity == null)
+        CitaEntity cita = getCita(id);
+        HoraEntity hora=cita.getHora();
+        if(hora!=null)
         {
-            deleted = true;
+            hora.setCita(null);
+            horaLogic.updateHora(hora.getId(), hora);
         }
-        return deleted;
+        
+        UsuarioEntity usuario=cita.getUsuario();
+        if(usuario!=null)
+        {
+           List <CitaEntity> list= usuario.getCitas();
+           list.remove(cita);
+           usuario.setCitas(list);
+           usuarioLogic.updateUsuario(usuario);
+        }
+        
+        for(OrdenMedicaEntity orden : cita.getOrdenesMedicas()){
+            orden.setCita(null);
+            ordenMedicaLogic.updateOrdenMedica(orden);
+        }
+        persistence.deleteById(id);
+        
+        
+       
+        
     }
     
     /**

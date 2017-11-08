@@ -47,7 +47,44 @@
                         controllerAs: 'ctrl'
                     }
                 }
-            });
+            })
+            .state('citasDelete', {
+                url: '/citas/{citasId:int}/borrar',
+                params: {
+                    citasId : null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/citas.delete.html',
+                        controller: 'citasDeleteCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            })
+            .state('citasUpdate', {
+                url: '/citas/{citasId:int}/reagendar',
+                params: {
+                    citasId : null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'update/citas.update.html',
+                        controller: 'citasUpdateCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            })
+            .state('citasCreate', {
+                url: '/citas/nuevo',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'create/citas.create.html',
+                        controller: 'citasCreateCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            })
+            
         }
         
         

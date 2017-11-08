@@ -26,9 +26,14 @@ public class HoraDetailDTO extends HoraDTO{
 
     public HoraDetailDTO(HoraEntity entity) {
         super(entity);
-        this.medico = new MedicoDTO(entity.getMedico());
+        this.medico = entity.getCita() != null?  new MedicoDTO(entity.getMedico()) : null;
         this.cita = entity.getCita() != null? new CitaDTO(entity.getCita()) : null;
-        this.consultorio = new ConsultorioDTO(entity.getConsultorio());
+        if(entity.getConsultorio()!=null)
+        {this.consultorio = new ConsultorioDTO(entity.getConsultorio());}
+        else
+        {
+            this.consultorio=null;
+        }
     }
 
     public MedicoDTO getMedico() {

@@ -7,8 +7,8 @@
                 $scope.ordenesMedicas = response.data;
             });
             
-        if (($state.params.ordenesId !== undefined) && ($state.params.ordenesId !== null)) {
-                $http.get(ordenesContext + '/' + $state.params.ordenesId).then(function (response) {
+        if (($state.params.ordenesMedicasId !== undefined) && ($state.params.ordenesMedicasId !== null)) {
+                $http.get(ordenesContext + '/' + $state.params.ordenesMedicasId).then(function (response) {
                     
                     $scope.currentOrden = response.data;
                 });
