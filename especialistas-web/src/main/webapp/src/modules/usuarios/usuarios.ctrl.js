@@ -11,6 +11,7 @@
                 $http.get(usuariosContext + '/' + $state.params.usuarioId).then(function (response) {
                     $scope.tarjeta = response.data.tarjeta;
                     $scope.citas = response.data.citas;
+                    $scope.pagos = response.data.pagos;
                     $scope.currentUsuario = response.data;
                 });
             }

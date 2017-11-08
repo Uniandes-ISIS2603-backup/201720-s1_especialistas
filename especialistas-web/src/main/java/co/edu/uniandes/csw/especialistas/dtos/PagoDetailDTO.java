@@ -16,7 +16,7 @@ public class PagoDetailDTO extends PagoDTO{
     /**
      * atributo que modela la tarjeta
      */
-    private TarjetaDTO tarjeta;
+    private UsuarioDTO usuario;
     
     /**
      * Constructor por defecto
@@ -33,10 +33,10 @@ public class PagoDetailDTO extends PagoDTO{
     public PagoDetailDTO(PagoEntity entity)
     {
         super(entity);
-        if(entity.getTarjeta() != null)
+        if(entity.getUsuario()!= null)
             {
-                TarjetaDTO tarjeta2 = new TarjetaDTO(entity.getTarjeta());
-                this.tarjeta = tarjeta2;
+                UsuarioDTO tarjeta2 = new UsuarioDTO(entity.getUsuario());
+                this.usuario = tarjeta2;
             }
     }
     
@@ -48,8 +48,8 @@ public class PagoDetailDTO extends PagoDTO{
     public PagoEntity toEntity()
     {
         PagoEntity entity = super.toEntity();
-        if(tarjeta != null)
-            entity.setTarjeta(this.tarjeta.toEntity());
+        if(usuario != null)
+            entity.setUsuario(this.usuario.toEntity());
         return entity;
     }
     
@@ -57,16 +57,16 @@ public class PagoDetailDTO extends PagoDTO{
      * Get de tarjeta
      * @return 
      */
-    public TarjetaDTO getTarjeta() {
-        return this.tarjeta;
+    public UsuarioDTO getUsuario() {
+        return this.usuario;
     }
 
     /**
      * Set de tarjeta
-     * @param tarjeta 
+     * @param usuario 
      */
-    public void setTarjeta(TarjetaDTO tarjeta) {
-        this.tarjeta = tarjeta;
+    public void setUsuario(UsuarioDTO usuario) {
+        this.usuario = usuario;
     }
     
 }

@@ -29,6 +29,36 @@
         </div>
 </div>
 
+
+<div class="panel panel-default col-sm-12">
+    <h4>
+        Pagos
+    </h4>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Referencia</th>
+                    <th>Precio</th>
+                    <th>Paga</th>
+                    <th>Metodo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pago in pagos">
+                    <td id="{{$index}}-id">{{pago.id}}</td>
+                    <td id="{{$index}}-ref">{{pago.ref}}</td>
+                    <td id="{{$index}}-precio">{{pago.precio}}</td>
+                    <td id="{{$index}}-pai"><span ng-show="pago.pai == true" class="glyphicon glyphicon-ok" aria-hidden="true" style="color: #4cae4c"></span><span ng-show="pago.pai == false" class="glyphicon glyphicon-remove" aria-hidden="true" style="color: #f25"></span></td>
+                    <td id="{{$index}}-metodo">{{pago.metodo}}</td>
+                </tr>
+            </tbody>
+    </table>
+    <div class="usuario-data">
+        <a href="#" ui-sref="pagosCrear({usuarioId: currentUsuario.id})">Agregar</a>
+    </div>
+</div>
+
 <div class="panel panel-default col-sm-6">
     <h4>
         Tarjeta
