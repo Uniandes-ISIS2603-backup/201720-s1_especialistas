@@ -1,0 +1,18 @@
+<div class="col-sm-12">
+    <div class="usuario">
+        <div class="col-sm-4 col-lg-3 pacman">
+            <div class="usuario-padre">
+
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/MasterCard_early_1990s_logo.png/220px-MasterCard_early_1990s_logo.png" alt="">
+                
+                <div class="usuario-data">
+                    {{currentTarjeta.id}} <br>
+                    {{currentTarjeta.numero}} <br>
+
+                    <a href="#" style="color: #f44" ui-sref="tarjetasDelete({tarjetaId: currentTarjeta.id})">Eliminar</a>
+                    <a href="#" ui-sref="tarjetaUpdate({tarjetaId: currentTarjeta.id})">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

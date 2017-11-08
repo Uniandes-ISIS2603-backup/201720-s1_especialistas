@@ -2,13 +2,15 @@
     <div class="usuario" ng-repeat="usuario in usuariosRecords">
         <div class="col-sm-4 col-lg-3 pacman">
             <div class="usuario-padre">
-                <img src="https://ep01.epimg.net/verne/imagenes/2017/02/07/articulo/1486460356_768109_1486460432_noticia_normal.jpg" alt="">
+                <a ui-sref="usuarioDetail({usuarioId: usuario.id})">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5PiRLyIsW9zpkhazNEVeuuFcPvyjWLlfnSBkQOL2ZS_p8DTgP" alt="">
+                </a>
                 <div class="usuario-data">
                     {{usuario.nombre}} <br>
                     {{usuario.cedula}} 
 
                     <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: usuario.id})">Eliminar</a>
-                    <a href="#">Editar</a>
+                    <a href="#" ui-sref="usuarioUpdate({usuarioId: usuario.id})">Editar</a>
                 </div>
             </div>
         </div>
@@ -16,7 +18,7 @@
     <div class="col-sm-4 col-lg-3 pacman">
         <div class="usuario-padre">
             
-                <img src="https://ep01.epimg.net/verne/imagenes/2017/02/07/articulo/1486460356_768109_1486460432_noticia_normal.jpg" alt="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5PiRLyIsW9zpkhazNEVeuuFcPvyjWLlfnSBkQOL2ZS_p8DTgP" alt="">
                 <div class="usuario-data">
                     <p></p><br>
                     <a class="add" ui-sref="usuariosCrear">

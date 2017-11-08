@@ -1,0 +1,76 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="thumb">
+                <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5PiRLyIsW9zpkhazNEVeuuFcPvyjWLlfnSBkQOL2ZS_p8DTgP"/>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            <dl>     
+                <dt>{{currentUsuario.nombre}}</dt>
+                
+                <hr>
+                <dt>cedula</dt>
+                <dd>{{currentUsuario.cedula}}</dd>
+          
+                <hr>
+                <dt>nombre</dt>
+                <dd>{{currentUsuario.nombre}}</dd>
+                <div class="usuario-data">
+                    <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: currentUsuario.id})">Eliminar</a>
+                    <a href="#">Editar</a>
+                </div>
+
+            </dl>
+        </div>
+    </div>
+        </div>
+</div>
+
+<div class="panel panel-default col-sm-6">
+    <h4>
+        Tarjeta
+    </h4>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Numero</th>    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="numero-tarjeta"><a ui-sref="tarjetaDetail({tarjetaId: tarjeta.id})">{{tarjeta.id}}</a></td>
+                    <td id="numero-tarjeta"><a ui-sref="tarjetaDetail({tarjetaId: tarjeta.id})">{{tarjeta.numero}}</a></td>
+                </tr>
+            </tbody>
+    </table>
+    <div class="usuario-data">
+        <a href="#" ui-sref="usuariosDelete({usuarioId: currentUsuario.id})">Agregar</a>
+    </div>
+</div>
+
+<div class="panel panel-default col-sm-6">
+    <h4>
+        Citas
+    </h4>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Comentarios</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cita in citas">
+                    <td id="numero-tarjeta"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{cita.id}}</a></td>
+                    <td id="numero-tarjeta"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{cita.comentarios}}</a></td>
+                </tr>
+            </tbody>
+    </table>
+    <div class="usuario-data">
+        <a href="#" ui-sref="usuariosDelete({usuarioId: currentUsuario.id})">Agregar</a>
+    </div>
+</div>

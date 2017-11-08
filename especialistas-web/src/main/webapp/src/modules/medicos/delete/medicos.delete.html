@@ -1,0 +1,7 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="center-block well text-center">
+    <h1>¿Está seguro que quiere eliminar este médico?</h1>
+    <button id="confirm-delete" ng-click="deleteMedico()" class="btn btn-danger">Borrar</button>
+    <a id="cancel-delete" ui-sref="horasList({medicoId})" class="btn btn-info">Cancelar</a>
+</div>
+

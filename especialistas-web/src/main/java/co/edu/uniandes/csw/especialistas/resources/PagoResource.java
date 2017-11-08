@@ -36,19 +36,19 @@ public class PagoResource {
     PagoLogic logic;
     
     @POST
-    public PagoEntity createPago(PagoDTO pago) throws WebApplicationException {
-        PagoEntity tarjetaEntity = null;
+    public PagoEntity createPago(PagoDetailDTO pago) throws WebApplicationException {
+        PagoEntity pagoEntity = null;
         if(pago.getId()!=null)
         {
-            tarjetaEntity = logic.getPago(pago.getId());
+            pagoEntity = logic.getPago(pago.getId());
         }
-        if (tarjetaEntity != null) {
+        if (pagoEntity != null) {
             WebApplicationException e = new WebApplicationException("Ya existe un usuario con el id " + pago.getId());
             throw e;
         }
-        PagoEntity nuevaTarjeta = logic.createPago(pago.toEntity());
+        PagoEntity nuevoPago = logic.createPago(pago.toEntity());
 
-        return nuevaTarjeta;
+        return nuevoPago;
     }
     
     @GET

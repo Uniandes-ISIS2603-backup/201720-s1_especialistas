@@ -13,15 +13,22 @@
                         controllerAs: 'ctrl'
                     }
                 }
-                
-                
-                
+
             }).state('hospitalesList', {
                 url: '/hospitales/list',
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'hospitales.list.html',
                         controller: 'hospitalCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('hospitalesCreate', {
+                url: '/hospitales/create',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'create/hospitales.create.html',
+                        controller: 'hospitalesCreateController',
                         controllerAs: 'ctrl'
                     }
                 }

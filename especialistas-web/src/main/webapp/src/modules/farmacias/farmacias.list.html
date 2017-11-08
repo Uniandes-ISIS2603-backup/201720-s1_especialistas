@@ -1,5 +1,11 @@
 <div class="container-fluid">
-    <div class="col-md-4">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-info" ui-sref="farmaciaCreate"><span class="glyphicon glyphicon-plus-sign"></span> Nueva Farmacia</a>
+            
+        </div>
+    </div>
+    <div class="col-md-12">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -7,10 +13,9 @@
                     <th>Ubicación</th>    
                 </tr>
             </thead>
-            <input class="text">
             <tbody>
                 <tr ng-repeat="farmacia in farmacias">
-                    <td id="{{$index}}-nombre">{{farmacia.nombre}}</td>
+                    <td id="{{$index}}-nombre"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{farmacia.nombre}}</a></td>
                     <td id="{{$index}}-nombre">{{farmacia.ubicacion}}</td>
                 </tr>
             </tbody>

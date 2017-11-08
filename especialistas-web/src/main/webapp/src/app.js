@@ -8,11 +8,15 @@
         'horaModule',
         'laboratoriosModule',
         'farmaciaModule',
+        'ordenesMedicasModule',
         'citasModule',
-        'consultoriosModule',
         'hospitalesModule',
         'usuarioModule',
-        'pagoModule'
+        'pagoModule',
+        'tarjetaModule',
+        'medicamentoModule',
+        'ordenesMedicasModule'
+        
     ]);
     //Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

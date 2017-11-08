@@ -45,7 +45,7 @@ public class UsuarioEntity implements Serializable{
      * atributo que modela las citas del usuario
      */
     @PodamExclude
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
     private List<CitaEntity> citasMedicas = new ArrayList<CitaEntity>();
     
     /**

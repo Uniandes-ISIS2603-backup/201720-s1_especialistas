@@ -50,7 +50,10 @@ public class OrdenMedicaDetailDTO extends OrdenMedicaDTO{
         
         }
         
+        if(cita!=null)
+        {
         this.cita= new CitaDTO(entity.getCita());
+        }
     }
     
     
@@ -81,7 +84,10 @@ public class OrdenMedicaDetailDTO extends OrdenMedicaDTO{
        @Override
     public OrdenMedicaEntity toEntity() {
         OrdenMedicaEntity entity = super.toEntity();
+        if(cita!=null)
+        {
         entity.setCita(cita.toEntity());
+        }
         
         if(this.getExamenes()!=null)
         {

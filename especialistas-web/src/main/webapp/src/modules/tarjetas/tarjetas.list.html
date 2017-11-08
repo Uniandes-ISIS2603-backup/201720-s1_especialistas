@@ -1,0 +1,32 @@
+<div class="col-sm-12">
+    <div class="usuario" ng-repeat="tarjeta in tarjetasRecords">
+        <div class="col-sm-4 col-lg-3 pacman">
+            <div class="usuario-padre">
+                <a ui-sref="tarjetaDetail({tarjetaId: tarjeta.id})">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/MasterCard_early_1990s_logo.png/220px-MasterCard_early_1990s_logo.png" alt="">
+                </a>
+                <div class="usuario-data">
+                    {{tarjeta.id}} <br>
+                    {{tarjeta.numero}} 
+
+                    <a href="#" style="color: #f44" ui-sref="tarjetasDelete({tarjetaId: tarjeta.id})">Eliminar</a>
+                    <a href="#" ui-sref="tarjetaUpdate({tarjetaId: tarjeta.id})">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-lg-3 pacman">
+        <div class="usuario-padre">
+            
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/MasterCard_early_1990s_logo.png/220px-MasterCard_early_1990s_logo.png" alt="">
+                <div class="usuario-data">
+                    <p></p><br>
+                    <a class="add" ui-sref="tarjetasCrear">
+                        +
+                    </a>
+                    <a href="#">#</a>
+                </div>
+            
+        </div>
+    </div>
+</div>
