@@ -70,7 +70,7 @@ public class HospitalResource {
     @POST
     public HospitalDetailDTO createHospital(HospitalDetailDTO hospital) throws BusinessLogicException {
         HospitalEntity entity = hospital.toEntity();
-        System.out.println("nombre: " + entity.getNombre() + " consultorios vacíos: " + entity.getConsultorios().isEmpty());
+        
         HospitalEntity creado = logic.createHospital(entity);
         return new HospitalDetailDTO(creado);
     }

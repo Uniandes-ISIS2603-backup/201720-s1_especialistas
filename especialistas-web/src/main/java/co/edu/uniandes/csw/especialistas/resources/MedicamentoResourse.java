@@ -114,7 +114,7 @@ public class MedicamentoResourse {
     
     private List<MedicamentoDetailDTO> listToList(List<MedicamentoEntity> entityList) {
         List<MedicamentoDetailDTO> listDTO=new ArrayList<>();
-        System.out.println("co.edu.uniandes.csw.especialistas.resources.MedicamentoResourse.listToList()");
+        
         for(MedicamentoEntity entity: entityList) {
             listDTO.add(new MedicamentoDetailDTO(entity));
         }

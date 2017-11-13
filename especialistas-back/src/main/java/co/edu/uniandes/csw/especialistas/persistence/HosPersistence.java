@@ -5,10 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
-import co.edu.uniandes.csw.especialistas.entities.ConsEntity;
-import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.HosEntity;
-import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
