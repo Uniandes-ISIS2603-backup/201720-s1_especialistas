@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.ConsEntity;
-import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 
 /**
  *

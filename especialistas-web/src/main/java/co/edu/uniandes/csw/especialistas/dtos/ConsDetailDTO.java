@@ -6,10 +6,7 @@
 package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.ConsEntity;
-import co.edu.uniandes.csw.especialistas.entities.HosEntity;
-import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *

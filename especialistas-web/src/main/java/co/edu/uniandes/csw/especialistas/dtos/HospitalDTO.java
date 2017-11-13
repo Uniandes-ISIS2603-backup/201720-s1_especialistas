@@ -14,7 +14,7 @@ import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 public class HospitalDTO extends EspecialistasDTO{
 
     private String nombre;
-    //private UbicacionEntity ubicacion;
+    
 
     /**
      * Constructor por defecto

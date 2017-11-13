@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
 import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
-import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import java.util.ArrayList;

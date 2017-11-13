@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
-import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
+
 import co.edu.uniandes.csw.especialistas.entities.HosEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 

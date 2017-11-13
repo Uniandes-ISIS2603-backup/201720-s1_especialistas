@@ -17,7 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.xml.bind.annotation.XmlTransient;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**

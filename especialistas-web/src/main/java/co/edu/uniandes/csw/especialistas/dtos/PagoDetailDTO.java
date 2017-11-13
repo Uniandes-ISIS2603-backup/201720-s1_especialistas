@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
-import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 
 /**
  *

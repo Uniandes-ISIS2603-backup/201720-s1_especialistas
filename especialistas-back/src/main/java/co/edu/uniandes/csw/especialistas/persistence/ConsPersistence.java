@@ -6,9 +6,7 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.ConsEntity;
-import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.HosEntity;
-import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -98,7 +96,7 @@ public class ConsPersistence {
         return query.getResultList();
     }
 
-    public boolean agregarHospitalById(long id, HosEntity hospital) {
+    public boolean agregarHospitalById(long id) {
 
         ConsEntity consultorio = null;
 
