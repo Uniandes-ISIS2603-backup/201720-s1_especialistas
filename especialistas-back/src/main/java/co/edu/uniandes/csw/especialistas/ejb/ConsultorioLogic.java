@@ -10,9 +10,9 @@ import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.persistence.ConsultorioPersistence;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -23,6 +23,7 @@ import javax.inject.Inject;
  */
 @Stateless
 public class ConsultorioLogic {
+    private static final Logger LOGGER = Logger.getLogger(ConsultorioLogic.class.getName());
 
     /**
      * Injección de la persistencia de consultorios
