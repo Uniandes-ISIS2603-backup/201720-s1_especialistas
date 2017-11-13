@@ -43,21 +43,15 @@ public class HospitalDetailDTO extends HospitalDTO {
     public HospitalDetailDTO(HospitalEntity entity) {
         super(entity);
         if (entity.getUbicacion() != null) {
-            System.out.println("************************************");
-            System.out.println("HAY UBICACION");
-            System.out.println("************************************");
             UbicacionEntity ubicacionEntity = entity.getUbicacion();
             this.ubicacion = new UbicacionDTO(ubicacionEntity);
         }
         if (entity.getConsultorios() != null) {
             if(entity.getConsultorios() == null || entity.getConsultorios().isEmpty()){
-                System.out.println("Lista vacía");
             }
             consultorios = new ArrayList<>();
             for (ConsultorioEntity consultorio : entity.getConsultorios()) {
-                System.out.println("XD");
                 consultorios.add(new ConsultorioDTO(consultorio));
-                System.out.println(consultorio.getReferenciaConsultorio());
             }
         }
     }

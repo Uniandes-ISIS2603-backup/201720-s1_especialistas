@@ -27,7 +27,7 @@ public class MedicamentoDetailDTO extends MedicamentoDTO{
         if(entity.getFarmacias()==null)
         {
             entity.setFarmacias(new ArrayList<>());
-            System.out.println("*********************************************************************************"+ entity.getFarmacias().toString());
+            
         }
         entity.getFarmacias().forEach((x)->{
             this.farmacias.add(new FarmaciaDTO(x));

@@ -67,7 +67,7 @@ public class TargetaResource {
     @GET
     @Path("{id: \\d+}")
     public TarjetaDetailDTO getTarjetaByID(@PathParam("id") Long id){
-        TarjetaEntity entity = logic.getTarjetaById(id);
+        TarjetaEntity entity = logic.getTarjeta(id);
         if (entity == null) {
             throw new WebApplicationException("No existe un Tarjeta con el id " + id);
             
@@ -79,7 +79,7 @@ public class TargetaResource {
     @Path("{id: \\d+}")
     public TarjetaDetailDTO updateTarjeta(@PathParam("id") Long id, TarjetaDetailDTO tarjeta){
         tarjeta.setId(id);
-        TarjetaEntity entity = logic.getTarjetaById(id);
+        TarjetaEntity entity = logic.getTarjeta(id);
         if (entity == null) {
             throw new WebApplicationException("No existe un Tarjeta con el id " + id);
             
@@ -90,7 +90,7 @@ public class TargetaResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteTarjeta(@PathParam("id") Long id){
-        TarjetaEntity entity = logic.getTarjetaById(id);
+        TarjetaEntity entity = logic.getTarjeta(id);
         if (entity == null) {
             throw new WebApplicationException("No existe un Tarjeta con el id " + id);
             

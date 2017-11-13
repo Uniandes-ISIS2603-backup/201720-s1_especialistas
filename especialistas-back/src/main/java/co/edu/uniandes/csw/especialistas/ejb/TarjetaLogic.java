@@ -84,13 +84,4 @@ public class TarjetaLogic {
         return entity;
     }
     
-     /**
-     * Busca el Tarjeta con el id dado por parámetro
-     * @param id
-     * @return
-     */
-    public TarjetaEntity getTarjetaById( Long id ) {
-        return persistence.find(id);
-        
-    }
 }
