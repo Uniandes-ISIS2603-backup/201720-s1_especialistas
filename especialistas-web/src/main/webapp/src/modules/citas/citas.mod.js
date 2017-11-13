@@ -3,7 +3,6 @@
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/citas/';
-            var basePathHoras = 'src/modules/horas/';
             var basePathOrdenes = 'src/modules/ordenesMedicas/';
             
             
