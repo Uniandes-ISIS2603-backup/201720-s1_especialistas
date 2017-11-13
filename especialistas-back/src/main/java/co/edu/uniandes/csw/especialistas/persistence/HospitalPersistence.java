@@ -79,8 +79,7 @@ public class HospitalPersistence
     public HospitalEntity find(Long id)
     {
         LOGGER.log(Level.INFO, "Buscando hospital con id: {0}", id);
-        HospitalEntity entity = em.find(HospitalEntity.class, id);
-        return entity;
+        return em.find(HospitalEntity.class, id);
     }
     
     /**

@@ -49,14 +49,14 @@ public class PagoResource {
     
     @GET
     public List<PagoDetailDTO> getPagos() {
-        List<PagoEntity> PagoEntities = logic.getPagos();
-        if (PagoEntities.isEmpty()) {
+        List<PagoEntity> pagoEntities = logic.getPagos();
+        if (pagoEntities.isEmpty()) {
             throw new WebApplicationException("no hay Pagos");
             
         }
         List<PagoDetailDTO> pagoDTOs = new ArrayList<>();
 
-        for (PagoEntity actual : PagoEntities) {
+        for (PagoEntity actual : pagoEntities) {
             PagoDetailDTO nuevoPago= new PagoDetailDTO(actual);
             pagoDTOs.add(nuevoPago);
         }

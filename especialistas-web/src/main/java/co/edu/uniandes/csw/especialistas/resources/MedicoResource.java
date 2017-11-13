@@ -79,9 +79,9 @@ public class MedicoResource {
     public List<MedicoDetailDTO> getMedicos()
     {
         List<MedicoDetailDTO> lista = new ArrayList<>();
-        logic.getMedicos().forEach((medico) -> {
-            lista.add(new MedicoDetailDTO(medico));
-        });
+        logic.getMedicos().forEach(medico -> 
+            lista.add(new MedicoDetailDTO(medico))
+        );
         return lista;
     }
     
@@ -95,9 +95,9 @@ public class MedicoResource {
     public List<MedicoDetailDTO> getMedicosPorEspecializacion(@PathParam("especializacion") String especializacion)
     {
         List<MedicoDetailDTO> lista = new ArrayList<>();
-        logic.getMedicosByEspecializacion(especializacion).forEach((medico) -> {
-            lista.add(new MedicoDetailDTO(medico));
-        });
+        logic.getMedicosByEspecializacion(especializacion).forEach(medico -> 
+            lista.add(new MedicoDetailDTO(medico))
+        );
         return lista;
     }
     
@@ -170,9 +170,9 @@ public class MedicoResource {
         }
         MedicoEntity newEntity = logic.getMedico(id);
         List<HoraEntity> lista = new ArrayList<>();
-        agenda.forEach((hora) -> {
-            lista.add(hora.toEntity());
-        });
+        agenda.forEach(hora -> 
+            lista.add(hora.toEntity())
+        );
         newEntity.setAgenda(lista);
         logic.updateMedico(id, newEntity);
         return getAgenda(id);

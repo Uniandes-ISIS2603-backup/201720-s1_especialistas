@@ -61,7 +61,7 @@ public class UsuarioEntity implements Serializable{
      */
     @PodamExclude
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-    private List<CitaEntity> citasMedicas = new ArrayList<CitaEntity>();
+    private List<CitaEntity> citasMedicas = new ArrayList<>();
     
     
     /**
@@ -69,7 +69,7 @@ public class UsuarioEntity implements Serializable{
      */
     @PodamExclude
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-    private List<PagoEntity> pagos = new ArrayList<PagoEntity>();
+    private List<PagoEntity> pagos = new ArrayList<>();
     
     /**
      * atributo que modela la targeta del usuario

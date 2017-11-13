@@ -26,12 +26,12 @@ public class UsuarioDetailDTO extends UsuarioDTO{
     /**
      * lista de citasmedicas de un usuario
      */
-    private List <CitaDTO> citasMedicas = new ArrayList<CitaDTO>();
+    private List <CitaDTO> citasMedicas = new ArrayList<>();
     
     /**
      * lista de pagos de un usuario
      */
-    private List <PagoDTO> pagos = new ArrayList<PagoDTO>();
+    private List <PagoDTO> pagos = new ArrayList<>();
     
     /**
      * Ubicacion del usuario

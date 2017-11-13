@@ -91,8 +91,8 @@ public class FarmaciaPersitence {
         }
     }
         
-    public void update(FarmaciaEntity Farmacia) {
-        em.merge(Farmacia);
+    public void update(FarmaciaEntity farmacia) {
+        em.merge(farmacia);
     }
 
     public List<FarmaciaEntity> findAll() {

@@ -73,9 +73,9 @@ public class CitaResource {
     public List<CitaDetailDTO> getCitas()
     {
         List<CitaDetailDTO> lista = new ArrayList<>();
-        logic.getCitas().forEach((Cita) -> {
-            lista.add(new CitaDetailDTO(Cita));
-        });
+        logic.getCitas().forEach(cita -> 
+            lista.add(new CitaDetailDTO(cita))
+        );
         return lista;
     }
     

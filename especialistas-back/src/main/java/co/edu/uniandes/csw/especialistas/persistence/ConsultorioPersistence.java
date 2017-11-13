@@ -79,8 +79,8 @@ public class ConsultorioPersistence
     public ConsultorioEntity find(Long id)
     {
         LOGGER.log(Level.INFO, "Buscando consultorio con id: {0}", id);
-        ConsultorioEntity entity = em.find(ConsultorioEntity.class, id);
-        return entity;
+        return em.find(ConsultorioEntity.class, id);
+        
     }
     
     /**

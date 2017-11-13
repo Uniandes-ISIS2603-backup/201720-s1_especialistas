@@ -65,7 +65,7 @@ public class MedicamentoEntity implements Serializable{
     {
         if(farmacias==null)
         {
-            farmacias=new ArrayList<FarmaciaEntity>();
+            farmacias=new ArrayList<>();
         }
         farmacias.add(farmacia);
     }

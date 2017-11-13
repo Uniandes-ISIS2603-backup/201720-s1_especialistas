@@ -70,9 +70,9 @@ public class OrdenMedicaResource {
     public List<OrdenMedicaDetailDTO> getOrdenMedicas()
     {
         List<OrdenMedicaDetailDTO> lista = new ArrayList<>();
-        logic.getOrdenesMedicas().forEach((ordenMedica) -> {
-            lista.add(new OrdenMedicaDetailDTO(ordenMedica));
-        });
+        logic.getOrdenesMedicas().forEach(ordenMedica -> 
+            lista.add(new OrdenMedicaDetailDTO(ordenMedica))
+        );
         return lista;
     }
     

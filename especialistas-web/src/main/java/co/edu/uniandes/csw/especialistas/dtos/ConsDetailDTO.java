@@ -25,8 +25,8 @@ public class ConsDetailDTO extends ConsDTO {
     
     @Override
     public ConsEntity toEntity() {
-        ConsEntity entity = super.toEntity();
-        return entity;
+        
+        return  super.toEntity();
     }
 
 }

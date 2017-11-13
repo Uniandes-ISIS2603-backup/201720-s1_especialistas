@@ -50,14 +50,14 @@ public class TargetaResource {
     
     @GET
     public List<TarjetaDetailDTO> getTarjetas(){
-        List<TarjetaEntity> TarjetaEntities = logic.getTarjetas();
-        if (TarjetaEntities.isEmpty()) {
+        List<TarjetaEntity> tarjetaEntities = logic.getTarjetas();
+        if (tarjetaEntities.isEmpty()) {
             throw new WebApplicationException("no hay Tarjetas");
             
         }
         List<TarjetaDetailDTO> tarjetaDTOs = new ArrayList<>();
 
-        for (TarjetaEntity actual : TarjetaEntities) {
+        for (TarjetaEntity actual : tarjetaEntities) {
             TarjetaDetailDTO nuevoTarjeta= new TarjetaDetailDTO(actual);
             tarjetaDTOs.add(nuevoTarjeta);
         }

@@ -34,9 +34,9 @@ public class HosDetailDTO extends HosDTO {
 
     @Override
     public HosEntity toEntity() {
-        HosEntity entity = super.toEntity();
+        return super.toEntity();
         
 
-        return entity;
+        
     }
 }

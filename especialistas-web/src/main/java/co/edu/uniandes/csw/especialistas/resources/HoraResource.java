@@ -74,9 +74,9 @@ public class HoraResource {
     public List<HoraDetailDTO> getHoras()
     {
         List<HoraDetailDTO> lista = new ArrayList<>();
-        logic.getHoras().forEach((hora) -> {
-            lista.add(new HoraDetailDTO(hora));
-        });
+        logic.getHoras().forEach(hora -> 
+            lista.add(new HoraDetailDTO(hora))
+        );
         return lista;
     }
     
