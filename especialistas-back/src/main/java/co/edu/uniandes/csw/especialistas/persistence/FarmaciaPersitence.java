@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -116,7 +117,7 @@ public class FarmaciaPersitence {
         {
         return farmacia.getMedicamentos();
         }
-        return null;
+        return new ArrayList<>();
     }
     
     public UbicacionEntity findUbicacionById(long id) {
