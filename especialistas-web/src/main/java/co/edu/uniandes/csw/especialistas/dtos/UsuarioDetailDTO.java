@@ -95,7 +95,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
                 }
                 entity.setCitas(citaEntity);
             }
-        if(entity.getPagos()!= null)
+        if(pagos != null)
             {
                 List<PagoEntity> pagoEntity = new ArrayList<>();
                 for (PagoDTO pago : pagos){

@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createAuthor">Create new Author</label>
+            <div class="panel-heading"><label ng-if="!edit" id="createAuthor">Crear nuevo Usuario</label>
                 <label ng-if="edit" id="editAuthor">Editar Usuario</label></div>
             <div class="panel-body">
                 <form ng-submit="createUsuario()" name="usuario">
@@ -16,31 +16,6 @@
                         <div class="form-group col-md-6">
                             <label for="usuarioDescription" class="col-sm-2">Cedula:</label>
                             <textarea id="usuarioCedula" required ng-model="usuarioCedula" class="col-sm-6"></textarea>
-                        </div>
-                    </div>
-                    
-                    <div ng-if="edit" class="panel-group" id="theCitas">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">Associated citas</div>
-                            <div class="panel-body">
-                                <div id="div2" ondrop="angular.element(document.getElementById('theCitas')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('theCitas')).scope().allowDrop(event)">
-                                    <label></label>
-                                    <div ng-show="edit" ng-repeat="cita in allCitasUsiario">
-                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theCitas')).scope().drag(event)" id="{{cita.id}}">{{cita.comentarios}}</p>                                 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-success">
-                            <div class="panel-heading">All citas</div>
-                            <div class="panel-body">
-                                <div id="div1" ondrop="angular.element(document.getElementById('theCitas')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('theCitas')).scope().allowDrop(event)">
-                                    <label></label>
-                                    <div ng-repeat="cita in allCitasShow">
-                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theCitas')).scope().drag(event)" id="{{cita.id}}">{{cita.comentarios}}</p>                
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
