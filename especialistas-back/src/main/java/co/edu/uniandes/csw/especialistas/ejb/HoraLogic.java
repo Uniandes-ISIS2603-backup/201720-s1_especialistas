@@ -47,8 +47,7 @@ public class HoraLogic {
      */
     public List<HoraEntity> getHoras()
     {
-        List<HoraEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
     }
     
     /**
@@ -58,8 +57,7 @@ public class HoraLogic {
      */
     public HoraEntity getHora(Long id)
     {
-        HoraEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
     }
     
     /**

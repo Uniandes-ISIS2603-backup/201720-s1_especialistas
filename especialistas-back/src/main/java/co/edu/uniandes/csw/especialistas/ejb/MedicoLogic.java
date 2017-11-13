@@ -57,8 +57,8 @@ public class MedicoLogic {
      */
     public List<MedicoEntity> getMedicos()
     {
-        List<MedicoEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -68,8 +68,8 @@ public class MedicoLogic {
      */
     public MedicoEntity getMedico(Long id)
     {
-        MedicoEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
+        
     }
     
     /**

@@ -46,8 +46,7 @@ public class HosLogic {
     public HosEntity deleteHospital(Long id)throws BusinessLogicException
     {
         persistence.deleteById(id);
-        HosEntity entity = persistence.findById(id);
-        return  entity;
+        return persistence.findById(id);
     }
     
     /**
@@ -56,8 +55,8 @@ public class HosLogic {
      */
         public List<HosEntity> getHospitales()
     {
-        List<HosEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -67,8 +66,8 @@ public class HosLogic {
      */
     public HosEntity getHospital(Long id)
     {
-        HosEntity entity = persistence.findById(id);
-        return entity;
+        return persistence.findById(id);
+        
     }
     
     /**
@@ -89,7 +88,7 @@ public class HosLogic {
      */
     public HosEntity getHospitalByName(String nombre)
     {
-        HosEntity entity = persistence.findByName(nombre);
-        return entity;
+        return persistence.findByName(nombre);
+        
     }
 }

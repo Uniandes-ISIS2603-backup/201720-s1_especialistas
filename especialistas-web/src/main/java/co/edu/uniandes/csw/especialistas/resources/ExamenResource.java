@@ -35,11 +35,11 @@ public class ExamenResource {
     ExamenLogic logic;
 
     @POST
-    public ExamenDetailDTO createExamen(ExamenDetailDTO examen) throws WebApplicationException{
+    public ExamenDetailDTO createExamen(ExamenDetailDTO examen){
         ExamenEntity examenEntity = logic.getExamen(examen.getNombre());
         if (examenEntity != null) {
-            WebApplicationException e = new WebApplicationException("Ya existe un examen con el nombre " + examen.getNombre());
-            throw e;
+            throw new WebApplicationException("Ya existe un examen con el nombre " + examen.getNombre());
+             
         }
         ExamenEntity nuevoExamen = logic.createExamen(examen.toEntity());
 
@@ -50,8 +50,8 @@ public class ExamenResource {
     public List<ExamenDetailDTO> getExamens(){
         List<ExamenEntity> examenEntities = logic.getExamenes();
         if (examenEntities.isEmpty()) {
-            WebApplicationException e = new WebApplicationException("no hay examenes");
-            throw e;
+            
+            throw  new WebApplicationException("no hay examenes");
         }
         List<ExamenDetailDTO> examenDTOs = new ArrayList<>();
 
@@ -67,8 +67,7 @@ public class ExamenResource {
     public ExamenDetailDTO getExamenByName(@PathParam("nombre") String nombre){
         ExamenEntity entity = logic.getExamen(nombre);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un examen con el nombre " + nombre);
-            throw e;
+            throw new WebApplicationException("No existe un examen con el nombre " + nombre);
         }
         return new ExamenDetailDTO(entity);
     }
@@ -78,8 +77,7 @@ public class ExamenResource {
     public ExamenDetailDTO getExamenByID(@PathParam("id") Long id){
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un examen con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un examen con el id " + id);
         }
         return new ExamenDetailDTO(entity);
     }
@@ -90,8 +88,8 @@ public class ExamenResource {
         examen.setId(id);
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un examen con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un examen con el id " + id);
+            
         }
         return new ExamenDetailDTO(logic.updateExamen(examen.toEntity()));
     }
@@ -101,8 +99,8 @@ public class ExamenResource {
     public void deleteExamen(@PathParam("id") Long id){
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un examen con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un examen con el id " + id);
+            
         }
         logic.deleteExamen(id);
     }

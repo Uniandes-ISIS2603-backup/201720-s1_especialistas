@@ -40,20 +40,20 @@ public class UsuarioResource {
             usuarioEntity = logic.getUsuario(usuario.getId());
         }
         if (usuarioEntity != null) {
-            WebApplicationException e = new WebApplicationException("Ya existe un usuario con el id " + usuario.getId());
-            throw e;
+            throw new WebApplicationException("Ya existe un usuario con el id " + usuario.getId());
+            
         }
-        UsuarioEntity nuevoUsuario = logic.createUsuario(usuario.toEntity());
+        return logic.createUsuario(usuario.toEntity());
 
-        return nuevoUsuario;
+        
     }
     
     @GET
     public List<UsuarioDetailDTO> getUsuarios(){
         List<UsuarioEntity> usuarioEntities = logic.getUsuarios();
         if (usuarioEntities.isEmpty()) {
-            WebApplicationException e = new WebApplicationException("no hay usuarios");
-            throw e;
+            throw new WebApplicationException("no hay usuarios");
+            
         }
         List<UsuarioDetailDTO> usuarioDTOs = new ArrayList<>();
 
@@ -69,8 +69,8 @@ public class UsuarioResource {
     public UsuarioDetailDTO getUsuarioByID(@PathParam("id") Long id){
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un usuario con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un usuario con el id " + id);
+            
         }
         return new UsuarioDetailDTO(entity);
     }
@@ -81,8 +81,8 @@ public class UsuarioResource {
         usuario.setId(id);
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un usuario con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un usuario con el id " + id);
+            
         }
         return new UsuarioDetailDTO(logic.updateUsuario(usuario.toEntity()));
     }
@@ -92,8 +92,8 @@ public class UsuarioResource {
     public void deleteUsuario(@PathParam("id") Long id){
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un usuario con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un usuario con el id " + id);
+            
         }
         logic.deleteUsuario(id);
     }

@@ -36,8 +36,8 @@ public class LaboratorioLogic {
      * @return 
      */
     public List<LaboratorioEntity> getLaboratorios(){
-        List<LaboratorioEntity> laboratorios = persistence.findAll();
-        return laboratorios;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -46,8 +46,8 @@ public class LaboratorioLogic {
      * @return
      */
     public LaboratorioEntity getLaboratorio(String name){
-        LaboratorioEntity laboratorio = persistence.findByName(name);
-        return laboratorio;
+        return persistence.findByName(name);
+        
     }
     
     /**
@@ -56,8 +56,8 @@ public class LaboratorioLogic {
      * @return
      */
     public LaboratorioEntity getLaboratorioById( Long id ) {
-        LaboratorioEntity laboratorio = persistence.find(id);
-        return laboratorio;
+        return persistence.find(id);
+        
     }
     
     /**
@@ -66,8 +66,8 @@ public class LaboratorioLogic {
      * @return 
      */
     public LaboratorioEntity updateLaboratorio( LaboratorioEntity entity ){
-        LaboratorioEntity newLab = persistence.update(entity);
-        return newLab;
+        return persistence.update(entity);
+        
     }
     
     public void deleteLaboratorio( Long id ){

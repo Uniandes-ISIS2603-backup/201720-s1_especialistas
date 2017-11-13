@@ -57,8 +57,8 @@ public class MedicamentoLogic {
      */
         public List<MedicamentoEntity> getMedicamentos()
     {
-        List<MedicamentoEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -68,8 +68,8 @@ public class MedicamentoLogic {
      */
     public MedicamentoEntity getMedicamento(Long id)
     {
-        MedicamentoEntity entity = persistence.findById(id);
-        return entity;
+        return persistence.findById(id);
+        
     }
     
     /**
@@ -90,7 +90,7 @@ public class MedicamentoLogic {
      */
     public MedicamentoEntity getMedicametoByName(String nombre)
     {
-        MedicamentoEntity entity = persistence.findByName(nombre);
-        return entity;
+        return persistence.findByName(nombre);
+        
     }
 }

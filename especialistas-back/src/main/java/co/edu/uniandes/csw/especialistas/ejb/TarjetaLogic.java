@@ -58,8 +58,8 @@ public class TarjetaLogic {
      * @return Lista con todas las entidades de los Tarjetas
      */
     public List<TarjetaEntity> getTarjetas() {
-        List<TarjetaEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -69,8 +69,8 @@ public class TarjetaLogic {
      * @return TarjetaEntity del Tarjeta buscado
      */
     public TarjetaEntity getTarjeta(Long id) {
-        TarjetaEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
+        
     }
     
     /**
@@ -90,7 +90,7 @@ public class TarjetaLogic {
      * @return
      */
     public TarjetaEntity getTarjetaById( Long id ) {
-        TarjetaEntity examen = persistence.find(id);
-        return examen;
+        return persistence.find(id);
+        
     }
 }

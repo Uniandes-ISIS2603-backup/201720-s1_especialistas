@@ -34,9 +34,8 @@ public class ExamenLogic {
      * Busca todos los examenes
      * @return 
      */
-    public List<ExamenEntity> getExamenes(){
-        List<ExamenEntity> examenes = persistence.findAll();
-        return examenes;
+    public List<ExamenEntity> getExamenes(){ 
+        return persistence.findAll();
     }
     
     /**
@@ -45,8 +44,7 @@ public class ExamenLogic {
      * @return
      */
     public ExamenEntity getExamen(String name){
-        ExamenEntity examen = persistence.findByName(name);
-        return examen;
+        return  persistence.findByName(name);
     }
     
     /**
@@ -55,8 +53,7 @@ public class ExamenLogic {
      * @return
      */
     public ExamenEntity getExamenById( Long id ) {
-        ExamenEntity examen = persistence.find(id);
-        return examen;
+        return persistence.find(id);
     }
     
     /**
@@ -65,8 +62,7 @@ public class ExamenLogic {
      * @return 
      */
     public ExamenEntity updateExamen( ExamenEntity entity ){
-        ExamenEntity newExamen = persistence.update(entity);
-        return newExamen;
+        return persistence.update(entity);
     }
     
     public void deleteExamen( Long id ){

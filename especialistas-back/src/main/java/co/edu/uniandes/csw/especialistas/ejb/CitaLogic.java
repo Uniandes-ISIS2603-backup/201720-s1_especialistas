@@ -83,8 +83,7 @@ public class CitaLogic {
      */
     public List<CitaEntity> getCitas()
     {
-        List<CitaEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
     }
     
     /**
@@ -94,8 +93,7 @@ public class CitaLogic {
      */
     public CitaEntity getCita(Long id)
     {
-        CitaEntity entity = persistence.findById(id);
-        return entity;
+        return persistence.findById(id);
     }
     
     /**

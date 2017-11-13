@@ -58,8 +58,8 @@ public class UsuarioLogic {
      * @return Lista con todas las entidades de los usuarios
      */
     public List<UsuarioEntity> getUsuarios() {
-        List<UsuarioEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -69,8 +69,8 @@ public class UsuarioLogic {
      * @return UsuarioEntity del usuario buscado
      */
     public UsuarioEntity getUsuario(Long id) {
-        UsuarioEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
+        
     }
     
     /**
@@ -91,8 +91,7 @@ public class UsuarioLogic {
      * @return UsuarioEntity correspondiente al usuario
      */
     public UsuarioEntity getUsuarioByCedula(int number) {
-        UsuarioEntity entity = persistence.findByCedula(number);
-        return entity;
+        return persistence.findByCedula(number);
     }
     
      /**
@@ -101,7 +100,6 @@ public class UsuarioLogic {
      * @return
      */
     public UsuarioEntity getUsuarioById( Long id ) {
-        UsuarioEntity examen = persistence.find(id);
-        return examen;
+        return persistence.find(id);
     }
 }

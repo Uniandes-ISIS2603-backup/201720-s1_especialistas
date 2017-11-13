@@ -10,7 +10,6 @@ import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.persistence.HospitalPersistence;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -61,8 +60,8 @@ public class HospitalLogic {
      * @return Lista con todas las entidades de los hospitales
      */
     public List<HospitalEntity> getHospitales() {
-        List<HospitalEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
 
     /**
@@ -72,8 +71,8 @@ public class HospitalLogic {
      * @return HospitalEntity del hospital buscado
      */
     public HospitalEntity getHospital(Long id) {
-        HospitalEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
+        
     }
 
     /**

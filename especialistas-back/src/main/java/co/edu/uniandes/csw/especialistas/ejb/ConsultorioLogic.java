@@ -59,8 +59,7 @@ public class ConsultorioLogic {
      * @return Lista con todas las entidades de los consultorios
      */
     public List<ConsultorioEntity> getConsultorios() {
-        List<ConsultorioEntity> lista = persistence.findAll();
-        return lista;
+        return  persistence.findAll();
     }
 
     /**
@@ -70,8 +69,7 @@ public class ConsultorioLogic {
      * @return ConsultorioEntity del consultorio buscado
      */
     public ConsultorioEntity getConsultorio(Long id) {
-        ConsultorioEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
     }
 
     /**
@@ -92,8 +90,7 @@ public class ConsultorioLogic {
      * @return ConsultorioEntity correspondiente al consultorio
      */
     public ConsultorioEntity getConsultorioByNumber(String number) {
-        ConsultorioEntity entity = persistence.findByReference(number);
-        return entity;
+        return  persistence.findByReference(number);
     }
 
     /**
@@ -104,8 +101,7 @@ public class ConsultorioLogic {
      */
     public List<HoraEntity> listHoras(Long id) {
         ConsultorioEntity consultorio = getConsultorio(id);
-        List<HoraEntity> horas = consultorio.getHoras();
-        return horas;
+        return consultorio.getHoras();
     }
 
     /**

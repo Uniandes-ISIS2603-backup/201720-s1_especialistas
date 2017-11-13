@@ -46,8 +46,7 @@ public class FarmaciaLogic {
     public FarmaciaEntity deleteFarmacia(Long id)throws BusinessLogicException
     {
         persistence.deleteById(id);
-        FarmaciaEntity entity = persistence.findById(id);
-        return  entity;
+        return persistence.findById(id);
     }
     
     /**
@@ -56,8 +55,7 @@ public class FarmaciaLogic {
      */
         public List<FarmaciaEntity> getFarmacias()
     {
-        List<FarmaciaEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
     }
     
     /**
@@ -67,8 +65,7 @@ public class FarmaciaLogic {
      */
     public FarmaciaEntity getFarmacia(Long id)
     {
-        FarmaciaEntity entity = persistence.findById(id);
-        return entity;
+        return persistence.findById(id);
     }
     
     /**
@@ -89,7 +86,6 @@ public class FarmaciaLogic {
      */
     public FarmaciaEntity getHospitalByName(String nombre)
     {
-        FarmaciaEntity entity = persistence.findByName(nombre);
-        return entity;
+        return persistence.findByName(nombre);
     }
 }

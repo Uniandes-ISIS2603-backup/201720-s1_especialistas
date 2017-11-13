@@ -56,8 +56,8 @@ public class PagoLogic {
      * @return Lista con todas las entidades de los Pagos
      */
     public List<PagoEntity> getPagos() {
-        List<PagoEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -67,8 +67,8 @@ public class PagoLogic {
      * @return PagoEntity del Pago buscado
      */
     public PagoEntity getPago(Long id) {
-        PagoEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
+        
     }
     
     /**
@@ -88,7 +88,7 @@ public class PagoLogic {
      * @return
      */
     public PagoEntity getPagoById( Long id ) {
-        PagoEntity examen = persistence.find(id);
-        return examen;
+        return persistence.find(id);
+        
     }
 }

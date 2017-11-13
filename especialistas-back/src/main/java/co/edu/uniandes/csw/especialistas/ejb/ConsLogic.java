@@ -57,8 +57,7 @@ public class ConsLogic {
      */
         public List<ConsEntity> getConsultorios()
     {
-        List<ConsEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
     }
     
     /**
@@ -68,8 +67,7 @@ public class ConsLogic {
      */
     public ConsEntity getConsultorio(Long id)
     {
-        ConsEntity entity = persistence.findById(id);
-        return entity;
+        return persistence.findById(id);
     }
     
     /**
@@ -90,7 +88,6 @@ public class ConsLogic {
      */
     public ConsEntity getConsultoriotoByNumero(String numero)
     {
-        ConsEntity entity = persistence.findByName(numero);
-        return entity;
+        return persistence.findByName(numero);
     }
 }

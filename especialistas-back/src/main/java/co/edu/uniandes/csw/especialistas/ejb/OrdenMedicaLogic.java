@@ -55,8 +55,8 @@ public class OrdenMedicaLogic {
      */
     public List<OrdenMedicaEntity> getOrdenesMedicas()
     {
-        List<OrdenMedicaEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -66,8 +66,8 @@ public class OrdenMedicaLogic {
      */
     public OrdenMedicaEntity getOrdenMedica(Long id)
     {
-        OrdenMedicaEntity entity = persistence.findById(id);
-        return entity;
+        return persistence.findById(id);
+        
     }
     
     /**
