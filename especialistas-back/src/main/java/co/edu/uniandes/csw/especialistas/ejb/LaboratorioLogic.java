@@ -10,7 +10,6 @@ import co.edu.uniandes.csw.especialistas.persistence.LaboratorioPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  *
@@ -20,15 +19,8 @@ import org.springframework.util.Assert;
 public class LaboratorioLogic {
     
     
-    
-    
-    private final LaboratorioPersistence persistence;
-    
     @Inject
-    public LaboratorioLogic(LaboratorioPersistence persistence){
-        Assert.notNull(persistence, "Persistence must not be null!");
-        this.persistence = persistence;
-    }
+    private LaboratorioPersistence persistence;
     
     /**
      * Se encarga de la creación de un laboratorio

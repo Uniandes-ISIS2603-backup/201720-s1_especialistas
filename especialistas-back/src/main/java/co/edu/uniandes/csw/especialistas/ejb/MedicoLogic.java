@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.especialistas.persistence.MedicoPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  *
@@ -21,17 +20,11 @@ import org.springframework.util.Assert;
 @Stateless
 public class MedicoLogic {
            
-    
-    private final MedicoPersistence persistence;
-    
-    private final HoraLogic horaLogic;
+    @Inject
+    private MedicoPersistence persistence;
     
     @Inject
-    public MedicoLogic(MedicoPersistence persistence, HoraLogic horaLogic){
-        Assert.notNull(persistence, "Persistence must not be null!");
-        this.persistence = persistence;
-        this.horaLogic = horaLogic;
-    }
+    private HoraLogic horaLogic;
     
     /**
      * Método encargado de persistir un medico nuevo

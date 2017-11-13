@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.PagoPersistence;
 import java.util.List;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  *
@@ -19,14 +18,8 @@ public class PagoLogic {
     /**
      * Injección de la persistencia de Pago
      */
-    
-    private final PagoPersistence persistence;
-    
     @Inject
-    public PagoLogic(PagoPersistence persistence){
-        Assert.notNull(persistence, "Persistence must not be null!");
-        this.persistence = persistence;
-    }
+    private PagoPersistence persistence;
 
     /**
      * Método encargado de crear un Pago

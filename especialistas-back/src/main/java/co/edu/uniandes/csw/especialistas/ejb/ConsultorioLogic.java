@@ -15,7 +15,6 @@ import java.util.function.Supplier;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  * Clase de la lógica de los consultorios
@@ -29,14 +28,8 @@ public class ConsultorioLogic {
     /**
      * Injección de la persistencia de consultorios
      */
-    
-    private final ConsultorioPersistence persistence;
-    
     @Inject
-    public ConsultorioLogic(ConsultorioPersistence persistence){
-        Assert.notNull(persistence, "Persistence must not be null!");
-        this.persistence = persistence;
-    }
+    private ConsultorioPersistence persistence;
 
     /**
      * Método encargado de crear un consultorio

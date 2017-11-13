@@ -8,10 +8,8 @@ package co.edu.uniandes.csw.especialistas.ejb;
 import co.edu.uniandes.csw.especialistas.entities.ExamenEntity;
 import co.edu.uniandes.csw.especialistas.persistence.ExamenPersistence;
 import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  *
@@ -20,14 +18,8 @@ import org.springframework.util.Assert;
 @Stateless
 public class ExamenLogic {
     
-    
-    private final ExamenPersistence persistence;
-    
     @Inject
-    public ExamenLogic(ExamenPersistence persistence){
-        Assert.notNull(persistence, "Persistence must not be null!");
-        this.persistence = persistence;
-    }
+    private ExamenPersistence persistence;
     
     /**
      * Se encarga de la creación de un examen

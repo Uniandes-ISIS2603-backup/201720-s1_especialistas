@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import co.edu.uniandes.csw.especialistas.persistence.CitaPersistence;
 import java.util.List;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  *
@@ -20,33 +19,15 @@ import org.springframework.util.Assert;
  */
 public class CitaLogic {
     
-    
-    
-    
-    
-    private final CitaPersistence persistence;
-    
-    private final HoraLogic horaLogic;
-    
-    private final UsuarioLogic usuarioLogic;
-     
-    private final OrdenMedicaLogic ordenMedicaLogic;
-    
-  
     @Inject
-    public CitaLogic(CitaPersistence persistence, HoraLogic horaLogic, UsuarioLogic usuarioLogic, OrdenMedicaLogic ordenMedicaLogic) {
-        Assert.notNull(persistence, "Persistence must not be null!");
-        Assert.notNull(horaLogic, "horaLogic must not be null!");
-        Assert.notNull(usuarioLogic, "usuarioLogic must not be null!");
-        Assert.notNull(ordenMedicaLogic, "ordenMedicaLogic must not be null!");
-        this.persistence = persistence;
-        this.horaLogic = horaLogic;
-        this.usuarioLogic = usuarioLogic;
-        this.ordenMedicaLogic = ordenMedicaLogic;
-    }
+    private CitaPersistence persistence;
     
-    
-    
+    @Inject
+    private HoraLogic horaLogic;
+    @Inject
+    private UsuarioLogic usuarioLogic;
+     @Inject
+    private OrdenMedicaLogic ordenMedicaLogic;
     
     
     /**
@@ -63,6 +44,7 @@ public class CitaLogic {
     /**
      * Método encargadod de eliminar un Cita de la persistencia
      * @param id Id del Cita
+     * @return true si la entidad fue eliminada, false de lo contrario
      */
     public void deleteCita(Long id)
     {

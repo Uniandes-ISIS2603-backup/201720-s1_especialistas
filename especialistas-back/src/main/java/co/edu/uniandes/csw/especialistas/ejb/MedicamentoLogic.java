@@ -8,11 +8,9 @@ package co.edu.uniandes.csw.especialistas.ejb;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.MedicamentoPersistence;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
-
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  *
@@ -20,14 +18,8 @@ import org.springframework.util.Assert;
  */
 @Stateless
 public class MedicamentoLogic {
-    
-    private final MedicamentoPersistence persistence;
-    
     @Inject
-    public MedicamentoLogic(MedicamentoPersistence persistence){
-        Assert.notNull(persistence, "Persistence must not be null!");
-        this.persistence = persistence;
-    }
+    private MedicamentoPersistence persistence;
     
         /**
      * Método encargado de persistir un medicamento nuevo

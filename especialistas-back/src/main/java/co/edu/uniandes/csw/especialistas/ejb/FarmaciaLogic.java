@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  *
@@ -21,19 +20,11 @@ import org.springframework.util.Assert;
 @Stateless
 public class FarmaciaLogic {
 
-    
-    private final FarmaciaPersitence persistence;
-    
-    
-    private final UbicacionPersistence up;
-    
     @Inject
-    public FarmaciaLogic(FarmaciaPersitence persistence, UbicacionPersistence up){
-        Assert.notNull(persistence, "Persistence must not be null!");
-        Assert.notNull(up, "Persistence must not be null!");
-        this.persistence = persistence;
-        this.up = up;
-    }
+    private FarmaciaPersitence persistence;
+    
+    @Inject 
+    UbicacionPersistence up;
     
         /**
      * Método encargado de persistir un farmacia nuevo

@@ -11,7 +11,6 @@ import co.edu.uniandes.csw.especialistas.persistence.ConsPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  *
@@ -19,15 +18,8 @@ import org.springframework.util.Assert;
  */
 @Stateless
 public class ConsLogic {
-    
-    private final ConsPersistence persistence;
-    
-    
     @Inject
-    public ConsLogic(ConsPersistence persistence){
-        Assert.notNull(persistence, "Persistence must not be null!");
-        this.persistence = persistence;
-    }
+    private ConsPersistence persistence;
     
         /**
      * Método encargado de persistir un medicamento nuevo

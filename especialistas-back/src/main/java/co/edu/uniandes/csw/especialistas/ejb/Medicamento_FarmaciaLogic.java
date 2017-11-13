@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import javax.inject.Inject;
-import org.springframework.util.Assert;
 
 /**
  *
@@ -17,19 +16,11 @@ import org.springframework.util.Assert;
  */
 public class Medicamento_FarmaciaLogic {
     
-    
-    private final FarmaciaLogic logicFarmacia;
-    
-    
-    private final MedicamentoLogic logicMedicamento;
+    @Inject
+    private FarmaciaLogic logicFarmacia;
     
     @Inject
-    public Medicamento_FarmaciaLogic(FarmaciaLogic logicFarmacia, MedicamentoLogic logicMedicamento){
-        Assert.notNull(logicFarmacia, "Logic must not be null!");
-        Assert.notNull(logicMedicamento, "Logic must not be null!");
-        this.logicFarmacia = logicFarmacia;
-        this.logicMedicamento = logicMedicamento;
-    }
+    private MedicamentoLogic logicMedicamento;
     
     public boolean agregarRelacion(Long idFarmacia, Long idMedicamento)
     {
