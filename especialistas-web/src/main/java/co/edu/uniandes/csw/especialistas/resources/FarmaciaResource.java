@@ -5,18 +5,9 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDetailDTO;
-import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
-import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
-import javax.persistence.EntityManager;
-import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
-import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
-import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
-import java.net.URI;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
-import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDetailDTO;
 import co.edu.uniandes.csw.especialistas.dtos.UbicacionDTO;
 import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
@@ -28,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -39,7 +29,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 
 /**

@@ -47,7 +47,7 @@ public class ExamenResource {
     }
 
     @GET
-    public List<ExamenDetailDTO> getExamens() throws WebApplicationException {
+    public List<ExamenDetailDTO> getExamens(){
         List<ExamenEntity> examenEntities = logic.getExamenes();
         if (examenEntities.isEmpty()) {
             WebApplicationException e = new WebApplicationException("no hay examenes");
@@ -64,7 +64,7 @@ public class ExamenResource {
 
     @GET
     @Path("{nombre}") 
-    public ExamenDetailDTO getExamenByName(@PathParam("nombre") String nombre) throws WebApplicationException {
+    public ExamenDetailDTO getExamenByName(@PathParam("nombre") String nombre){
         ExamenEntity entity = logic.getExamen(nombre);
         if (entity == null) {
             WebApplicationException e = new WebApplicationException("No existe un examen con el nombre " + nombre);
@@ -75,7 +75,7 @@ public class ExamenResource {
 
     @GET
     @Path("{id: \\d+}")
-    public ExamenDetailDTO getExamenByID(@PathParam("id") Long id) throws WebApplicationException {
+    public ExamenDetailDTO getExamenByID(@PathParam("id") Long id){
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
             WebApplicationException e = new WebApplicationException("No existe un examen con el id " + id);
@@ -86,7 +86,7 @@ public class ExamenResource {
 
     @PUT
     @Path("{id: \\d+}")
-    public ExamenDetailDTO updateExamen(@PathParam("id") Long id, ExamenDetailDTO examen) throws WebApplicationException {
+    public ExamenDetailDTO updateExamen(@PathParam("id") Long id, ExamenDetailDTO examen){
         examen.setId(id);
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
@@ -98,7 +98,7 @@ public class ExamenResource {
 
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteExamen(@PathParam("id") Long id) throws WebApplicationException {
+    public void deleteExamen(@PathParam("id") Long id){
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
             WebApplicationException e = new WebApplicationException("No existe un examen con el id " + id);

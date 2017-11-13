@@ -5,16 +5,13 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.UsuarioDTO;
 import co.edu.uniandes.csw.especialistas.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.UsuarioLogic;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -36,7 +33,7 @@ public class UsuarioResource {
     UsuarioLogic logic;
     
     @POST
-    public UsuarioEntity createUsuario(UsuarioDetailDTO usuario) throws WebApplicationException {
+    public UsuarioEntity createUsuario(UsuarioDetailDTO usuario) {
         UsuarioEntity usuarioEntity = null;
         if(usuario.getId()!=null)
         {
@@ -52,7 +49,7 @@ public class UsuarioResource {
     }
     
     @GET
-    public List<UsuarioDetailDTO> getUsuarios() throws WebApplicationException {
+    public List<UsuarioDetailDTO> getUsuarios(){
         List<UsuarioEntity> usuarioEntities = logic.getUsuarios();
         if (usuarioEntities.isEmpty()) {
             WebApplicationException e = new WebApplicationException("no hay usuarios");
@@ -69,7 +66,7 @@ public class UsuarioResource {
     
     @GET
     @Path("{id: \\d+}")
-    public UsuarioDetailDTO getUsuarioByID(@PathParam("id") Long id) throws WebApplicationException {
+    public UsuarioDetailDTO getUsuarioByID(@PathParam("id") Long id){
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
             WebApplicationException e = new WebApplicationException("No existe un usuario con el id " + id);
@@ -80,7 +77,7 @@ public class UsuarioResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public UsuarioDetailDTO updateUsuario(@PathParam("id") Long id, UsuarioDetailDTO usuario) throws WebApplicationException {
+    public UsuarioDetailDTO updateUsuario(@PathParam("id") Long id, UsuarioDetailDTO usuario){
         usuario.setId(id);
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
@@ -92,7 +89,7 @@ public class UsuarioResource {
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteUsuario(@PathParam("id") Long id) throws WebApplicationException {
+    public void deleteUsuario(@PathParam("id") Long id){
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
             WebApplicationException e = new WebApplicationException("No existe un usuario con el id " + id);

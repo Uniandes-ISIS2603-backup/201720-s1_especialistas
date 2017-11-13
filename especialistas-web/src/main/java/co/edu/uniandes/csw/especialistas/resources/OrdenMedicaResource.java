@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.OrdenMedicaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.OrdenMedicaDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.OrdenMedicaLogic;
 import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;

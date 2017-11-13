@@ -6,22 +6,17 @@
 package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDTO;
-import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
 import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
-import javax.persistence.EntityManager;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.Query;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -32,8 +27,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import org.springframework.transaction.annotation.Transactional;
+
 
 /**
  *
@@ -90,7 +84,7 @@ public class MedicamentoResourse {
     
     @GET
     @Path("{id: \\d+}/farmacias")
-    public List<FarmaciaDTO> getMedicamentoFarmacia(@PathParam("id") Long id)throws WebApplicationException
+    public List<FarmaciaDTO> getMedicamentoFarmacia(@PathParam("id") Long id)
     {
         MedicamentoEntity entity = logic.getMedicamento(id);
         if(entity==null)

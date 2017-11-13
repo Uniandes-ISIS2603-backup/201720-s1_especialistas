@@ -5,16 +5,13 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.PagoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.PagoDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.PagoLogic;
 import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -36,7 +33,7 @@ public class PagoResource {
     PagoLogic logic;
     
     @POST
-    public PagoEntity createPago(PagoDetailDTO pago) throws WebApplicationException {
+    public PagoEntity createPago(PagoDetailDTO pago) {
         PagoEntity pagoEntity = null;
         if(pago.getId()!=null)
         {
@@ -52,7 +49,7 @@ public class PagoResource {
     }
     
     @GET
-    public List<PagoDetailDTO> getPagos() throws WebApplicationException {
+    public List<PagoDetailDTO> getPagos() {
         List<PagoEntity> PagoEntities = logic.getPagos();
         if (PagoEntities.isEmpty()) {
             WebApplicationException e = new WebApplicationException("no hay Pagos");
@@ -69,7 +66,7 @@ public class PagoResource {
     
     @GET
     @Path("{id: \\d+}")
-    public PagoDetailDTO getPagoByID(@PathParam("id") Long id) throws WebApplicationException {
+    public PagoDetailDTO getPagoByID(@PathParam("id") Long id) {
         PagoEntity entity = logic.getPagoById(id);
         if (entity == null) {
             WebApplicationException e = new WebApplicationException("No existe un Pago con el id " + id);
@@ -80,7 +77,7 @@ public class PagoResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public PagoDetailDTO updatePago(@PathParam("id") Long id, PagoDetailDTO pago) throws WebApplicationException {
+    public PagoDetailDTO updatePago(@PathParam("id") Long id, PagoDetailDTO pago) {
         pago.setId(id);
         PagoEntity entity = logic.getPagoById(id);
         if (entity == null) {
@@ -92,7 +89,7 @@ public class PagoResource {
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deletePago(@PathParam("id") Long id) throws WebApplicationException {
+    public void deletePago(@PathParam("id") Long id) {
         PagoEntity entity = logic.getPagoById(id);
         if (entity == null) {
             WebApplicationException e = new WebApplicationException("No existe un Pago con el id " + id);

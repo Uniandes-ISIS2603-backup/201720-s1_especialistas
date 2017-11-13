@@ -16,7 +16,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import co.edu.uniandes.csw.especialistas.ejb.CitaLogic;
 import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
-import co.edu.uniandes.csw.especialistas.dtos.CitaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.CitaDetailDTO;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
