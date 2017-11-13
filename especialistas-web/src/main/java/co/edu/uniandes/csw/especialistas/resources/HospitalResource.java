@@ -16,6 +16,8 @@ import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -38,7 +40,7 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 @Stateless
 public class HospitalResource {
-
+    private static final Logger LOGGER = Logger.getLogger(HospitalResource.class.getName());
     /**
      * Clase de la lógica
      */
@@ -142,6 +144,7 @@ public class HospitalResource {
                 respuesta.add(nuevo);
             }
         } catch (BusinessLogicException b) {
+            LOGGER.info((Supplier<String>) b);
             throw new WebApplicationException("El hospital solicitado no existe", 404);
         }
         return respuesta;
@@ -158,12 +161,14 @@ public class HospitalResource {
                 logic.addConsultorio(idHospital, consultorio);
 
             } catch (BusinessLogicException b) {
+                LOGGER.info((Supplier<String>) b);
                 throw new WebApplicationException("No se pudo agregar el consultorio", 500);
             }
         } else {
             try {
                 logic.addConsultorio(idHospital, buscado);
             } catch (BusinessLogicException b) {
+                LOGGER.info((Supplier<String>) b);
                 throw new WebApplicationException("No se pudo agregar el consultorio", 500);
             }
         }
