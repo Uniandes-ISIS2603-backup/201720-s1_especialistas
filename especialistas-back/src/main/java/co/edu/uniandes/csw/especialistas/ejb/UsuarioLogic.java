@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.especialistas.persistence.UsuarioPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -20,8 +21,14 @@ public class UsuarioLogic {
     /**
      * Injección de la persistencia de usuario
      */
+    
+    private final UsuarioPersistence persistence;
+    
     @Inject
-    private UsuarioPersistence persistence;
+    public UsuarioLogic(UsuarioPersistence persistence){
+        Assert.notNull(persistence, "Persistence must not be null!");
+        this.persistence = persistence;
+    }
 
     /**
      * Método encargado de crear un usuario

@@ -6,10 +6,12 @@
 package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
+
 import co.edu.uniandes.csw.especialistas.persistence.TarjetaPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -20,8 +22,14 @@ public class TarjetaLogic {
     /**
      * Injección de la persistencia de Tarjeta
      */
+   
+    private  final TarjetaPersistence persistence;
+    
     @Inject
-    private TarjetaPersistence persistence;
+    public TarjetaLogic(TarjetaPersistence persistence){
+        Assert.notNull(persistence, "Persistence must not be null!");
+        this.persistence = persistence;
+    }
 
     /**
      * Método encargado de crear un Tarjeta

@@ -13,6 +13,7 @@ import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  * Clase que contiene la lógica de los hospitales
@@ -25,8 +26,14 @@ public class HospitalLogic {
     /**
      * Injección de la persistencia
      */
+    
+    private final HospitalPersistence persistence;
+    
     @Inject
-    private HospitalPersistence persistence;
+    public HospitalLogic(HospitalPersistence persistence){
+        Assert.notNull(persistence, "Persistence must not be null!");
+        this.persistence = persistence;
+    }
 
     /**
      * Método encargado de persistir un hospital nuevo

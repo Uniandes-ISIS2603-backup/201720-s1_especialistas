@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.especialistas.persistence.HoraPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -18,8 +19,14 @@ import javax.inject.Inject;
 @Stateless
 public class HoraLogic {
                
+    
+    private final HoraPersistence persistence;
+    
     @Inject
-    private HoraPersistence persistence;
+    public HoraLogic(HoraPersistence persistence){
+        Assert.notNull(persistence, "Persistence must not be null!");
+        this.persistence = persistence;
+    }
     
     /**
      * Método encargado de persistir una hora nueva

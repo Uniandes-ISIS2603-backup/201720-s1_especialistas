@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
 import co.edu.uniandes.csw.especialistas.persistence.OrdenMedicaPersistence;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -16,8 +17,13 @@ import javax.inject.Inject;
  */
 public class OrdenMedicaLogic {
     
-    @Inject
     private OrdenMedicaPersistence persistence;
+    
+    @Inject
+    public OrdenMedicaLogic(OrdenMedicaPersistence persistence){
+        Assert.notNull(persistence, "Persistence must not be null!");
+        this.persistence = persistence;
+    }
     
     /**
      * Método encargado de persistir un OrdenMedica nuevo
