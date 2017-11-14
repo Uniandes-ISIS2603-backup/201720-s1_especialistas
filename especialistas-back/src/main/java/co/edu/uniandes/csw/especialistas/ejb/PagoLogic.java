@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.PagoPersistence;
-import co.edu.uniandes.csw.especialistas.persistence.TarjetaPersistence;
 import java.util.List;
 import javax.inject.Inject;
 import org.springframework.util.Assert;
