@@ -22,6 +22,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  * Recurso del consultorio
@@ -37,8 +38,18 @@ public class ConsultorioResource {
     /**
      * Injección de la lógica
      */
+    
+    private final ConsultorioLogic logic;
+    
+    public ConsultorioResource(){
+        logic = null;
+    }
+    
     @Inject
-    ConsultorioLogic logic;
+    public ConsultorioResource(ConsultorioLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     private List<ConsultorioDetailDTO> entitiesList2DTO(List<ConsultorioEntity> listaEntities){
         List<ConsultorioDetailDTO> list = new ArrayList<>();

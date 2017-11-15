@@ -12,6 +12,7 @@ import co.edu.uniandes.csw.especialistas.persistence.HosPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -20,11 +21,24 @@ import javax.inject.Inject;
 @Stateless
 public class HosLogic {
 
-    @Inject
-    private HosPersistence persistence;
     
-    @Inject 
-    UbicacionPersistence up;
+    private final HosPersistence persistence;
+    
+    
+    private final UbicacionPersistence up;
+    
+    public HosLogic(){
+        persistence = null;
+        up = null;
+    }
+    
+    @Inject
+    public HosLogic(HosPersistence persistence,UbicacionPersistence up){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        Assert.notNull(up, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+        this.up = up;
+    }
     
         /**
      * Método encargado de persistir un farmacia nuevo

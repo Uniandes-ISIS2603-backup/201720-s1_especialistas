@@ -23,6 +23,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -37,12 +38,25 @@ public class ConsResource {
     /**
      * Clase de la lógica   
      */
-    @Inject
-    ConsLogic logic;
+    
+    private final ConsLogic logic;
     
 
+    
+    private final Cons_HosLogic logicCH;
+    
+    public ConsResource(){
+        logic = null;
+        logicCH = null;
+    }
+    
     @Inject
-    Cons_HosLogic logicCH;
+    public ConsResource(ConsLogic logic,Cons_HosLogic logicCH){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logicCH, "MyCollaborator must not be null!");
+        this.logic = logic;
+        this.logicCH = logicCH;
+    }
     
 
     /**

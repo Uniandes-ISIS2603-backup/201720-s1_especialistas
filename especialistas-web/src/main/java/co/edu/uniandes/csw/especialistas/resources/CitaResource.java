@@ -19,6 +19,7 @@ import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
 import co.edu.uniandes.csw.especialistas.dtos.CitaDetailDTO;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 
 /**
@@ -32,8 +33,20 @@ import javax.ws.rs.WebApplicationException;
 public class CitaResource {
     
     
-    @Inject 
-    CitaLogic logic;
+    
+    private final CitaLogic logic;
+    
+    
+    public CitaResource(){
+        logic = null;
+    }
+    
+    @Inject
+    public CitaResource(CitaLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
+    
     
     /**
      * Recurso que crea un cita

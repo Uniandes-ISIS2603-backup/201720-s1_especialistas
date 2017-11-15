@@ -19,6 +19,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -29,8 +30,19 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 
 public class OrdenMedicaResource {
-     @Inject 
-    OrdenMedicaLogic logic;
+    
+    private final OrdenMedicaLogic logic;
+     
+     
+     public OrdenMedicaResource(){
+        logic = null;
+    }
+    
+    @Inject
+    public OrdenMedicaResource(OrdenMedicaLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     /**
      * Recurso que crea un cita

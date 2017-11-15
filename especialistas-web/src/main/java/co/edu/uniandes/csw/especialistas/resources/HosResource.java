@@ -25,6 +25,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -39,12 +40,23 @@ public class HosResource {
     /**
      * Clase de la lógica de farmacia
      */
-    @Inject
-    HosLogic logic;
+    
+    private final HosLogic logic;
 
-    @Inject
-    ConsLogic logicConsultorio;
+    
+    private final ConsLogic logicConsultorio;
 
+    public HosResource(){
+        logic = null;
+        logicConsultorio = null;
+    }
+    
+    @Inject
+    public HosResource(HosLogic logic, ConsLogic logicConsultorio){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+        this.logicConsultorio = logicConsultorio;
+    }
     /**
      * Clase de la logica de los metodos que comparten medicamento y faracia
      */

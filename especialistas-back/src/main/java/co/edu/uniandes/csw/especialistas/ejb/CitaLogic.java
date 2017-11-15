@@ -10,8 +10,10 @@ import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import co.edu.uniandes.csw.especialistas.persistence.CitaPersistence;
+
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -19,15 +21,34 @@ import javax.inject.Inject;
  */
 public class CitaLogic {
     
-    @Inject
-    private CitaPersistence persistence;
+    
+    private final CitaPersistence persistence;
+    
+    private final HoraLogic horaLogic;
+    
+    private final UsuarioLogic usuarioLogic;
+     
+    private final OrdenMedicaLogic ordenMedicaLogic;
+     
+     public CitaLogic(){
+        persistence = null;
+        horaLogic = null;
+        usuarioLogic = null;
+        ordenMedicaLogic = null;
+    }
     
     @Inject
-    private HoraLogic horaLogic;
-    @Inject
-    private UsuarioLogic usuarioLogic;
-     @Inject
-    private OrdenMedicaLogic ordenMedicaLogic;
+    public CitaLogic(CitaPersistence persistence,HoraLogic horaLogic,UsuarioLogic usuarioLogic,OrdenMedicaLogic ordenMedicaLogic){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        Assert.notNull(horaLogic, "MyCollaborator must not be null!");
+        Assert.notNull(usuarioLogic, "MyCollaborator must not be null!");
+        Assert.notNull(ordenMedicaLogic, "MyCollaborator must not be null!");
+        
+        this.persistence = persistence;
+        this.horaLogic = horaLogic;
+        this.usuarioLogic = usuarioLogic;
+        this.ordenMedicaLogic = ordenMedicaLogic;
+    }
     
     
     /**

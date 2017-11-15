@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.UsuarioDetailDTO;
+
 import co.edu.uniandes.csw.especialistas.ejb.UsuarioLogic;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -29,8 +31,18 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Stateless
 public class UsuarioResource {
+    
+    private final UsuarioLogic logic;
+    
+    public UsuarioResource(){
+        logic = null;
+    }
+    
     @Inject
-    UsuarioLogic logic;
+    public UsuarioResource(UsuarioLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     @POST
     public UsuarioEntity createUsuario(UsuarioDetailDTO usuario) {

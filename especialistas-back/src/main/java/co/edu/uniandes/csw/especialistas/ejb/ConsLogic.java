@@ -8,9 +8,11 @@ package co.edu.uniandes.csw.especialistas.ejb;
 import co.edu.uniandes.csw.especialistas.entities.ConsEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.especialistas.persistence.ConsPersistence;
+
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -18,8 +20,18 @@ import javax.inject.Inject;
  */
 @Stateless
 public class ConsLogic {
+    
+    private final ConsPersistence persistence;
+    
+    public ConsLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private ConsPersistence persistence;
+    public ConsLogic(ConsPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
     
         /**
      * Método encargado de persistir un medicamento nuevo

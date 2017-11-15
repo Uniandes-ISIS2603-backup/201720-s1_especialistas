@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.ConsEntity;
 import co.edu.uniandes.csw.especialistas.entities.HosEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -16,11 +17,24 @@ import javax.inject.Inject;
  */
 public class Cons_HosLogic {
     
-    @Inject
-    private HosLogic logicHospital;
+    
+    private final HosLogic logicHospital;
+    
+    
+    private final ConsLogic logicConsultorio;
+    
+    public Cons_HosLogic(){
+        logicHospital = null;
+        logicConsultorio = null;
+    }
     
     @Inject
-    private ConsLogic logicConsultorio;
+    public Cons_HosLogic(HosLogic logicHospital, ConsLogic logicConsultorio){
+        Assert.notNull(logicHospital, "MyCollaborator must not be null!");
+        Assert.notNull(logicConsultorio, "MyCollaborator must not be null!");
+        this.logicHospital = logicHospital;
+        this.logicConsultorio = logicConsultorio;
+    }
     
     public boolean agregarRelacion(Long idHospital, Long idConsultorio)
     {

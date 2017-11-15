@@ -30,6 +30,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -44,11 +45,23 @@ public class HospitalResource {
     /**
      * Clase de la lógica
      */
-    @Inject
-    HospitalLogic logic;
+    
+    private final HospitalLogic logic;
 
+    
+    private final ConsultorioLogic consultorioLogic;
+    
+     public HospitalResource(){
+        logic = null;
+        consultorioLogic = null;
+    }
+    
     @Inject
-    ConsultorioLogic consultorioLogic;
+    public HospitalResource(HospitalLogic logic,ConsultorioLogic consultorioLogic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+        this.consultorioLogic = consultorioLogic;
+    }
 
     private List<HospitalDTO> listEntity2DTO(List<HospitalEntity> listaEntidades) {
         List<HospitalDTO> list = new ArrayList<>();
