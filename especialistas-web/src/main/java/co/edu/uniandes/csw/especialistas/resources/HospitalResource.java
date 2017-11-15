@@ -5,10 +5,12 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HospitalDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HospitalDetailDTO;
 import co.edu.uniandes.csw.especialistas.dtos.UbicacionDTO;
 import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
+import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
@@ -112,6 +114,11 @@ public class HospitalResource {
         return hospital;
     }
 
+    /**
+     * Método encargado de eliminar un hospital
+     *
+     * @param id id del hospital
+     */
     @DELETE
     @Path("{id: \\d+}")
     public void deleteHospital(@PathParam("id") Long id) {
@@ -122,4 +129,43 @@ public class HospitalResource {
         }
     }
 
+    /**
+     * Método encargado de obtener los consultorios de un hospital
+     *
+     * @param idHospital id del hospital
+     * @return lista de consultorios
+     */
+    @GET
+    @Path("{id: \\d+}/consultorios")
+    public List<ConsultorioDTO> getConsultoriosHospital(@PathParam("id") Long idHospital) {
+        try {
+            HospitalEntity entidad = logic.getHospital(idHospital);
+            List<ConsultorioDTO> respuesta = listConsultorioEntity2DTO(entidad.getConsultorios());
+            return respuesta;
+        } catch (BusinessLogicException e) {
+            throw new WebApplicationException(e.getMessage(), 404);
+        }
+    }
+
+    @POST
+    @Path("{id: \\d+}/consultorios")
+    public HospitalDetailDTO addConsultorio(@PathParam("id") Long id, ConsultorioDTO consultorio) {
+
+        try {
+            ConsultorioEntity entidadConsultorio = consultorio.toEntity();
+            HospitalEntity hospital = logic.addConsultorio(id, entidadConsultorio);
+            return new HospitalDetailDTO(hospital);
+        } catch (BusinessLogicException e) {
+            throw new WebApplicationException(e.getMessage(), 404);
+        }
+    }
+
+    private List<ConsultorioDTO> listConsultorioEntity2DTO(List<ConsultorioEntity> listaEntidades) {
+        List<ConsultorioDTO> respuesta = new ArrayList<>();
+        for (ConsultorioEntity entidad : listaEntidades) {
+            ConsultorioDTO dto = new ConsultorioDTO(entidad);
+            respuesta.add(dto);
+        }
+        return respuesta;
+    }
 }

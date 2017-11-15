@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.ejb;
 
+import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.persistence.UbicacionPersistence;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
@@ -27,6 +28,12 @@ public class HospitalLogic {
      */
     @Inject
     private HospitalPersistence persistence;
+    
+    /**
+     * Inyección de la lógica de consultorios
+     */
+    @Inject
+    ConsultorioLogic consultorioLogic;
     
     /**
      * Injección de la persistencia de ubicaciones
@@ -125,6 +132,19 @@ public class HospitalLogic {
        if(hospital == null){
            throw new BusinessLogicException("No existe un hospital con el nombre '" + nombre + "'");
        }else{
+           return hospital;
+       }
+    }
+    
+    public HospitalEntity addConsultorio(Long idHospital, ConsultorioEntity consultorio) throws BusinessLogicException{
+        HospitalEntity hospital = persistence.findById(idHospital);
+        if(hospital == null){
+           throw new BusinessLogicException("No existe un hospital con el id " + idHospital);
+       }else{
+           consultorio.setHospital(hospital);
+           hospital.getConsultorios().add(consultorio);
+           consultorioLogic.createConsultorio(consultorio);
+           persistence.update(hospital);
            return hospital;
        }
     }

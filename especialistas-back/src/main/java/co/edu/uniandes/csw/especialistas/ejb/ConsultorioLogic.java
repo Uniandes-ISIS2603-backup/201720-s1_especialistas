@@ -38,7 +38,7 @@ public class ConsultorioLogic {
      * @throws BusinessLogicException si ya existe un consultorio con el número que tiene la entidad
      */
     public ConsultorioEntity createConsultorio(ConsultorioEntity entity) throws BusinessLogicException {
-        ConsultorioEntity consultorio = persistence.findByName(entity.getNumero());
+        ConsultorioEntity consultorio = persistence.findById(entity.getId());
         if (consultorio == null) {
             persistence.create(entity);
             return entity;
