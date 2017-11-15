@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +34,14 @@ public class HospitalDetailDTO extends HospitalDTO {
      */
     public HospitalDetailDTO(HospitalEntity entity) {
         super(entity);
-        
+        List<ConsultorioEntity> listaEntidades = entity.getConsultorios();
+        consultorios = new ArrayList<>();
+        if(listaEntidades != null){
+            for(ConsultorioEntity entidad:listaEntidades){
+                ConsultorioDTO dto = new ConsultorioDTO(entidad);
+                consultorios.add(dto);
+            }
+        }
     }
 
     /**
@@ -57,9 +66,13 @@ public class HospitalDetailDTO extends HospitalDTO {
      */
     @Override
     public HospitalEntity toEntity() {
-        return super.toEntity();
-        
-
-        
+        HospitalEntity entidadHospital = super.toEntity();
+        List<ConsultorioEntity> listaConsultorios = new ArrayList<>();
+        for(ConsultorioDTO dto:consultorios){
+            ConsultorioEntity entidad = dto.toEntity();
+            listaConsultorios.add(entidad);
+        }
+        entidadHospital.setConsultorios(listaConsultorios);
+        return entidadHospital;
     }
 }
