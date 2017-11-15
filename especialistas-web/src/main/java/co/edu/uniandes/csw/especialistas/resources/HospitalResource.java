@@ -62,6 +62,11 @@ public class HospitalResource {
         }
     }
     
+    /**
+     * Método encargado de obtener un hospital por su id
+     * @param id id del hospital
+     * @return DetailDTO del hospital
+     */
     @GET
     @Path("/{id: \\d+}")
     public HospitalDetailDTO getHospital(@PathParam("id") Long id){
@@ -72,6 +77,29 @@ public class HospitalResource {
         }catch(BusinessLogicException e){
             throw new WebApplicationException(e.getMessage(), 404);
         }
+    }
+    
+    /**
+     * Método encargado de crear un hospital
+     * @param hospital DTO del hospital
+     * @return DTO del hospital creado
+     */
+    @POST
+    public HospitalDTO createHospital(HospitalDTO hospital){
+        HospitalEntity entidad = hospital.toEntity();
+        try{
+            logic.createHospital(entidad);
+            return hospital;
+        }catch(BusinessLogicException e){
+            throw new WebApplicationException(e.getMessage(), 500);
+        }
+    }
+    
+    @PUT
+    public HospitalDetailDTO updateHospital(HospitalDetailDTO hospital){
+        HospitalEntity entidad = hospital.toEntity();
+        logic.updateHospital(entidad);
+        return hospital;
     }
 
 }
