@@ -147,6 +147,13 @@ public class HospitalResource {
         }
     }
 
+    /**
+     * Método encargado de añadir un consultorio a un hospital
+     *
+     * @param id id del hospital
+     * @param consultorio DTO del consultorio a añadir
+     * @return DetailDTO del hospital
+     */
     @POST
     @Path("{id: \\d+}/consultorios")
     public HospitalDetailDTO addConsultorio(@PathParam("id") Long id, ConsultorioDTO consultorio) {
@@ -154,6 +161,17 @@ public class HospitalResource {
         try {
             ConsultorioEntity entidadConsultorio = consultorio.toEntity();
             HospitalEntity hospital = logic.addConsultorio(id, entidadConsultorio);
+            return new HospitalDetailDTO(hospital);
+        } catch (BusinessLogicException e) {
+            throw new WebApplicationException(e.getMessage(), 404);
+        }
+    }
+
+    @DELETE
+    @Path("{idHospital: \\d+}/consultorios/{idConsultorio: \\d++}")
+    public HospitalDetailDTO deleteConsultorio(@PathParam("idHospital") Long idHospital, @PathParam("idConsultorio") Long idConsultorio) {
+        try {
+            HospitalEntity hospital = logic.deleteConsultorio(idHospital, idConsultorio);
             return new HospitalDetailDTO(hospital);
         } catch (BusinessLogicException e) {
             throw new WebApplicationException(e.getMessage(), 404);
