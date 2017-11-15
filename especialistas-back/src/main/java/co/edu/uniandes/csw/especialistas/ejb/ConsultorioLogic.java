@@ -6,147 +6,115 @@
 package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
-import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
-import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
-import co.edu.uniandes.csw.especialistas.persistence.ConsultorioPersistence;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.especialistas.persistence.ConsultorioPersistence;
+import co.edu.uniandes.csw.especialistas.persistence.HospitalPersistence;
 import java.util.List;
-import java.util.function.Supplier;
-import java.util.logging.Logger;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
- * Clase de la lógica de los consultorios
- 
+ * Clase que modela la lógica de los consultorios
  * @author jl.patarroyo
  */
-@Stateless
 public class ConsultorioLogic {
-    private static final Logger LOGGER = Logger.getLogger(ConsultorioLogic.class.getName());
-
+    
     /**
      * Injección de la persistencia de consultorios
      */
     @Inject
     private ConsultorioPersistence persistence;
+    
+    /**
+     * Injección de la persistencia de hospitales
+     */
+    @Inject
+    HospitalPersistence hospitalPersistence;
+    
 
     /**
      * Método encargado de crear un consultorio
-     *
-     * @param entity entidad con la información
-     * @return entidad del consultorio creado
-     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
+     * @param entity entidad del consultorio que se va a crear
+     * @return entidad creada
+     * @throws BusinessLogicException si ya existe un consultorio con el número que tiene la entidad
      */
-    public ConsultorioEntity createConsultorio(ConsultorioEntity entity) throws BusinessLogicException{
-        ConsultorioEntity consultorio = getConsultorio(entity.getId());
-        if(consultorio != null){
-            throw new BusinessLogicException("ya existe un elemento con el id proporcionado");
+    public ConsultorioEntity createConsultorio(ConsultorioEntity entity) throws BusinessLogicException {
+        ConsultorioEntity consultorio = persistence.findByName(entity.getNumero());
+        if (consultorio == null) {
+            persistence.create(entity);
+            return entity;
+        } else {
+            throw new BusinessLogicException("Ya existe un consultorio con el nombre '" + consultorio.getNumero() + "'");
         }
-        persistence.create(entity);
-        return entity;
     }
 
     /**
-     * Método encargado de eliminar un consultorio por su id
-     *
-     * @param id id del consultorio
+     * Método encargado de eliminar un consultorio
+     * @param id id del consultorio que se quiere eliminar
+     * @return null si fue eliminado, el objeto de lo contrario
+     * @throws BusinessLogicException si no existe un consultorio con el id proporcionado
      */
-    public void deleteConsultorioEntity(Long id) {
-        persistence.delete(id);
+    public ConsultorioEntity deleteConsultorio(Long id) throws BusinessLogicException {
+        ConsultorioEntity consultorio = getConsultorio(id);
+        if (consultorio == null) {
+            throw new BusinessLogicException("No se puede eliminar el consultorio con id " + id + " porque no existe");
+        } else {
+            persistence.deleteById(id);
+            return persistence.findById(id);
+        }
     }
 
     /**
-     * Método que retorna la lista de todos los consultorios
-     *
-     * @return Lista con todas las entidades de los consultorios
+     * Método que obtiene todos los consultorios
+     * @return lista con los consultorios
+     * @throws BusinessLogicException si no hay consultorios
      */
-    public List<ConsultorioEntity> getConsultorios() {
-        return  persistence.findAll();
+    public List<ConsultorioEntity> getConsultorios() throws BusinessLogicException {
+        List<ConsultorioEntity> lista = persistence.findAll();
+        if (lista == null || lista.isEmpty()) {
+            throw new BusinessLogicException("No hay consultorios registrados en el sistema");
+        } else {
+            return persistence.findAll();
+        }
     }
 
     /**
-     * Método que retorna un consultorio por su id
-     *
-     * @param id id del consultorio
-     * @return ConsultorioEntity del consultorio buscado
+     * Método que obtiene un consultorio por su id
+     * @param id id del consultorio buscado
+     * @return consultorio buscado
+     * @throws BusinessLogicException si no existe un consultorio con el id proporcionado 
      */
-    public ConsultorioEntity getConsultorio(Long id) {
-        return persistence.find(id);
+    public ConsultorioEntity getConsultorio(Long id) throws BusinessLogicException {
+        ConsultorioEntity consultorio = persistence.findById(id);
+        if (consultorio == null) {
+            throw new BusinessLogicException("No existe un consultorio con el id " + id);
+        } else {
+            return consultorio;
+        }
+
     }
 
     /**
      * Método encargado de actualizar la información de un consultorio
-     *
-     * @param entity Consultorio con la nueva información
-     * @return Entidad con la información del consultorio actualizado
+     * @param entity entidad actualizada
+     * @return entidad actualizada
      */
     public ConsultorioEntity updateConsultorio(ConsultorioEntity entity) {
-        persistence.upadte(entity);
+        persistence.update(entity);
         return entity;
     }
 
     /**
      * Método encargado de buscar un consultorio por su numero
-     *
-     * @param number número del consultorio
-     * @return ConsultorioEntity correspondiente al consultorio
+     * @param numero numero del consultorio
+     * @return consultorio buscado
+     * @throws BusinessLogicException si no existe un consultorio con el numero proporcionado 
      */
-    public ConsultorioEntity getConsultorioByNumber(String number) {
-        return  persistence.findByReference(number);
-    }
-
-    /**
-     * Método encargado de listar las horas pertenecientes a un consultorio
-     *
-     * @param id id del consultorio
-     * @return lista de HoraEntity
-     */
-    public List<HoraEntity> listHoras(Long id) {
-        ConsultorioEntity consultorio = getConsultorio(id);
-        return consultorio.getHoras();
-    }
-
-    /**
-     * Método encargado de retornar el hospital al que pertenece el consultorio
-     *
-     * @param id id del consultorio
-     * @return HospiatlEntity con la información del hospital
-     */
-    public HospitalEntity getHospital(Long id) {
-        ConsultorioEntity consultorio = getConsultorio(id);
-        return consultorio.getHospital();
-    }
-
-    /**
-     * Método encargado de eliminar una hora de un consultorio
-     * @param idConsultorio id del consultorio
-     * @param idHora id de la hora
-     * @return true si la eliminó, false de lo contrario
-     */
-    public boolean removeHora(Long idConsultorio, Long idHora) {
-        try {
-            ConsultorioEntity consultorio = getConsultorio(idConsultorio);
-            HoraEntity hora = new HoraEntity();
-            hora.setId(idHora);
-            consultorio.getHoras().remove(hora);
-            return true;
-        } catch (Exception e) {
-            LOGGER.info((Supplier<String>) e);
-            return false;
-        }
-    }
-    
-    /**
-     * Método encargado de añadir una hora a un consultorio
-     * @param idConsultorio id del consultorio
-     * @param hora HoraEntity para añadir
-     * @return HoraEntity añadido
-     */
-    public HoraEntity addHora(Long idConsultorio, HoraEntity hora)
-    {
-        ConsultorioEntity consultorio = getConsultorio(idConsultorio);
-        consultorio.getHoras().add(hora);
-        return hora;
+    public ConsultorioEntity getConsultorioByNumero(String numero) throws BusinessLogicException {
+       ConsultorioEntity consultorio = persistence.findByName(numero);
+       if(consultorio == null){
+           throw new BusinessLogicException("No existe un consultorio con el numero '" + numero + "'");
+       }else{
+           return consultorio;
+       }
     }
 }

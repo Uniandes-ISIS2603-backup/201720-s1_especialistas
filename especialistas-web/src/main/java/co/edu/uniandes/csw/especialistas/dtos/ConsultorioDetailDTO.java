@@ -6,69 +6,44 @@
 package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
-import co.edu.uniandes.csw.especialistas.entities.Especializacion;
+import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 
 /**
+ * Clase que modela el DetailDTO de un consultorio
  *
  * @author jl.patarroyo
  */
 public class ConsultorioDetailDTO extends ConsultorioDTO {
 
     /**
-     * Especialización del consultorio
-     */
-    private Especializacion especializacion;
-
-    /**
-     * Hospital que contiene al consultorio
+     * Atributo que modela el hospital que contiene al consultorio
      */
     private HospitalDTO hospital;
 
     /**
-     * Constructor por defecto
+     * Constructor vacío
      */
     public ConsultorioDetailDTO() {
         //inicialmente vacio
     }
 
     /**
-     * Constructor a partir de una entidad
+     * Constructor del DetailDTO a partir de una entidad
      *
      * @param entity entidad con la información
      */
     public ConsultorioDetailDTO(ConsultorioEntity entity) {
         super(entity);
-        if (entity.getEspecializacion() != null) {
-            this.especializacion = entity.getEspecializacion();
+        HospitalEntity entidadHospital = entity.getHospital();
+        if (entidadHospital != null) {
+            this.hospital = new HospitalDTO(entidadHospital);
         }
-        if (entity.getHospital() != null) {
-            HospitalDTO hospitaldto = new HospitalDTO(entity.getHospital());
-            this.hospital = hospitaldto;
-        }
-    }
-
-    /**
-     * Getter del atributo especialización
-     *
-     * @return especialización del consultorio
-     */
-    public Especializacion getEspecializacion() {
-        return especializacion;
-    }
-
-    /**
-     * Setter del atributo especialización
-     *
-     * @param especializacion especialización del consultorio
-     */
-    public void setEspecializacion(Especializacion especializacion) {
-        this.especializacion = especializacion;
     }
 
     /**
      * Getter del atributo hospital
      *
-     * @return hospital que contiene al consultorio
+     * @return hospital que contiene al hospital
      */
     public HospitalDTO getHospital() {
         return hospital;
@@ -77,26 +52,23 @@ public class ConsultorioDetailDTO extends ConsultorioDTO {
     /**
      * Setter del atributo hospital
      *
-     * @param hospital hospital que contiene al consultorio
+     * @param hospital hospital que contiene al hospital
      */
     public void setHospital(HospitalDTO hospital) {
         this.hospital = hospital;
     }
 
     /**
-     * Método encargado de convertir el DTO a Entity
-     * @return ConsultorioEntity con la información
+     * Método encargado de convertir el actual DetailDTO a una entidad
+     *
+     * @return entidad con la información
      */
     @Override
     public ConsultorioEntity toEntity() {
         ConsultorioEntity entity = super.toEntity();
-        if(hospital != null)
-        {
-            entity.setHospital(hospital.toEntity());
-        }
-        if(especializacion != null)
-        {
-            entity.setEspecializacion(especializacion);
+        if (this.hospital != null) {
+            HospitalEntity hospitalEntity = this.hospital.toEntity();
+            entity.setHospital(hospitalEntity);
         }
         return entity;
     }

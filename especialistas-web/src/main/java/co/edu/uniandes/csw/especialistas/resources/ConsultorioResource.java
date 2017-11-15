@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDTO;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.ConsultorioLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
@@ -22,95 +23,54 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Recurso del consultorio
+ * Atributo que modela el recurso de un consultorio
+ *
  * @author jl.patarroyo
  */
-
-@Path("/consultorios")
+@Path("consultorios")
+@Consumes(MediaType.APPLICATION_JSON)
 @Produces("application/json")
-@Consumes("application/json")
 @Stateless
 public class ConsultorioResource {
-    
+
     /**
-     * Injección de la lógica
+     * Atributo que modela la lógica de los consultorios
      */
     @Inject
     ConsultorioLogic logic;
-    
-    private List<ConsultorioDetailDTO> entitiesList2DTO(List<ConsultorioEntity> listaEntities){
-        List<ConsultorioDetailDTO> list = new ArrayList<>();
-        for(ConsultorioEntity consultorio: listaEntities){
-            ConsultorioDetailDTO dto = new ConsultorioDetailDTO(consultorio);
-            list.add(dto);
-        }
-        return list;
-    }
-    
+
     /**
-     * Método encargado de listar los consultorios
-     * @return Lista de consultorios
+     * Método que busca todos los consultorios
+     *
+     * @return lista con todos los consultorios
+     * @throws BusinessLogicException si no existen consultorios
      */
     @GET
-    public List<ConsultorioDetailDTO> getConsultorios()
-    {
-        return entitiesList2DTO(logic.getConsultorios());
+    public List<ConsultorioDTO> getConsultorios() throws BusinessLogicException {
+        List<ConsultorioDTO> lista = new ArrayList<>();
+        List<ConsultorioEntity> consultorios = logic.getConsultorios();
+        for (ConsultorioEntity entidad : consultorios) {
+            ConsultorioDTO consultorio = new ConsultorioDTO(entidad);
+            lista.add(consultorio);
+        }
+        return lista;
     }
-    
-    /**
-     * Método encargado de obtener un consultorio por id
-     * @param id id del consultorio
-     * @return Consultorio buscado
-     */
+
     @GET
-    @Path("{id: \\d+}")
-    public ConsultorioDetailDTO getConsultorio(@PathParam("id") Long id)
-    {
-        ConsultorioEntity consultorio = logic.getConsultorio(id);
-        if(consultorio == null){
-            throw new WebApplicationException("El elemento no existe", 404);
+    @Path("/{id: \\d+}")
+    public ConsultorioDetailDTO getConsultorio(@PathParam("id") Long idConsultorio) {
+        try {
+            ConsultorioEntity entidad = logic.getConsultorio(idConsultorio);
+            ConsultorioDetailDTO consultorio = new ConsultorioDetailDTO(entidad);
+            return consultorio;
+        } catch (BusinessLogicException e) {
+            throw new WebApplicationException(e.getMessage(), 404);
         }
-        return new ConsultorioDetailDTO(logic.getConsultorio(id));
     }
-    
-    /**
-     * Método encargado de crear un consultorio
-     * @param entity entidad con la información
-     * @return entidad creada
-     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
-     */
-    @POST
-    public ConsultorioDetailDTO createConsultorio(ConsultorioDetailDTO entity) throws BusinessLogicException
-    {
-        return new ConsultorioDetailDTO(logic.createConsultorio(entity.toEntity()));
-    }
-    
-    /**
-     * Método encargado de actualizar la información de un consultorio
-     * @param dto ConsultorioDetailDTO con la información
-     * @return ConsultorioEntity con la información actualizada
-     */
-    @PUT
-    public ConsultorioDetailDTO upadeConsultorio(ConsultorioDetailDTO dto)
-    {
-        ConsultorioEntity newEntity = dto.toEntity();
-        ConsultorioEntity entity = logic.getConsultorio(newEntity.getId());
-        if(entity == null){
-            throw new WebApplicationException("El elemento no existe", 404);
-        }
-        return new ConsultorioDetailDTO(logic.updateConsultorio(newEntity));
-    }
-    
-    @DELETE
-    @Path("{id: \\d+}")
-    public void deleteConsultorio(@PathParam("id") Long id){
-        ConsultorioEntity entity = logic.getConsultorio(id);
-        if(entity == null){
-            throw new WebApplicationException("El elemento no existe", 404);
-        }
-        logic.deleteConsultorioEntity(id);
-    }
-    
+
 }

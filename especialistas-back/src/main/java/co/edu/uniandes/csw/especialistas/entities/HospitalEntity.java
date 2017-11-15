@@ -14,66 +14,95 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * Clase que modela la entidad de un hospital
- * @author jl.patarroyo
  */
 @Entity
-public class HospitalEntity implements Serializable 
-{
+public class HospitalEntity implements Serializable {
+
     /**
-     * Id del usuario.
+     * Atributo que modela el id del hospital
+     * Este valor es autogenerado
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     /**
-     * Nombre del hospital
+     * Atributo que modela el nombre de un hospital
      */
     private String nombre;
-    
-    @PodamExclude
-    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<ConsultorioEntity> consultorios = new ArrayList<>();
-    
-    @PodamExclude
-    @OneToOne(fetch = FetchType.LAZY)
+
+    /**
+     * Atributo que modela la ubicación de un hospital
+     */
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ubicadionID")
     private UbicacionEntity ubicacion;
     
+    /**
+     * Atributo que modela los consultorios de un hospital
+     */
+    @PodamExclude
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ConsultorioEntity> consultorios = new ArrayList<>();
+
+    /**
+     * Getter del atributo id
+     * @return id del hospital
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Setter del atributo id
+     * @param id id del hospital
+     */
     public void setId(Long id) {
         this.id = id;
-    }  
-    
+    }
+
     /**
      * Getter del atributo nombre
-     * @return String con el nombre del hospital
+     * @return nombre del hospital
      */
-    public String getNombre() 
-    {
+    public String getNombre() {
         return nombre;
     }
-    
+
     /**
      * Setter del atributo nombre
-     * @param nombre String del nuevo nombre
+     * @param nombre nombre del hospital
      */
-    public void setNombre(String nombre) 
-    {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
+     * Getter del atributo ubicacion
+     * @return ubicación del hospital
+     */
+    public UbicacionEntity getUbicacion() {
+        return ubicacion;
+    }
+
+    /**
+     * Setter del atributo ubicacion
+     * @param ubicacion ubicación del hospital
+     */
+    public void setUbicacion(UbicacionEntity ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    /**
      * Getter del atributo consultorios
-     * @return Lista de consultorios
+     * @return lista de consultorios del hospital
      */
     public List<ConsultorioEntity> getConsultorios() {
         return consultorios;
@@ -81,43 +110,34 @@ public class HospitalEntity implements Serializable
 
     /**
      * Setter del atributo consultorios
-     * @param consultorios Lista de consultorios
+     * @param consultorios lista de consultorios del hospital
      */
     public void setConsultorios(List<ConsultorioEntity> consultorios) {
         this.consultorios = consultorios;
     }
 
     /**
-     * Getter del atributo ubicación
-     * @return Ubicación del hospital
+     * Método que compara dos objetos de tipo HospitalEntity
+     * @param obj hospital que se desea comparar
+     * @return true si son el mismo hospital, false de lo contrario
      */
-    public UbicacionEntity getUbicacion() {
-        return ubicacion;
-    }
-
-    /**
-     * Setter del atributo ubicación
-     * @param ubicacion Ubicación del consultorio
-     */
-    public void setUbicacion(UbicacionEntity ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-    
     @Override
-    public boolean equals(Object obj) 
-    {
-        if(obj != null)
-        {
-            if(obj.getClass()!=this.getClass()){
+    public boolean equals(Object obj) {
+        if (obj != null) {
+            if (obj.getClass() != this.getClass()) {
                 return false;
             }
-            if (this.getId() != null && ((HospitalEntity)obj).getId() != null) {
-                return this.getId().equals(((HospitalEntity)obj).getId());
+            if (this.getId() != null && ((HospitalEntity) obj).getId() != null) {
+                return this.getId().equals(((HospitalEntity) obj).getId());
             }
         }
         return false;
     }
-    
+
+    /**
+     * Método que genera el hashCode de un hospital
+     * @return hash code del hospital
+     */
     @Override
     public int hashCode() {
         if (this.getId() != null) {
@@ -125,6 +145,4 @@ public class HospitalEntity implements Serializable
         }
         return super.hashCode();
     }
-    
-   
 }

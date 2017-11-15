@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.especialistas.logic;
 
 import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.especialistas.persistence.HospitalPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -34,41 +36,42 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class HospitalLogicTest {
+
     @Deployment
     public static JavaArchive CreateDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(HospitalEntity.class.getPackage())
                 .addPackage(HospitalPersistence.class.getPackage())
                 .addPackage(HospitalLogic.class.getPackage())
-                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
-                .addAsManifestResource("META-INF/beans.xml","beans.xml");
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
+
     @Inject
     private HospitalPersistence persistence;
-    
+
     @Inject
     private HospitalLogic logic;
-    
+
     @PersistenceContext
     private EntityManager em;
-    
+
     @Inject
     UserTransaction utx;
-    
+
     private List<HospitalEntity> data = new ArrayList<>();
-    
+
     public HospitalLogicTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         try {
@@ -79,33 +82,32 @@ public class HospitalLogicTest {
             utx.commit();
         } catch (Exception e) {
             e.printStackTrace();
-            try{
+            try {
                 utx.rollback();
-            } catch (Exception e1){
+            } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
     }
-    
-    
+
     private void clearData() {
         em.createQuery("delete from HospitalEntity").executeUpdate();
     }
-    
+
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             HospitalEntity entity = factory.manufacturePojo(HospitalEntity.class);
-            
+
             em.persist(entity);
             data.add(entity);
         }
     }
-    
+
     @After
     public void tearDown() {
     }
-    
+
     private HospitalEntity entity = new HospitalEntity();
 
     /**
@@ -118,11 +120,11 @@ public class HospitalLogicTest {
 
         System.out.println(entity.getId());
         logic.createHospital(entity);
-        
+
         assertEquals(logic.getHospital(entity.getId()), entity);
         assertEquals(logic.getHospital(entity.getId()), entity);
     }
-    
+
     /**
      * Test of update method, of class HospitalPersistence.
      */
@@ -132,10 +134,10 @@ public class HospitalLogicTest {
         HospitalEntity entity = factory.manufacturePojo(HospitalEntity.class);
 
         logic.createHospital(entity);
-        
+
         assertEquals(logic.updateHospital(entity), entity);
     }
-    
+
     /**
      * Test of findAll method, of class HospitalPersistence.
      */
@@ -143,11 +145,11 @@ public class HospitalLogicTest {
     public void testGet() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         HospitalEntity entity = factory.manufacturePojo(HospitalEntity.class);
-        
+
         logic.createHospital(entity);
         assertEquals(logic.getHospitales().contains(entity), true);
     }
-    
+
     /**
      * Test of delete method, of class HospitalPersistence.
      */
@@ -155,10 +157,16 @@ public class HospitalLogicTest {
     public void testDelete() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         HospitalEntity entity = factory.manufacturePojo(HospitalEntity.class);
-        
+
         logic.createHospital(entity);
         logic.deleteHospital(entity.getId());
-        assertEquals(logic.getHospital(entity.getId()), null);
+        boolean noExiste = false;
+        try {
+            logic.getHospital(entity.getId());
+        }catch(BusinessLogicException e){
+            noExiste = true;
+        }
+        assertTrue(noExiste);
     }
-    
+
 }

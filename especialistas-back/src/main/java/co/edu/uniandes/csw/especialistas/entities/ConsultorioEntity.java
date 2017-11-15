@@ -6,127 +6,92 @@
 package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- * Clase que modela la entidad de un consultorio
- * @author jl.patarroyo
+ *Clase que modela la entidad de un consultorio
  */
 @Entity
-public class ConsultorioEntity implements Serializable
-{
+public class ConsultorioEntity implements Serializable{
     /**
-     * Id del usuario.
+     * Atributo que modela el id del consultorio
+     * Este valor es autogenerado
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     /**
-     * Hospital que contiene al consultorio
+     * Atributo que modela el número del consultorio
+     */
+    private String numero;
+    
+    /**
+     * Atributo que modela el hospital que contiene al consultorio
      */
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private HospitalEntity hospital;
-    
+
     /**
-     * Lista de horas que usan el consultorio
+     * Getter del atributo id
+     * @return id del consultorio
      */
-    @PodamExclude
-    @OneToMany(mappedBy = "consultorio", fetch = FetchType.LAZY)
-    private List<HoraEntity> horas = new ArrayList<>();
-    
-    /**
-     * Especializacion del consultorio
-     */
-    private Especializacion especializacion;
-    
-    /**
-     * Referencia del consultorio (e.g. W405)
-     */
-    private String referenciaConsultorio;
-    
     public Long getId() {
         return id;
     }
 
+    /**
+     * Setter del atributo id
+     * @param id id del consultorio
+     */
     public void setId(Long id) {
         this.id = id;
     }  
-    
+
     /**
-     * Getter del atributo referenciaConsultorio;
-     * @return String con la referencia del consultorio
+     * Getter del atributo numero
+     * @return numero del consultorio
      */
-    public String getReferenciaConsultorio() {
-        return referenciaConsultorio;
+    public String getNumero() {
+        return numero;
     }
-    
+
     /**
-     * Setter del atributo consultorio
-     * @param referenciaConsultorio String con la nueva referencia
+     * Setter del atributo número
+     * @param numero número del consultorio
      */
-    public void setReferenciaConsultorio(String referenciaConsultorio) {
-        this.referenciaConsultorio = referenciaConsultorio;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
-    
+
     /**
-     * Getter del hospital
-     * @return HospitalEntity del hospital
+     * Getter del atributo hospital
+     * @return hospital que contiene al consultorio
      */
     public HospitalEntity getHospital() {
         return hospital;
     }
 
     /**
-     * Setter del hospital
-     * @param hospital HospitalEntity nuevo
+     * Setter del atributo hospital
+     * @param hospital hospital que contiene al consultorio
      */
     public void setHospital(HospitalEntity hospital) {
         this.hospital = hospital;
     }
-
-    /**
-     * Getter de la lista de HoraEntity
-     * @return Lista con las horas
-     */
-    public List<HoraEntity> getHoras() {
-        return horas;
-    }
     
     /**
-     * Setter de las horas
-     * @param horas Lista de horas
+     * Método que compara dos objetos de tipo ConsultorioEntity
+     * @param obj Consultorio a comparar
+     * @return true si son el mismo consultorio, false de lo contrario
      */
-    public void setHoras(List<HoraEntity> horas) {
-        this.horas = horas;
-    }
-
-    /**
-     * Getter del atributo especialización
-     * @return especialización del consultorio
-     */
-    public Especializacion getEspecializacion() {
-        return especializacion;
-    }
-
-    /**
-     * Setter del atributo especialización
-     * @param especializacion especialización del consultorio
-     */
-    public void setEspecializacion(Especializacion especializacion) {
-        this.especializacion = especializacion;
-    }
-    
     @Override
     public boolean equals(Object obj) 
     {
@@ -142,6 +107,10 @@ public class ConsultorioEntity implements Serializable
         return false;
     }
     
+    /**
+     * Método que genera un hashCode del consultorio
+     * @return código hash del consultorio
+     */
     @Override
     public int hashCode() {
         if (this.getId() != null) {

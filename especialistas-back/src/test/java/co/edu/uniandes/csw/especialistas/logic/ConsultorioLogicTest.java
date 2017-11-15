@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.especialistas.logic;
 
 import co.edu.uniandes.csw.especialistas.ejb.ConsultorioLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.especialistas.persistence.ConsultorioPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -157,8 +159,15 @@ public class ConsultorioLogicTest {
         ConsultorioEntity entity = factory.manufacturePojo(ConsultorioEntity.class);
         
         logic.createConsultorio(entity);
-        logic.deleteConsultorioEntity(entity.getId());
-        assertEquals(logic.getConsultorio(entity.getId()), null);
+        logic.deleteConsultorio(entity.getId());
+        
+        boolean noExiste = false;
+        try{
+            logic.getConsultorio(entity.getId());
+        }catch(BusinessLogicException e){
+            noExiste = true;
+        }
+        assertTrue(noExiste);
     }
     
 }
