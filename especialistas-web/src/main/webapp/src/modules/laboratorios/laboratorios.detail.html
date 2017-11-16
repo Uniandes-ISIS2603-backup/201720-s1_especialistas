@@ -1,13 +1,15 @@
 <div class="container-fluid">
-    <div class="col-md-4">
-        <h2>Nombre</h2>
-        {{laboratorioActual.nombre}}
-        <h2>Ubicación</h2>
-        {{laboratorioActual.ubicacion.nombre}}
-    </div>
-    <div class="col-md-12"> <br>
-        <button id="actualizar-lab" ui-sref='labUpdate({laboratorioId: laboratorioActual.id})'>Actualizar</button>
-        <button id="eliminar-lab" ui-sref='labDelete({laboratorioId: laboratorioActual.id})'>Eliminar</button>
-        <button id="Volver-lista" ui-sref="laboratoriosList">Volver</button>
-    </div>       
+    <h4>Nombre</h4>
+    <p>{{laboratorioActual.nombre}}</p>
+
+    <h4>Ubicación</h4>
+    <p>{{laboratorioActual.ubicacion.nombre}}</p>
+
+    <h4>Exámenes</h4>
+    <a ng-repeat="examen in laboratorioActual.examenes" ui-sref="examDetail({examenId : examen.id})">{{examen.nombre}}</a>
 </div>
+<div class="col-md-12"> <br>
+    <button id="actualizar-lab" ui-sref='labUpdate({laboratorioId: laboratorioActual.id})'>Actualizar</button>
+    <button id="eliminar-lab" ui-sref='labDelete({laboratorioId: laboratorioActual.id})'>Eliminar</button>
+    <button id="Volver-lista" ui-sref="laboratoriosList">Volver</button>
+</div>       
