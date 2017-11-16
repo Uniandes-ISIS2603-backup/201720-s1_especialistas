@@ -20,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -29,8 +30,18 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Stateless
 public class TargetaResource {
+    
+    private final TarjetaLogic logic;
+    
+    public TargetaResource(){
+        logic = null;
+    }
+    
     @Inject
-    TarjetaLogic logic;
+    public TargetaResource(TarjetaLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     @POST
     public TarjetaEntity createTarjeta(TarjetaDetailDTO tarjeta)  {

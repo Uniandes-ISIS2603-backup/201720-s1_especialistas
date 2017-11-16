@@ -21,6 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -31,8 +32,18 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class ExamenResource {
+    
+    private final ExamenLogic logic;
+    
+    public ExamenResource(){
+        logic = null;
+    }
+    
     @Inject
-    ExamenLogic logic;
+    public ExamenResource(ExamenLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
 
     @POST
     public ExamenDetailDTO createExamen(ExamenDetailDTO examen){

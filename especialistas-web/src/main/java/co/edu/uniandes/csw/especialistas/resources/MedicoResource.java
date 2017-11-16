@@ -24,6 +24,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -38,8 +39,18 @@ public class MedicoResource {
    /**
      * Clase de la lógica
      */
+    
+    private final MedicoLogic logic;
+    
+     public MedicoResource(){
+        logic = null;
+    }
+    
     @Inject
-    MedicoLogic logic;
+    public MedicoResource(MedicoLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     /**
      * Recurso que crea un medico

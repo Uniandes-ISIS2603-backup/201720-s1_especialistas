@@ -27,6 +27,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import org.springframework.util.Assert;
 
 
 /**
@@ -42,13 +43,26 @@ public class MedicamentoResourse {
     /**
      * Clase de la lógica   
      */
-    @Inject
-    MedicamentoLogic logic;
+    
+    private final MedicamentoLogic logic;
     
 
-    @Inject
-    Medicamento_FarmaciaLogic logicMF;
     
+    private final Medicamento_FarmaciaLogic logicMF;
+    
+    
+     public MedicamentoResourse(){
+        logic = null;
+        logicMF = null;
+    }
+    
+    @Inject
+    public MedicamentoResourse(MedicamentoLogic logic, Medicamento_FarmaciaLogic logicMF){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logicMF, "MyCollaborator must not be null!");
+        this.logic = logic;
+        this.logicMF = logicMF;
+    }
 
     /**
      * Recurso que crea un farmacia

@@ -20,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -29,8 +30,19 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Stateless
 public class PagoResource {
+    
+    
+    private final PagoLogic logic;
+    
+     public PagoResource(){
+        logic = null;
+    }
+    
     @Inject
-    PagoLogic logic;
+    public PagoResource(PagoLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     @POST
     public PagoEntity createPago(PagoDetailDTO pago) {

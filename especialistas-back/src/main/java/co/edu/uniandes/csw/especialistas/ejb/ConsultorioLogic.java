@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.especialistas.persistence.ConsultorioPersistence;
 import co.edu.uniandes.csw.especialistas.persistence.HospitalPersistence;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  * Clase que modela la lógica de los consultorios
@@ -31,6 +32,17 @@ public class ConsultorioLogic {
     HospitalPersistence hospitalPersistence;
     
 
+    
+    public ConsultorioLogic(){
+        persistence = null;
+    }
+    
+    @Inject
+    public ConsultorioLogic(ConsultorioPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
+    
     /**
      * Método encargado de crear un consultorio
      * @param entity entidad del consultorio que se va a crear

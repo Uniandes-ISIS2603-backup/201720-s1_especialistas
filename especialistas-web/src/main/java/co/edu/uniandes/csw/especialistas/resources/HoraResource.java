@@ -21,6 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  * @author JuanSebastian
@@ -34,8 +35,19 @@ public class HoraResource {
    /**
      * Clase de la lógica
      */
+    
+    private final HoraLogic logic;
+    
+    public HoraResource(){
+        logic = null;
+    }
+    
     @Inject
-    HoraLogic logic;
+    public HoraResource(HoraLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
+
     
     /**
      * Recurso que crea una hora

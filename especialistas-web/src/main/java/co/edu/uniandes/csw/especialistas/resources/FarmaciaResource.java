@@ -29,6 +29,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import org.springframework.util.Assert;
 
 
 /**
@@ -44,17 +45,33 @@ public class FarmaciaResource {
     /**
      * Clase de la lógica de farmacia  
      */
-    @Inject
-    FarmaciaLogic logic;
     
-    @Inject
-    MedicamentoLogic logicMedicamento;
+    private final FarmaciaLogic logic;
+    
+    
+    private final MedicamentoLogic logicMedicamento;
     
     /**
      * Clase de la logica de los metodos que comparten medicamento y faracia
      */
+    
+    private final Medicamento_FarmaciaLogic logicMF;
+    
+    public FarmaciaResource(){
+        logic = null;
+        logicMedicamento = null;
+        logicMF = null;
+    }
+    
     @Inject
-    Medicamento_FarmaciaLogic logicMF;
+    public FarmaciaResource(FarmaciaLogic logic, MedicamentoLogic logicMedicamento, Medicamento_FarmaciaLogic logicMF){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+        this.logicMedicamento = logicMedicamento;
+        this.logicMF = logicMF;
+    }
     
 
     /**

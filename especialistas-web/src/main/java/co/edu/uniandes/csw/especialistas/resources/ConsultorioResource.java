@@ -41,6 +41,13 @@ public class ConsultorioResource {
     /**
      * Atributo que modela la lógica de los consultorios
      */
+    
+    private final ConsultorioLogic logic;
+    
+    public ConsultorioResource(){
+        logic = null;
+    }
+    
     @Inject
     ConsultorioLogic logic;
 

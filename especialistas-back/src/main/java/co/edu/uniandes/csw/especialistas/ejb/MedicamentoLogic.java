@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -18,8 +19,18 @@ import javax.inject.Inject;
  */
 @Stateless
 public class MedicamentoLogic {
+    
+    private final MedicamentoPersistence persistence;
+    
+    public MedicamentoLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private MedicamentoPersistence persistence;
+    public MedicamentoLogic(MedicamentoPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
     
         /**
      * Método encargado de persistir un medicamento nuevo

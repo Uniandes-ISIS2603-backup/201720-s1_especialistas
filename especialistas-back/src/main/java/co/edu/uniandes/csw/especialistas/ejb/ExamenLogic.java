@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.especialistas.persistence.ExamenPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -18,8 +19,18 @@ import javax.inject.Inject;
 @Stateless
 public class ExamenLogic {
     
+    
+    private final ExamenPersistence persistence;
+    
+    public ExamenLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private ExamenPersistence persistence;
+    public ExamenLogic(ExamenPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
     
     /**
      * Se encarga de la creación de un examen

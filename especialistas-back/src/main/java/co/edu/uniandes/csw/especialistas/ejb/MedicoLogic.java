@@ -9,9 +9,11 @@ import co.edu.uniandes.csw.especialistas.entities.Especializacion;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.MedicoPersistence;
+import co.edu.uniandes.csw.especialistas.persistence.OrdenMedicaPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -20,11 +22,24 @@ import javax.inject.Inject;
 @Stateless
 public class MedicoLogic {
            
-    @Inject
-    private MedicoPersistence persistence;
+    
+    private final MedicoPersistence persistence;
+    
+    
+    private final HoraLogic horaLogic;
+    
+    public MedicoLogic(){
+        persistence = null;
+        horaLogic = null;
+    }
     
     @Inject
-    private HoraLogic horaLogic;
+    public MedicoLogic(MedicoPersistence persistence, HoraLogic horaLogic){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        Assert.notNull(horaLogic, "horaLogic must not be null!");
+        this.persistence = persistence;
+        this.horaLogic = horaLogic;
+    }
     
     /**
      * Método encargado de persistir un medico nuevo

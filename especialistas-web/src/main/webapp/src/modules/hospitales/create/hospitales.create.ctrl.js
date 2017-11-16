@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("hospitalesModule");
-    mod.constant("hospitalesContext", "api/hos");
+    mod.constant("hospitalesContext", "api/hospitales");
     mod.controller('hospitalesCreateController', ['$scope', '$http', 'hospitalesContext', '$state', '$rootScope',
         function ($scope, $http, hospitalesContext, $state, $rootScope){
             $rootScope.edit = false;
