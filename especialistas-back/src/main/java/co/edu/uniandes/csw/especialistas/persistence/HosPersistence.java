@@ -23,6 +23,7 @@ public class HosPersistence {
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
 
+    private static final String SELECT = "Select e From HosEntity e where e.id = :id";
     /**
      *
      * @param entity objeto Farmacia que se creará en la base de datos
@@ -54,7 +55,7 @@ public class HosPersistence {
 
     public HosEntity findById(long id) {
 
-        TypedQuery query = em.createQuery("Select e From HosEntity e where e.id = :id", HosEntity.class);
+        TypedQuery query = em.createQuery(SELECT, HosEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -70,7 +71,7 @@ public class HosPersistence {
 
         HosEntity hospital = null;
 
-        TypedQuery query = em.createQuery("Select e From HosEntity e where e.id = :id", HosEntity.class);
+        TypedQuery query = em.createQuery(SELECT, HosEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -100,7 +101,7 @@ public class HosPersistence {
 
         HosEntity hospital = null;
 
-        TypedQuery query = em.createQuery("Select e From HosEntity e where e.id = :id", HosEntity.class);
+        TypedQuery query = em.createQuery(SELECT, HosEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -119,7 +120,7 @@ public class HosPersistence {
 
         HosEntity hospital = null;
 
-        TypedQuery query = em.createQuery("Select e From HosEntity e where e.id = :id", HosEntity.class);
+        TypedQuery query = em.createQuery(SELECT, HosEntity.class);
 
         query = query.setParameter("id", id);
 

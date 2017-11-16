@@ -22,6 +22,8 @@ public class ConsPersistence {
 
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
+    
+    private static final String SELCT = "Select e From ConsEntity e where e.id = :id";
 
     /**
      *
@@ -54,7 +56,7 @@ public class ConsPersistence {
 
     public ConsEntity findById(long id) {
 
-        TypedQuery query = em.createQuery("Select e From ConsEntity e where e.id = :id", ConsEntity.class);
+        TypedQuery query = em.createQuery(SELCT, ConsEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -70,7 +72,7 @@ public class ConsPersistence {
 
         ConsEntity consultorio = null;
 
-        TypedQuery query = em.createQuery("Select e From ConsEntity e where e.id = :id", ConsEntity.class);
+        TypedQuery query = em.createQuery(SELCT, ConsEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -99,7 +101,7 @@ public class ConsPersistence {
 
         ConsEntity consultorio = null;
 
-        TypedQuery query = em.createQuery("Select e From ConsEntity e where e.id = :id", ConsEntity.class);
+        TypedQuery query = em.createQuery(SELCT, ConsEntity.class);
 
         query = query.setParameter("id", id);
 

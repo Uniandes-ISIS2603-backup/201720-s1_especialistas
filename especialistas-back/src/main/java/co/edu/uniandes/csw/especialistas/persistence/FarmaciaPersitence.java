@@ -26,6 +26,8 @@ public class FarmaciaPersitence {
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
     
+    private static final String SELEC = "Select e From FarmaciaEntity e where e.id = :id";
+    
      /**
      *
      * @param entity objeto Farmacia que se creará en la base de datos
@@ -57,7 +59,7 @@ public class FarmaciaPersitence {
     
         public FarmaciaEntity findById(long id) {
 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -72,7 +74,7 @@ public class FarmaciaPersitence {
                
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -104,7 +106,7 @@ public class FarmaciaPersitence {
                
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -124,7 +126,7 @@ public class FarmaciaPersitence {
                
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -145,7 +147,7 @@ public class FarmaciaPersitence {
                        
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -167,7 +169,7 @@ public class FarmaciaPersitence {
                        
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         

@@ -39,10 +39,10 @@ public class CitaLogic {
     
     @Inject
     public CitaLogic(CitaPersistence persistence,HoraLogic horaLogic,UsuarioLogic usuarioLogic,OrdenMedicaLogic ordenMedicaLogic){
-        Assert.notNull(persistence, "MyCollaborator must not be null!");
-        Assert.notNull(horaLogic, "MyCollaborator must not be null!");
-        Assert.notNull(usuarioLogic, "MyCollaborator must not be null!");
-        Assert.notNull(ordenMedicaLogic, "MyCollaborator must not be null!");
+        Assert.notNull(persistence, "persistence must not be null!");
+        Assert.notNull(horaLogic, "horaLogic must not be null!");
+        Assert.notNull(usuarioLogic, "usuarioLogic must not be null!");
+        Assert.notNull(ordenMedicaLogic, "ordenMedicaLogic must not be null!");
         
         this.persistence = persistence;
         this.horaLogic = horaLogic;
