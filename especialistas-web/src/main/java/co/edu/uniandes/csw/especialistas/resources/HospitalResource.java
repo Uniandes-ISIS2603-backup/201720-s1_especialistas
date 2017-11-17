@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.especialistas.persistence.ExamenPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;

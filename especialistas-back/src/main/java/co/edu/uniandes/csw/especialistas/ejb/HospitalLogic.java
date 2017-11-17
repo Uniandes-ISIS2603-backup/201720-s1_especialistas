@@ -110,7 +110,7 @@ public class HospitalLogic {
     public HospitalEntity getHospital(Long id) throws BusinessLogicException {
         HospitalEntity hospital = persistence.findById(id);
         if (hospital == null) {
-            throw new BusinessLogicException("No existe un hospital con el id " + id);
+            throw new BusinessLogicException("1 No existe un hospital con el id " + id);
         } else {
             return hospital;
         }
@@ -139,7 +139,7 @@ public class HospitalLogic {
     public HospitalEntity getHospitalByName(String nombre) throws BusinessLogicException {
         HospitalEntity hospital = persistence.findByName(nombre);
         if (hospital == null) {
-            throw new BusinessLogicException("No existe un hospital con el nombre '" + nombre + "'");
+            throw new BusinessLogicException("2 No existe un hospital con el nombre '" + nombre + "'");
         } else {
             return hospital;
         }
@@ -157,7 +157,7 @@ public class HospitalLogic {
     public HospitalEntity addConsultorio(Long idHospital, ConsultorioEntity consultorio) throws BusinessLogicException {
         HospitalEntity hospital = persistence.findById(idHospital);
         if (hospital == null) {
-            throw new BusinessLogicException("No existe un hospital con el id " + idHospital);
+            throw new BusinessLogicException("3 No existe un hospital con el id " + idHospital);
         } else {
             consultorio.setHospital(hospital);
             hospital.getConsultorios().add(consultorio);
@@ -170,7 +170,7 @@ public class HospitalLogic {
     public HospitalEntity deleteConsultorio(Long idHospital, Long idConsultorio) throws BusinessLogicException{
         HospitalEntity hospital = persistence.findById(idHospital);
         if (hospital == null) {
-            throw new BusinessLogicException("No existe un hospital con el id " + idHospital);
+            throw new BusinessLogicException("4 No existe un hospital con el id " + idHospital);
         } else {
             ConsultorioEntity consultorio = consultorioLogic.getConsultorio(idConsultorio);
             hospital.getConsultorios().remove(consultorio);
