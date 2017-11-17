@@ -24,7 +24,8 @@
                 comentarios: $scope.currentCita.comentarios,
                 usuario: $scope.currentCita.usuario,
                 ordenesMedicas: $scope.currentCita.ordenesMedicas,
-                hora: $scope.horaNueva
+                hora : {'id': $scope.$eval($scope.horaNueva).id}
+                
                 
             }).then(function (response) {
                 $state.go('citasList', {citaId: response.data.id}, {reload: true});
