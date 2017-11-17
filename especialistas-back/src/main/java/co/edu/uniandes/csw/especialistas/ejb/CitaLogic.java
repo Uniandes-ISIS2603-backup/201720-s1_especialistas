@@ -65,7 +65,6 @@ public class CitaLogic {
     /**
      * Método encargadod de eliminar un Cita de la persistencia
      * @param id Id del Cita
-     * @return true si la entidad fue eliminada, false de lo contrario
      */
     public void deleteCita(Long id)
     {

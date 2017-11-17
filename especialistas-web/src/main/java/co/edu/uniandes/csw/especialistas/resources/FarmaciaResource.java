@@ -192,7 +192,6 @@ public class FarmaciaResource {
     public List<FarmaciaDetailDTO> getFarmacias()
     {
         return listToList(logic.getFarmacias());
-        
     }
     
     private List<FarmaciaDetailDTO> listToList(List<FarmaciaEntity> entityList) {
