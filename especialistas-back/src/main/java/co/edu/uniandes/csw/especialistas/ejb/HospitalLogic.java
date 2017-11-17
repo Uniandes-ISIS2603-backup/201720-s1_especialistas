@@ -47,7 +47,7 @@ public class HospitalLogic {
     
     private final ConsultorioPersistence consultorioPersistence;
     
-    @Inject
+    
     public HospitalLogic(){
         persistence = null;
         consultorioLogic = null;
@@ -55,6 +55,7 @@ public class HospitalLogic {
         consultorioPersistence = null;
     }
     
+    @Inject
     public HospitalLogic(HospitalPersistence persistence,ConsultorioLogic consultorioLogic,UbicacionPersistence up,ConsultorioPersistence consultorioPersistence){
         this.persistence = persistence;
         this.consultorioLogic = consultorioLogic;
