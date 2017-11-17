@@ -73,8 +73,7 @@ public class HospitalResource {
             }
             return listaHospitales;
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -92,8 +91,8 @@ public class HospitalResource {
             HospitalDetailDTO hospital = new HospitalDetailDTO(entidad);
             return hospital;
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -110,8 +109,8 @@ public class HospitalResource {
             logic.createHospital(entidad);
             return hospital;
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 500);
+            
+            throw new WebApplicationException(e, 500);
         }
     }
 
@@ -139,8 +138,8 @@ public class HospitalResource {
         try {
             logic.deleteHospital(id);
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 500);
+            
+            throw new WebApplicationException(e, 500);
         }
     }
 
@@ -158,8 +157,8 @@ public class HospitalResource {
             List<ConsultorioDTO> respuesta = listConsultorioEntity2DTO(entidad.getConsultorios());
             return respuesta;
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -179,8 +178,8 @@ public class HospitalResource {
             HospitalEntity hospital = logic.addConsultorio(id, entidadConsultorio);
             return new HospitalDetailDTO(hospital);
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -191,8 +190,8 @@ public class HospitalResource {
             HospitalEntity hospital = logic.deleteConsultorio(idHospital, idConsultorio);
             return new HospitalDetailDTO(hospital);
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 

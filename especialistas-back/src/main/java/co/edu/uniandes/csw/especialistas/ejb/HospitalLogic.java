@@ -26,26 +26,41 @@ public class HospitalLogic {
     /**
      * Injección de la persistencia de hospitales
      */
-    @Inject
-    private HospitalPersistence persistence;
+    
+    private final  HospitalPersistence persistence;
 
     /**
      * Inyección de la lógica de consultorios
      */
-    @Inject
-    ConsultorioLogic consultorioLogic;
+    
+    private final ConsultorioLogic consultorioLogic;
 
     /**
      * Injección de la persistencia de ubicaciones
      */
-    @Inject
-    UbicacionPersistence up;
+    
+    private final UbicacionPersistence up;
 
     /**
      * Injección de la persistencia de consultorios
      */
+    
+    private final ConsultorioPersistence consultorioPersistence;
+    
     @Inject
-    ConsultorioPersistence consultorioPersistence;
+    public HospitalLogic(){
+        persistence = null;
+        consultorioLogic = null;
+        up = null;
+        consultorioPersistence = null;
+    }
+    
+    public HospitalLogic(HospitalPersistence persistence,ConsultorioLogic consultorioLogic,UbicacionPersistence up,ConsultorioPersistence consultorioPersistence){
+        this.persistence = persistence;
+        this.consultorioLogic = consultorioLogic;
+        this.up = up;
+        this.consultorioPersistence = consultorioPersistence;
+    }
 
     /**
      * Método encargado de crear un hospital
