@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.OrdenMedicaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.OrdenMedicaDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.OrdenMedicaLogic;
 import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
@@ -20,6 +19,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -30,8 +30,19 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 
 public class OrdenMedicaResource {
-     @Inject 
-    OrdenMedicaLogic logic;
+    
+    private final OrdenMedicaLogic logic;
+     
+     
+     public OrdenMedicaResource(){
+        logic = null;
+    }
+    
+    @Inject
+    public OrdenMedicaResource(OrdenMedicaLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     /**
      * Recurso que crea un cita
@@ -71,9 +82,9 @@ public class OrdenMedicaResource {
     public List<OrdenMedicaDetailDTO> getOrdenMedicas()
     {
         List<OrdenMedicaDetailDTO> lista = new ArrayList<>();
-        logic.getOrdenesMedicas().forEach((ordenMedica) -> {
-            lista.add(new OrdenMedicaDetailDTO(ordenMedica));
-        });
+        logic.getOrdenesMedicas().forEach(ordenMedica -> 
+            lista.add(new OrdenMedicaDetailDTO(ordenMedica))
+        );
         return lista;
     }
     

@@ -1,4 +1,5 @@
 <div class="panel panel-default"> 
+    <div>
     <table class="table">
         <thead>
             <tr>
@@ -17,4 +18,10 @@
             <td id="{{$index}}-hospitalUbicacionLongitud">{{currentHospital.ubicacion.longitud}}</td>
         </tr>
     </table>
+    </div>
+    
+    <h3>CONSULTORIOS</h3>
+    <ul class="list-group">
+        <li ng-repeat="consultorio in consultorios">{{consultorio.numero}}</li>
+    </ul>
 </div>

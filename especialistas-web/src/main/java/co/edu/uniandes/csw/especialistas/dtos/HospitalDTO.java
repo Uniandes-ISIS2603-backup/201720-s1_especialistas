@@ -5,37 +5,48 @@
  */
 package co.edu.uniandes.csw.especialistas.dtos;
 
+
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
+import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 
 /**
- *
+ * Clase que modela el DTO de un hospital
  * @author jl.patarroyo
  */
-public class HospitalDTO extends EspecialistasDTO{
-
-    private String nombre;
-    //private UbicacionEntity ubicacion;
+public class HospitalDTO extends EspecialistasDTO {
 
     /**
-     * Constructor por defecto
+     * Atributo que modela el nombre del hospital
+     */
+    private String nombre;
+    
+    /**
+     * Atributo que modela la ubicación de un hospital
+     */
+    private UbicacionDTO ubicacion;
+
+    /**
+     * Constructor vacío
      */
     public HospitalDTO() {
-        //inicialmente vacio
+        //VACÍO
     }
 
     /**
-     * Constructor a partir de una entidad
-     *
-     * @param entity entidad que contiene la información
+     * Constructor del DTO a partir de una entidad
+     * @param entity entidad del hospital
      */
     public HospitalDTO(HospitalEntity entity) {
-        this.nombre = entity.getNombre();
-        this.id = entity.getId();
+        id = entity.getId();
+        nombre = entity.getNombre();
+        UbicacionEntity u = entity.getUbicacion();
+        if (u != null) {
+            ubicacion = new UbicacionDTO(u);
+        }
     }
 
     /**
      * Getter del atributo nombre
-     *
      * @return nombre del hospital
      */
     public String getNombre() {
@@ -44,7 +55,6 @@ public class HospitalDTO extends EspecialistasDTO{
 
     /**
      * Setter del atributo nombre
-     *
      * @param nombre nombre del hospital
      */
     public void setNombre(String nombre) {
@@ -52,15 +62,35 @@ public class HospitalDTO extends EspecialistasDTO{
     }
 
     /**
-     * Método que convierte la clase a una entidad
-     *
-     * @return HospitalEntity con la información
+     * Getter del atributo ubicacion
+     * @return ubicación del hospital
+     */
+    public UbicacionDTO getUbicacion() {
+        return ubicacion;
+    }
+
+    /**
+     * Setter del atributo ubicacion
+     * @param ubicacion ubicación del hospital
+     */
+    public void setUbicacion(UbicacionDTO ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    /**
+     * Método que convierte el actual DTO a una entidad
+     * @return entidad con la información del hospital
      */
     public HospitalEntity toEntity() {
         HospitalEntity entity = new HospitalEntity();
         entity.setId(this.id);
         entity.setNombre(this.nombre);
+        entity.setId(this.id);
+        if (this.ubicacion != null) {
+            entity.setUbicacion(this.ubicacion.toEntity());
+        } else {
+            entity.setUbicacion(null);
+        };
         return entity;
     }
-
 }

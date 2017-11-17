@@ -6,110 +6,133 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ * Clase que modela la persistencia de los consultorios
  * @author jl.patarroyo
  */
 @Stateless
-public class ConsultorioPersistence 
-{
+public class ConsultorioPersistence {
+
     /**
-     * Logger de la clase
-     */
-    private static final Logger LOGGER = Logger.getLogger(ConsultorioPersistence.class.getName());
-    
-    /**
-     * Manejador de las entidades
+     * Atributo que modela la unidad de persistencia
      */
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
-    
+
     /**
-     * Método encargado de persistir un nuevo consultorio
-     * @param entity ConsultorioEntity nuevo
-     * @return ConsultorioEntity persistido
+     * Método que persiste un nuevo consultorio
+     * @param entity consultorio que se quiere persistir
+     * @return entidad persistida
      */
-    public ConsultorioEntity create(ConsultorioEntity entity)
-    {
-        LOGGER.info("Creando nuevo consultorio");
+    public ConsultorioEntity create(ConsultorioEntity entity) {
         em.persist(entity);
-        LOGGER.info("Consultorio persistido");
         return entity;
     }
-    
+
     /**
-     * Método encargado de eliminar un consultorio
-     * @param id id del consultorio
-     * @return ConsultorioEntity eliminado
+     * Método encargado de buscar un consultorio por su número
+     * @param numero número del consultorio
+     * @return consultorio buscado, null si no existe
      */
-    public ConsultorioEntity delete(Long id)
-    {
-        LOGGER.log(Level.INFO, "Elminando consultorio con id: {0}", id);
-        ConsultorioEntity entity = em.find(ConsultorioEntity.class, id);
-        em.remove(entity);
-        LOGGER.log(Level.INFO, "Se elminó el consultorio con id: {0}", id);
-        return entity;
+    public ConsultorioEntity findByName(String numero) {
+
+        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.numero = :numero", ConsultorioEntity.class);
+        query = query.setParameter("numero", numero);
+        List<ConsultorioEntity> sameName = query.getResultList();
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
     }
-    
-    /**
-     * Metodo encargado de actualizar la información de un consultorio
-     * @param entity ConsultorioEntity con la nueva información
-     * @return ConsultorioEntity actualizado
-     */
-    public ConsultorioEntity upadte(ConsultorioEntity entity)
-    {
-        LOGGER.log(Level.INFO, "Actualizando la información del consultorio con id: {0}", entity.getId());
-        em.merge(entity);
-        return entity;
-    }
-    
+
     /**
      * Método encargado de buscar un consultorio por su id
      * @param id id del consultorio
-     * @return ConsultorioEntity buscado
+     * @return consultorio buscado, null si no existe
      */
-    public ConsultorioEntity find(Long id)
-    {
-        LOGGER.log(Level.INFO, "Buscando consultorio con id: {0}", id);
-        ConsultorioEntity entity = em.find(ConsultorioEntity.class, id);
-        return entity;
+    public ConsultorioEntity findById(long id) {
+
+        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.id = :id", ConsultorioEntity.class);
+
+        query = query.setParameter("id", id);
+
+        List<ConsultorioEntity> sameId = query.getResultList();
+        if (sameId.isEmpty()) {
+            return null;
+        } else {
+            return sameId.get(0);
+        }
     }
-    
+
+    /**
+     * Método encargado de eliminar un consultorio por su id
+     * @param id id del consultorio
+     */
+    public void deleteById(long id){
+
+        ConsultorioEntity consultorio = null;
+
+        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.id = :id", ConsultorioEntity.class);
+
+        query = query.setParameter("id", id);
+
+        List<ConsultorioEntity> sameId = query.getResultList();
+        if (!sameId.isEmpty()) {
+            consultorio = sameId.get(0);
+        }
+
+        if (consultorio != null) {
+            em.remove(consultorio);
+        }
+    }
+
+    /**
+     * Método encargado de actualizar la información de un consultorio
+     * @param consultorio entidad con la información actualizada
+     */
+    public void update(ConsultorioEntity consultorio) {
+        em.merge(consultorio);
+    }
+
     /**
      * Método encargado de buscar todos los consultorios
-     * @return Lista con todos los consultorios
+     * @return lista de consultorios
      */
-    public List<ConsultorioEntity> findAll()
-    {
-        LOGGER.log(Level.INFO, "Consultando todos los consultorios");
-        TypedQuery query = em.createQuery("Select u from ConsultorioEntity u", ConsultorioEntity.class);
+    public List<ConsultorioEntity> findAll() {
+        TypedQuery query = em.createQuery("select u from ConsultorioEntity u", ConsultorioEntity.class);
         return query.getResultList();
     }
-    
+
     /**
-     * Método encargado de buscar un consultorio por su referencia
-     * @param referencia Referencia del consultorio
-     * @return ConsultorioEntity buscado
+     * Método encargado de agregar un hospital a un consultorio
+     * @param id id del consultorio
+     * @return true si se agregó, false de lo contrario
      */
-    public ConsultorioEntity findByReference(String referencia)
-    {
-        LOGGER.log(Level.INFO, "Consultando consultorio con referencia: {0}", referencia);
-        TypedQuery query = em.createQuery("Select c from ConsultorioEntity c where c.referenciaConsultorio = :referencia", ConsultorioEntity.class);
-        query = query.setParameter("referencia", referencia);
-        List<ConsultorioEntity> list = query.getResultList();
-        if(list.isEmpty())
-        {
-            LOGGER.log(Level.INFO, "No se encontró el consultorio");
-            return null;
+    public boolean agregarHospitalById(long id) {
+
+        ConsultorioEntity consultorio = null;
+
+        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.id = :id", ConsultorioEntity.class);
+
+        query = query.setParameter("id", id);
+
+        List<ConsultorioEntity> sameId = query.getResultList();
+        if (!sameId.isEmpty()) {
+            consultorio = sameId.get(0);
         }
-        return list.get(0);
+
+        if (consultorio != null) {
+            return true;
+        }
+        return false;
     }
+
 }

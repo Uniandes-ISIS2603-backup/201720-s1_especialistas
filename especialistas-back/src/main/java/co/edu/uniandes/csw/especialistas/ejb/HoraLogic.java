@@ -5,11 +5,15 @@
  */
 package co.edu.uniandes.csw.especialistas.ejb;
 
+import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.especialistas.persistence.HoraPersistence;
+
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -18,17 +22,37 @@ import javax.inject.Inject;
 @Stateless
 public class HoraLogic {
                
+    
+    private final HoraPersistence persistence;
+    
+    public HoraLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private HoraPersistence persistence;
+    public HoraLogic(HoraPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
+    
+    @Inject
+    private ConsultorioLogic consultorioLogic;
     
     /**
      * Método encargado de persistir una hora nueva
      * @param entity Entidad de la hora
      * @return Hora persistida
+     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
      */
-    public HoraEntity createHora(HoraEntity entity)
+    public HoraEntity createHora(HoraEntity entity) throws BusinessLogicException
     {
+//        ConsultorioEntity c = entity.getConsultorio();
+//        entity.setConsultorio(c);
         persistence.create(entity);
+//        if(c != null){
+//            ConsultorioEntity c2 = consultorioLogic.getConsultorio(c.getId());
+//           entity.setConsultorio(c2);
+//        }
         return entity;
     }
     
@@ -47,8 +71,7 @@ public class HoraLogic {
      */
     public List<HoraEntity> getHoras()
     {
-        List<HoraEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
     }
     
     /**
@@ -58,8 +81,7 @@ public class HoraLogic {
      */
     public HoraEntity getHora(Long id)
     {
-        HoraEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
     }
     
     /**

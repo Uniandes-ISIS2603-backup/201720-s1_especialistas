@@ -5,18 +5,9 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDetailDTO;
-import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
-import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
-import javax.persistence.EntityManager;
-import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
-import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
-import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
-import java.net.URI;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
-import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDetailDTO;
 import co.edu.uniandes.csw.especialistas.dtos.UbicacionDTO;
 import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
@@ -28,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -39,7 +29,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import org.springframework.util.Assert;
 
 
 /**
@@ -55,17 +45,33 @@ public class FarmaciaResource {
     /**
      * Clase de la lógica de farmacia  
      */
-    @Inject
-    FarmaciaLogic logic;
     
-    @Inject
-    MedicamentoLogic logicMedicamento;
+    private final FarmaciaLogic logic;
+    
+    
+    private final MedicamentoLogic logicMedicamento;
     
     /**
      * Clase de la logica de los metodos que comparten medicamento y faracia
      */
+    
+    private final Medicamento_FarmaciaLogic logicMF;
+    
+    public FarmaciaResource(){
+        logic = null;
+        logicMedicamento = null;
+        logicMF = null;
+    }
+    
     @Inject
-    Medicamento_FarmaciaLogic logicMF;
+    public FarmaciaResource(FarmaciaLogic logic, MedicamentoLogic logicMedicamento, Medicamento_FarmaciaLogic logicMF){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+        this.logicMedicamento = logicMedicamento;
+        this.logicMF = logicMF;
+    }
     
 
     /**

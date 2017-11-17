@@ -3,8 +3,6 @@
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/ordenesMedicas/';
-            var basePathMedicamentos = 'src/modules/medicamentos/';
-            var basePathExamenes = 'src/modules/examenes/';
             
             $stateProvider.state('ordenesMedicas', {
                 url: '/ordenesMedicas',

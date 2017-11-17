@@ -52,7 +52,7 @@ public class CitaPersistence {
     }
     public boolean deleteById(long id) {
                
-        CitaEntity Cita=null;
+        CitaEntity cita=null;
                 
         TypedQuery query = em.createQuery("Select e From CitaEntity e where e.id = :id", CitaEntity.class);
 
@@ -60,19 +60,19 @@ public class CitaPersistence {
         
         List<CitaEntity> sameId = query.getResultList();
         if (!sameId.isEmpty()) {
-            Cita= sameId.get(0);
+            cita= sameId.get(0);
         }
         
-        if(Cita!=null)
+        if(cita!=null)
         {
-        em.remove(Cita);
+        em.remove(cita);
         return true;
         }
         return false;
     }
         
-    public CitaEntity update(CitaEntity Cita) {
-        return em.merge(Cita);
+    public CitaEntity update(CitaEntity cita) {
+        return em.merge(cita);
     }
 
     public List<CitaEntity> findAll() {

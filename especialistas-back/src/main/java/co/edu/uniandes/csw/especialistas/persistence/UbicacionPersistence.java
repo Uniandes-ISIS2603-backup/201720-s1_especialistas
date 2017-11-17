@@ -85,8 +85,8 @@ public class UbicacionPersistence {
         return false;
     }
         
-    public void update(UbicacionEntity Farmacia) {
-        em.merge(Farmacia);
+    public void update(UbicacionEntity farmacia) {
+        em.merge(farmacia);
     }
     
 }

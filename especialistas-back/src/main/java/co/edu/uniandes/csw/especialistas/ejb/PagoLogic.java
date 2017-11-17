@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.PagoPersistence;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -18,8 +19,18 @@ public class PagoLogic {
     /**
      * Injección de la persistencia de Pago
      */
+    
+    private final PagoPersistence persistence;
+    
+    public PagoLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private PagoPersistence persistence;
+    public PagoLogic(PagoPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
 
     /**
      * Método encargado de crear un Pago
@@ -56,8 +67,8 @@ public class PagoLogic {
      * @return Lista con todas las entidades de los Pagos
      */
     public List<PagoEntity> getPagos() {
-        List<PagoEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -67,8 +78,8 @@ public class PagoLogic {
      * @return PagoEntity del Pago buscado
      */
     public PagoEntity getPago(Long id) {
-        PagoEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
+        
     }
     
     /**
@@ -88,7 +99,7 @@ public class PagoLogic {
      * @return
      */
     public PagoEntity getPagoById( Long id ) {
-        PagoEntity examen = persistence.find(id);
-        return examen;
+        return persistence.find(id);
+        
     }
 }

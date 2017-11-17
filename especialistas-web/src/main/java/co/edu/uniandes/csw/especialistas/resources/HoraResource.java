@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.HoraDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.HoraLogic;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -21,6 +22,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  * @author JuanSebastian
@@ -34,16 +36,28 @@ public class HoraResource {
    /**
      * Clase de la lógica
      */
+    
+    private final HoraLogic logic;
+    
+    public HoraResource(){
+        logic = null;
+    }
+    
     @Inject
-    HoraLogic logic;
+    public HoraResource(HoraLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
+
     
     /**
      * Recurso que crea una hora
      * @param hora JSON con la información de la hora
      * @return JSON con la hora creada
+     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
      */
     @POST
-    public HoraDetailDTO createHora(HoraDetailDTO hora)
+    public HoraDetailDTO createHora(HoraDetailDTO hora) throws BusinessLogicException
     {
         HoraEntity entity = hora.toEntity();
         logic.createHora(entity);
@@ -74,9 +88,9 @@ public class HoraResource {
     public List<HoraDetailDTO> getHoras()
     {
         List<HoraDetailDTO> lista = new ArrayList<>();
-        logic.getHoras().forEach((hora) -> {
-            lista.add(new HoraDetailDTO(hora));
-        });
+        logic.getHoras().forEach(hora -> 
+            lista.add(new HoraDetailDTO(hora))
+        );
         return lista;
     }
     

@@ -150,7 +150,7 @@ public class HospitalPersistenceTest {
     @Test
     public void testDelete() throws Exception {
         HospitalEntity entity = data.get(0);
-        persistence.delete(entity.getId());
+        persistence.deleteById(entity.getId());
         HospitalEntity deleted = em.find(HospitalEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -166,7 +166,7 @@ public class HospitalPersistenceTest {
 
         newEntity.setId(entity.getId());
 
-        persistence.upadte(newEntity);
+        persistence.update(newEntity);
 
         HospitalEntity resp = em.find(HospitalEntity.class, entity.getId());
 
@@ -179,7 +179,7 @@ public class HospitalPersistenceTest {
     @Test
     public void testFind() throws Exception {
         HospitalEntity entity = data.get(0);
-        HospitalEntity newEntity = persistence.find(entity.getId());
+        HospitalEntity newEntity = persistence.findById(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
@@ -208,7 +208,7 @@ public class HospitalPersistenceTest {
     @Test
     public void testFindByName() throws Exception {
         HospitalEntity entity = data.get(0);
-        HospitalEntity newEntity = persistence.findByReference(entity.getNombre());
+        HospitalEntity newEntity = persistence.findByName(entity.getNombre());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
@@ -225,7 +225,7 @@ public class HospitalPersistenceTest {
         for (int i = 0; i < 10; i++) {
             ConsultorioEntity consultorio = factory.manufacturePojo(ConsultorioEntity.class);
             list.add(consultorio);
-            if (consultorioPersistence.find(consultorio.getId()) == null) {
+            if (consultorioPersistence.findById(consultorio.getId()) == null) {
                 consultorioPersistence.create(consultorio);
             }
         }

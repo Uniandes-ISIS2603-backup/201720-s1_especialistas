@@ -1,7 +1,7 @@
 (
         function (ng) {
             var mod = ng.module("hospitalesModule");
-            mod.constant("hospitalesContext", "api/hos");
+            mod.constant("hospitalesContext", "api/hospitales");
             mod.controller('hospitalUpdateCtrl', ['$scope', '$http', 'hospitalesContext', '$state', '$rootScope', '$filter',
                 function ($scope, $http, hospitalesContext, $state, $rootScope, $filter) {
                     $rootScope.edit = true;

@@ -5,7 +5,7 @@
         function ($scope, $http, pagoContext, $state, $rootScope){
             $rootScope.edit = false;
             $scope.createPago = function (){
-                alert($state.params.usuarioId);
+                
                 if (($state.params.usuarioId !== undefined) && ($state.params.usuarioId !== null)) {
                     $http.post(pagoContext , {
                         ref: $scope.pagoRef,

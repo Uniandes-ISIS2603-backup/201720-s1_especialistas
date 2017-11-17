@@ -17,7 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.xml.bind.annotation.XmlTransient;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -71,7 +70,7 @@ public class FarmaciaEntity implements Serializable{
     public List<MedicamentoEntity> getMedicamentos() {
         if(medicamentos==null)
         {
-            medicamentos=new ArrayList<MedicamentoEntity>();
+            medicamentos=new ArrayList<>();
         }
         return medicamentos;
     }
@@ -88,7 +87,7 @@ public class FarmaciaEntity implements Serializable{
     {
         if(medicamentos==null)
         {
-            medicamentos= new ArrayList<MedicamentoEntity>();
+            medicamentos= new ArrayList<>();
         }
         medicamentos.add(med);
     }

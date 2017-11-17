@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("consultoriosModule");
-    mod.constant("consultoriosContext", "api/cons");
+    mod.constant("consultoriosContext", "api/consultorios");
     mod.controller('consultoriosCreateController', ['$scope', '$http', 'consultoriosContext', '$state', '$rootScope',
         function ($scope, $http, consultoriosContext, $state, $rootScope){
             $rootScope.edit = false;

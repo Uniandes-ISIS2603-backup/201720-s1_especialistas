@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("consultoriosModule");
-    mod.constant("consultoriosContext", "api/cons");
+    mod.constant("consultoriosContext", "api/consultorios");
     mod.controller('consultorioCtrl', ['$scope', '$http', 'consultoriosContext', '$state',
         function ($scope, $http, consultoriosContext, $state) {
             $http.get(consultoriosContext).then(function (response) {
