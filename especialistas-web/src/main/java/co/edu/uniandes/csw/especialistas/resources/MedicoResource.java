@@ -25,6 +25,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -39,8 +40,18 @@ public class MedicoResource {
    /**
      * Clase de la lógica
      */
+    
+    private final MedicoLogic logic;
+    
+     public MedicoResource(){
+        logic = null;
+    }
+    
     @Inject
-    MedicoLogic logic;
+    public MedicoResource(MedicoLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     /**
      * Recurso que crea un medico
@@ -80,9 +91,9 @@ public class MedicoResource {
     public List<MedicoDetailDTO> getMedicos()
     {
         List<MedicoDetailDTO> lista = new ArrayList<>();
-        logic.getMedicos().forEach((medico) -> {
-            lista.add(new MedicoDetailDTO(medico));
-        });
+        logic.getMedicos().forEach(medico -> 
+            lista.add(new MedicoDetailDTO(medico))
+        );
         return lista;
     }
     
@@ -96,9 +107,9 @@ public class MedicoResource {
     public List<MedicoDetailDTO> getMedicosPorEspecializacion(@PathParam("especializacion") String especializacion)
     {
         List<MedicoDetailDTO> lista = new ArrayList<>();
-        logic.getMedicosByEspecializacion(especializacion).forEach((medico) -> {
-            lista.add(new MedicoDetailDTO(medico));
-        });
+        logic.getMedicosByEspecializacion(especializacion).forEach(medico -> 
+            lista.add(new MedicoDetailDTO(medico))
+        );
         return lista;
     }
     
@@ -172,9 +183,9 @@ public class MedicoResource {
         }
         MedicoEntity newEntity = logic.getMedico(id);
         List<HoraEntity> lista = new ArrayList<>();
-        agenda.forEach((hora) -> {
-            lista.add(hora.toEntity());
-        });
+        agenda.forEach(hora -> 
+            lista.add(hora.toEntity())
+        );
         newEntity.setAgenda(lista);
         logic.updateMedico(id, newEntity);
         return getAgenda(id);

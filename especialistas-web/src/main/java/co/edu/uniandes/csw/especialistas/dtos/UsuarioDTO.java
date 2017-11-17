@@ -22,6 +22,21 @@ public class UsuarioDTO {
     */
     private int cedula;
     
+    /*
+    *Atributo que representa el nik del usuario
+    */
+    private String nick;
+    
+    /*
+    *Atributo que representa la clave del usuario
+    */
+    private String pass;
+    
+     /*
+    *Atributo que representa el rol del usuario
+    */
+    private String rol;
+    
     /**
      * Atributo que reprecenta el id del usuario
      */
@@ -44,6 +59,9 @@ public class UsuarioDTO {
     {
         this.nombre = entity.getNombre();
         this.cedula = entity.getCedula();
+        this.rol = entity.getRol();
+        this.nick = entity.getNick();
+        this.pass = entity.getPass();
         this.id = entity.getId();
     }
     
@@ -62,6 +80,56 @@ public class UsuarioDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    
+    /**
+     * getter del atributo nick
+     * @return 
+     */
+    public String getNick(){
+        return this.nick;
+    }
+    
+    /**
+     * setter del atributo nick
+     * @param nick 
+     */
+    public void setNick(String nick){
+        this.nick = nick;
+    }
+    
+    /**
+     * getter del atributo pass
+     * @return 
+     */
+    public String getPass(){
+        return this.pass;
+    }
+    
+    /**
+     * setter del atributo pass
+     * @param pass 
+     */
+    public void setPass(String pass){
+        this.pass = pass;
+    }
+    
+    /**
+     * getter del atributo rol
+     * @return 
+     */
+    public String getRol(){
+        return this.rol;
+    }
+    
+    /**
+     * setter del atributo rol
+     * @param rol
+     */
+    public void setRol(String rol){
+        this.rol = rol;
+    }
+
     
     /**
      * Getter del atributo nombre
@@ -105,6 +173,9 @@ public class UsuarioDTO {
         entity.setId(this.id);
         entity.setNombre(this.nombre);
         entity.setCedula(this.cedula);
+        entity.setRol(this.rol);
+        entity.setNick(this.nick);
+        entity.setPass(this.pass);
         return entity;
     }
     

@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.LaboratorioDetailDTO;
-import co.edu.uniandes.csw.especialistas.dtos.UbicacionDTO;
 import co.edu.uniandes.csw.especialistas.ejb.LaboratorioLogic;
 import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
 import java.util.ArrayList;
@@ -22,6 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -33,26 +33,36 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class LaboratorioResource {
 
-    @Inject
-    LaboratorioLogic logic;
+    
+    private final LaboratorioLogic logic;
 
+    public LaboratorioResource(){
+        logic = null;
+    }
+    
+    @Inject
+    public LaboratorioResource(LaboratorioLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
+    
     @POST
-    public LaboratorioDetailDTO createLaboratorio(LaboratorioDetailDTO laboratorio) throws WebApplicationException {
+    public LaboratorioDetailDTO createLaboratorio(LaboratorioDetailDTO laboratorio){
         LaboratorioEntity laboratorioEntity = logic.getLaboratorio(laboratorio.getNombre());
         if (laboratorioEntity != null) {
-            WebApplicationException e = new WebApplicationException("Ya existe un laboratorio con el nombre " + laboratorio.getNombre());
-            throw e;
+            throw new WebApplicationException("Ya existe un laboratorio con el nombre " + laboratorio.getNombre());
+            
         }
         LaboratorioEntity nuevoLab = logic.createLaboratorio( laboratorio.toEntity());
 
         return new LaboratorioDetailDTO(nuevoLab);
     }
     @GET
-    public List<LaboratorioDetailDTO> getLaboratorios() throws WebApplicationException {
+    public List<LaboratorioDetailDTO> getLaboratorios(){
         List<LaboratorioEntity> labEntities = logic.getLaboratorios();
         if (labEntities.isEmpty()) {
-            WebApplicationException e = new WebApplicationException("no hay laboratorios");
-            throw e;
+            throw new WebApplicationException("no hay laboratorios");
+            
         }
         List<LaboratorioDetailDTO> labDTOs = new ArrayList<>();
 
@@ -65,45 +75,44 @@ public class LaboratorioResource {
 
     @GET
     @Path("{nombre}")
-    public LaboratorioDetailDTO getLaboratorioByName(@PathParam("nombre") String nombre) throws WebApplicationException {
+    public LaboratorioDetailDTO getLaboratorioByName(@PathParam("nombre") String nombre){
         LaboratorioEntity entity = logic.getLaboratorio(nombre);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un laboratorio con el nombre " + nombre);
-            throw e;
+            throw new WebApplicationException("No existe un laboratorio con el nombre " + nombre);
+            
         }
         return new LaboratorioDetailDTO(entity);
     }
 
     @GET
     @Path("{id: \\d+}")
-    public LaboratorioDetailDTO getLaboratorioByID(@PathParam("id") Long id) throws WebApplicationException {
+    public LaboratorioDetailDTO getLaboratorioByID(@PathParam("id") Long id){
         LaboratorioEntity entity = logic.getLaboratorioById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un laboratorio con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un laboratorio con el id " + id);
         }
         return new LaboratorioDetailDTO(entity);
     }
 
     @PUT
     @Path("{id: \\d+}")
-    public LaboratorioDetailDTO updateLaboratorio(@PathParam("id") Long id, LaboratorioDetailDTO laboratorio) throws WebApplicationException {
+    public LaboratorioDetailDTO updateLaboratorio(@PathParam("id") Long id, LaboratorioDetailDTO laboratorio){
         laboratorio.setId(id);
         LaboratorioEntity entity = logic.getLaboratorioById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un laboratorio con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un laboratorio con el id " + id);
+            
         }
         return new LaboratorioDetailDTO(logic.updateLaboratorio(laboratorio.toEntity()));
     }
 
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteLaboratorio(@PathParam("id") Long id) throws WebApplicationException {
+    public void deleteLaboratorio(@PathParam("id") Long id){
         LaboratorioEntity entity = logic.getLaboratorioById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un laboratorio con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un laboratorio con el id " + id);
+            
         }
         logic.deleteLaboratorio(id);
     }

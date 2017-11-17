@@ -7,9 +7,11 @@ package co.edu.uniandes.csw.especialistas.ejb;
 
 import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
 import co.edu.uniandes.csw.especialistas.persistence.LaboratorioPersistence;
+
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -19,8 +21,18 @@ import javax.inject.Inject;
 public class LaboratorioLogic {
     
     
+    
+    private final LaboratorioPersistence persistence;
+    
+    public LaboratorioLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private LaboratorioPersistence persistence;
+    public LaboratorioLogic(LaboratorioPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
     
     /**
      * Se encarga de la creación de un laboratorio
@@ -36,8 +48,8 @@ public class LaboratorioLogic {
      * @return 
      */
     public List<LaboratorioEntity> getLaboratorios(){
-        List<LaboratorioEntity> laboratorios = persistence.findAll();
-        return laboratorios;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -46,8 +58,8 @@ public class LaboratorioLogic {
      * @return
      */
     public LaboratorioEntity getLaboratorio(String name){
-        LaboratorioEntity laboratorio = persistence.findByName(name);
-        return laboratorio;
+        return persistence.findByName(name);
+        
     }
     
     /**
@@ -56,8 +68,8 @@ public class LaboratorioLogic {
      * @return
      */
     public LaboratorioEntity getLaboratorioById( Long id ) {
-        LaboratorioEntity laboratorio = persistence.find(id);
-        return laboratorio;
+        return persistence.find(id);
+        
     }
     
     /**
@@ -66,8 +78,8 @@ public class LaboratorioLogic {
      * @return 
      */
     public LaboratorioEntity updateLaboratorio( LaboratorioEntity entity ){
-        LaboratorioEntity newLab = persistence.update(entity);
-        return newLab;
+        return persistence.update(entity);
+        
     }
     
     public void deleteLaboratorio( Long id ){

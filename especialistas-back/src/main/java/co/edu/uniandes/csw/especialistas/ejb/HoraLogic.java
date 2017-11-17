@@ -8,9 +8,11 @@ package co.edu.uniandes.csw.especialistas.ejb;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.persistence.HoraPersistence;
+
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -19,8 +21,18 @@ import javax.inject.Inject;
 @Stateless
 public class HoraLogic {
                
+    
+    private final HoraPersistence persistence;
+    
+    public HoraLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private HoraPersistence persistence;
+    public HoraLogic(HoraPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
     
     @Inject
     private ConsultorioLogic consultorioLogic;
@@ -57,8 +69,7 @@ public class HoraLogic {
      */
     public List<HoraEntity> getHoras()
     {
-        List<HoraEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
     }
     
     /**
@@ -68,8 +79,7 @@ public class HoraLogic {
      */
     public HoraEntity getHora(Long id)
     {
-        HoraEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
     }
     
     /**

@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.especialistas.dtos;
 
 import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
 import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
-import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import java.util.ArrayList;
@@ -27,12 +26,12 @@ public class UsuarioDetailDTO extends UsuarioDTO{
     /**
      * lista de citasmedicas de un usuario
      */
-    private List <CitaDTO> citasMedicas = new ArrayList<CitaDTO>();
+    private List <CitaDTO> citasMedicas = new ArrayList<>();
     
     /**
      * lista de pagos de un usuario
      */
-    private List <PagoDTO> pagos = new ArrayList<PagoDTO>();
+    private List <PagoDTO> pagos = new ArrayList<>();
     
     /**
      * Ubicacion del usuario
@@ -95,7 +94,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
                 }
                 entity.setCitas(citaEntity);
             }
-        if(entity.getPagos()!= null)
+        if(pagos != null)
             {
                 List<PagoEntity> pagoEntity = new ArrayList<>();
                 for (PagoDTO pago : pagos){

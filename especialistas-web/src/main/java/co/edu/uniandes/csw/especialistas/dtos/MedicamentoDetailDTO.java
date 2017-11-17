@@ -27,11 +27,11 @@ public class MedicamentoDetailDTO extends MedicamentoDTO{
         if(entity.getFarmacias()==null)
         {
             entity.setFarmacias(new ArrayList<>());
-            System.out.println("*********************************************************************************"+ entity.getFarmacias().toString());
+            
         }
-        entity.getFarmacias().forEach((x)->{
-            this.farmacias.add(new FarmaciaDTO(x));
-    });
+        entity.getFarmacias().forEach(x->
+            this.farmacias.add(new FarmaciaDTO(x))
+    );
     }
     
     
@@ -43,9 +43,9 @@ public class MedicamentoDetailDTO extends MedicamentoDTO{
         {
                         farmacias= new ArrayList<>();
         }
-        farmacias.forEach((x) -> {
-            entity.getFarmacias().add(x.toEntity());
-        });
+        farmacias.forEach(x -> 
+            entity.getFarmacias().add(x.toEntity())
+        );
         return entity;
     }
     

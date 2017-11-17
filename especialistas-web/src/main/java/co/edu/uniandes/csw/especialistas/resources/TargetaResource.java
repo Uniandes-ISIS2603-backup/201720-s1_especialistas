@@ -5,16 +5,13 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.TarjetaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.TarjetaDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.TarjetaLogic;
 import co.edu.uniandes.csw.especialistas.entities.TarjetaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -23,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -32,35 +30,45 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Stateless
 public class TargetaResource {
+    
+    private final TarjetaLogic logic;
+    
+    public TargetaResource(){
+        logic = null;
+    }
+    
     @Inject
-    TarjetaLogic logic;
+    public TargetaResource(TarjetaLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     @POST
-    public TarjetaEntity createTarjeta(TarjetaDetailDTO tarjeta) throws WebApplicationException {
+    public TarjetaEntity createTarjeta(TarjetaDetailDTO tarjeta)  {
         TarjetaEntity tarjetaEntity = null;
         if(tarjeta.getId()!=null)
         {
             tarjetaEntity = logic.getTarjeta(tarjeta.getId());
         }
         if (tarjetaEntity != null) {
-            WebApplicationException e = new WebApplicationException("Ya existe un usuario con el id " + tarjeta.getId());
-            throw e;
+            throw new WebApplicationException("Ya existe un usuario con el id " + tarjeta.getId());
+            
         }
-        TarjetaEntity nuevaTarjeta = logic.createTarjeta(tarjeta.toEntity());
+        return logic.createTarjeta(tarjeta.toEntity());
 
-        return nuevaTarjeta;
+        
     }
     
     @GET
-    public List<TarjetaDetailDTO> getTarjetas() throws WebApplicationException {
-        List<TarjetaEntity> TarjetaEntities = logic.getTarjetas();
-        if (TarjetaEntities.isEmpty()) {
-            WebApplicationException e = new WebApplicationException("no hay Tarjetas");
-            throw e;
+    public List<TarjetaDetailDTO> getTarjetas(){
+        List<TarjetaEntity> tarjetaEntities = logic.getTarjetas();
+        if (tarjetaEntities.isEmpty()) {
+            throw new WebApplicationException("no hay Tarjetas");
+            
         }
         List<TarjetaDetailDTO> tarjetaDTOs = new ArrayList<>();
 
-        for (TarjetaEntity actual : TarjetaEntities) {
+        for (TarjetaEntity actual : tarjetaEntities) {
             TarjetaDetailDTO nuevoTarjeta= new TarjetaDetailDTO(actual);
             tarjetaDTOs.add(nuevoTarjeta);
         }
@@ -69,34 +77,34 @@ public class TargetaResource {
     
     @GET
     @Path("{id: \\d+}")
-    public TarjetaDetailDTO getTarjetaByID(@PathParam("id") Long id) throws WebApplicationException {
-        TarjetaEntity entity = logic.getTarjetaById(id);
+    public TarjetaDetailDTO getTarjetaByID(@PathParam("id") Long id){
+        TarjetaEntity entity = logic.getTarjeta(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un Tarjeta con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un Tarjeta con el id " + id);
+            
         }
         return new TarjetaDetailDTO(entity);
     }
     
     @PUT
     @Path("{id: \\d+}")
-    public TarjetaDetailDTO updateTarjeta(@PathParam("id") Long id, TarjetaDetailDTO tarjeta) throws WebApplicationException {
+    public TarjetaDetailDTO updateTarjeta(@PathParam("id") Long id, TarjetaDetailDTO tarjeta){
         tarjeta.setId(id);
-        TarjetaEntity entity = logic.getTarjetaById(id);
+        TarjetaEntity entity = logic.getTarjeta(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un Tarjeta con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un Tarjeta con el id " + id);
+            
         }
         return new TarjetaDetailDTO(logic.updateTarjeta(tarjeta.toEntity()));
     }
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteTarjeta(@PathParam("id") Long id) throws WebApplicationException {
-        TarjetaEntity entity = logic.getTarjetaById(id);
+    public void deleteTarjeta(@PathParam("id") Long id){
+        TarjetaEntity entity = logic.getTarjeta(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un Tarjeta con el id " + id);
-            throw e;
+            throw new WebApplicationException("No existe un Tarjeta con el id " + id);
+            
         }
         logic.deleteTarjeta(id);
     }

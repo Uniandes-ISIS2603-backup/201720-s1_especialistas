@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
 import co.edu.uniandes.csw.especialistas.persistence.OrdenMedicaPersistence;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -16,8 +17,18 @@ import javax.inject.Inject;
  */
 public class OrdenMedicaLogic {
     
+    
+    private final OrdenMedicaPersistence persistence;
+    
+    public OrdenMedicaLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private OrdenMedicaPersistence persistence;
+    public OrdenMedicaLogic(OrdenMedicaPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
     
     /**
      * Método encargado de persistir un OrdenMedica nuevo
@@ -55,8 +66,8 @@ public class OrdenMedicaLogic {
      */
     public List<OrdenMedicaEntity> getOrdenesMedicas()
     {
-        List<OrdenMedicaEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -66,8 +77,8 @@ public class OrdenMedicaLogic {
      */
     public OrdenMedicaEntity getOrdenMedica(Long id)
     {
-        OrdenMedicaEntity entity = persistence.findById(id);
-        return entity;
+        return persistence.findById(id);
+        
     }
     
     /**

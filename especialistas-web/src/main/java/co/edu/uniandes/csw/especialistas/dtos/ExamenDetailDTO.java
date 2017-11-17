@@ -31,8 +31,8 @@ public class ExamenDetailDTO extends ExamenDTO {
      */
     @Override
     public ExamenEntity toEntity() {
-        ExamenEntity examen = super.toEntity();
-        return examen;
+        return super.toEntity();
+        
     }
     
 }

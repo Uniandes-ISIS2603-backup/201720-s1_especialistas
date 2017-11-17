@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,6 +25,8 @@ public class FarmaciaPersitence {
     
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
+    
+    private static final String SELEC = "Select e From FarmaciaEntity e where e.id = :id";
     
      /**
      *
@@ -56,7 +59,7 @@ public class FarmaciaPersitence {
     
         public FarmaciaEntity findById(long id) {
 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -71,7 +74,7 @@ public class FarmaciaPersitence {
                
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -90,8 +93,8 @@ public class FarmaciaPersitence {
         }
     }
         
-    public void update(FarmaciaEntity Farmacia) {
-        em.merge(Farmacia);
+    public void update(FarmaciaEntity farmacia) {
+        em.merge(farmacia);
     }
 
     public List<FarmaciaEntity> findAll() {
@@ -103,7 +106,7 @@ public class FarmaciaPersitence {
                
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -116,14 +119,14 @@ public class FarmaciaPersitence {
         {
         return farmacia.getMedicamentos();
         }
-        return null;
+        return new ArrayList<>();
     }
     
     public UbicacionEntity findUbicacionById(long id) {
                
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -144,7 +147,7 @@ public class FarmaciaPersitence {
                        
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -166,7 +169,7 @@ public class FarmaciaPersitence {
                        
         FarmaciaEntity farmacia=null;
                 
-        TypedQuery query = em.createQuery("Select e From FarmaciaEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELEC, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         

@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.entities.Especializacion;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.ejb.Stateless;

@@ -24,9 +24,9 @@ public class UbicacionEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    public double latitud;
-    public double longitud;
-    public String nombre;
+    private double latitud;
+    private double longitud;
+    private String nombre;
 
     public Long getId() {
         return id;

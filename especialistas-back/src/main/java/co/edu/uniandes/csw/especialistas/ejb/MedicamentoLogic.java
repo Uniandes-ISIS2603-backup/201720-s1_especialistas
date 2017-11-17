@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -18,8 +19,18 @@ import javax.inject.Inject;
  */
 @Stateless
 public class MedicamentoLogic {
+    
+    private final MedicamentoPersistence persistence;
+    
+    public MedicamentoLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private MedicamentoPersistence persistence;
+    public MedicamentoLogic(MedicamentoPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
     
         /**
      * Método encargado de persistir un medicamento nuevo
@@ -57,8 +68,8 @@ public class MedicamentoLogic {
      */
         public List<MedicamentoEntity> getMedicamentos()
     {
-        List<MedicamentoEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -68,8 +79,8 @@ public class MedicamentoLogic {
      */
     public MedicamentoEntity getMedicamento(Long id)
     {
-        MedicamentoEntity entity = persistence.findById(id);
-        return entity;
+        return persistence.findById(id);
+        
     }
     
     /**
@@ -90,7 +101,7 @@ public class MedicamentoLogic {
      */
     public MedicamentoEntity getMedicametoByName(String nombre)
     {
-        MedicamentoEntity entity = persistence.findByName(nombre);
-        return entity;
+        return persistence.findByName(nombre);
+        
     }
 }

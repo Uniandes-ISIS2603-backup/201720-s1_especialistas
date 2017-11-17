@@ -24,9 +24,9 @@ public class FarmaciaDetailDTO extends FarmaciaDTO{
     
     public FarmaciaDetailDTO(FarmaciaEntity entity) {
         super(entity);
-        entity.getMedicamentos().forEach((x) -> {
-            this.medicamentos.add(new MedicamentoDTO(x));
-        });
+        entity.getMedicamentos().forEach(x -> 
+            this.medicamentos.add(new MedicamentoDTO(x))
+        );
     }
     private List<MedicamentoDTO> medicamentos;
 

@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("consultoriosModule", ['ui.router']);
-    mod.constant("consultoriosContext", "api/cons");
+    mod.constant("consultoriosContext", "api/consultorios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/consultorios/';
             $urlRouterProvider.otherwise("/consultoriosList");
