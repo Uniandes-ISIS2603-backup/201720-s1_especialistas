@@ -14,7 +14,6 @@ import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -39,7 +38,6 @@ import org.springframework.util.Assert;
 @Stateless
 public class HospitalResource {
     
-    private static final Logger LOGGER = Logger.getLogger(HospitalResource.class.getName());
 
     /**
      * Injección de la lógica de hospitales
@@ -53,7 +51,7 @@ public class HospitalResource {
     
     @Inject
     public HospitalResource(HospitalLogic logic){
-        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "logic must not be null!");
         this.logic = logic;
     }
     

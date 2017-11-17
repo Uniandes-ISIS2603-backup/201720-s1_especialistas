@@ -49,7 +49,7 @@ public class MedicoResource {
     
     @Inject
     public MedicoResource(MedicoLogic logic){
-        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "logic must not be null!");
         this.logic = logic;
     }
     

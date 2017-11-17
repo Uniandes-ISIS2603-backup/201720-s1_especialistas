@@ -40,7 +40,7 @@ public class OrdenMedicaResource {
     
     @Inject
     public OrdenMedicaResource(OrdenMedicaLogic logic){
-        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "logic must not be null!");
         this.logic = logic;
     }
     

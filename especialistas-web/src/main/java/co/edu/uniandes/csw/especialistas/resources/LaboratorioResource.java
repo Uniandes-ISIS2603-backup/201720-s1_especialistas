@@ -42,7 +42,7 @@ public class LaboratorioResource {
     
     @Inject
     public LaboratorioResource(LaboratorioLogic logic){
-        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "logic must not be null!");
         this.logic = logic;
     }
     
