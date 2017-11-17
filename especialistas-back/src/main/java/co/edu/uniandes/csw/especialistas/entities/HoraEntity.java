@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.especialistas.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -40,17 +41,15 @@ public class HoraEntity implements Serializable{
     private Date horaFin;
     
     @PodamExclude
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="MEDICO_ID")
+    @ManyToOne
     private MedicoEntity medico;
     
     @PodamExclude
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="CITA_ID")
+    @OneToOne
     private CitaEntity cita;
 
     @PodamExclude
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     private ConsultorioEntity consultorio;
     
     public Long getId() {

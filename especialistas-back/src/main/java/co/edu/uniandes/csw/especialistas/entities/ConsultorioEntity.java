@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.especialistas.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -42,7 +43,7 @@ public class ConsultorioEntity implements Serializable
      * Lista de horas que usan el consultorio
      */
     @PodamExclude
-    @OneToMany(mappedBy = "consultorio", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "consultorio", cascade=CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<HoraEntity> horas = new ArrayList<>();
     
     /**

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.ejb;
 
+import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.persistence.HoraPersistence;
 import java.util.List;
@@ -21,6 +22,9 @@ public class HoraLogic {
     @Inject
     private HoraPersistence persistence;
     
+    @Inject
+    private ConsultorioLogic consultorioLogic;
+    
     /**
      * Método encargado de persistir una hora nueva
      * @param entity Entidad de la hora
@@ -28,7 +32,13 @@ public class HoraLogic {
      */
     public HoraEntity createHora(HoraEntity entity)
     {
+        ConsultorioEntity c = entity.getConsultorio();
+        entity.setConsultorio(c);
         persistence.create(entity);
+        if(c != null){
+            c = consultorioLogic.getConsultorio(c.getId());
+            entity.setConsultorio(c);
+        }
         return entity;
     }
     

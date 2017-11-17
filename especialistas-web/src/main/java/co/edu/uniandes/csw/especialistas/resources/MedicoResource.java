@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.HoraDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HoraDetailDTO;
+import co.edu.uniandes.csw.especialistas.dtos.MedicoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicoDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.MedicoLogic;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
@@ -109,14 +110,15 @@ public class MedicoResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public MedicoDetailDTO updateMedico(@PathParam("id") Long id, MedicoDetailDTO medico)
+    public MedicoDTO updateMedico(@PathParam("id") Long id, MedicoDTO medico)
     {
         MedicoEntity newEntity = medico.toEntity();
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
         }
-        return new MedicoDetailDTO(logic.updateMedico(id, newEntity));
+        newEntity.setAgenda(entity.getAgenda());
+        return new MedicoDTO(logic.updateMedico(id, newEntity));
     }
     
     /**

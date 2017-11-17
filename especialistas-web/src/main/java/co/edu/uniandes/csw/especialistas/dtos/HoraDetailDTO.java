@@ -26,14 +26,9 @@ public class HoraDetailDTO extends HoraDTO{
 
     public HoraDetailDTO(HoraEntity entity) {
         super(entity);
-        this.medico = entity.getCita() != null?  new MedicoDTO(entity.getMedico()) : null;
+        this.medico = entity.getMedico()!= null?  new MedicoDTO(entity.getMedico()) : null;
         this.cita = entity.getCita() != null? new CitaDTO(entity.getCita()) : null;
-        if(entity.getConsultorio()!=null)
-        {this.consultorio = new ConsultorioDTO(entity.getConsultorio());}
-        else
-        {
-            this.consultorio=null;
-        }
+        this.consultorio = entity.getConsultorio()!= null? new ConsultorioDTO(entity.getConsultorio()) : null;
     }
 
     public MedicoDTO getMedico() {
@@ -63,9 +58,9 @@ public class HoraDetailDTO extends HoraDTO{
     @Override
     public HoraEntity toEntity() {
         HoraEntity entity = super.toEntity();
-        entity.setMedico(medico.toEntity());
+        entity.setMedico(medico != null? medico.toEntity(): null);
         entity.setCita(cita != null? cita.toEntity() : null);
-        entity.setConsultorio(consultorio.toEntity());
+        entity.setConsultorio(consultorio!= null? consultorio.toEntity() : null);
         return entity;
     }
 
