@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createExam">Actualizar examen</label></div>
+            <div class="panel-body">
+                <form ng-submit="updateExam()" name="examen">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="nombreExam" class="col-sm-2">Nombre:</label>
+                            <input id="nombreExam" required ng-model="nombreExam" class="form-control"/>
+                        </div>
+</div>
+<div class="form-group row">
+    <div class="form-group col-md-6">
+        <br><label for="examen-nombre" class="col-sm-2">Nombre:</label>
+        <input id="examen-nombre" required ng-model="nombreExam" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="examen-precio" class="col-sm-2">Precio:</label>
+                            <input type="number" id="examen-precio" required ng-model="precioExam" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="exam-recomend" class="col-sm-2">Recomendaciones:</label>
+                            <input type="number" min="-90" max="90" id="exam-recomend" required  ng-model="recomendacionesExam" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!usuario.$valid">
+
+                          
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input  type="submit" value="Guardar" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref='laboratoriosList'>Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

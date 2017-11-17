@@ -15,6 +15,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('examUpdate', {
+                url: '/examenes/{examenId}/update',
+                params :{
+                    examenId :null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'update/exam.update.html',
+                        controller: 'examUpdateCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
         }]);
 })(window.angular);
