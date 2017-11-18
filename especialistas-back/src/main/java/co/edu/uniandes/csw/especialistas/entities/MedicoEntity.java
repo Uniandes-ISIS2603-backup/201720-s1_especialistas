@@ -35,7 +35,7 @@ public class MedicoEntity implements Serializable{
     private Especializacion especializacion;
     
     @PodamExclude
-    @OneToMany(mappedBy="medico", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="medico", cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
     private List<HoraEntity> agenda;
 
     

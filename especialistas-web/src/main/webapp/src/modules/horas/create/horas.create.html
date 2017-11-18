@@ -11,7 +11,7 @@
                         <div class="form-group">
                         <label for="consultorioHora">Consultorio</label>
                         <select class="form-control" id="consultorioHora" required ng-model="consultorioHora">
-                            <option ng-repeat="consultorio in consultorios">{{consultorio.numero}}</option>
+                            <option ng-repeat="consultorio in consultorios" value={{consultorio}}>{{consultorio.numero}}</option>
                         </select>
                     </div>
                     <div class="form-group" ng-if="!hora.$valid">

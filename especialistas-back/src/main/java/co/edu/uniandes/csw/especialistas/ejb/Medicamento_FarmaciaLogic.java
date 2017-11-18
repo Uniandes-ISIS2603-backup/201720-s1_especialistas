@@ -45,7 +45,9 @@ public class Medicamento_FarmaciaLogic {
             return false;
         }
         entityF.agregarMedicamento(entityM);
+        logicFarmacia.updateFarmacia(entityF);
         entityM.agregarFarmacia(entityF);
+        logicMedicamento.updateMedicamento(entityM);
         return true;
     }
     
@@ -58,7 +60,9 @@ public class Medicamento_FarmaciaLogic {
             return false;
         }
         entityF.eliminarMedicamento(entityM);
+        logicMedicamento.updateMedicamento(entityM);
         entityM.eliminarFarmcia(entityF);
+        logicFarmacia.updateFarmacia(entityF);
         return true;
     }
     

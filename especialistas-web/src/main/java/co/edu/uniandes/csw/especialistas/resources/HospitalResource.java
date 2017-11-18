@@ -8,14 +8,11 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HospitalDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HospitalDetailDTO;
-import co.edu.uniandes.csw.especialistas.dtos.UbicacionDTO;
 import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
-import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -28,6 +25,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  * Clase que modela el recurso de hospitales
@@ -39,13 +37,24 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @Stateless
 public class HospitalResource {
+    
 
     /**
      * Injección de la lógica de hospitales
      */
-    @Inject
-    HospitalLogic logic;
+    
+    private final HospitalLogic logic;
 
+    public HospitalResource(){
+        logic = null;
+    }
+    
+    @Inject
+    public HospitalResource(HospitalLogic logic){
+        Assert.notNull(logic, "logic must not be null!");
+        this.logic = logic;
+    }
+    
     /**
      * Método encargado de obtener todos los hospitales
      *
@@ -62,7 +71,7 @@ public class HospitalResource {
             }
             return listaHospitales;
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 404);
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -80,7 +89,8 @@ public class HospitalResource {
             HospitalDetailDTO hospital = new HospitalDetailDTO(entidad);
             return hospital;
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -97,7 +107,8 @@ public class HospitalResource {
             logic.createHospital(entidad);
             return hospital;
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 500);
+            
+            throw new WebApplicationException(e, 500);
         }
     }
 
@@ -125,7 +136,8 @@ public class HospitalResource {
         try {
             logic.deleteHospital(id);
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 500);
+            
+            throw new WebApplicationException(e, 500);
         }
     }
 
@@ -143,7 +155,8 @@ public class HospitalResource {
             List<ConsultorioDTO> respuesta = listConsultorioEntity2DTO(entidad.getConsultorios());
             return respuesta;
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -163,7 +176,8 @@ public class HospitalResource {
             HospitalEntity hospital = logic.addConsultorio(id, entidadConsultorio);
             return new HospitalDetailDTO(hospital);
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -174,7 +188,8 @@ public class HospitalResource {
             HospitalEntity hospital = logic.deleteConsultorio(idHospital, idConsultorio);
             return new HospitalDetailDTO(hospital);
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 

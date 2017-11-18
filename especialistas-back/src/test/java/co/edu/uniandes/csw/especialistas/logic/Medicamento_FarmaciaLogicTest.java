@@ -5,8 +5,12 @@
  */
 package co.edu.uniandes.csw.especialistas.logic;
 
+import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
+import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
+import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
+import co.edu.uniandes.csw.especialistas.persistence.FarmaciaPersitence;
 import co.edu.uniandes.csw.especialistas.persistence.MedicamentoPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,26 +24,32 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
+
 /**
  *
- * @author ce.quintero
+ * @author rc.tejon
  */
 @RunWith(Arquillian.class)
-public class MedicamentoLogicTest {
-    @Deployment
+public class Medicamento_FarmaciaLogicTest {
+    
+   @Deployment
     public static JavaArchive CreateDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(MedicamentoEntity.class.getPackage())
                 .addPackage(MedicamentoPersistence.class.getPackage())
                 .addPackage(MedicamentoLogic.class.getPackage())
+                .addPackage(FarmaciaEntity.class.getPackage())
+                .addPackage(FarmaciaPersitence.class.getPackage())
+                .addPackage(FarmaciaLogic.class.getPackage())
+                .addPackage(Medicamento_FarmaciaLogicTest.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
@@ -48,7 +58,13 @@ public class MedicamentoLogicTest {
     private MedicamentoPersistence persistence;
     
     @Inject
-    private MedicamentoLogic logic;
+    private Medicamento_FarmaciaLogic logic;
+    
+    @Inject 
+    private FarmaciaLogic farmaciaLogic;
+    
+    @Inject 
+    private MedicamentoLogic medicamentoLogic;
     
     @PersistenceContext
     private EntityManager em;
@@ -56,10 +72,8 @@ public class MedicamentoLogicTest {
     @Inject
     UserTransaction utx;
     
-    private List<MedicamentoEntity> data = new ArrayList<>();
-    
-    public MedicamentoLogicTest() {
-    }
+    private List<FarmaciaEntity> dataFarmacias = new ArrayList<>();
+    private List<MedicamentoEntity> dataMedicamentos = new ArrayList<>();
     
     @BeforeClass
     public static void setUpClass() {
@@ -68,6 +82,7 @@ public class MedicamentoLogicTest {
     @AfterClass
     public static void tearDownClass() {
     }
+    
     
     @Before
     public void setUp() {
@@ -95,61 +110,44 @@ public class MedicamentoLogicTest {
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for(int i = 0; i < 10; i++){
-            MedicamentoEntity entity = factory.manufacturePojo(MedicamentoEntity.class);
+            FarmaciaEntity entity = factory.manufacturePojo(FarmaciaEntity.class);
             
             em.persist(entity);
-            data.add(entity);
+            dataFarmacias.add(entity);
+                 
+            MedicamentoEntity entitym = factory.manufacturePojo(MedicamentoEntity.class);
+            
+            em.persist(entitym);
+            dataMedicamentos.add(entitym);      
         }
     }
     
     @After
     public void tearDown() {
     }
-    
-    private MedicamentoEntity entity = new MedicamentoEntity();
+
+    private FarmaciaEntity entityf = new FarmaciaEntity();
+    private MedicamentoEntity entitym = new MedicamentoEntity();
 
     /**
-     * Test of create method, of class MedicamentoPersistence.
+     * Test of agregarRelacion method, of class Medicamento_FarmaciaLogic.
      */
     @Test
-    public void testCreate() throws Exception {
-        entity = new MedicamentoEntity();
-        logic.createMedicamento(entity);
-        
-        assertEquals(logic.getMedicamento(entity.getId()), entity);
-        
+    public void testAgregarRelacion() {
+        entityf = dataFarmacias.get((int)(Math.random()*dataFarmacias.size()));
+        entitym = dataMedicamentos.get((int)(Math.random()*dataMedicamentos.size()));
+        assertTrue(logic.agregarRelacion(entityf.getId(), entitym.getId()));
     }
-    
+
     /**
-     * Test of update method, of class MedicamentoPersistence.
+     * Test of eliminarRelacion method, of class Medicamento_FarmaciaLogic.
      */
     @Test
-    public void testUpdate() throws Exception {
-        entity = new MedicamentoEntity();
-        logic.createMedicamento(entity);
-        entity.setNombre("nombre");
-        assertEquals(logic.updateMedicamento(entity), entity);
-    }
-    
-    /**
-     * Test of findAll method, of class MedicamentoPersistence.
-     */
-    @Test
-    public void testGet() throws Exception {
-        entity = new MedicamentoEntity();
-        logic.createMedicamento(entity);
-        assertEquals(logic.getMedicamentos().contains(entity), true);
-    }
-    
-    /**
-     * Test of delete method, of class MedicamentoPersistence.
-     */
-    @Test
-    public void testDelete() throws Exception {
-        entity = new MedicamentoEntity();
-        logic.createMedicamento(entity);
-        logic.deleteMedicamento(entity.getId());
-        assertEquals(logic.getMedicamento(entity.getId()), null);
+    public void testEliminarRelacion() throws Exception {
+        entityf = dataFarmacias.get((int)(Math.random()*dataFarmacias.size()));
+        entitym = dataMedicamentos.get((int)(Math.random()*dataMedicamentos.size()));
+        logic.agregarRelacion(entityf.getId(), entitym.getId());
+        assertTrue(logic.eliminarRelacion(entityf.getId(), entitym.getId()));
     }
     
 }

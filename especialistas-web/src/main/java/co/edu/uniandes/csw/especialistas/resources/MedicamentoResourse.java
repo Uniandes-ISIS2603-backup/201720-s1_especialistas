@@ -48,20 +48,19 @@ public class MedicamentoResourse {
     
 
     
-    private final Medicamento_FarmaciaLogic logicMF;
+    
     
     
      public MedicamentoResourse(){
         logic = null;
-        logicMF = null;
+        
     }
     
     @Inject
     public MedicamentoResourse(MedicamentoLogic logic, Medicamento_FarmaciaLogic logicMF){
         Assert.notNull(logic, "MyCollaborator must not be null!");
-        Assert.notNull(logicMF, "MyCollaborator must not be null!");
         this.logic = logic;
-        this.logicMF = logicMF;
+        
     }
 
     /**

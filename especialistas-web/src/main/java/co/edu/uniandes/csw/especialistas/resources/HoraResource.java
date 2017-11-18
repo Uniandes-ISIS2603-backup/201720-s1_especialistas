@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.HoraDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.HoraLogic;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -53,9 +54,10 @@ public class HoraResource {
      * Recurso que crea una hora
      * @param hora JSON con la información de la hora
      * @return JSON con la hora creada
+     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
      */
     @POST
-    public HoraDetailDTO createHora(HoraDetailDTO hora)
+    public HoraDetailDTO createHora(HoraDetailDTO hora) throws BusinessLogicException
     {
         HoraEntity entity = hora.toEntity();
         logic.createHora(entity);

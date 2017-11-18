@@ -72,7 +72,7 @@ insert into HospitalEntity(id, nombre) values (2, 'Casa');
 insert into ConsultorioEntity(id, numero) values (1, 'aaa');
 insert into ConsultorioEntity(id, numero) values (2, 'bbb');
 
-
+update HoraEntity set consultorio_id = 1;
 
 insert into LaboratorioEntity (id, nombre) values (2, 'nuevo lab');
 insert into LaboratorioEntity (id, nombre) values (20, 'Laboratorio Central');

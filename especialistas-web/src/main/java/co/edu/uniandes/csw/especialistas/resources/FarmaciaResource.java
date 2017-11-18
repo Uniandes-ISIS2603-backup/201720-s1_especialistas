@@ -49,7 +49,6 @@ public class FarmaciaResource {
     private final FarmaciaLogic logic;
     
     
-    private final MedicamentoLogic logicMedicamento;
     
     /**
      * Clase de la logica de los metodos que comparten medicamento y faracia
@@ -59,17 +58,16 @@ public class FarmaciaResource {
     
     public FarmaciaResource(){
         logic = null;
-        logicMedicamento = null;
+       
         logicMF = null;
     }
     
     @Inject
-    public FarmaciaResource(FarmaciaLogic logic, MedicamentoLogic logicMedicamento, Medicamento_FarmaciaLogic logicMF){
-        Assert.notNull(logic, "MyCollaborator must not be null!");
-        Assert.notNull(logic, "MyCollaborator must not be null!");
-        Assert.notNull(logic, "MyCollaborator must not be null!");
+    public FarmaciaResource(FarmaciaLogic logic, Medicamento_FarmaciaLogic logicMF){
+        Assert.notNull(logic, "logic must not be null!");
+        Assert.notNull(logicMF, "logicMF must not be null!");
         this.logic = logic;
-        this.logicMedicamento = logicMedicamento;
+        
         this.logicMF = logicMF;
     }
     
@@ -192,7 +190,6 @@ public class FarmaciaResource {
     public List<FarmaciaDetailDTO> getFarmacias()
     {
         return listToList(logic.getFarmacias());
-        
     }
     
     private List<FarmaciaDetailDTO> listToList(List<FarmaciaEntity> entityList) {
