@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDTO;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.ConsultorioLogic;
+import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -43,7 +44,10 @@ public class ConsultorioResource {
      */
     @Inject
     ConsultorioLogic logic;
-
+    
+    @Inject
+    private HospitalLogic hospitalLogic;
+    
     /**
      * Método que busca todos los consultorios
      *
@@ -61,6 +65,11 @@ public class ConsultorioResource {
         return lista;
     }
 
+    /**
+     * Método que retorna la  información de un consultorio
+     * @param idConsultorio id del consultorio
+     * @return DetailDTO con el información del consultorio
+     */
     @GET
     @Path("/{id: \\d+}")
     public ConsultorioDetailDTO getConsultorio(@PathParam("id") Long idConsultorio) {
@@ -69,6 +78,22 @@ public class ConsultorioResource {
             ConsultorioDetailDTO consultorio = new ConsultorioDetailDTO(entidad);
             return consultorio;
         } catch (BusinessLogicException e) {
+            throw new WebApplicationException(e.getMessage(), 404);
+        }
+    }
+    
+    /**
+     * 
+     * @param dto
+     * @return 
+     */
+    @POST
+    public ConsultorioDetailDTO postConsultorio(ConsultorioDetailDTO dto){
+        try{
+            ConsultorioEntity consultorio = dto.toEntity();
+            hospitalLogic.addConsultorio(consultorio.getHospital().getId(), consultorio);
+            return dto;
+        }catch(BusinessLogicException e){
             throw new WebApplicationException(e.getMessage(), 404);
         }
     }
