@@ -36,9 +36,10 @@
                     }
                 }
             }).state('consultorioDelete', {
-                url: '/consultorios/delete/{consultorioId:int}',
+                url: 'hospitales/{hospitalId:int}/consultorios/delete/{consultorioId:int}',
                 param: {
-                    consultorioId: null
+                    consultorioId:null,
+                    hospitalId:null,
                 },
                 views: {
                     'mainView': {
