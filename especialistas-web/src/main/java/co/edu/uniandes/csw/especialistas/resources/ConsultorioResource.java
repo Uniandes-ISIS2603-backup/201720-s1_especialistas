@@ -17,7 +17,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -38,11 +37,17 @@ public class ConsultorioResource {
     /**
      * Atributo que modela la lógica de los consultorios
      */
-    @Inject
-    ConsultorioLogic logic;
+    
+    private final ConsultorioLogic logic;
+    
+    public ConsultorioResource(){
+        logic = null;
+    }
     
     @Inject
-    private HospitalLogic hospitalLogic;
+    public ConsultorioResource(ConsultorioLogic logic){
+        this.logic = logic;
+    }
     
     /**
      * Método que busca todos los consultorios
@@ -74,7 +79,7 @@ public class ConsultorioResource {
             ConsultorioDetailDTO consultorio = new ConsultorioDetailDTO(entidad);
             return consultorio;
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 404);
+            throw new WebApplicationException(e, 404);
         }
     }
 

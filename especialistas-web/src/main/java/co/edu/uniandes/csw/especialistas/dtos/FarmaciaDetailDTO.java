@@ -46,9 +46,9 @@ public class FarmaciaDetailDTO extends FarmaciaDTO{
         {
             medicamentos=new ArrayList<>();
         }
-        medicamentos.forEach((x) -> {
-            entity.getMedicamentos().add(x.toEntity());
-        });
+        medicamentos.forEach(x -> 
+            entity.getMedicamentos().add(x.toEntity())
+        );
         
         return entity;
     }
