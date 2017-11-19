@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
+import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -87,6 +88,9 @@ public class MedicamentoPersistenceTest {
    
     @Inject
     private MedicamentoPersistence medicamentoPersistence;
+    
+    @Inject
+    private FarmaciaPersitence farmaciaP;
 
     private void clearData() {
         em.createQuery("delete from MedicamentoEntity").executeUpdate();
@@ -109,11 +113,17 @@ public class MedicamentoPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         MedicamentoEntity newEntity = factory.manufacturePojo(MedicamentoEntity.class);
         MedicamentoEntity result = medicamentoPersistence.create(newEntity);
+        
 
         Assert.assertNotNull(result);
 
         MedicamentoEntity entity = em.find(MedicamentoEntity.class, result.getId());
 
+        FarmaciaEntity farmacia = factory.manufacturePojo(FarmaciaEntity.class);
+        farmaciaP.create(farmacia);
+        medicamentoPersistence.agregarFarmaciasById(entity.getId(), farmacia);
+        newEntity.agregarFarmacia(farmacia);
+                
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getFarmacias(), entity.getFarmacias());
         Assert.assertTrue(newEntity.getPrecio()==entity.getPrecio());
@@ -123,11 +133,13 @@ public class MedicamentoPersistenceTest {
         Assert.assertEquals(true, entity.equals(entity));
         
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        Assert.assertEquals(medicamentoPersistence.findByName(entity.getNombre()).getId(), entity.getId());
         entity.setId(null);
         Assert.assertEquals(false, entity.equals(entity));
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(false, newEntity.equals(entity));
         Assert.assertEquals(entity.hashCode(), entity.hashCode());
+        
      
     }
 

@@ -124,10 +124,19 @@ public class HospitalPersistenceTest {
 
         HospitalEntity result = persistence.create(newEntity);
 
+        UbicacionEntity ub = new UbicacionEntity();
+        
+        
+        
         Assert.assertNotNull(result);
 
         HospitalEntity entity = em.find(HospitalEntity.class, result.getId());
 
+        persistence.setUbicacionById(entity.getId(), ub);
+        
+                
+        Assert.assertEquals(newEntity.getUbicacion(), entity.getUbicacion());        
+                
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getConsultorios(), entity.getConsultorios());
         Assert.assertEquals(newEntity.getUbicacion(), entity.getUbicacion());
@@ -142,6 +151,8 @@ public class HospitalPersistenceTest {
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(false, newEntity.equals(entity));
         Assert.assertEquals(entity.hashCode(), entity.hashCode());
+        
+        
     }
 
     /**

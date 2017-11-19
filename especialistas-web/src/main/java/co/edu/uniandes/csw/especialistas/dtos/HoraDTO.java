@@ -15,9 +15,9 @@ public class HoraDTO {
     
     private Long id;
     
-    private Date horaInicio;
+    private Date horaInicioD;
     
-    private Date horaFin;
+    private Date horaFinD;
     
     public HoraDTO(){
         //inicialmenete vacio
@@ -25,8 +25,8 @@ public class HoraDTO {
     
    public HoraDTO(HoraEntity entity){
        this.id = entity.getId();
-       this.horaInicio = entity.getHoraInicio();
-       this.horaFin = entity.getHoraFin();
+       this.horaInicioD = entity.getHoraInicio();
+       this.horaFinD = entity.getHoraFin();
    }
 
     public Long getId() {
@@ -38,26 +38,26 @@ public class HoraDTO {
     }
    
     public Date getHoraInicio() {
-        return horaInicio;
+        return horaInicioD;
     }
 
     public void setHoraInicio(Date horaInicio) {
-        this.horaInicio = horaInicio;
+        this.horaInicioD = horaInicio;
     }
 
     public Date getHoraFin() {
-        return horaFin;
+        return horaFinD;
     }
 
     public void setHoraFin(Date horaFin) {
-        this.horaFin = horaFin;
+        this.horaFinD = horaFin;
     }
     
     public HoraEntity toEntity(){
         HoraEntity entity = new HoraEntity();
         entity.setId(id);
-        entity.setHoraInicio(horaInicio);
-        entity.setHoraFin(horaFin);
+        entity.setHoraInicio(horaInicioD);
+        entity.setHoraFin(horaFinD);
         return entity;
     }
 }
