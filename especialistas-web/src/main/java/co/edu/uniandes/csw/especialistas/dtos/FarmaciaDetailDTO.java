@@ -21,6 +21,7 @@ public class FarmaciaDetailDTO extends FarmaciaDTO{
         //inicialmente vacio
     }
 
+    private List<MedicamentoDTO> medicamentos;
     
     public FarmaciaDetailDTO(FarmaciaEntity entity) {
         super(entity);
@@ -28,7 +29,7 @@ public class FarmaciaDetailDTO extends FarmaciaDTO{
             this.medicamentos.add(new MedicamentoDTO(x))
         );
     }
-    private List<MedicamentoDTO> medicamentos;
+    
 
     public List<MedicamentoDTO> getMedicamentos() {
         return medicamentos;

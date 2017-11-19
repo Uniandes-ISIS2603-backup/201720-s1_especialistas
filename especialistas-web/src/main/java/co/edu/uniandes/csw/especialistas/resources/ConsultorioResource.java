@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDTO;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.ConsultorioLogic;
-import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -76,8 +75,8 @@ public class ConsultorioResource {
     public ConsultorioDetailDTO getConsultorio(@PathParam("id") Long idConsultorio) {
         try {
             ConsultorioEntity entidad = logic.getConsultorio(idConsultorio);
-            ConsultorioDetailDTO consultorio = new ConsultorioDetailDTO(entidad);
-            return consultorio;
+            return new ConsultorioDetailDTO(entidad);
+            
         } catch (BusinessLogicException e) {
             throw new WebApplicationException(e, 404);
         }

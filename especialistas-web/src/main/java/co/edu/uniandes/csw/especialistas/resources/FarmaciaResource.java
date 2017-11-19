@@ -9,7 +9,7 @@ import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDetailDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.UbicacionDTO;
 import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
-import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
+import co.edu.uniandes.csw.especialistas.ejb.MedicamentoFarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
@@ -53,7 +53,7 @@ public class FarmaciaResource {
      * Clase de la logica de los metodos que comparten medicamento y faracia
      */
     
-    private final Medicamento_FarmaciaLogic logicMF;
+    private final MedicamentoFarmaciaLogic logicMF;
     
     public FarmaciaResource(){
         logic = null;
@@ -62,7 +62,7 @@ public class FarmaciaResource {
     }
     
     @Inject
-    public FarmaciaResource(FarmaciaLogic logic, Medicamento_FarmaciaLogic logicMF){
+    public FarmaciaResource(FarmaciaLogic logic, MedicamentoFarmaciaLogic logicMF){
         Assert.notNull(logic, "logic must not be null!");
         Assert.notNull(logicMF, "logicMF must not be null!");
         this.logic = logic;
