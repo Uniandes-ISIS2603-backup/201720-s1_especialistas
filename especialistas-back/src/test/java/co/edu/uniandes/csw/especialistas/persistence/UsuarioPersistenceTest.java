@@ -136,6 +136,7 @@ public class UsuarioPersistenceTest {
         newEntity.setCitas(citas);
         newEntity.setPagos(citas);
         
+        
         UsuarioEntity result = persistence.create(newEntity);
         
         Assert.assertNotNull(result);
