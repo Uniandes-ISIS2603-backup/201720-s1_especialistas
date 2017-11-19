@@ -24,11 +24,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import  org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -95,7 +91,7 @@ public class MedicoPersistenceTest {
     
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10; i++){
             MedicoEntity entity = factory.manufacturePojo(MedicoEntity.class);
             
             em.persist(entity);

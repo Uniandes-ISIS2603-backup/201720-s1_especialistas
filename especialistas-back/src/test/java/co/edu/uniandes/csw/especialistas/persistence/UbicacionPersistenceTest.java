@@ -96,7 +96,7 @@ public class UbicacionPersistenceTest {
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             UbicacionEntity entity = factory.manufacturePojo(UbicacionEntity.class);
 
             em.persist(entity);
