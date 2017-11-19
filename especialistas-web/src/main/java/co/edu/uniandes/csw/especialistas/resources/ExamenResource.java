@@ -78,7 +78,7 @@ public class ExamenResource {
     public ExamenDetailDTO getExamenByName(@PathParam("nombre") String nombre){
         ExamenEntity entity = logic.getExamen(nombre);
         if (entity == null) {
-            throw new WebApplicationException("No existe un examen con el nombre " + nombre);
+            throw new WebApplicationException("1 No existe un examen con el nombre " + nombre);
         }
         return new ExamenDetailDTO(entity);
     }
@@ -88,7 +88,7 @@ public class ExamenResource {
     public ExamenDetailDTO getExamenByID(@PathParam("id") Long id){
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
-            throw new WebApplicationException("No existe un examen con el id " + id);
+            throw new WebApplicationException("1 No existe un examen con el id " + id);
         }
         return new ExamenDetailDTO(entity);
     }
@@ -99,7 +99,7 @@ public class ExamenResource {
         examen.setId(id);
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
-            throw new WebApplicationException("No existe un examen con el id " + id);
+            throw new WebApplicationException("2 No existe un examen con el id " + id);
             
         }
         return new ExamenDetailDTO(logic.updateExamen(examen.toEntity()));
@@ -110,7 +110,7 @@ public class ExamenResource {
     public void deleteExamen(@PathParam("id") Long id){
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
-            throw new WebApplicationException("No existe un examen con el id " + id);
+            throw new WebApplicationException("3 No existe un examen con el id " + id);
             
         }
         logic.deleteExamen(id);

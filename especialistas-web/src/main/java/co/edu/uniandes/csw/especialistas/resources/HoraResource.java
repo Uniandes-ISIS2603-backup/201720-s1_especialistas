@@ -75,7 +75,7 @@ public class HoraResource {
     {
         HoraEntity entity = logic.getHora(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /horas/" + id + " no existe.", 404);
+            throw new WebApplicationException("1 El recurso /horas/" + id + " 1 no existe.", 404);
         }
         return new HoraDetailDTO(entity);
     }
@@ -107,7 +107,7 @@ public class HoraResource {
         HoraEntity newEntity = hora.toEntity();
         HoraEntity entity = logic.getHora(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /horas/" + id + " no existe.", 404);
+            throw new WebApplicationException("2 El recurso /horas/" + id + " 2 no existe.", 404);
         }
         return new HoraDetailDTO(logic.updateHora(id, newEntity));
     }
@@ -122,7 +122,7 @@ public class HoraResource {
     {
         HoraEntity entity = logic.getHora(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /horas/" + id + " no existe.", 404);
+            throw new WebApplicationException("3 El recurso /horas/" + id + " 3 no existe.", 404);
         }
         logic.deleteHora(id);
     }

@@ -18,6 +18,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class ConsultorioPersistence {
+    private final static String SELECT = "Select e From ConsultorioEntity e where e.id = :id";
 
     /**
      * Atributo que modela la unidad de persistencia
@@ -59,7 +60,7 @@ public class ConsultorioPersistence {
      */
     public ConsultorioEntity findById(long id) {
 
-        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.id = :id", ConsultorioEntity.class);
+        TypedQuery query = em.createQuery(SELECT, ConsultorioEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -79,7 +80,7 @@ public class ConsultorioPersistence {
 
         ConsultorioEntity consultorio = null;
 
-        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.id = :id", ConsultorioEntity.class);
+        TypedQuery query = em.createQuery(SELECT, ConsultorioEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -119,7 +120,7 @@ public class ConsultorioPersistence {
 
         ConsultorioEntity consultorio = null;
 
-        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.id = :id", ConsultorioEntity.class);
+        TypedQuery query = em.createQuery(SELECT, ConsultorioEntity.class);
 
         query = query.setParameter("id", id);
 

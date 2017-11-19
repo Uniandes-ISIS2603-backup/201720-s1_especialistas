@@ -77,7 +77,7 @@ public class MedicoResource {
     {
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException("1 El recurso /medicos/" + id + " 1 no existe.", 404);
         }
 
         return new MedicoDetailDTO(entity);
@@ -126,7 +126,7 @@ public class MedicoResource {
         MedicoEntity newEntity = medico.toEntity();
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException(" 2 El recurso /medicos/" + id + " 2 no existe.", 404);
         }
         newEntity.setAgenda(entity.getAgenda());
         return new MedicoDTO(logic.updateMedico(id, newEntity));
@@ -142,7 +142,7 @@ public class MedicoResource {
     {
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException("3 El recurso /medicos/" + id + " 3 no existe.", 404);
         }
         logic.deleteMedico(id);
     }
@@ -157,7 +157,7 @@ public class MedicoResource {
     public List<HoraDetailDTO> getAgenda(@PathParam("id") Long id){
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException("4 El recurso /medicos/" + id + " 4 no existe.", 404);
         }
 
         MedicoEntity newEntity = logic.getMedico(id);
@@ -179,7 +179,7 @@ public class MedicoResource {
     public List<HoraDetailDTO> cambiarAgenda(@PathParam("id") Long id, List<HoraDTO> agenda){
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException("5 El recurso /medicos/" + id + " 5 no existe.", 404);
         }
         MedicoEntity newEntity = logic.getMedico(id);
         List<HoraEntity> lista = new ArrayList<>();

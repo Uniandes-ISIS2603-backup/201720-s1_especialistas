@@ -80,7 +80,7 @@ public class PagoResource {
     public PagoDetailDTO getPagoByID(@PathParam("id") Long id) {
         PagoEntity entity = logic.getPagoById(id);
         if (entity == null) {
-            throw new WebApplicationException("No existe un Pago con el id " + id);
+            throw new WebApplicationException("1 No existe un Pago con el id " + id);
         }
         return new PagoDetailDTO(entity);
     }
@@ -91,7 +91,7 @@ public class PagoResource {
         pago.setId(id);
         PagoEntity entity = logic.getPagoById(id);
         if (entity == null) {
-            throw new WebApplicationException("No existe un Pago con el id " + id);
+            throw new WebApplicationException("2 No existe un Pago con el id " + id);
         }
         return new PagoDetailDTO(logic.updatePago(pago.toEntity()));
     }
@@ -101,7 +101,7 @@ public class PagoResource {
     public void deletePago(@PathParam("id") Long id) {
         PagoEntity entity = logic.getPagoById(id);
         if (entity == null) {
-            throw new WebApplicationException("No existe un Pago con el id " + id);
+            throw new WebApplicationException("3 No existe un Pago con el id " + id);
         }
         logic.deletePago(id);
     }

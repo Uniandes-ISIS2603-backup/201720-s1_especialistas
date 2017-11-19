@@ -24,6 +24,8 @@ public class MedicamentoPersistence {
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
     
+    private final static String SELECT = "Select e From MedicamentoEntity e where e.id = :id";
+    
      /**
      *
      * @param entity objeto Medicamento que se creará en la base de datos
@@ -55,7 +57,7 @@ public class MedicamentoPersistence {
     
         public MedicamentoEntity findById(long id) {
 
-        TypedQuery query = em.createQuery("Select e From MedicamentoEntity e where e.id = :id", MedicamentoEntity.class);
+        TypedQuery query = em.createQuery(SELECT, MedicamentoEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -70,7 +72,7 @@ public class MedicamentoPersistence {
         
         MedicamentoEntity medicamento=null;
                 
-        TypedQuery query = em.createQuery("Select e From MedicamentoEntity e where e.id = :id", MedicamentoEntity.class);
+        TypedQuery query = em.createQuery(SELECT, MedicamentoEntity.class);
 
         query = query.setParameter("id", id);
         
@@ -102,7 +104,7 @@ public class MedicamentoPersistence {
                        
         MedicamentoEntity medicamento=null;
                 
-        TypedQuery query = em.createQuery("Select e From MedicamentoEntity e where e.id = :id", FarmaciaEntity.class);
+        TypedQuery query = em.createQuery(SELECT, FarmaciaEntity.class);
 
         query = query.setParameter("id", id);
         
