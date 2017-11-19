@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("pagoModule", ['ui.router']);
 
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    mod.config(['$stateProvider', function ($stateProvider) {
             var basePath = 'src/modules/pagos/';
             $stateProvider.state('pagosList', {
                 url: '/pagos/list',

@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
-import co.edu.uniandes.csw.especialistas.ejb.MedicamentoFarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
@@ -57,7 +56,7 @@ public class MedicamentoResourse {
     }
     
     @Inject
-    public MedicamentoResourse(MedicamentoLogic logic, MedicamentoFarmaciaLogic logicMF){
+    public MedicamentoResourse(MedicamentoLogic logic){
         Assert.notNull(logic, "MyCollaborator must not be null!");
         this.logic = logic;
         

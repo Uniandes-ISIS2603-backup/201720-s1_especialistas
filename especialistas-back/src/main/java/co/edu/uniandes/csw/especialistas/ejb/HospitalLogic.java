@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.persistence.UbicacionPersistence;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.especialistas.persistence.ConsultorioPersistence;
 import co.edu.uniandes.csw.especialistas.persistence.HospitalPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -54,7 +53,7 @@ public class HospitalLogic {
     }
     
     @Inject
-    public HospitalLogic(HospitalPersistence persistence,ConsultorioLogic consultorioLogic,UbicacionPersistence up,ConsultorioPersistence consultorioPersistence){
+    public HospitalLogic(HospitalPersistence persistence,ConsultorioLogic consultorioLogic,UbicacionPersistence up){
         this.persistence = persistence;
         this.consultorioLogic = consultorioLogic;
         this.up = up;

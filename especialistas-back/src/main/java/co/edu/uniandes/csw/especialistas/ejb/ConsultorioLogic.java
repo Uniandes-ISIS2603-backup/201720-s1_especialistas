@@ -24,22 +24,18 @@ public class ConsultorioLogic {
     
     private final ConsultorioPersistence persistence;
     
-    /**
-     * Injección de la persistencia de hospitales
-     */
     
-    private final HospitalPersistence hospitalPersistence;
     
     
     public ConsultorioLogic(){
-        hospitalPersistence = null;
+        
         persistence = null;
     }
     
     @Inject
     public ConsultorioLogic(ConsultorioPersistence persistence,HospitalPersistence hospitalPersistence ){
         this.persistence = persistence;
-        this.hospitalPersistence = hospitalPersistence;
+        
     }
     
 

@@ -3,8 +3,8 @@
             var mod = ng.module("tarjetaModule");
             mod.constant("tarjetasContext", "api/tarjetas");
             mod.constant("citasContext", "api/citas");
-            mod.controller('tarjetaUpdateCtrl', ['$scope', '$http', 'tarjetasContext', '$state', 'citasContext', '$rootScope', '$filter',
-                function ($scope, $http, tarjetasContext, $state, citasContext, $rootScope, $filter) {
+            mod.controller('tarjetaUpdateCtrl', ['$scope', '$http', 'tarjetasContext', '$state', 'citasContext', '$rootScope',
+                function ($scope, $http, tarjetasContext, $state, citasContext, $rootScope) {
                     $rootScope.edit = true;
 
                     var idTarjeta = $state.params.tarjetaId;
