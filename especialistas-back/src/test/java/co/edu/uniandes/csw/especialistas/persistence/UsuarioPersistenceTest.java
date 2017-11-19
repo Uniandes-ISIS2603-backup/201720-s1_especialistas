@@ -132,8 +132,9 @@ public class UsuarioPersistenceTest {
         newTarjeta.setUsuario(newEntity);
         
         newEntity.setTarjeta(newTarjeta);
-        newEntity.setCitas(null);
-        newEntity.setPagos(null);
+        ArrayList citas =new ArrayList();
+        newEntity.setCitas(citas);
+        newEntity.setPagos(citas);
         
         UsuarioEntity result = persistence.create(newEntity);
         
