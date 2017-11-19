@@ -172,8 +172,9 @@ public class HospitalLogic {
             throw new BusinessLogicException("3 No existe un hospital con el id " + idHospital);
         } else {
             consultorio.setHospital(hospital);
-            hospital.getConsultorios().add(consultorio);
+            
             consultorioLogic.createConsultorio(consultorio);
+            hospital.getConsultorios().add(consultorio);
             persistence.update(hospital);
             return hospital;
         }
