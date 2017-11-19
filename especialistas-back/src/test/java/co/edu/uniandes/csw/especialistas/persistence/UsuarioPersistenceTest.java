@@ -141,6 +141,7 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCedula(), entity.getCedula());
         Assert.assertEquals(newEntity.getCitas(), entity.getCitas());
+        Assert.assertEquals(newEntity.getPagos(), entity.getPagos());
         Assert.assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
         Assert.assertEquals(newEntity.getTarjeta().getNumero(), entity.getTarjeta().getNumero());
         Assert.assertEquals(false, entity.equals(null));
@@ -148,6 +149,9 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(true, entity.equals(entity));
         Assert.assertEquals(true, entity.getTarjeta().equals(newTarjeta));
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        Assert.assertEquals(newEntity.getNick(), entity.getNick());
+        Assert.assertEquals(newEntity.getPass(), entity.getPass());
+        Assert.assertEquals(newEntity.getRol(), entity.getRol());
         entity.setId(null);
         Assert.assertEquals(false, entity.equals(entity));
         Assert.assertEquals(false, entity.equals(null));
