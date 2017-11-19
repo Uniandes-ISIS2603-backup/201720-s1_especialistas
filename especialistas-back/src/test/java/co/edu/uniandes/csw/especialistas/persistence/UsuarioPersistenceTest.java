@@ -132,6 +132,8 @@ public class UsuarioPersistenceTest {
         newTarjeta.setUsuario(newEntity);
         
         newEntity.setTarjeta(newTarjeta);
+        newEntity.setCitas(null);
+        newEntity.setPagos(null);
         
         UsuarioEntity result = persistence.create(newEntity);
         
@@ -140,6 +142,7 @@ public class UsuarioPersistenceTest {
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCedula(), entity.getCedula());
+        
         Assert.assertEquals(newEntity.getCitas(), entity.getCitas());
         Assert.assertEquals(newEntity.getPagos(), entity.getPagos());
         Assert.assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
