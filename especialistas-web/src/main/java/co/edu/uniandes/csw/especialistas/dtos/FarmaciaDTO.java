@@ -68,7 +68,10 @@ public class FarmaciaDTO  extends EspecialistasDTO{
         entity.setNombre(this.nombre);
         entity.setId(this.id);
         entity.setRadio(this.radio);
-        if(this.ubicacion!=null){entity.setUbicacion(this.ubicacion.toEntity());}
+        if(this.ubicacion!=null)
+        {
+            entity.setUbicacion(this.ubicacion.toEntity());
+        }
         else{entity.setUbicacion(null);};
         return entity;
     }

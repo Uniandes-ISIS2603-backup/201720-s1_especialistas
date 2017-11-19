@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class HospitalPersistence {
-private final static String SELECT = "Select e From HospitalEntity e where e.id = :id";
+private static final String SELECT = "Select e From HospitalEntity e where e.id = :id";
     /**
      * Atributo que modela la unidad de persistencia
      */

@@ -20,7 +20,7 @@ public class HoraDTO {
     private Date horaFin;
     
     public HoraDTO(){
-        
+        //inicialmenete vacio
     }
     
    public HoraDTO(HoraEntity entity){

@@ -16,12 +16,14 @@ import java.util.List;
  * @author rc.tejon
  */
 public class FarmaciaDetailDTO extends FarmaciaDTO{
-
+    private List<MedicamentoDTO> medicamentos;
+    
+    
     public FarmaciaDetailDTO() {
         //inicialmente vacio
     }
 
-    private List<MedicamentoDTO> medicamentos;
+    
     
     public FarmaciaDetailDTO(FarmaciaEntity entity) {
         super(entity);

@@ -18,7 +18,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class ConsultorioPersistence {
-    private final static String SELECT = "Select e From ConsultorioEntity e where e.id = :id";
+    private static final String SELECT = "Select e From ConsultorioEntity e where e.id = :id";
 
     /**
      * Atributo que modela la unidad de persistencia

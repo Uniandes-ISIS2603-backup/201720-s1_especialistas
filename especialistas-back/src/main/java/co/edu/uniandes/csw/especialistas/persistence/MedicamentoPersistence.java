@@ -24,7 +24,7 @@ public class MedicamentoPersistence {
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
     
-    private final static String SELECT = "Select e From MedicamentoEntity e where e.id = :id";
+    private static final String SELECT = "Select e From MedicamentoEntity e where e.id = :id";
     
      /**
      *

@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class TarjetaPersistence {
-    private final static Logger LOGGER = Logger.getLogger(TarjetaPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TarjetaPersistence.class.getName());
     
     @PersistenceContext(unitName = "especialistasPU")
     protected EntityManager em;
