@@ -15,12 +15,27 @@ public class UsuarioDTO {
     /*
     *Atributo que representa el nombre del usuario
     */
-    private String nombre;
+    private String nombreD;
     
     /*
     *Atributo que representa el numero de cedula del usuario
     */
-    private int cedula;
+    private int cedulaD;
+    
+    /*
+    *Atributo que representa el nik del usuario
+    */
+    private String nickD;
+    
+    /*
+    *Atributo que representa la clave del usuario
+    */
+    private String passD;
+    
+     /*
+    *Atributo que representa el rol del usuario
+    */
+    private String rol;
     
     /**
      * Atributo que reprecenta el id del usuario
@@ -42,8 +57,11 @@ public class UsuarioDTO {
      */
     public UsuarioDTO(UsuarioEntity entity)
     {
-        this.nombre = entity.getNombre();
-        this.cedula = entity.getCedula();
+        this.nombreD = entity.getNombre();
+        this.cedulaD = entity.getCedula();
+        this.rol = entity.getRol();
+        this.nickD = entity.getNick();
+        this.passD = entity.getPass();
         this.id = entity.getId();
     }
     
@@ -52,7 +70,7 @@ public class UsuarioDTO {
      * @return nombre del usuario
      */
     public String getNombre() {
-        return nombre;
+        return nombreD;
     }
     
     /**
@@ -60,15 +78,65 @@ public class UsuarioDTO {
      * @param nombre nombre del usuario
      */
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombreD = nombre;
     }
+    
+    
+    /**
+     * getter del atributo nick
+     * @return 
+     */
+    public String getNick(){
+        return this.nickD;
+    }
+    
+    /**
+     * setter del atributo nick
+     * @param nick 
+     */
+    public void setNick(String nick){
+        this.nickD = nick;
+    }
+    
+    /**
+     * getter del atributo pass
+     * @return 
+     */
+    public String getPass(){
+        return this.passD;
+    }
+    
+    /**
+     * setter del atributo pass
+     * @param pass 
+     */
+    public void setPass(String pass){
+        this.passD = pass;
+    }
+    
+    /**
+     * getter del atributo rol
+     * @return 
+     */
+    public String getRol(){
+        return this.rol;
+    }
+    
+    /**
+     * setter del atributo rol
+     * @param rol
+     */
+    public void setRol(String rol){
+        this.rol = rol;
+    }
+
     
     /**
      * Getter del atributo nombre
      * @return cedula del usuario
      */
     public int getCedula() {
-        return this.cedula;
+        return this.cedulaD;
     }
     
     /**
@@ -76,7 +144,7 @@ public class UsuarioDTO {
      * @param cedula cedula del usuario
      */
     public void setCedula(int cedula) {
-        this.cedula = cedula;
+        this.cedulaD = cedula;
     }
     
     /**
@@ -103,8 +171,11 @@ public class UsuarioDTO {
     {
         UsuarioEntity entity = new UsuarioEntity();
         entity.setId(this.id);
-        entity.setNombre(this.nombre);
-        entity.setCedula(this.cedula);
+        entity.setNombre(this.nombreD);
+        entity.setCedula(this.cedulaD);
+        entity.setRol(this.rol);
+        entity.setNick(this.nickD);
+        entity.setPass(this.passD);
         return entity;
     }
     

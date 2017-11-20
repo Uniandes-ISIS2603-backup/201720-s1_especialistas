@@ -3,6 +3,8 @@
     <div class="form-group">
         <label for="consultorioNumber">Número</label>
         <input class="form-control" id="consultorioNumber" required ng-model="consultorioNumber" placeholder="Ingrese el número del consultorio">
+        <label>Hospital:{{currentHospital.nombre}}</label>
+        
     </div>
     <input ng-show="consultorio.$valid" type="submit" value="Save" class="btn btn-success"/>
     <button type="reset" class="btn btn-info">Reiniciar</button>

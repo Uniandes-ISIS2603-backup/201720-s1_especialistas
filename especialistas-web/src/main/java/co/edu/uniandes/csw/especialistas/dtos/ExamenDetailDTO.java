@@ -25,14 +25,4 @@ public class ExamenDetailDTO extends ExamenDTO {
         super(examen);
     }
     
-    /**
-     * Transforma un DTO a Entity
-     * @return 
-     */
-    @Override
-    public ExamenEntity toEntity() {
-        ExamenEntity examen = super.toEntity();
-        return examen;
-    }
-    
 }

@@ -21,6 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -31,15 +32,25 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class ExamenResource {
+    
+    private final ExamenLogic logic;
+    
+    public ExamenResource(){
+        logic = null;
+    }
+    
     @Inject
-    ExamenLogic logic;
+    public ExamenResource(ExamenLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
 
     @POST
-    public ExamenDetailDTO createExamen(ExamenDetailDTO examen) throws WebApplicationException{
+    public ExamenDetailDTO createExamen(ExamenDetailDTO examen){
         ExamenEntity examenEntity = logic.getExamen(examen.getNombre());
         if (examenEntity != null) {
-            WebApplicationException e = new WebApplicationException("Ya existe un examen con el nombre " + examen.getNombre());
-            throw e;
+            throw new WebApplicationException("Ya existe un examen con el nombre " + examen.getNombre());
+             
         }
         ExamenEntity nuevoExamen = logic.createExamen(examen.toEntity());
 
@@ -47,11 +58,11 @@ public class ExamenResource {
     }
 
     @GET
-    public List<ExamenDetailDTO> getExamens() throws WebApplicationException {
+    public List<ExamenDetailDTO> getExamens(){
         List<ExamenEntity> examenEntities = logic.getExamenes();
         if (examenEntities.isEmpty()) {
-            WebApplicationException e = new WebApplicationException("no hay examenes");
-            throw e;
+            
+            throw  new WebApplicationException("no hay examenes");
         }
         List<ExamenDetailDTO> examenDTOs = new ArrayList<>();
 
@@ -64,45 +75,43 @@ public class ExamenResource {
 
     @GET
     @Path("{nombre}") 
-    public ExamenDetailDTO getExamenByName(@PathParam("nombre") String nombre) throws WebApplicationException {
+    public ExamenDetailDTO getExamenByName(@PathParam("nombre") String nombre){
         ExamenEntity entity = logic.getExamen(nombre);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un examen con el nombre " + nombre);
-            throw e;
+            throw new WebApplicationException("1 No existe un examen con el nombre " + nombre);
         }
         return new ExamenDetailDTO(entity);
     }
 
     @GET
     @Path("{id: \\d+}")
-    public ExamenDetailDTO getExamenByID(@PathParam("id") Long id) throws WebApplicationException {
+    public ExamenDetailDTO getExamenByID(@PathParam("id") Long id){
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un examen con el id " + id);
-            throw e;
+            throw new WebApplicationException("1 No existe un examen con el id " + id);
         }
         return new ExamenDetailDTO(entity);
     }
 
     @PUT
     @Path("{id: \\d+}")
-    public ExamenDetailDTO updateExamen(@PathParam("id") Long id, ExamenDetailDTO examen) throws WebApplicationException {
+    public ExamenDetailDTO updateExamen(@PathParam("id") Long id, ExamenDetailDTO examen){
         examen.setId(id);
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un examen con el id " + id);
-            throw e;
+            throw new WebApplicationException("2 No existe un examen con el id " + id);
+            
         }
         return new ExamenDetailDTO(logic.updateExamen(examen.toEntity()));
     }
 
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteExamen(@PathParam("id") Long id) throws WebApplicationException {
+    public void deleteExamen(@PathParam("id") Long id){
         ExamenEntity entity = logic.getExamenById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un examen con el id " + id);
-            throw e;
+            throw new WebApplicationException("3 No existe un examen con el id " + id);
+            
         }
         logic.deleteExamen(id);
     }

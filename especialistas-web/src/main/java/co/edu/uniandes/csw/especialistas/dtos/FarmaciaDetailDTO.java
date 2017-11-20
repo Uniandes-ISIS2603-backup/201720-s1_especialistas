@@ -16,19 +16,22 @@ import java.util.List;
  * @author rc.tejon
  */
 public class FarmaciaDetailDTO extends FarmaciaDTO{
-
+    private List<MedicamentoDTO> medicamentos;
+    
+    
     public FarmaciaDetailDTO() {
         //inicialmente vacio
     }
 
     
+    
     public FarmaciaDetailDTO(FarmaciaEntity entity) {
         super(entity);
-        entity.getMedicamentos().forEach((x) -> {
-            this.medicamentos.add(new MedicamentoDTO(x));
-        });
+        entity.getMedicamentos().forEach(x -> 
+            this.medicamentos.add(new MedicamentoDTO(x))
+        );
     }
-    private List<MedicamentoDTO> medicamentos;
+    
 
     public List<MedicamentoDTO> getMedicamentos() {
         return medicamentos;
@@ -46,9 +49,9 @@ public class FarmaciaDetailDTO extends FarmaciaDTO{
         {
             medicamentos=new ArrayList<>();
         }
-        medicamentos.forEach((x) -> {
-            entity.getMedicamentos().add(x.toEntity());
-        });
+        medicamentos.forEach(x -> 
+            entity.getMedicamentos().add(x.toEntity())
+        );
         
         return entity;
     }

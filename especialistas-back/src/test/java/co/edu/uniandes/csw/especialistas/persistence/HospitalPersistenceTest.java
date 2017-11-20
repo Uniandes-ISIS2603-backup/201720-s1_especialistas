@@ -124,10 +124,19 @@ public class HospitalPersistenceTest {
 
         HospitalEntity result = persistence.create(newEntity);
 
+        UbicacionEntity ub = new UbicacionEntity();
+        
+        
+        
         Assert.assertNotNull(result);
 
         HospitalEntity entity = em.find(HospitalEntity.class, result.getId());
 
+        persistence.setUbicacionById(entity.getId(), ub);
+        
+                
+        Assert.assertEquals(newEntity.getUbicacion(), entity.getUbicacion());        
+                
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getConsultorios(), entity.getConsultorios());
         Assert.assertEquals(newEntity.getUbicacion(), entity.getUbicacion());
@@ -142,6 +151,8 @@ public class HospitalPersistenceTest {
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(false, newEntity.equals(entity));
         Assert.assertEquals(entity.hashCode(), entity.hashCode());
+        
+        
     }
 
     /**
@@ -150,7 +161,7 @@ public class HospitalPersistenceTest {
     @Test
     public void testDelete() throws Exception {
         HospitalEntity entity = data.get(0);
-        persistence.delete(entity.getId());
+        persistence.deleteById(entity.getId());
         HospitalEntity deleted = em.find(HospitalEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -166,7 +177,7 @@ public class HospitalPersistenceTest {
 
         newEntity.setId(entity.getId());
 
-        persistence.upadte(newEntity);
+        persistence.update(newEntity);
 
         HospitalEntity resp = em.find(HospitalEntity.class, entity.getId());
 
@@ -179,7 +190,7 @@ public class HospitalPersistenceTest {
     @Test
     public void testFind() throws Exception {
         HospitalEntity entity = data.get(0);
-        HospitalEntity newEntity = persistence.find(entity.getId());
+        HospitalEntity newEntity = persistence.findById(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
@@ -208,7 +219,7 @@ public class HospitalPersistenceTest {
     @Test
     public void testFindByName() throws Exception {
         HospitalEntity entity = data.get(0);
-        HospitalEntity newEntity = persistence.findByReference(entity.getNombre());
+        HospitalEntity newEntity = persistence.findByName(entity.getNombre());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
@@ -225,7 +236,7 @@ public class HospitalPersistenceTest {
         for (int i = 0; i < 10; i++) {
             ConsultorioEntity consultorio = factory.manufacturePojo(ConsultorioEntity.class);
             list.add(consultorio);
-            if (consultorioPersistence.find(consultorio.getId()) == null) {
+            if (consultorioPersistence.findById(consultorio.getId()) == null) {
                 consultorioPersistence.create(consultorio);
             }
         }

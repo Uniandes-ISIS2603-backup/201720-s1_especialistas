@@ -1,20 +1,60 @@
-<div class="panel panel-default"> 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">NOMBRE</th>
-                <th scope="col">UBICACION</th>
-                <th scope="col">LATITUD</th>
-                <th scope="col">LONGITUD</th>
-            </tr>
-        </thead>
-        <tr>
-            <td id="{{$index}}-hospitalId">{{currentHospital.id}}</td>
-            <td id="{{$index}}-hospitalName">{{currentHospital.nombre}}</td>
-            <td id="{{$index}}-hospitalUbicacion">{{currentHospital.ubicacion.nombre}}</td>
-            <td id="{{$index}}-hospitalUbicacionLatitud">{{currentHospital.ubicacion.latitud}}</td>
-            <td id="{{$index}}-hospitalUbicacionLongitud">{{currentHospital.ubicacion.longitud}}</td>
-        </tr>
-    </table>
+<div class="panel panel-default">
+    <div class="container">
+        <h4>DETALLES HOSPITAL</h4>
+        <!--Parte en que va la información detallada propia del hospital-->
+        <div class="col-sm-6 col-lg-6 col-md-6">
+            <div class="table table-responsive">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th>UBICACIÓN</th>
+                            <th>LATITUD</th>
+                            <th>LONGITUD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{currentHospital.id}}</td>
+                            <td>{{currentHospital.nombre}}</td>
+                            <td>{{currentHospital.ubicacion.nombre}}</td>
+                            <td>{{currentHospital.ubicacion.latitud}}</td>
+                            <td>{{currentHospital.ubicacion.longitud}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Parte en la que va la información de los consultorios del hospital-->
+        <div class="col-sm-6 col-lg-6 col-md-6">
+            <h4>CONSULTORIOS</h4>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NÚMERO</th>
+                        <th>ELIMINAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="consultorio in consultorios">
+                        <td>{{consultorio.id}}</td>
+                        <td><a ui-sref="consultorioDetail({consultorioId: consultorio.id})">{{consultorio.numero}}</a></td>
+                        <td>
+                            <button type="button" class="btn btn-danger" ui-sref="consultorioDelete({hospitalId: currentHospital.id, consultorioId: consultorio.id})">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-success" ui-sref="consultoriosCreate({hospitalId: currentHospital.id})">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

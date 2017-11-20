@@ -10,8 +10,10 @@ import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
 import co.edu.uniandes.csw.especialistas.entities.OrdenMedicaEntity;
 import co.edu.uniandes.csw.especialistas.entities.UsuarioEntity;
 import co.edu.uniandes.csw.especialistas.persistence.CitaPersistence;
+
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -19,15 +21,34 @@ import javax.inject.Inject;
  */
 public class CitaLogic {
     
-    @Inject
-    private CitaPersistence persistence;
+    
+    private final CitaPersistence persistence;
+    
+    private final HoraLogic horaLogic;
+    
+    private final UsuarioLogic usuarioLogic;
+     
+    private final OrdenMedicaLogic ordenMedicaLogic;
+     
+     public CitaLogic(){
+        persistence = null;
+        horaLogic = null;
+        usuarioLogic = null;
+        ordenMedicaLogic = null;
+    }
     
     @Inject
-    private HoraLogic horaLogic;
-    @Inject
-    private UsuarioLogic usuarioLogic;
-     @Inject
-    private OrdenMedicaLogic ordenMedicaLogic;
+    public CitaLogic(CitaPersistence persistence,HoraLogic horaLogic,UsuarioLogic usuarioLogic,OrdenMedicaLogic ordenMedicaLogic){
+        Assert.notNull(persistence, "persistence must not be null!");
+        Assert.notNull(horaLogic, "horaLogic must not be null!");
+        Assert.notNull(usuarioLogic, "usuarioLogic must not be null!");
+        Assert.notNull(ordenMedicaLogic, "ordenMedicaLogic must not be null!");
+        
+        this.persistence = persistence;
+        this.horaLogic = horaLogic;
+        this.usuarioLogic = usuarioLogic;
+        this.ordenMedicaLogic = ordenMedicaLogic;
+    }
     
     
     /**
@@ -44,7 +65,6 @@ public class CitaLogic {
     /**
      * Método encargadod de eliminar un Cita de la persistencia
      * @param id Id del Cita
-     * @return true si la entidad fue eliminada, false de lo contrario
      */
     public void deleteCita(Long id)
     {
@@ -83,8 +103,7 @@ public class CitaLogic {
      */
     public List<CitaEntity> getCitas()
     {
-        List<CitaEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
     }
     
     /**
@@ -94,8 +113,7 @@ public class CitaLogic {
      */
     public CitaEntity getCita(Long id)
     {
-        CitaEntity entity = persistence.findById(id);
-        return entity;
+        return persistence.findById(id);
     }
     
     /**

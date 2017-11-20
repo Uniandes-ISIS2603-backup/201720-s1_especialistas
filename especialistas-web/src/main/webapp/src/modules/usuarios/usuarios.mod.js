@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("usuarioModule", ['ui.router']);
 
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    mod.config(['$stateProvider', function ($stateProvider) {
             var basePath = 'src/modules/usuarios/';
             $stateProvider.state('usuariosList', {
                 url: '/usuarios/list',

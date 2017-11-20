@@ -1,10 +1,8 @@
 (function (ng) {
     var mod = ng.module("ordenesMedicasModule", ['ui.router']);
 
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    mod.config(['$stateProvider', function ($stateProvider) {
             var basePath = 'src/modules/ordenesMedicas/';
-            var basePathMedicamentos = 'src/modules/medicamentos/';
-            var basePathExamenes = 'src/modules/examenes/';
             
             $stateProvider.state('ordenesMedicas', {
                 url: '/ordenesMedicas',

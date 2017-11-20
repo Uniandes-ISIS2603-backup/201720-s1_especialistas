@@ -9,18 +9,32 @@ import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
  * @author rc.tejon
  */
-public class Medicamento_FarmaciaLogic {
+public class MedicamentoFarmaciaLogic {
+    
+    
+    private final FarmaciaLogic logicFarmacia;
+    
+    
+    private final MedicamentoLogic logicMedicamento;
+    
+    public MedicamentoFarmaciaLogic(){
+        logicFarmacia = null;
+        logicMedicamento = null;
+    }
     
     @Inject
-    private FarmaciaLogic logicFarmacia;
-    
-    @Inject
-    private MedicamentoLogic logicMedicamento;
+    public MedicamentoFarmaciaLogic(FarmaciaLogic logicFarmacia, MedicamentoLogic logicMedicamento){
+        Assert.notNull(logicFarmacia, "MyCollaborator must not be null!");
+        Assert.notNull(logicMedicamento, "MyCollaborator must not be null!");
+        this.logicFarmacia = logicFarmacia;
+        this.logicMedicamento = logicMedicamento;
+    }
     
     public boolean agregarRelacion(Long idFarmacia, Long idMedicamento)
     {
@@ -31,7 +45,9 @@ public class Medicamento_FarmaciaLogic {
             return false;
         }
         entityF.agregarMedicamento(entityM);
+        logicFarmacia.updateFarmacia(entityF);
         entityM.agregarFarmacia(entityF);
+        logicMedicamento.updateMedicamento(entityM);
         return true;
     }
     
@@ -44,7 +60,9 @@ public class Medicamento_FarmaciaLogic {
             return false;
         }
         entityF.eliminarMedicamento(entityM);
+        logicMedicamento.updateMedicamento(entityM);
         entityM.eliminarFarmcia(entityF);
+        logicFarmacia.updateFarmacia(entityF);
         return true;
     }
     

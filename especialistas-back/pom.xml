@@ -26,4 +26,12 @@
             <version>4.12</version>
         </dependency>
     </dependencies>
+  <properties>
+    <additionalparam>-Xdoclint:none</additionalparam>
+  </properties>
 </project>
+  <properties>
+    <additionalparam>-Xdoclint:none</additionalparam>
+  </properties>
+
+

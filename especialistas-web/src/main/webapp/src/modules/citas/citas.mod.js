@@ -1,9 +1,8 @@
 (function (ng) {
     var mod = ng.module("citasModule", ['ui.router']);
 
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    mod.config(['$stateProvider', function ($stateProvider) {
             var basePath = 'src/modules/citas/';
-            var basePathHoras = 'src/modules/horas/';
             var basePathOrdenes = 'src/modules/ordenesMedicas/';
             
             

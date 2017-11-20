@@ -10,6 +10,7 @@
             if ($state.params.hospitalId !== undefined) {
                 $http.get(hospitalesContext + '/' + $state.params.hospitalId).then(function (response) {
                     $scope.currentHospital = response.data;
+                    $scope.consultorios = response.data.consultorios;
                 });
             }
         }

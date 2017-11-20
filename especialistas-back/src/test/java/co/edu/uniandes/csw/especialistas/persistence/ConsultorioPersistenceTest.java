@@ -102,9 +102,7 @@ public class ConsultorioPersistenceTest
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 100; i++) {
             ConsultorioEntity entity = factory.manufacturePojo(ConsultorioEntity.class);
-            List<HoraEntity> horas = crearHoras();
             HospitalEntity hospital = crearHospital();
-            entity.setHoras(horas);
             entity.setHospital(hospital);
             
             em.persist(entity);
@@ -132,10 +130,8 @@ public class ConsultorioPersistenceTest
         Assert.assertNotNull(result);
         ConsultorioEntity entity = em.find(ConsultorioEntity.class, result.getId());
         Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getReferenciaConsultorio(), entity.getReferenciaConsultorio());
-        Assert.assertEquals(newEntity.getHoras(), entity.getHoras());
+        Assert.assertEquals(newEntity.getNumero(), entity.getNumero());
         Assert.assertEquals(newEntity.getHospital(), entity.getHospital());
-        Assert.assertEquals(newEntity.getEspecializacion(), entity.getEspecializacion());
         
         Assert.assertEquals(false, entity.equals(null));
         Assert.assertEquals(false, entity.equals("objet"));
@@ -155,7 +151,7 @@ public class ConsultorioPersistenceTest
     @Test
     public void testDelete() throws Exception {
         ConsultorioEntity entity = data.get(0);
-        persistence.delete(entity.getId());
+        persistence.deleteById(entity.getId());
         ConsultorioEntity deleted = em.find(ConsultorioEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -170,9 +166,9 @@ public class ConsultorioPersistenceTest
         PodamFactory factory = new PodamFactoryImpl();
         ConsultorioEntity newEntity = factory.manufacturePojo(ConsultorioEntity.class);
         newEntity.setId(entity.getId());
-        persistence.upadte(newEntity);
+        persistence.update(newEntity);
         ConsultorioEntity resp = em.find(ConsultorioEntity.class, entity.getId());
-        Assert.assertEquals(newEntity.getReferenciaConsultorio(), resp.getReferenciaConsultorio());
+        Assert.assertEquals(newEntity.getNumero(), resp.getNumero());
     }
 
     /**
@@ -181,9 +177,9 @@ public class ConsultorioPersistenceTest
     @Test
     public void testFind() throws Exception {
         ConsultorioEntity entity = data.get(0);
-        ConsultorioEntity newEntity = persistence.find(entity.getId());
+        ConsultorioEntity newEntity = persistence.findById(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getReferenciaConsultorio(), newEntity.getReferenciaConsultorio());
+        Assert.assertEquals(entity.getNumero(), newEntity.getNumero());
     }
 
     /**
@@ -211,9 +207,9 @@ public class ConsultorioPersistenceTest
     public void testFindByNumber() throws Exception 
     {
         ConsultorioEntity entity = data.get(0);
-        ConsultorioEntity newEntity = persistence.findByReference(entity.getReferenciaConsultorio());
+        ConsultorioEntity newEntity = persistence.findByName(entity.getNumero());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getReferenciaConsultorio(), newEntity.getReferenciaConsultorio());
+        Assert.assertEquals(entity.getNumero(), newEntity.getNumero());
     }
     
     /**
@@ -224,7 +220,7 @@ public class ConsultorioPersistenceTest
     {
         PodamFactory factory = new PodamFactoryImpl();
         HospitalEntity hospital = factory.manufacturePojo(HospitalEntity.class);
-        if(hospitalPersistence.find(hospital.getId()) == null){
+        if(hospitalPersistence.findById(hospital.getId()) == null){
             hospitalPersistence.create(hospital);
         }
         return hospital;

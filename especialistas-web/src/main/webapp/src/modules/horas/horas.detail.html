@@ -9,18 +9,18 @@
             <dl class="col-md-6">
                 <dt>Paciente</dt>
                 <dd ng-if="!hayCita">Cita sin asignar</dd>
-                <dd ng-if="hayCita">{{cita.usuario.nombre}}</dd>
+                <dd ng-if="hayCita"><a ui-sref="citasDetail({citasId: cita.id})">{{cita.usuario.nombre}}</a></dd>
             </dl>
         </div>
         <div class="row">
             <dl class="col-md-6">
                 <dt>Consultorio</dt>
-                <dd>{{consultorio.numero}}</dd>
+                <dd><a ui-sref="consultorioDetail({consultorioId: consultorio.id})">{{consultorio.numero}}</a></dd>
             </dl>
 
             <dl class="col-md-6">
                 <dt>Hospital</dt>
-                <dd>{{consultorio.hospital.nombre}}</dd>
+                <dd><a ui-sref="hospitalDetail({hospitalId: consultorio.hospital.id})">{{consultorio.hospital.nombre}}</a></dd>
             </dl>
         </div>
         <div class="col-md-5"></div>

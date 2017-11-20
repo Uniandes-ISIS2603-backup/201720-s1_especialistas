@@ -1,22 +1,17 @@
 (function (ng) {
     var mod = ng.module("consultoriosModule");
-    mod.constant("consultoriosContext", "api/cons");
+    mod.constant("consultoriosContext", "api/hospitales");
     mod.controller('consultoriosCreateController', ['$scope', '$http', 'consultoriosContext', '$state', '$rootScope',
         function ($scope, $http, consultoriosContext, $state, $rootScope){
             $rootScope.edit = false;
-            $scope.createConsultorio = function (){
-                $http.post(consultoriosContext , {
-                    numero: $scope.consultorioNumber
-                }).then(function (response){
-                    //usuario creado correctamente
-                    $state.go('consultoriosList',{
-                        consultorioId: response.data.id
-                    },
-                    {
-                        reload: true
-                    }
-                    );
-                });
+            $scope.createConsultorio = function(){
+                if($state.params.hospitalId !== undefined && $state.params.hospitalId !== null){
+                    $http.post(consultoriosContext + '/' + $state.params.hospitalId + '/consultorios',{
+                        numero: $scope.consultorioNumber
+                    }).then(function (){
+                       $state.go('hospitalesList',{});
+                    });
+                }
             };
         }
     ]);

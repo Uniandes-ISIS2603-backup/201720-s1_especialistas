@@ -41,20 +41,35 @@ public class UsuarioEntity implements Serializable{
     */
     private int cedula;
     
+    /*
+    *Atributo que representa el nik del usuario
+    */
+    private String nick;
+    
+    /*
+    *Atributo que representa la clave del usuario
+    */
+    private String pass;
+    
+     /*
+    *Atributo que representa el rol del usuario
+    */
+    private String rol;
+    
     /**
      * atributo que modela las citas del usuario
      */
     @PodamExclude
-    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
-    private List<CitaEntity> citasMedicas = new ArrayList<CitaEntity>();
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    private List<CitaEntity> citasMedicas = new ArrayList<>();
     
     
     /**
      * atributo que modela los pagos del usuario
      */
     @PodamExclude
-    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
-    private List<PagoEntity> pagos = new ArrayList<PagoEntity>();
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    private List<PagoEntity> pagos = new ArrayList<>();
     
     /**
      * atributo que modela la targeta del usuario
@@ -77,6 +92,9 @@ public class UsuarioEntity implements Serializable{
       * @param tarjeta 
       */
      public void setTarjeta(TarjetaEntity tarjeta){
+         if (tarjeta.getUsuario()!=this) {
+             tarjeta.setUsuario(this);
+         }
          this.tarjeta = tarjeta;
      }
      
@@ -102,6 +120,11 @@ public class UsuarioEntity implements Serializable{
      * @param citasMedicas 
      */
     public void setCitas(List<CitaEntity> citasMedicas){
+        for (CitaEntity citasMedica : citasMedicas) {
+            if (citasMedica.getUsuario()!=this) {
+                citasMedica.setUsuario(this);
+            }
+        }
         this.citasMedicas = citasMedicas;
     }
     
@@ -118,6 +141,10 @@ public class UsuarioEntity implements Serializable{
      * @param pagos 
      */
     public void setPagos(List<PagoEntity> pagos){
+        for (PagoEntity pago : pagos) {
+            if(pago.getUsuario()!=this)
+                pago.setUsuario(this);
+        }
         this.pagos = pagos;
     }
     
@@ -143,6 +170,55 @@ public class UsuarioEntity implements Serializable{
      */
     public void setNombre(String nombre){
         this.nombre = nombre;
+    }
+    
+    
+    /**
+     * getter del atributo nick
+     * @return 
+     */
+    public String getNick(){
+        return this.nick;
+    }
+    
+    /**
+     * setter del atributo nick
+     * @param nick 
+     */
+    public void setNick(String nick){
+        this.nick = nick;
+    }
+    
+    /**
+     * getter del atributo pass
+     * @return 
+     */
+    public String getPass(){
+        return this.pass;
+    }
+    
+    /**
+     * setter del atributo pass
+     * @param pass 
+     */
+    public void setPass(String pass){
+        this.pass = pass;
+    }
+    
+    /**
+     * getter del atributo rol
+     * @return 
+     */
+    public String getRol(){
+        return this.rol;
+    }
+    
+    /**
+     * setter del atributo rol
+     * @param rol
+     */
+    public void setRol(String rol){
+        this.rol = rol;
     }
     
     /**

@@ -98,9 +98,9 @@ public class ExamenDTO {
     }
 
     private List<LaboratorioDetailDTO> labToDTO(List<LaboratorioEntity> lista){
-        List<LaboratorioDetailDTO> labs = new ArrayList<>();
+        List<LaboratorioDetailDTO> labs2 = new ArrayList<>();
         for( LaboratorioEntity a : lista)
-            labs.add(new LaboratorioDetailDTO(a));
-        return labs;
+            labs2.add(new LaboratorioDetailDTO(a));
+        return labs2;
     }
 }

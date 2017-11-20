@@ -5,7 +5,7 @@
         function ($scope, $http, tarjetaContext, $state, $rootScope){
             $rootScope.edit = false;
             $scope.createTarjeta = function (){
-                alert($state.params.usuarioId);
+                
                 if (($state.params.usuarioId !== undefined) && ($state.params.usuarioId !== null)) {
                     $http.post(tarjetaContext , {
                         numero: $scope.tarjetaNumero,

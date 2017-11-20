@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.especialistas.persistence.TarjetaPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -20,8 +21,18 @@ public class TarjetaLogic {
     /**
      * Injección de la persistencia de Tarjeta
      */
+    
+    private final TarjetaPersistence persistence;
+    
+    public TarjetaLogic(){
+        persistence = null;
+    }
+    
     @Inject
-    private TarjetaPersistence persistence;
+    public TarjetaLogic(TarjetaPersistence persistence){
+        Assert.notNull(persistence, "MyCollaborator must not be null!");
+        this.persistence = persistence;
+    }
 
     /**
      * Método encargado de crear un Tarjeta
@@ -58,8 +69,8 @@ public class TarjetaLogic {
      * @return Lista con todas las entidades de los Tarjetas
      */
     public List<TarjetaEntity> getTarjetas() {
-        List<TarjetaEntity> lista = persistence.findAll();
-        return lista;
+        return persistence.findAll();
+        
     }
     
     /**
@@ -69,8 +80,8 @@ public class TarjetaLogic {
      * @return TarjetaEntity del Tarjeta buscado
      */
     public TarjetaEntity getTarjeta(Long id) {
-        TarjetaEntity entity = persistence.find(id);
-        return entity;
+        return persistence.find(id);
+        
     }
     
     /**
@@ -84,13 +95,4 @@ public class TarjetaLogic {
         return entity;
     }
     
-     /**
-     * Busca el Tarjeta con el id dado por parámetro
-     * @param id
-     * @return
-     */
-    public TarjetaEntity getTarjetaById( Long id ) {
-        TarjetaEntity examen = persistence.find(id);
-        return examen;
-    }
 }

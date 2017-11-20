@@ -51,7 +51,7 @@ public class OrdenMedicaPersistence {
     }
     public boolean deleteById(long id) {
                
-        OrdenMedicaEntity OrdenMedica=null;
+        OrdenMedicaEntity ordenMedica=null;
                 
         TypedQuery query = em.createQuery("Select e From OrdenMedicaEntity e where e.id = :id", OrdenMedicaEntity.class);
 
@@ -59,19 +59,19 @@ public class OrdenMedicaPersistence {
         
         List<OrdenMedicaEntity> sameId = query.getResultList();
         if (!sameId.isEmpty()) {
-            OrdenMedica= sameId.get(0);
+            ordenMedica= sameId.get(0);
         }
         
-        if(OrdenMedica!=null)
+        if(ordenMedica!=null)
         {
-        em.remove(OrdenMedica);
+        em.remove(ordenMedica);
         return true;
         }
         return false;
     }
         
-    public void update(OrdenMedicaEntity OrdenMedica) {
-        em.merge(OrdenMedica);
+    public void update(OrdenMedicaEntity ordenMedica) {
+        em.merge(ordenMedica);
     }
 
     public List<OrdenMedicaEntity> findAll() {

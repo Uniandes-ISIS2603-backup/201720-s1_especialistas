@@ -5,21 +5,11 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDetailDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
-import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
-import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
-import javax.persistence.EntityManager;
-import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
-import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
-import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
-import java.net.URI;
-import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
-import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDetailDTO;
 import co.edu.uniandes.csw.especialistas.dtos.UbicacionDTO;
 import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
-import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
+import co.edu.uniandes.csw.especialistas.ejb.MedicamentoFarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
@@ -28,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -39,7 +28,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import org.springframework.util.Assert;
 
 
 /**
@@ -55,17 +44,31 @@ public class FarmaciaResource {
     /**
      * Clase de la lógica de farmacia  
      */
-    @Inject
-    FarmaciaLogic logic;
     
-    @Inject
-    MedicamentoLogic logicMedicamento;
+    private final FarmaciaLogic logic;
+    
+    
     
     /**
      * Clase de la logica de los metodos que comparten medicamento y faracia
      */
+    
+    private final MedicamentoFarmaciaLogic logicMF;
+    
+    public FarmaciaResource(){
+        logic = null;
+       
+        logicMF = null;
+    }
+    
     @Inject
-    Medicamento_FarmaciaLogic logicMF;
+    public FarmaciaResource(FarmaciaLogic logic, MedicamentoFarmaciaLogic logicMF){
+        Assert.notNull(logic, "logic must not be null!");
+        Assert.notNull(logicMF, "logicMF must not be null!");
+        this.logic = logic;
+        
+        this.logicMF = logicMF;
+    }
     
 
     /**
@@ -128,7 +131,7 @@ public class FarmaciaResource {
         FarmaciaEntity entity = logic.getFarmacia(id);
         if(!logicMF.agregarRelacion(id, idMed))
         {
-            throw new BusinessLogicException("no existe la entidad");
+            throw new BusinessLogicException("1 no existe la entidad");
         }
         return new FarmaciaDetailDTO(logic.updateFarmacia(entity));
     }
@@ -147,7 +150,7 @@ public class FarmaciaResource {
         FarmaciaEntity entity = logic.getFarmacia(id);
         if(!logicMF.eliminarRelacion(id, idMed))
         {
-            throw new BusinessLogicException("no existe la entidad");
+            throw new BusinessLogicException("2 no existe la entidad");
         }
         return new FarmaciaDetailDTO(logic.updateFarmacia(entity));
     }
@@ -166,7 +169,7 @@ public class FarmaciaResource {
         FarmaciaEntity entity = logic.getFarmacia(id);
         if(entity==null)
         {
-            throw new BusinessLogicException("no existe la entidad");
+            throw new BusinessLogicException("3 no existe la entidad");
         }
         List<MedicamentoDTO> list= new ArrayList<>();
         Iterator<MedicamentoEntity> iter=entity.getMedicamentos().iterator();
@@ -186,7 +189,6 @@ public class FarmaciaResource {
     public List<FarmaciaDetailDTO> getFarmacias()
     {
         return listToList(logic.getFarmacias());
-        
     }
     
     private List<FarmaciaDetailDTO> listToList(List<FarmaciaEntity> entityList) {
@@ -208,7 +210,7 @@ public class FarmaciaResource {
         FarmaciaEntity entity = farmacia.toEntity();
         if(logic.getFarmacia(entity.getId())==null)
         {
-            throw new BusinessLogicException("no existe farmacia con el id dado");
+            throw new BusinessLogicException("4 no existe farmacia con el id dado");
         }
         return new FarmaciaDetailDTO(logic.updateFarmacia(entity));
     }

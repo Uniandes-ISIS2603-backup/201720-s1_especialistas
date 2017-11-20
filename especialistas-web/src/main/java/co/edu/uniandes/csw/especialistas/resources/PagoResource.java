@@ -5,16 +5,13 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
-import co.edu.uniandes.csw.especialistas.dtos.PagoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.PagoDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.PagoLogic;
 import co.edu.uniandes.csw.especialistas.entities.PagoEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -23,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -32,35 +30,45 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Stateless
 public class PagoResource {
+    
+    
+    private final PagoLogic logic;
+    
+     public PagoResource(){
+        logic = null;
+    }
+    
     @Inject
-    PagoLogic logic;
+    public PagoResource(PagoLogic logic){
+        Assert.notNull(logic, "MyCollaborator must not be null!");
+        this.logic = logic;
+    }
     
     @POST
-    public PagoEntity createPago(PagoDetailDTO pago) throws WebApplicationException {
+    public PagoEntity createPago(PagoDetailDTO pago) {
         PagoEntity pagoEntity = null;
         if(pago.getId()!=null)
         {
             pagoEntity = logic.getPago(pago.getId());
         }
         if (pagoEntity != null) {
-            WebApplicationException e = new WebApplicationException("Ya existe un usuario con el id " + pago.getId());
-            throw e;
+            throw new WebApplicationException("Ya existe un usuario con el id " + pago.getId());
+            
         }
-        PagoEntity nuevoPago = logic.createPago(pago.toEntity());
 
-        return nuevoPago;
+        return logic.createPago(pago.toEntity());
     }
     
     @GET
-    public List<PagoDetailDTO> getPagos() throws WebApplicationException {
-        List<PagoEntity> PagoEntities = logic.getPagos();
-        if (PagoEntities.isEmpty()) {
-            WebApplicationException e = new WebApplicationException("no hay Pagos");
-            throw e;
+    public List<PagoDetailDTO> getPagos() {
+        List<PagoEntity> pagoEntities = logic.getPagos();
+        if (pagoEntities.isEmpty()) {
+            throw new WebApplicationException("no hay Pagos");
+            
         }
         List<PagoDetailDTO> pagoDTOs = new ArrayList<>();
 
-        for (PagoEntity actual : PagoEntities) {
+        for (PagoEntity actual : pagoEntities) {
             PagoDetailDTO nuevoPago= new PagoDetailDTO(actual);
             pagoDTOs.add(nuevoPago);
         }
@@ -69,34 +77,31 @@ public class PagoResource {
     
     @GET
     @Path("{id: \\d+}")
-    public PagoDetailDTO getPagoByID(@PathParam("id") Long id) throws WebApplicationException {
+    public PagoDetailDTO getPagoByID(@PathParam("id") Long id) {
         PagoEntity entity = logic.getPagoById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un Pago con el id " + id);
-            throw e;
+            throw new WebApplicationException("1 No existe un Pago con el id " + id);
         }
         return new PagoDetailDTO(entity);
     }
     
     @PUT
     @Path("{id: \\d+}")
-    public PagoDetailDTO updatePago(@PathParam("id") Long id, PagoDetailDTO pago) throws WebApplicationException {
+    public PagoDetailDTO updatePago(@PathParam("id") Long id, PagoDetailDTO pago) {
         pago.setId(id);
         PagoEntity entity = logic.getPagoById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un Pago con el id " + id);
-            throw e;
+            throw new WebApplicationException("2 No existe un Pago con el id " + id);
         }
         return new PagoDetailDTO(logic.updatePago(pago.toEntity()));
     }
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deletePago(@PathParam("id") Long id) throws WebApplicationException {
+    public void deletePago(@PathParam("id") Long id) {
         PagoEntity entity = logic.getPagoById(id);
         if (entity == null) {
-            WebApplicationException e = new WebApplicationException("No existe un Pago con el id " + id);
-            throw e;
+            throw new WebApplicationException("3 No existe un Pago con el id " + id);
         }
         logic.deletePago(id);
     }

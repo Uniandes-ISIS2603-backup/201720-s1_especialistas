@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.HoraDTO;
 import co.edu.uniandes.csw.especialistas.dtos.HoraDetailDTO;
+import co.edu.uniandes.csw.especialistas.dtos.MedicoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.MedicoDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.MedicoLogic;
 import co.edu.uniandes.csw.especialistas.entities.HoraEntity;
@@ -24,6 +25,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -38,8 +40,18 @@ public class MedicoResource {
    /**
      * Clase de la lógica
      */
+    
+    private final MedicoLogic logic;
+    
+     public MedicoResource(){
+        logic = null;
+    }
+    
     @Inject
-    MedicoLogic logic;
+    public MedicoResource(MedicoLogic logic){
+        Assert.notNull(logic, "logic must not be null!");
+        this.logic = logic;
+    }
     
     /**
      * Recurso que crea un medico
@@ -65,7 +77,7 @@ public class MedicoResource {
     {
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException("1 El recurso /medicos/" + id + " 1 no existe.", 404);
         }
 
         return new MedicoDetailDTO(entity);
@@ -79,9 +91,9 @@ public class MedicoResource {
     public List<MedicoDetailDTO> getMedicos()
     {
         List<MedicoDetailDTO> lista = new ArrayList<>();
-        logic.getMedicos().forEach((medico) -> {
-            lista.add(new MedicoDetailDTO(medico));
-        });
+        logic.getMedicos().forEach(medico -> 
+            lista.add(new MedicoDetailDTO(medico))
+        );
         return lista;
     }
     
@@ -95,9 +107,9 @@ public class MedicoResource {
     public List<MedicoDetailDTO> getMedicosPorEspecializacion(@PathParam("especializacion") String especializacion)
     {
         List<MedicoDetailDTO> lista = new ArrayList<>();
-        logic.getMedicosByEspecializacion(especializacion).forEach((medico) -> {
-            lista.add(new MedicoDetailDTO(medico));
-        });
+        logic.getMedicosByEspecializacion(especializacion).forEach(medico -> 
+            lista.add(new MedicoDetailDTO(medico))
+        );
         return lista;
     }
     
@@ -109,14 +121,15 @@ public class MedicoResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public MedicoDetailDTO updateMedico(@PathParam("id") Long id, MedicoDetailDTO medico)
+    public MedicoDTO updateMedico(@PathParam("id") Long id, MedicoDTO medico)
     {
         MedicoEntity newEntity = medico.toEntity();
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException(" 2 El recurso /medicos/" + id + " 2 no existe.", 404);
         }
-        return new MedicoDetailDTO(logic.updateMedico(id, newEntity));
+        newEntity.setAgenda(entity.getAgenda());
+        return new MedicoDTO(logic.updateMedico(id, newEntity));
     }
     
     /**
@@ -129,7 +142,7 @@ public class MedicoResource {
     {
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException("3 El recurso /medicos/" + id + " 3 no existe.", 404);
         }
         logic.deleteMedico(id);
     }
@@ -144,7 +157,7 @@ public class MedicoResource {
     public List<HoraDetailDTO> getAgenda(@PathParam("id") Long id){
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException("4 El recurso /medicos/" + id + " 4 no existe.", 404);
         }
 
         MedicoEntity newEntity = logic.getMedico(id);
@@ -166,13 +179,13 @@ public class MedicoResource {
     public List<HoraDetailDTO> cambiarAgenda(@PathParam("id") Long id, List<HoraDTO> agenda){
         MedicoEntity entity = logic.getMedico(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /medicos/" + id + " no existe.", 404);
+            throw new WebApplicationException("5 El recurso /medicos/" + id + " 5 no existe.", 404);
         }
         MedicoEntity newEntity = logic.getMedico(id);
         List<HoraEntity> lista = new ArrayList<>();
-        agenda.forEach((hora) -> {
-            lista.add(hora.toEntity());
-        });
+        agenda.forEach(hora -> 
+            lista.add(hora.toEntity())
+        );
         newEntity.setAgenda(lista);
         logic.updateMedico(id, newEntity);
         return getAgenda(id);

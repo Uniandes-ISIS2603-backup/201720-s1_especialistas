@@ -82,7 +82,7 @@ public class UsuarioPersistenceTest {
     
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10; i++){
             UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
             
             em.persist(entity);
@@ -132,6 +132,10 @@ public class UsuarioPersistenceTest {
         newTarjeta.setUsuario(newEntity);
         
         newEntity.setTarjeta(newTarjeta);
+        ArrayList citas =new ArrayList();
+        newEntity.setCitas(citas);
+        newEntity.setPagos(citas);
+        
         
         UsuarioEntity result = persistence.create(newEntity);
         
@@ -140,7 +144,9 @@ public class UsuarioPersistenceTest {
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCedula(), entity.getCedula());
+        
         Assert.assertEquals(newEntity.getCitas(), entity.getCitas());
+        Assert.assertEquals(newEntity.getPagos(), entity.getPagos());
         Assert.assertEquals(newEntity.getTarjeta(), entity.getTarjeta());
         Assert.assertEquals(newEntity.getTarjeta().getNumero(), entity.getTarjeta().getNumero());
         Assert.assertEquals(false, entity.equals(null));
@@ -148,6 +154,9 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(true, entity.equals(entity));
         Assert.assertEquals(true, entity.getTarjeta().equals(newTarjeta));
         Assert.assertEquals(newEntity.hashCode(), entity.hashCode());
+        Assert.assertEquals(newEntity.getNick(), entity.getNick());
+        Assert.assertEquals(newEntity.getPass(), entity.getPass());
+        Assert.assertEquals(newEntity.getRol(), entity.getRol());
         entity.setId(null);
         Assert.assertEquals(false, entity.equals(entity));
         Assert.assertEquals(false, entity.equals(null));

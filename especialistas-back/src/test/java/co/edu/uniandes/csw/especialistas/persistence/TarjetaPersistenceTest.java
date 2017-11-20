@@ -93,7 +93,7 @@ public class TarjetaPersistenceTest {
     
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10; i++){
             TarjetaEntity entity = factory.manufacturePojo(TarjetaEntity.class);
             
             em.persist(entity);

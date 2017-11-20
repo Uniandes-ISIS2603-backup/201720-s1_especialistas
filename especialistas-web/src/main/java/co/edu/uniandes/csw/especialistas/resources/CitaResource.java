@@ -16,10 +16,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import co.edu.uniandes.csw.especialistas.ejb.CitaLogic;
 import co.edu.uniandes.csw.especialistas.entities.CitaEntity;
-import co.edu.uniandes.csw.especialistas.dtos.CitaDTO;
 import co.edu.uniandes.csw.especialistas.dtos.CitaDetailDTO;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 
 /**
@@ -33,8 +33,20 @@ import javax.ws.rs.WebApplicationException;
 public class CitaResource {
     
     
-    @Inject 
-    CitaLogic logic;
+    
+    private final CitaLogic logic;
+    
+    
+    public CitaResource(){
+        logic = null;
+    }
+    
+    @Inject
+    public CitaResource(CitaLogic logic){
+        Assert.notNull(logic, "logic must not be null!");
+        this.logic = logic;
+    }
+    
     
     /**
      * Recurso que crea un cita
@@ -60,7 +72,7 @@ public class CitaResource {
     {
         CitaEntity entity = logic.getCita(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
+            throw new WebApplicationException("1 El recurso /citas/" + id + " no existe!", 404);
         }
 
         return new CitaDetailDTO(entity);
@@ -74,9 +86,9 @@ public class CitaResource {
     public List<CitaDetailDTO> getCitas()
     {
         List<CitaDetailDTO> lista = new ArrayList<>();
-        logic.getCitas().forEach((Cita) -> {
-            lista.add(new CitaDetailDTO(Cita));
-        });
+        logic.getCitas().forEach(cita -> 
+            lista.add(new CitaDetailDTO(cita))
+        );
         return lista;
     }
     
@@ -91,7 +103,7 @@ public class CitaResource {
         CitaEntity newEntity = cita.toEntity();
         CitaEntity e = logic.getCita(newEntity.getId());
          if (e == null) {
-            throw new WebApplicationException("El recurso /citas/" + cita.getId() + " no existe.", 404);
+            throw new WebApplicationException("2 El recurso /citas/" + cita.getId() + " no existe!!", 404);
         }
         return new CitaDetailDTO(logic.updateCita(newEntity));
     }
@@ -106,7 +118,7 @@ public class CitaResource {
     {
         CitaEntity entity = logic.getCita(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
+            throw new WebApplicationException("3 El recurso /citas/" + id + " no existe!!!", 404);
         }
         logic.deleteCita(id);
     }
