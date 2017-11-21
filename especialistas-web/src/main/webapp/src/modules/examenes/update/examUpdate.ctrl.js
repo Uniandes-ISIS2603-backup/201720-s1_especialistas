@@ -1,11 +1,11 @@
 (function (ng) {
     var mod = ng.module("examenesModule");
     mod.constant("examenesContext", "api/examenes");
-    mod.controller('examUpdateCtrl', ['$scope', '$http', 'examenesContext', '$state', '$rootScope',
+    mod.controller('examenUpdateCtrl', ['$scope', '$http', 'examenesContext', '$state', '$rootScope',
         function ($scope, $http, examenesContext, $state, $rootScope) {
             $rootScope.edit = true;
             
-            $http.get(examenesContext + '/' + $state.params.examId).then(function(response){
+            $http.get(examenesContext + '/' + $state.params.examenId).then(function(response){
                 var exam = response.data;
                 $scope.nombreExam = exam.nombre;
                 $scope.precioExam = exam.precio;
@@ -13,10 +13,10 @@
             });
             
             $scope.updateExam = function(){
-                $http.put(examenesContext + '/' + $state.params.examId, {
-                    nombre: $scope.nombreLab,
-                    precio : $scope.precioExam,
-                    recomendaciones: $scope.recomendaciones
+                $http.put(examenesContext + '/' + $state.params.examenId, {
+                    nombre: $scope.nombreExam,
+                    precio: $scope.precioExam,
+                    recomendacion: $scope.recomendacionExam
                 }).then(function(response) {
                     $state.go('laboratoriosList', {id: response.data.id}, {reload:true});
                 });

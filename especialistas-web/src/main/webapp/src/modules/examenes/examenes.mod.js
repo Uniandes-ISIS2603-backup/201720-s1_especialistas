@@ -15,7 +15,7 @@
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('examUpdate', {
+            }).state('examenUpdate', {
                 url: '/examenes/{examenId}/update',
                 params :{
                     examenId :null
@@ -23,7 +23,7 @@
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'update/exam.update.html',
-                        controller: 'examUpdateCtrl',
+                        controller: 'examenUpdateCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
