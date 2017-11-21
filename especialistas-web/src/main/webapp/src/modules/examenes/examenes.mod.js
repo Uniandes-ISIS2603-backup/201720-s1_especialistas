@@ -27,6 +27,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('examenDelete', {
+                url: '/examenes/{examenId}/delete',
+                params :{
+                    examenId :null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/examen.delete.html',
+                        controller: 'examenDeleteCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
         }]);
 })(window.angular);

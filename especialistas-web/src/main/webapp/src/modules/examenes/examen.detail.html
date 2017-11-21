@@ -1,15 +1,25 @@
-<div class="container-fluid">
-    <h4>Nombre</h4>
-    <p>{{examenActual.nombre}}</p>
+<div class="panel panel-default col-md-6">
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div id="nombreExam" class="col-md-4">
+                <h4>Nombre</h4>
+                <p>{{examenActual.nombre}}</p>
+            </div>
+            <div id="precioExam" class="col-md-4">
+                <h4>Precio</h4>
+                <p>{{examenActual.precio}}</p>
+            </div>
+            <div id="recomendacionExam" class="col-md-4">
+                <h4>Recomendaciones</h4>
+                <p>{{examenActual.recomendacion}}</p>
+            </div>
 
-    <h4>Precio</h4>
-    <p>{{examenActual.precio}}</p>
+        </div>
+    </div>
+    <div class="panel-footer" style="text-align:center">
+        <button id="actualizar-exam" >Actualizar</button>
+        <button id="eliminar-exam" ui-sref="examenDelete({examenId: examenActual.id})">Eliminar</button>
+        <button id="Volver-lista" ui-sref="laboratoriosList">Volver</button>
+    </div>
 
-    <h4>Recomendaciones</h4>
-    <p>{{examenActual.recomendaciones}}</p>
 </div>
-<div class="col-md-12"> <br>
-    <button id="actualizar-exam" >Actualizar</button>
-    <button id="eliminar-exam">Eliminar</button>
-    <button id="Volver-lista">Volver</button>
-</div>       

@@ -1,15 +1,49 @@
-<div class="container-fluid">
-    <h4>Nombre</h4>
-    <p>{{laboratorioActual.nombre}}</p>
+<div class="panel panel-default col-md-6">
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div id="nombreLab" class="col-md-6">
+                <h4>Nombre</h4>
+                <p>{{laboratorioActual.nombre}}</p>
+            </div>
+            <div id="ubicacionLab" class="col-md-6">
+                <h4>Ubicación</h4>
+                <p>{{laboratorioActual.ubicacion.nombre}}</p>
+            </div>
+            
+            <div class="col-md-12">
+                    <br><h4>Examenes</h4>
+                
+            </div>
+            <table id="examenes" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Recomendación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="examen in laboratorioActual.examenes" >
+                        <td id="{{$index}}-nombreExam">
+                            <a ui-sref="examDetail({examenId : examen.id})">{{examen.nombre}}</a>
+                        </td>
+                        <td id="{{$index}}-precioExam">{{examen.precio}}</td>
+                        <td id="{{$index}}-recomendacionExam">{{examen.recomendacion}}</td>
+                    </tr>
 
-    <h4>Ubicación</h4>
-    <p>{{laboratorioActual.ubicacion.nombre}}</p>
+                </tbody>
 
-    <h4>Exámenes</h4>
-    <a ng-repeat="examen in laboratorioActual.examenes" ui-sref="examDetail({examenId : examen.id})">{{examen.nombre}}</a>
+            </table>
+
+                <div style="text-align:center">
+                    <button class="btn btn-info">Agregar Examen</button>
+                </div>
+        </div>
+    </div>
+    <div class="panel-footer" style="text-align:center">
+        <button id="actualizar-lab" ui-sref='labUpdate({laboratorioId: laboratorioActual.id})'>Actualizar</button>
+        <button id="eliminar-lab" ui-sref='labDelete({laboratorioId: laboratorioActual.id})'>Eliminar</button>
+        <button id="Volver-lista" ui-sref="laboratoriosList">Volver</button>
+    </div>
+
 </div>
-<div class="col-md-12"> <br>
-    <button id="actualizar-lab" ui-sref='labUpdate({laboratorioId: laboratorioActual.id})'>Actualizar</button>
-    <button id="eliminar-lab" ui-sref='labDelete({laboratorioId: laboratorioActual.id})'>Eliminar</button>
-    <button id="Volver-lista" ui-sref="laboratoriosList">Volver</button>
-</div>       
