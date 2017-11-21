@@ -7,6 +7,7 @@
         'medicoModule',
         'horaModule',
         'laboratoriosModule',
+        'examenesModule',
         'farmaciaModule',
         'ordenesMedicasModule',
         'citasModule',
