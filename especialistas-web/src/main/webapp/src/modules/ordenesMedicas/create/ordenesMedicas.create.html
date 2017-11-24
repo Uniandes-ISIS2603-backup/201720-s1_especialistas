@@ -1,32 +1,9 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="container-fluid">
-    <div class="panel-group">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createOrdenMedica">Agregar orden</label>
-                <label ng-if="edit" id="editCita">Editar Información</label></div>
-            <div class="panel-body">
-                <form ng-submit="createOrdenMedica()" name="ordenMedica">
-                    <div class="form-group">
-                        <label for="descripcion">Descripcion</label>
-                        <input id="descripcion" required ng-model="descripcion" class="form-control"/>
-                    </div>
-                        
-                   <div class="form-group" ng-if="!ordenMedica.$valid">
-                        <div class="alert alert-warning" >
-                            <strong>Atención!</strong><p>Todos los campos son obligatorios</p>
-                        </div> 
-                    </div> 
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="ordenMedica.$valid" type="submit" value="Guardar" class="btn btn-success"/>
-                            <a ng-if="!edit" class="btn btn-info" ui-sref="ordenesMedicasList">Cancelar</a>
-                            <a ng-if="edit" class="btn btn-info" ui-sref="ordenesMedicasList">Cancelar</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+<form ng-submit="createOrdenMedica()" name="orden">
+    <div class="form-group">
+        <label for="comentarios">Descripción</label>
+        <input class="form-control" id="descripcion" required ng-model="descripcion" placeholder="Ingrese la descripción">
     </div>
-</div>
-
-
+    <input ng-show="orden.$valid" type="submit" value="Save" class="btn btn-success"/>
+    <button type="reset" class="btn btn-info">Reiniciar</button>
+    <a class="btn btn-danger" ui-sref="citasList"> Cancelar </a>
+</form>
