@@ -11,10 +11,9 @@
             $scope.createHora = function () {
                 $http.post(horasContext, {
                     horaInicio: $scope.horaInicio,
-                    horaFin: $scope.horaInicio + 20,
+                    horaFin: new Date($scope.horaInicio.getTime() + 20*60000),
                     medico: $scope.$parent.$parent.medico,
-                    consultorio : {'id': $scope.$eval($scope.consultorioHora).id,
-                                    'numero': $scope.$eval($scope.consultorioHora).numero}
+                    consultorio : $scope.$eval($scope.consultorioHora)
                 }).then(function (response) {
                     $state.go('horasList', {horaId: response.data.id}, {reload: true});
                 });
