@@ -1,22 +1,21 @@
-<div class="container-fluid">
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-            <a class="btn btn-info" ui-sref="farmaciaCreate"><span class="glyphicon glyphicon-plus-sign"></span> Nueva Farmacia</a>
-            
-        </div>
-    </div>
-    <div class="col-md-12">
+<div class="container container-fluid">
+    <div class="col col-md-12">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Nombre</th>    
-                    <th>Ubicación</th>    
+                    <th>NOMBRE</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="farmacia in farmacias">
-                    <td id="{{$index}}-nombre"><a ui-sref="farmaciaDetail ({id: farmacia.id})">{{farmacia.nombre}}</a></td>
-                    <td id="{{$index}}-nombre">{{farmacia.ubicacion}}</td>
+                    <td id="{{$index}}-nombre"><a ui-sref="farmaciaDetail({id: farmacia.id})">{{farmacia.nombre}}</a>
+                    </td>
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-success" ui-sref="farmaciaCreate">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
