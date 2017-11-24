@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.especialistas.resources;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDTO;
 import co.edu.uniandes.csw.especialistas.dtos.ConsultorioDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.ConsultorioLogic;
-import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -38,11 +37,17 @@ public class ConsultorioResource {
     /**
      * Atributo que modela la lógica de los consultorios
      */
-    @Inject
-    ConsultorioLogic logic;
+    
+    private final ConsultorioLogic logic;
+    
+    public ConsultorioResource(){
+        logic = null;
+    }
     
     @Inject
-    private HospitalLogic hospitalLogic;
+    public ConsultorioResource(ConsultorioLogic logic){
+        this.logic = logic;
+    }
     
     /**
      * Método que busca todos los consultorios
@@ -71,26 +76,10 @@ public class ConsultorioResource {
     public ConsultorioDetailDTO getConsultorio(@PathParam("id") Long idConsultorio) {
         try {
             ConsultorioEntity entidad = logic.getConsultorio(idConsultorio);
-            ConsultorioDetailDTO consultorio = new ConsultorioDetailDTO(entidad);
-            return consultorio;
+            return new ConsultorioDetailDTO(entidad);
+            
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 404);
-        }
-    }
-    
-    /**
-     * 
-     * @param dto
-     * @return 
-     */
-    @POST
-    public ConsultorioDetailDTO postConsultorio(ConsultorioDetailDTO dto){
-        try{
-            ConsultorioEntity consultorio = dto.toEntity();
-            hospitalLogic.addConsultorio(consultorio.getHospital().getId(), consultorio);
-            return dto;
-        }catch(BusinessLogicException e){
-            throw new WebApplicationException(e.getMessage(), 404);
+            throw new WebApplicationException(e, 404);
         }
     }
 

@@ -91,7 +91,7 @@ public class MedicoPersistenceTest {
     
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10; i++){
             MedicoEntity entity = factory.manufacturePojo(MedicoEntity.class);
             
             em.persist(entity);

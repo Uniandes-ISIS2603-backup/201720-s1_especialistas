@@ -8,7 +8,7 @@
                 if($state.params.hospitalId !== undefined && $state.params.hospitalId !== null){
                     $http.post(consultoriosContext + '/' + $state.params.hospitalId + '/consultorios',{
                         numero: $scope.consultorioNumber
-                    }).then(function (response){
+                    }).then(function (){
                        $state.go('hospitalesList',{});
                     });
                 }

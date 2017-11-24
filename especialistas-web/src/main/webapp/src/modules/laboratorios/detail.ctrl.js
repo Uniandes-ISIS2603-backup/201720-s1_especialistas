@@ -5,6 +5,7 @@
         function ($scope, $http, $state, labsContext) {
             $http.get(labsContext + '/' + $state.params.laboratorioId).then(function (response) {
                     $scope.laboratorioActual = response.data;
+                    $scope.examenesLab = response.data.examenes;
             });
         }
     ]);

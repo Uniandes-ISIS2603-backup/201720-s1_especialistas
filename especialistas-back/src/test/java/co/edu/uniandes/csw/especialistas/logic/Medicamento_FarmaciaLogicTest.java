@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.especialistas.logic;
 
 import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
-import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
+import co.edu.uniandes.csw.especialistas.ejb.MedicamentoFarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.persistence.FarmaciaPersitence;
@@ -58,7 +58,7 @@ public class Medicamento_FarmaciaLogicTest {
     private MedicamentoPersistence persistence;
     
     @Inject
-    private Medicamento_FarmaciaLogic logic;
+    private MedicamentoFarmaciaLogic logic;
     
     @Inject 
     private FarmaciaLogic farmaciaLogic;
@@ -130,7 +130,7 @@ public class Medicamento_FarmaciaLogicTest {
     private MedicamentoEntity entitym = new MedicamentoEntity();
 
     /**
-     * Test of agregarRelacion method, of class Medicamento_FarmaciaLogic.
+     * Test of agregarRelacion method, of class MedicamentoFarmaciaLogic.
      */
     @Test
     public void testAgregarRelacion() {
@@ -140,7 +140,7 @@ public class Medicamento_FarmaciaLogicTest {
     }
 
     /**
-     * Test of eliminarRelacion method, of class Medicamento_FarmaciaLogic.
+     * Test of eliminarRelacion method, of class MedicamentoFarmaciaLogic.
      */
     @Test
     public void testEliminarRelacion() throws Exception {

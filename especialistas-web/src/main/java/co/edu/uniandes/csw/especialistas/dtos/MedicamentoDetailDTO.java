@@ -36,6 +36,7 @@ public class MedicamentoDetailDTO extends MedicamentoDTO{
     
     
     
+    @Override
     public MedicamentoEntity toEntity()
     {
         MedicamentoEntity entity = super.toEntity();

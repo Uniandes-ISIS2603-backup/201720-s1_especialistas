@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class HospitalPersistence {
-
+private static final String SELECT = "Select e From HospitalEntity e where e.id = :id";
     /**
      * Atributo que modela la unidad de persistencia
      */
@@ -61,7 +61,7 @@ public class HospitalPersistence {
      */
     public HospitalEntity findById(long id) {
 
-        TypedQuery query = em.createQuery("Select e From HospitalEntity e where e.id = :id", HospitalEntity.class);
+        TypedQuery query = em.createQuery(SELECT, HospitalEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -83,7 +83,7 @@ public class HospitalPersistence {
 
         HospitalEntity hospital = null;
 
-        TypedQuery query = em.createQuery("Select e From HospitalEntity e where e.id = :id", HospitalEntity.class);
+        TypedQuery query = em.createQuery(SELECT, HospitalEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -126,7 +126,7 @@ public class HospitalPersistence {
 
         HospitalEntity hospital = null;
 
-        TypedQuery query = em.createQuery("Select e From HospitalEntity e where e.id = :id", HospitalEntity.class);
+        TypedQuery query = em.createQuery(SELECT, HospitalEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -151,7 +151,7 @@ public class HospitalPersistence {
 
         HospitalEntity hospital = null;
 
-        TypedQuery query = em.createQuery("Select e From HospitalEntity e where e.id = :id", HospitalEntity.class);
+        TypedQuery query = em.createQuery(SELECT, HospitalEntity.class);
 
         query = query.setParameter("id", id);
 

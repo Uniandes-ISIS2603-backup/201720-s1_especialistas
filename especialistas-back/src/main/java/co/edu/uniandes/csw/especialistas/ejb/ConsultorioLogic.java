@@ -21,14 +21,22 @@ public class ConsultorioLogic {
     /**
      * Injección de la persistencia de consultorios
      */
-    @Inject
-    private ConsultorioPersistence persistence;
     
-    /**
-     * Injección de la persistencia de hospitales
-     */
+    private final ConsultorioPersistence persistence;
+    
+    
+    
+    
+    public ConsultorioLogic(){
+        
+        persistence = null;
+    }
+    
     @Inject
-    HospitalPersistence hospitalPersistence;
+    public ConsultorioLogic(ConsultorioPersistence persistence,HospitalPersistence hospitalPersistence ){
+        this.persistence = persistence;
+        
+    }
     
 
     /**

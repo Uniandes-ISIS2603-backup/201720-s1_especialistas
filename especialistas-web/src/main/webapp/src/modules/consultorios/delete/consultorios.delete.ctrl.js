@@ -10,7 +10,7 @@
             $scope.deleteConsultorio = function () {
                 if ($state.params.hospitalId !== null && $state.params.consultorioId !== null 
                         && $state.params.hospitalId !== undefined && $state.params.consultorioId !== undefined){
-                    $http.delete(consultoriosContext + '/' + idHospital + '/consultorios/' + idConsultorio, {}).then(function (response) {
+                    $http.delete(consultoriosContext + '/' + idHospital + '/consultorios/' + idConsultorio, {}).then(function () {
                         $state.go('hospitalesList', {}, {reload: true});
                     });
                 }

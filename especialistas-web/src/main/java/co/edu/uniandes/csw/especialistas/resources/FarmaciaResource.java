@@ -6,11 +6,10 @@
 package co.edu.uniandes.csw.especialistas.resources;
 
 import co.edu.uniandes.csw.especialistas.dtos.FarmaciaDetailDTO;
-import co.edu.uniandes.csw.especialistas.ejb.MedicamentoLogic;
 import co.edu.uniandes.csw.especialistas.dtos.MedicamentoDTO;
 import co.edu.uniandes.csw.especialistas.dtos.UbicacionDTO;
 import co.edu.uniandes.csw.especialistas.ejb.FarmaciaLogic;
-import co.edu.uniandes.csw.especialistas.ejb.Medicamento_FarmaciaLogic;
+import co.edu.uniandes.csw.especialistas.ejb.MedicamentoFarmaciaLogic;
 import co.edu.uniandes.csw.especialistas.entities.FarmaciaEntity;
 import co.edu.uniandes.csw.especialistas.entities.MedicamentoEntity;
 import co.edu.uniandes.csw.especialistas.entities.UbicacionEntity;
@@ -54,7 +53,7 @@ public class FarmaciaResource {
      * Clase de la logica de los metodos que comparten medicamento y faracia
      */
     
-    private final Medicamento_FarmaciaLogic logicMF;
+    private final MedicamentoFarmaciaLogic logicMF;
     
     public FarmaciaResource(){
         logic = null;
@@ -63,7 +62,7 @@ public class FarmaciaResource {
     }
     
     @Inject
-    public FarmaciaResource(FarmaciaLogic logic, Medicamento_FarmaciaLogic logicMF){
+    public FarmaciaResource(FarmaciaLogic logic, MedicamentoFarmaciaLogic logicMF){
         Assert.notNull(logic, "logic must not be null!");
         Assert.notNull(logicMF, "logicMF must not be null!");
         this.logic = logic;
@@ -132,7 +131,7 @@ public class FarmaciaResource {
         FarmaciaEntity entity = logic.getFarmacia(id);
         if(!logicMF.agregarRelacion(id, idMed))
         {
-            throw new BusinessLogicException("no existe la entidad");
+            throw new BusinessLogicException("1 no existe la entidad");
         }
         return new FarmaciaDetailDTO(logic.updateFarmacia(entity));
     }
@@ -151,7 +150,7 @@ public class FarmaciaResource {
         FarmaciaEntity entity = logic.getFarmacia(id);
         if(!logicMF.eliminarRelacion(id, idMed))
         {
-            throw new BusinessLogicException("no existe la entidad");
+            throw new BusinessLogicException("2 no existe la entidad");
         }
         return new FarmaciaDetailDTO(logic.updateFarmacia(entity));
     }
@@ -170,7 +169,7 @@ public class FarmaciaResource {
         FarmaciaEntity entity = logic.getFarmacia(id);
         if(entity==null)
         {
-            throw new BusinessLogicException("no existe la entidad");
+            throw new BusinessLogicException("3 no existe la entidad");
         }
         List<MedicamentoDTO> list= new ArrayList<>();
         Iterator<MedicamentoEntity> iter=entity.getMedicamentos().iterator();
@@ -211,7 +210,7 @@ public class FarmaciaResource {
         FarmaciaEntity entity = farmacia.toEntity();
         if(logic.getFarmacia(entity.getId())==null)
         {
-            throw new BusinessLogicException("no existe farmacia con el id dado");
+            throw new BusinessLogicException("4 no existe farmacia con el id dado");
         }
         return new FarmaciaDetailDTO(logic.updateFarmacia(entity));
     }

@@ -86,8 +86,8 @@ public class HospitalResource {
     public HospitalDetailDTO getHospital(@PathParam("id") Long id) {
         try {
             HospitalEntity entidad = logic.getHospital(id);
-            HospitalDetailDTO hospital = new HospitalDetailDTO(entidad);
-            return hospital;
+            return new HospitalDetailDTO(entidad);
+            
         } catch (BusinessLogicException e) {
             
             throw new WebApplicationException(e, 404);
@@ -152,8 +152,8 @@ public class HospitalResource {
     public List<ConsultorioDTO> getConsultoriosHospital(@PathParam("id") Long idHospital) {
         try {
             HospitalEntity entidad = logic.getHospital(idHospital);
-            List<ConsultorioDTO> respuesta = listConsultorioEntity2DTO(entidad.getConsultorios());
-            return respuesta;
+            return listConsultorioEntity2DTO(entidad.getConsultorios());
+            
         } catch (BusinessLogicException e) {
             
             throw new WebApplicationException(e, 404);

@@ -3,8 +3,8 @@
             var mod = ng.module("usuarioModule");
             mod.constant("usuariosContext", "api/usuarios");
             mod.constant("citasContext", "api/citas");
-            mod.controller('usuarioUpdateCtrl', ['$scope', '$http', 'usuariosContext', '$state', 'citasContext', '$rootScope', '$filter',
-                function ($scope, $http, usuariosContext, $state, citasContext, $rootScope, $filter) {
+            mod.controller('usuarioUpdateCtrl', ['$scope', '$http', 'usuariosContext', '$state', 'citasContext', '$rootScope',
+                function ($scope, $http, usuariosContext, $state, citasContext, $rootScope) {
                     $rootScope.edit = true;
 
                     var idUsuario = $state.params.usuarioId;

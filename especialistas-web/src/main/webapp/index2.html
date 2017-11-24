@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="mainApp">
     <head>
-
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ASANAR</title>
+        <title>Start Page</title>
 
         <!--Dependencias externas -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/uikit/dist/css/uikit.min.css" />
+        <link rel="stylesheet" href="bower_components/uikit/dist/css/uikit-rtl.min.css" />
+        <script src="bower_components/uikit/dist/js/uikit-icons.min.js"></script>
+        <script src="bower_components/uikit/dist/js/uikit.min.js"></script>
+        
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -19,7 +23,7 @@
         <script src="src/modules/medicos/create/medicos.create.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/medicos/update/medicos.update.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/medicos/delete/medicos.delete.ctrl.js" type="text/javascript"></script>
-
+        
         <!-- Horas -->
         <script src="src/modules/horas/horas.mod.js" type="text/javascript"></script>
         <script src="src/modules/horas/horas.ctrl.js" type="text/javascript"></script>
@@ -54,55 +58,55 @@
         <script src="src/modules/medicamentos/medicamentos.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/medicamentos/create/medicamentos.create.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/medicamentos/detail/medicamentos.detail.ctrl.js" type="text/javascript"></script>
-
+        
         <!--Consultorios-->
         <script src="src/modules/consultorios/consultorios.mod.js" type="text/javascript"></script>
         <script src="src/modules/consultorios/consultorios.ctrl.js" type="text/javascript"></script>
-
+        
         <!--Hospitales-->
         <script src="src/modules/hospitales/hospitales.mod.js" type="text/javascript"></script>
         <script src="src/modules/hospitales/hospitales.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/hospitales/create/hospitales.create.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/hospitales/delete/hospitales.delete.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/hospitales/update/hospitales.update.ctrl.js" type="text/javascript"></script>
-
+        
         <!--Usuarios-->
         <script src="src/modules/usuarios/usuarios.mod.js" type="text/javascript"></script>
         <script src="src/modules/usuarios/usuarios.ctrl.js" type="text/javascript"></script>
-
+        
         <!-- Cita-->
         <script src="src/modules/citas/citas.mod.js" type="text/javascript"></script>
         <script src="src/modules/citas/citas.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/citas/delete/citas.delete.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/citas/update/citas.update.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/citas/create/citas.create.ctrl.js" type="text/javascript"></script>
-
+        
         <!-- Orden-->
         <script src="src/modules/ordenesMedicas/ordenesMedicas.mod.js" type="text/javascript"></script>
         <script src="src/modules/ordenesMedicas/ordenesMedicas.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/ordenesMedicas/delete/ordenesMedicas.delete.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/ordenesMedicas/create/ordenesMedicas.create.ctrl.js" type="text/javascript"></script>
-
+        
         <!--Pagos-->
         <script src="src/modules/pagos/pagos.mod.js" type="text/javascript"></script>
         <script src="src/modules/pagos/pagos.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/pagos/new/pagos.new.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/pagos/delete/pagos.delete.ctrl.js" type="text/javascript"></script>
-
-
+        
+        
         <!--Tarjetas-->
         <script src="src/modules/tarjetas/tarjetas.mod.js" type="text/javascript"></script>
         <script src="src/modules/tarjetas/tarjetas.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/tarjetas/new/tarjetas.new.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/tarjetas/delete/tarjetas.delete.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/tarjetas/update/tarjetas.update.ctrl.js" type="text/javascript"></script>
-
+        
         <!--Usuarios new-->
-
+        
         <script src="src/modules/usuarios/new/usuarios.new.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/usuarios/delete/usuarios.delete.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/usuarios/update/usuarios.update.ctrl.js" type="text/javascript"></script>
-
+        
         <!--Consultorios-->
         <script src="src/modules/consultorios/consultorios.mod.js" type="text/javascript"></script>
         <script src="src/modules/consultorios/consultorios.ctrl.js" type="text/javascript"></script>
@@ -110,40 +114,41 @@
         <script src="src/modules/consultorios/delete/consultorios.delete.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/consultorios/update/consultorios.update.ctrl.js" type="text/javascript"></script>
 
-
+        
         <script src="src/app.js" type="text/javascript"></script> 
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script> 
-        <link href="https://fonts.googleapis.com/css?family=Istok+Web|Roboto|Roboto+Condensed" rel="stylesheet">
+        
         <link rel="stylesheet" href="src/index.css"/>
-
+        
     </head>
-    <body id="body">
-
-
+    <body uk-grid>
+        
+        
         <!--BARRA SUPERIOR-->
         <div id="barra-sup">
-            <h1 class="col-sm-3 text text-center">ASANAR</h1>
+            <h1 class="col-sm-3">Asanar</h1>
         </div>
 
 
         <!--BARRA LATERAL-->
-        <div id="barra-lateral" class="col-sm-3">
+        <div id="barra-lateral" class="uk-width-1-6">
             <ul class="list1">
-                <a href="#"><span class="glyphicon glyphicon-home">  Página Principal</span><span class="sr-only">(current)</span></a>
-                <a ui-sref="hospitalesList"><span class="glyphicon glyphicon-header"> Hospitales</span></a>
-                <a ui-sref="usuariosList"><span class="glyphicon glyphicon-user">   Usuarios</span></a>
-                <a ui-sref="tarjetasList"><span class="glyphicon glyphicon-credit-card">   Tarjetas</span></a>
-                <a ui-sref="pagosList"><span class="glyphicon glyphicon-usd">  Pagos</span></a>
-                <a ui-sref="farmaciasList"><span class="glyphicon glyphicon-leaf">  Farmacias</span></a>
-                <a ui-sref="medicamentosList"><span class="glyphicon glyphicon-list-alt">   Medicamentos</span></a>
-                <a ui-sref="medicosList"><span class="glyphicon glyphicon-star-empty">    Médicos</span></a>
-                <a ui-sref="laboratoriosList"><span class="glyphicon glyphicon-search">   Laboratorios</span></a>
-                <a ui-sref="citasList"><span class="glyphicon glyphicon-list">  Citas</span></a>
-            </ul>
+                    <a href="#">Página Principal <span class="sr-only">(current)</span></a>
+                    <a ui-sref="hospitalesList">Hospitales</a>
+                    <a ui-sref="usuariosList">Usuarios</a>
+                    <a ui-sref="tarjetasList">Tarjetas</a>
+                    <a ui-sref="pagosList">Pagos</a>
+                    <a ui-sref="farmaciasList">Farmacias</a>
+                    <a ui-sref="medicamentosList">Medicamentos</a>
+                    <a ui-sref="medicosList">Médicos</a>
+                    <a ui-sref="laboratoriosList">Laboratorios</a>
+                    <a ui-sref="citasList">Citas</a>
+                    <a ui-sref="consultoriosList">Consultorios</a>
+                </ul>
         </div>
 
-        <div ui-view="mainView" class="principal col-sm-9" id="mainView">
-
+        <div ui-view="mainView" class="principal col-sm-9">
+            
         </div> 
     </body>
 </html>

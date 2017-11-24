@@ -15,7 +15,7 @@ import org.springframework.util.Assert;
  *
  * @author rc.tejon
  */
-public class Medicamento_FarmaciaLogic {
+public class MedicamentoFarmaciaLogic {
     
     
     private final FarmaciaLogic logicFarmacia;
@@ -23,13 +23,13 @@ public class Medicamento_FarmaciaLogic {
     
     private final MedicamentoLogic logicMedicamento;
     
-    public Medicamento_FarmaciaLogic(){
+    public MedicamentoFarmaciaLogic(){
         logicFarmacia = null;
         logicMedicamento = null;
     }
     
     @Inject
-    public Medicamento_FarmaciaLogic(FarmaciaLogic logicFarmacia, MedicamentoLogic logicMedicamento){
+    public MedicamentoFarmaciaLogic(FarmaciaLogic logicFarmacia, MedicamentoLogic logicMedicamento){
         Assert.notNull(logicFarmacia, "MyCollaborator must not be null!");
         Assert.notNull(logicMedicamento, "MyCollaborator must not be null!");
         this.logicFarmacia = logicFarmacia;

@@ -81,7 +81,7 @@ public class UsuarioResource {
     public UsuarioDetailDTO getUsuarioByID(@PathParam("id") Long id){
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
-            throw new WebApplicationException("No existe un usuario con el id " + id);
+            throw new WebApplicationException("1 No existe un usuario con el id " + id);
             
         }
         return new UsuarioDetailDTO(entity);
@@ -93,7 +93,7 @@ public class UsuarioResource {
         usuario.setId(id);
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
-            throw new WebApplicationException("No existe un usuario con el id " + id);
+            throw new WebApplicationException("2 No existe un usuario con el id " + id);
             
         }
         return new UsuarioDetailDTO(logic.updateUsuario(usuario.toEntity()));
@@ -104,7 +104,7 @@ public class UsuarioResource {
     public void deleteUsuario(@PathParam("id") Long id){
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
-            throw new WebApplicationException("No existe un usuario con el id " + id);
+            throw new WebApplicationException("3 No existe un usuario con el id " + id);
             
         }
         logic.deleteUsuario(id);
