@@ -4,17 +4,12 @@
     mod.controller('examenAddCtrl', ['$scope', '$http', 'laboratoriosContext', '$state', '$rootScope',
         function ($scope, $http, laboratoriosContext, $state, $rootScope) {
             $rootScope.edit = true;
-            
-            $http.get(laboratoriosContext + '/' + $state.params.laboratorioId).then(function(response){
-                var lab = response.data;
+                    $http.get("api/examenes").then(function(response){
+                    $scope.examenesList = response.data;
             });
 
             $scope.addExam = function () {
-                $http.put(laboratoriosContext + '/' + $state.params.laboratorioId + '/addExamen', {
-                    nombre: $scope.nombreExam,
-                    precio: $scope.precio,
-                    recomendacion: $scope.recomendacion
-                }).then(function (response) {
+                $http.post(laboratoriosContext + '/' + $state.params.laboratorioId + '/examenes', $scope.$eval($scope.examenX)).then(function (response) {
                     $state.go('laboratoriosList', {id: response.data.id}, {reload: true});
                 });
             };

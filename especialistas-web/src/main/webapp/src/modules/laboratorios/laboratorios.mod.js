@@ -64,7 +64,7 @@
                 },
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'add/examen.add.html',
+                        templateUrl: basePath + 'add/examen.add_1.html',
                         controller: 'examenAddCtrl',
                         controllerAs: 'ctrl'
                     }
