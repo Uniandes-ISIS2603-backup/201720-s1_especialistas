@@ -15,17 +15,13 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Atributo que modela el recurso de un consultorio
@@ -41,9 +37,18 @@ public class ConsultorioResource {
     /**
      * Atributo que modela la lógica de los consultorios
      */
+    
+    private final ConsultorioLogic logic;
+    
+    public ConsultorioResource(){
+        logic = null;
+    }
+    
     @Inject
-    ConsultorioLogic logic;
-
+    public ConsultorioResource(ConsultorioLogic logic){
+        this.logic = logic;
+    }
+    
     /**
      * Método que busca todos los consultorios
      *
@@ -61,15 +66,20 @@ public class ConsultorioResource {
         return lista;
     }
 
+    /**
+     * Método que retorna la  información de un consultorio
+     * @param idConsultorio id del consultorio
+     * @return DetailDTO con el información del consultorio
+     */
     @GET
     @Path("/{id: \\d+}")
     public ConsultorioDetailDTO getConsultorio(@PathParam("id") Long idConsultorio) {
         try {
             ConsultorioEntity entidad = logic.getConsultorio(idConsultorio);
-            ConsultorioDetailDTO consultorio = new ConsultorioDetailDTO(entidad);
-            return consultorio;
+            return new ConsultorioDetailDTO(entidad);
+            
         } catch (BusinessLogicException e) {
-            throw new WebApplicationException(e.getMessage(), 404);
+            throw new WebApplicationException(e, 404);
         }
     }
 

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.logic;
 
 import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
+import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.especialistas.persistence.HospitalPersistence;
@@ -118,11 +119,16 @@ public class HospitalLogicTest {
         PodamFactory factory = new PodamFactoryImpl();
         HospitalEntity entity = factory.manufacturePojo(HospitalEntity.class);
 
-        System.out.println(entity.getId());
         logic.createHospital(entity);
+        
+        ConsultorioEntity consultorio = factory.manufacturePojo(ConsultorioEntity.class);
+        
+        logic.addConsultorio(entity.getId(), consultorio);
+        logic.deleteConsultorio(entity.getId(), consultorio.getId());
+        
 
         assertEquals(logic.getHospital(entity.getId()), entity);
-        assertEquals(logic.getHospital(entity.getId()), entity);
+        assertEquals(logic.getHospitalByName(entity.getNombre()), entity);
     }
 
     /**

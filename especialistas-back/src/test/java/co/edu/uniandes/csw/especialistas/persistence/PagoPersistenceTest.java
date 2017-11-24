@@ -93,7 +93,7 @@ public class PagoPersistenceTest {
     
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10; i++){
             PagoEntity entity = factory.manufacturePojo(PagoEntity.class);
             
             em.persist(entity);

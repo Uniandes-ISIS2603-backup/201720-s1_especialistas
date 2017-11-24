@@ -43,7 +43,7 @@ public class CitaResource {
     
     @Inject
     public CitaResource(CitaLogic logic){
-        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "logic must not be null!");
         this.logic = logic;
     }
     
@@ -72,7 +72,7 @@ public class CitaResource {
     {
         CitaEntity entity = logic.getCita(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
+            throw new WebApplicationException("1 El recurso /citas/" + id + " no existe!", 404);
         }
 
         return new CitaDetailDTO(entity);
@@ -103,7 +103,7 @@ public class CitaResource {
         CitaEntity newEntity = cita.toEntity();
         CitaEntity e = logic.getCita(newEntity.getId());
          if (e == null) {
-            throw new WebApplicationException("El recurso /citas/" + cita.getId() + " no existe.", 404);
+            throw new WebApplicationException("2 El recurso /citas/" + cita.getId() + " no existe!!", 404);
         }
         return new CitaDetailDTO(logic.updateCita(newEntity));
     }
@@ -118,7 +118,7 @@ public class CitaResource {
     {
         CitaEntity entity = logic.getCita(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
+            throw new WebApplicationException("3 El recurso /citas/" + id + " no existe!!!", 404);
         }
         logic.deleteCita(id);
     }

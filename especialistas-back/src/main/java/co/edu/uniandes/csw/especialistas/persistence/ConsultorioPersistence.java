@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.especialistas.persistence;
 
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
-import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,6 +18,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class ConsultorioPersistence {
+    private static final String SELECT = "Select e From ConsultorioEntity e where e.id = :id";
 
     /**
      * Atributo que modela la unidad de persistencia
@@ -60,7 +60,7 @@ public class ConsultorioPersistence {
      */
     public ConsultorioEntity findById(long id) {
 
-        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.id = :id", ConsultorioEntity.class);
+        TypedQuery query = em.createQuery(SELECT, ConsultorioEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -80,7 +80,7 @@ public class ConsultorioPersistence {
 
         ConsultorioEntity consultorio = null;
 
-        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.id = :id", ConsultorioEntity.class);
+        TypedQuery query = em.createQuery(SELECT, ConsultorioEntity.class);
 
         query = query.setParameter("id", id);
 
@@ -120,7 +120,7 @@ public class ConsultorioPersistence {
 
         ConsultorioEntity consultorio = null;
 
-        TypedQuery query = em.createQuery("Select e From ConsultorioEntity e where e.id = :id", ConsultorioEntity.class);
+        TypedQuery query = em.createQuery(SELECT, ConsultorioEntity.class);
 
         query = query.setParameter("id", id);
 

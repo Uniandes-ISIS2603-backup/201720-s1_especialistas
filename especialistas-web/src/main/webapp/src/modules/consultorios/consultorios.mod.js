@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("consultoriosModule", ['ui.router']);
-    mod.constant("consultoriosContext", "api/consultorios");
+    mod.constant("consultoriosContext", "api/hospitales");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/consultorios/';
             $urlRouterProvider.otherwise("/consultoriosList");
@@ -24,7 +24,10 @@
                     }
                 }
             }).state('consultoriosCreate', {
-                url: '/consultorios/create',
+                url: '/hospitales/{hospitalId: int}/consultorios/create',
+                param:{
+                    hospitalId: null
+                },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'create/consultorios.create.html',
@@ -33,9 +36,10 @@
                     }
                 }
             }).state('consultorioDelete', {
-                url: '/consultorios/delete/{consultorioId:int}',
+                url: 'hospitales/{hospitalId:int}/consultorios/delete/{consultorioId:int}',
                 param: {
-                    consultorioId: null
+                    consultorioId:null,
+                    hospitalId:null,
                 },
                 views: {
                     'mainView': {

@@ -43,7 +43,8 @@ public class LaboratorioDTO {
             laboratorio.setExamenes(new ArrayList<>());
         }
         else{
-        this.examenes = examsToDTO(laboratorio.getExamenes());}
+         this.examenes = examsToDTO(laboratorio.getExamenes());}
+        
     }
 
     /**
@@ -115,7 +116,13 @@ public class LaboratorioDTO {
     public List<ExamenDetailDTO> examsToDTO(List<ExamenEntity> lista) {
         List<ExamenDetailDTO> exams= new ArrayList<>();
         for (ExamenEntity a : lista) {
-            exams.add(new ExamenDetailDTO(a));
+            ExamenDetailDTO detail = new ExamenDetailDTO();
+            detail.setId(a.getId());
+            detail.setNombre(a.getnombre());
+            detail.setPrecio(a.getPrecio());
+            detail.setRecomendacion(a.getRecomedacion());
+            //detail.setLaboratorios(laboratorios);
+            exams.add(detail);
         }
         return exams;
     }

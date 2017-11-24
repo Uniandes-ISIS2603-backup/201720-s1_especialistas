@@ -40,7 +40,7 @@ public class OrdenMedicaResource {
     
     @Inject
     public OrdenMedicaResource(OrdenMedicaLogic logic){
-        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "logic must not be null!");
         this.logic = logic;
     }
     
@@ -68,7 +68,7 @@ public class OrdenMedicaResource {
     {
         OrdenMedicaEntity entity = logic.getOrdenMedica(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /ordenesMedicas/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /ordenesMedicas/" + id + "1 no existe.", 404);
         }
 
         return new OrdenMedicaDetailDTO(entity);
@@ -101,7 +101,7 @@ public class OrdenMedicaResource {
         OrdenMedicaEntity entity = ordenMedica.toEntity();
         OrdenMedicaEntity e = logic.getOrdenMedica(id);
          if (e == null) {
-            throw new WebApplicationException("El recurso /citas/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /citas/" + id + " 2 no existe.", 404);
         }
         return new OrdenMedicaDetailDTO(logic.updateOrdenMedica(entity));
     }
@@ -117,7 +117,7 @@ public class OrdenMedicaResource {
         
         OrdenMedicaEntity entity = logic.getOrdenMedica(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /ordenesMedicas/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /ordenesMedicas/" + id + " 3 no existe.", 404);
         }
         logic.deleteOrdenMedica(id);
     }

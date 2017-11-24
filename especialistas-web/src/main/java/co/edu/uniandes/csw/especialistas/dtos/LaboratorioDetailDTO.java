@@ -25,14 +25,5 @@ public class LaboratorioDetailDTO extends LaboratorioDTO {
         super(laboratorio);
     }
     
-    /**
-     * Transforma un DTO a Entity
-     * @return 
-     */
-    @Override
-    public LaboratorioEntity toEntity() {
-        return super.toEntity();
-        
-        
-    }
+    
 }

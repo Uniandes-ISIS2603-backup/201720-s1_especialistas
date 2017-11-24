@@ -9,115 +9,126 @@ and open the template in the editor.
 */
 
 #barra-sup{
-                position: fixed;
-                width: 100%;
-                height: 60px;
-                background: #41c7ef;
-                z-index: 2;
-                top: 0px;
-                left: 0px;
-                display: flex;
-            }
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background: #41c7ef;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    font-family: 'Istok Web';
+}
 
-            #barra-sup h1{
-                font-size: 30px;
-                background-color: rgba(0, 0, 0, .075);
-                height:  100% !important;
-                padding-top: 15px;
-                margin: 0px;
-            }
-            
-            #barra-lateral{
-                position: fixed;
-                height: calc( 100% - 60px );
-                background: #2E3840;
-                top: 60px;
-                left: 0px;
-                padding: 0px;
-                padding-top: 20px;
-            }
+#barra-sup h1{
+    font-size: 30px;
+    background-color: rgba(0, 0, 0, .075);
+    height:  100% !important;
+    padding-top: 15px;
+    margin: 0px;
+    width:250px;
+}
 
-            .list1{
-                position: relative;
-                width: 100%;
-                text-decoration: none;
-                padding: 0px;
-            }
+#barra-lateral{
+    position: fixed;
+    height: calc( 100% - 60px );
+    background: #2E3840;
+    width: 250px;
+    top: 60px;
+    left: 0px;
+    padding: 0px;
+    padding-top: 20px;
+    font-size: 20px;
+    font-family: 'Istok Web';
+}
 
-            .list1 a{
-                width: 100%;
-                height: 50px;
-                display: flex;
-                align-items: center;
-                padding-left: 30px;
-                transition-duration: 0.5s;
-            }
+#mainView{
+    font-family: 'Istok Web';
+    font-size: 18px;
+}
 
-            .list1 a:hover{
-                background: rgba(255, 255, 255, .15);
-                color: #FFF;
-            }
+.list1{
+    position: relative;
+    width: 100%;
+    text-decoration: none;
+    padding: 0px;
+}
 
-            .list1 a:link{
-                text-decoration: none;
-            }
-            
-            .principal{
-                position: absolute;
-                right: 0px;
-                top: 100px;
-            }
+.list1 a{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    transition-duration: 0.5s;
+}
 
-            .usuario-padre{
-                border-radius: 5px;
-                border: 1px solid #eee;
-                overflow: hidden;
-                padding: 0px;
-                margin: 5px;
-            }
+.list1 a:hover{
+    background: rgba(255, 255, 255, .15);
+    color: #FFF;
+}
 
-            .pacman{
-                padding: 0px;
-            }
+.list1 a:link{
+    text-decoration: none;
+}
 
-            .usuario-data{
-                padding: 20px;
-            }
+.principal{
+    position: absolute;
+    right: 0px;
+    top: 100px;
+}
 
-            .usuario-data a{
-                float: right;
-                margin-left: 10px;
-                margin-bottom: 10px;
-            }
+.usuario-padre{
+    border-radius: 5px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    padding: 0px;
+    margin: 5px;
+}
 
-            .add{
-                width: 100%;
-                height: 100%;
-                background: #fff;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 100px;
-                transition: 0.5s;
-                text-shadow: -2px -2px #eee;
-                cursor: pointer;
-                margin-left: 0 !important;
-            }
+.pacman{
+    padding: 0px;
+}
 
-            .add:hover{
-                font-size: 120px;
-                text-shadow: -5px -5px #ddd;
+.usuario-data{
+    padding: 20px;
+}
 
-                text-decoration: none;
-            }
+.usuario-data a{
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
 
-            .add:link{
-                text-decoration: none;
-            }
-            
-            .img-responsive{
-                
-            }
+.add{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    transition: 0.5s;
+    text-shadow: -2px -2px #eee;
+    cursor: pointer;
+    margin-left: 0 !important;
+}
+
+.add:hover{
+    font-size: 120px;
+    text-shadow: -5px -5px #ddd;
+
+    text-decoration: none;
+}
+
+.add:link{
+    text-decoration: none;
+}
+
+.img-responsive{
+
+}
+

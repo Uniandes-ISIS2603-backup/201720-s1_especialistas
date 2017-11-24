@@ -1,32 +1,59 @@
-<alert class="alert alert-danger" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="container-fluid">
-    <a class="btn btn-info" ui-sref="addMedicamento ({id: currentRecord.id})"><span class="glyphicon glyphicon-plus-sign"></span> Agreagar Medicamento</a>
-    <a class="btn btn-info" ui-sref="deleteMedicamento ({id: currentRecord.id})"><span class="glyphicon glyphicon-plus-sign"></span> Eliminar Medicamento</a>
-    <h4>
-        Información
-    </h4>
-    <table class="table table-striped col-md-4">
-        <tbody>
-            <tr> <td>Name:</td> <td id="{{$index}}-farmaciaName">{{currentRecord.nombre}}</td> </tr> 
-            <tr>  <td>longitud</td><td id="{{$index}}-ubicacionLongitud">{{currentRecord.ubicacion.longitud}}</td></tr>>
-            <tr> <td>latitud</td>><td id="{{$index}}-ubicacionLatitud">{{currentRecord.ubicacion.latitud}} </td></tr>
-        </tbody>
-    </table>
-    <h4>
-        medicamentos
-    </h4>
-    <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nombre</th>    
-                    <th>Precio</th>    
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="medicamento in currentMedicamentos">
-                    <td id="{{$index}}-nombreMedicamento"><a ui-sref="medicamentoDetail ({id: medicamento.id})">{{medicamento.nombre}}</a></td>
-                    <td id="{{$index}}-precioMedicamento">{{medicamento.precio}}</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="row">
+    <div class="col col-md-3">
+        <img width="200px" height="200px" src="https://previews.123rf.com/images/macrovector/macrovector1512/macrovector151200455/49542092-concepto-de-farmacia-con-el-edificio-de-la-farmacia-m-dica-ilustraci-n-vectorial-en-el-interior-plan-Foto-de-archivo.jpg">
+    </div>
+    <div class="col col-md-9">
+        <font color="#355384">
+        <h3>NOMBRE</h3>
+        </font>
+        {{currentRecord.nombre}}
+        <font color="#355384">
+        <h3>RADIO</h3>
+        </font>
+        {{currentRecord.radio}}
+        <font color="#355384">
+        <h3>NOMBRE UBICACIÓN</h3>
+        </font>
+        {{currentRecord.ubicacion.nombre}}
+        <font color="#355384">
+        <h3>LATITUD</h3>
+        </font>
+        {{currentRecord.ubicacion.latitud}}
+        <font color="#355384">
+        <h3>LONGITUD</h3>
+        </font>
+        {{currentRecord.ubicacion.longitud}}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <font color="#355384">
+    <h3>MEDICAMENTOS</h3>
+    </font>
+    <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="medicamento in currentMedicamentos">
+                        <td>{{medicamento.id}}</td>
+                        <td><a ui-sref="medicamentoDetail({id: medicamento.id})">{{medicamento.nombre}}</a></td>
+                    </tr>
+                        
+                    <tr>
+                        
+                        <td>
+                            <button type="button" class="btn btn-success" ui-sref="addMedicamento({id: currentRecord.id})">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                            </button>
+                            <button type="button" class="btn btn-danger" ui-sref="deleteMedicamento({id: currentRecord.id})">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 </div>

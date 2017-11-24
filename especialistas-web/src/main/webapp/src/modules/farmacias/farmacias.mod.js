@@ -3,7 +3,7 @@
     var mod = ng.module("farmaciaModule", ['ui.router']);
 
     // Configuración de los estados del módulo
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    mod.config(['$stateProvider', function ($stateProvider) {
             // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/farmacias/';
             // Definición del estado 'authorsList' donde se listan los autores

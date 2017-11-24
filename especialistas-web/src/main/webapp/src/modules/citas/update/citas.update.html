@@ -9,7 +9,7 @@
                         <div class="form-group">
                         <label for="horaNueva">Hora</label>
                         <select class="form-control" id="horaNueva" required ng-model="horaNueva">
-                            <option ng-repeat="hora in horas">{{hora.horaInicio}}-{{hora.horaFin}} </option>
+                            <option ng-repeat="hora in horas" value={{hora}}>{{hora.horaInicio}}-{{hora.horaFin}} </option>
                         </select>
                     </div>
                     <div class="form-group" ng-if="!cita.$valid">

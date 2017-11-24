@@ -12,10 +12,8 @@ import co.edu.uniandes.csw.especialistas.ejb.HospitalLogic;
 import co.edu.uniandes.csw.especialistas.entities.ConsultorioEntity;
 import co.edu.uniandes.csw.especialistas.entities.HospitalEntity;
 import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.especialistas.persistence.ExamenPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -40,7 +38,6 @@ import org.springframework.util.Assert;
 @Stateless
 public class HospitalResource {
     
-    private static final Logger LOGGER = Logger.getLogger(HospitalResource.class.getName());
 
     /**
      * Injección de la lógica de hospitales
@@ -54,7 +51,7 @@ public class HospitalResource {
     
     @Inject
     public HospitalResource(HospitalLogic logic){
-        Assert.notNull(logic, "MyCollaborator must not be null!");
+        Assert.notNull(logic, "logic must not be null!");
         this.logic = logic;
     }
     
@@ -74,8 +71,7 @@ public class HospitalResource {
             }
             return listaHospitales;
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -90,11 +86,11 @@ public class HospitalResource {
     public HospitalDetailDTO getHospital(@PathParam("id") Long id) {
         try {
             HospitalEntity entidad = logic.getHospital(id);
-            HospitalDetailDTO hospital = new HospitalDetailDTO(entidad);
-            return hospital;
+            return new HospitalDetailDTO(entidad);
+            
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -111,8 +107,8 @@ public class HospitalResource {
             logic.createHospital(entidad);
             return hospital;
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 500);
+            
+            throw new WebApplicationException(e, 500);
         }
     }
 
@@ -140,8 +136,8 @@ public class HospitalResource {
         try {
             logic.deleteHospital(id);
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 500);
+            
+            throw new WebApplicationException(e, 500);
         }
     }
 
@@ -156,11 +152,11 @@ public class HospitalResource {
     public List<ConsultorioDTO> getConsultoriosHospital(@PathParam("id") Long idHospital) {
         try {
             HospitalEntity entidad = logic.getHospital(idHospital);
-            List<ConsultorioDTO> respuesta = listConsultorioEntity2DTO(entidad.getConsultorios());
-            return respuesta;
+            return listConsultorioEntity2DTO(entidad.getConsultorios());
+            
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -180,8 +176,8 @@ public class HospitalResource {
             HospitalEntity hospital = logic.addConsultorio(id, entidadConsultorio);
             return new HospitalDetailDTO(hospital);
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
@@ -192,8 +188,8 @@ public class HospitalResource {
             HospitalEntity hospital = logic.deleteConsultorio(idHospital, idConsultorio);
             return new HospitalDetailDTO(hospital);
         } catch (BusinessLogicException e) {
-            LOGGER.info(e.toString());
-            throw new WebApplicationException(e.getMessage(), 404);
+            
+            throw new WebApplicationException(e, 404);
         }
     }
 
