@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.especialistas.ejb;
 
+import co.edu.uniandes.csw.especialistas.entities.ExamenEntity;
 import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.especialistas.persistence.LaboratorioPersistence;
 
 import java.util.List;
@@ -80,6 +82,22 @@ public class LaboratorioLogic {
     public LaboratorioEntity updateLaboratorio( LaboratorioEntity entity ){
         return persistence.update(entity);
         
+    }
+    
+    /**
+     * Agrega un examen a un laboratorio
+     * @param exam
+     * @param entity 
+     */
+    public LaboratorioEntity addExam(ExamenEntity exam, Long id) throws BusinessLogicException{
+        LaboratorioEntity laboratorio = persistence.find(id);
+        if(laboratorio == null){
+            throw new BusinessLogicException("no existe un laboratorio con el id " + id);
+        }else{
+            
+        persistence.addExam(laboratorio, exam);
+        }
+        return laboratorio;
     }
     
     public void deleteLaboratorio( Long id ){

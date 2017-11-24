@@ -66,6 +66,11 @@ public class LaboratorioEntity implements Serializable {
     public void setExamenes(List<ExamenEntity> examenes) {
         this.examenes = examenes;
     }
+    
+    public void addExamen(ExamenEntity entity){
+        if(!examenes.contains(entity))
+        examenes.add(entity);
+    }
 
     public String getNombre() {
         return this.nombre;

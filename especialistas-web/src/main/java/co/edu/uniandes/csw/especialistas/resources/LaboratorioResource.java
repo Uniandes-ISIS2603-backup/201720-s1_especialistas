@@ -5,9 +5,11 @@
  */
 package co.edu.uniandes.csw.especialistas.resources;
 
+import co.edu.uniandes.csw.especialistas.dtos.ExamenDetailDTO;
 import co.edu.uniandes.csw.especialistas.dtos.LaboratorioDetailDTO;
 import co.edu.uniandes.csw.especialistas.ejb.LaboratorioLogic;
 import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
+import co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -104,6 +106,15 @@ public class LaboratorioResource {
             
         }
         return new LaboratorioDetailDTO(logic.updateLaboratorio(laboratorio.toEntity()));
+    }
+    
+    @PUT
+    @Path("{id: \\d+}/addExamen")
+    public void addExam(@PathParam("id") Long id, ExamenDetailDTO exam) throws BusinessLogicException{
+        LaboratorioEntity entity = logic.getLaboratorioById(id);
+        if(entity == null)
+            throw new WebApplicationException("3 No existe un laboratorio con el id " + id);
+        logic.addExam(exam.toEntity(), id);
     }
 
     @DELETE
