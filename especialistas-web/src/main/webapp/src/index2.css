@@ -1,0 +1,158 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7/11/2017, 10:47:53 AM
+    Author     : ce.quintero
+*/
+
+#barra-sup{
+                position: fixed;
+                width: 100%;
+                height: 60px;
+                background: #41c7ef;
+                z-index: 2;
+                top: 0px;
+                left: 0px;
+                display: flex;
+                padding: 0px;
+            }
+
+            #barra-sup h1{
+                font-size: 30px;
+                background-color: rgba(0, 0, 0, .075);
+                padding-left: 30px;
+                padding-top: 8px;
+            }
+            
+            #barra-lateral{
+                position: fixed;
+                height: calc( 100% - 60px );
+                top: 60px;
+                left: 0px;
+                padding: 0px;
+                padding-top: 20px;
+                overflow: hidden;
+            }
+
+            .list1{
+                position: relative;
+                width: 100%;
+                text-decoration: none;
+                padding: 0px;
+            }
+
+            .list1 a{
+                width: 100%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                padding-left: 30px;
+                transition-duration: 0.5s;
+            }
+
+            .list1 a:hover{
+                background: rgba(0, 0, 0, .04);
+            }
+
+            .list1 a:link{
+                text-decoration: none;
+            }
+            
+            .principal{
+                top: 100px;
+                z-index: -1;
+                    position: absolute;
+    right: 30px;
+    padding: 0px;
+    padding-left: 30px;
+            }
+
+            .usuario{
+                padding-top: 10px;
+            }
+            .usuario-padre{
+                border-radius: 5px;
+                border: 1px solid #eee;
+                overflow: hidden;
+                padding: 0px;
+            }
+
+            .pacman{
+                padding: 0px;
+            }
+
+            .usuario-data{
+                padding: 20px;
+            }
+
+            .usuario-data a{
+                float: right;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+
+            .add{
+                width: 50px;
+                height: 50px;
+                background: #00b3ee;
+                font-size: 30px;
+                text-align: center;
+                color: #fff;
+                border-radius: 25px;
+                position: fixed;
+                bottom: 50px;
+                right: 50px;
+            }
+
+            .add:hover{
+                color: #fff;
+                background: #41c7ef;
+                text-decoration: none;
+            }
+
+            .add:link{
+                color: #fff;
+                text-decoration: none;
+            }
+            
+            .img-responsive{
+                
+            }
+            
+            .alfax{
+                padding: 0px;
+            }
+            
+            .alfax img{
+                width: 100%;
+            }
+            
+            th{
+                text-align: left !important;
+            }
+            
+            dl{
+                
+                margin-top: 20px;
+                padding-left: 10px;
+            }
+            .img-responsive{
+                margin-top: 15px;
+                width: 100%;            }
+            
+            .ocul{
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background: #fbfbfb;
+                top: 0px;
+                left: 0px;
+                z-index: -2;
+            }
+            
+            .olp{
+                height: fit-content;
+            }

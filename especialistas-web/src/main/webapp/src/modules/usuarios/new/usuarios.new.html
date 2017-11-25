@@ -1,21 +1,22 @@
-<div class="container-fluid">
+<div class="uk-card uk-card-default uk-card-body uk-width-1-1">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createAuthor">Crear nuevo Usuario</label>
-                <label ng-if="edit" id="editAuthor">Editar Usuario</label></div>
+            <div class="panel-heading"><legend class="uk-legend" ng-if="!edit" id="createAuthor">Crear nuevo Usuario</legend>
+                
+                <legend ng-if="edit" id="editAuthor" class="uk-legend">Editar Usuario</legend>
             <div class="panel-body">
                 <form ng-submit="createUsuario()" name="usuario">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="usuarioName" class="col-sm-2">Nombre</label>
-                            <input id="usuarioName" required ng-model="usuarioName" class="col-sm-6"/>
+                            <input id="usuarioName" class="uk-input" required ng-model="usuarioName" class="col-sm-6"/>
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="usuarioDescription" class="col-sm-2">Cedula:</label>
-                            <textarea id="usuarioCedula" required ng-model="usuarioCedula" class="col-sm-6"></textarea>
+                            <textarea id="usuarioCedula" class="uk-textarea" rows="5" required ng-model="usuarioCedula" class="col-sm-6"></textarea>
                         </div>
                     </div>
 
@@ -27,10 +28,11 @@
                             </div> 
                         </div> 
                     </div> 
+                    <br>
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
-                            <input ng-show="usuario.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="usuariosList">Cancel</a>
+                            <input ng-show="usuario.$valid" type="submit" value="Guardar" class="uk-button uk-button-primary" class="btn btn-success"/>
+                            <a class="uk-button uk-button-default" ui-sref="usuariosList">Cancel</a>
                         </div>
                     </div>
                 </form>
