@@ -20,9 +20,6 @@
             }).state('horasList', {
                 url: '',
                 parent: 'horas',
-                params: {
-                    "horaId": null
-                },
                 views: {
                     'listView': {
                         templateUrl: basePath + 'horas.list.html',
