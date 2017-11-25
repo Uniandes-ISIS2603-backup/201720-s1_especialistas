@@ -87,7 +87,9 @@ public class LaboratorioLogic {
     /**
      * Agrega un examen a un laboratorio
      * @param exam
-     * @param entity 
+     * @param id
+     * @return 
+     * @throws co.edu.uniandes.csw.especialistas.exceptions.BusinessLogicException
      */
     public LaboratorioEntity addExam(ExamenEntity exam, Long id) throws BusinessLogicException{
         LaboratorioEntity laboratorio = persistence.find(id);

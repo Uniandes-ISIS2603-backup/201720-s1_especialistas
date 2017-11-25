@@ -1,49 +1,61 @@
-<div class="panel panel-default col-md-6">
-    <div class="panel-body">
-        <div class="col-md-12">
-            <div id="nombreLab" class="col-md-6">
-                <h4>Nombre</h4>
-                <p>{{laboratorioActual.nombre}}</p>
-            </div>
-            <div id="ubicacionLab" class="col-md-6">
-                <h4>Ubicación</h4>
-                <p>{{laboratorioActual.ubicacion.nombre}}</p>
-            </div>
-            
-            <div class="col-md-12">
-                    <br><h4>Examenes</h4>
-                
-            </div>
-            <table id="examenes" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Recomendación</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="examen in laboratorioActual.examenes" >
-                        <td id="{{$index}}-nombreExam">
-                            <a ui-sref="examDetail({examenId : examen.id})">{{examen.nombre}}</a>
-                        </td>
-                        <td id="{{$index}}-precioExam">{{examen.precio}}</td>
-                        <td id="{{$index}}-recomendacionExam">{{examen.recomendacion}}</td>
-                    </tr>
 
-                </tbody>
-
-            </table>
-
-                <div style="text-align:center">
-                    <button class="btn btn-info" id="agregar-exam" ui-sref="examAdd({laboratorioId: laboratorioActual.id})">Agregar Examen</button>
-                </div>
+<div class="row">
+    <div class="col-md-3">
+        <img height="200px" width="200px" 
+             src="http://cdn.onlinewebfonts.com/svg/img_463148.png"
+              </div>
+    <div class="col-md-9">
+        <div class="row">
+            <font color="#355384">
+            <h3>NOMBRE</h3>
+            </font>
+            {{laboratorioActual.nombre}}
+            <font color="#355384">
+            <h3>NOMBRE UBICACIÓN</h3>
+            </font>
+            {{laboratorioActual.ubicacion.nombre}}
+            <font color="#355384">
+            <h3>LATITUD</h3>
+            </font>
+            {{laboratorioActual.ubicacion.latitud}}
+            <font color="#355384">
+            <h3>LONGITUD</h3>
+            </font>
+            {{laboratorioActual.ubicacion.longitud}}
         </div>
     </div>
-    <div class="panel-footer" style="text-align:center">
-        <button id="actualizar-lab" ui-sref="labUpdate({laboratorioId: laboratorioActual.id})">Actualizar</button>
-        <button id="eliminar-lab" ui-sref="labDelete({laboratorioId: laboratorioActual.id})">Eliminar</button>
-        <button id="Volver-lista" ui-sref="laboratoriosList">Volver</button>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <font color="#355384">
+        <h3>EXÁMENES</h3>
+        </font>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>NOMBRE</th>
+                    <th>PRECIO</th>
+                    <th>RECOMENDACIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="examen in examenesLab">
+                    <td><a ui-sref="examDetail({examenId : examen.id})">{{examen.nombre}}</a></td>
+                    <td>{{examen.precio}}</td>
+                    <td>{{examen.recomendacion}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" ui-sref="examenDelete({examenId: examenActual.id})">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-success" ui-sref="examAdd({laboratorioId: laboratorioActual.id})">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
 </div>
