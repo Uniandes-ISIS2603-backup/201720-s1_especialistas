@@ -18,6 +18,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jsoup.select.Evaluator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -186,6 +187,18 @@ public class LaboratorioPersistenceTest {
         LaboratorioEntity resp = em.find(LaboratorioEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getNombre(),resp.getNombre());
+    }
+    
+    
+    @Test
+    public void addExamTest() {
+        LaboratorioEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ExamenEntity newEntity = factory.manufacturePojo(ExamenEntity.class);
+        
+        persistence.addExam(entity, newEntity);
+        LaboratorioEntity resp = em.find(LaboratorioEntity.class, entity.getId());
+        Assert.assertEquals(true, resp.getExamenes().contains(newEntity));
     }
     
     @Test

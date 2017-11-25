@@ -1,18 +1,36 @@
 <div class="container-fluid">
     <div class="col-md-6">
         <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Ordenes</th>                          
-                </tr>
-            </thead>       
-            <tbody>
-                <tr ng-repeat="orden in ordenesMedicas">
-                    <td id="{{$index}}-descripcion"><a ui-sref="ordenesMedicasDetail({ordenesMedicasId: orden.id})">{{orden.descripcion}}</td>
-                    <td> <button id="{{$index}}-cancelar-btn" class="btn btn-default btn-sm" ui-sref="ordenesMedicasDelete({ordenesMedicasId: orden.id})">Cancelar</button></td>
-                </tr>
-                <tr class="info" ui-sref="ordenesMedicasCreate"><td>Añadir nueva</td><td></td></tr>
-            </tbody>
-        </table>
+        <thead>
+            <tr>
+                <th>ORDEN</th>
+                <th>ELIMINAR</th>
+                <th>EDITAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="orden in ordenesMedicas">
+                <td id="{{$index}}-nombre"><a ui-sref="ordenesMedicasDetail({ordenesMedicasId: orden.id})">{{orden.descripcion}}</a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" ui-sref="ordenesMedicasDelete({ordenesMedicasId: orden.id})">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" ui-sref="ordenesMedicas({ordenesMedicasId: hospital.id})">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-success" ui-sref="ordenesMedicasCreate">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     </div>
 </div>
