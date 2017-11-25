@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.especialistas.logic;
 
 import co.edu.uniandes.csw.especialistas.ejb.LaboratorioLogic;
+import co.edu.uniandes.csw.especialistas.entities.ExamenEntity;
 import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
 import co.edu.uniandes.csw.especialistas.persistence.LaboratorioPersistence;
 import java.util.ArrayList;

@@ -6,20 +6,20 @@
                 <form ng-submit="updateExam()" name="examen">
 <div class="form-group row">
     <div class="form-group col-md-6">
-        <br><label for="examen-nombre" class="col-sm-2">Nombre:</label>
-        <input id="examen-nombre" required ng-model="nombreExam" class="col-sm-6"/>
+        <br><label for="examen-nombre" class="col-sm-4">Nombre:</label>
+        <input id="examen-nombre" required ng-model="nombreExam" class="col-sm-6 form-control"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="examen-precio" class="col-sm-2">Precio:</label>
-                            <input type="number" min="10000" max="100000" step="100" id="examen-precio" required ng-model="precioExam" class="col-sm-6"/>
+                            <label for="examen-precio" class="col-sm-4">Precio:</label>
+                            <input type="number" min="10000" max="100000" step="100" id="examen-precio" required ng-model="precioExam" class="col-sm-6 form-control"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="exam-recomend" class="col-sm-4">Recomendaciones:</label>
-                            <textarea id="exam-recomend" required  ng-model="recomendacionExam" class="col-sm-6"/></textarea>
+                            <textarea id="exam-recomend" required  ng-model="recomendacionExam" class="col-sm-6 form-control"/></textarea>
                         </div>
                     </div>
                     

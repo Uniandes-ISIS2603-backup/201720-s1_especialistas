@@ -10,7 +10,7 @@
                 },
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'examen.detail.html',
+                        templateUrl: basePath + 'examen.detail_.html',
                         controller: 'examenDetailCtrl',
                         controllerAs: 'ctrl'
                     }
