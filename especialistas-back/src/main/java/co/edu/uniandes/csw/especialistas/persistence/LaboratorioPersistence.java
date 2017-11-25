@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.especialistas.persistence;
 
+import co.edu.uniandes.csw.especialistas.entities.ExamenEntity;
 import co.edu.uniandes.csw.especialistas.entities.LaboratorioEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -48,6 +49,25 @@ public class LaboratorioPersistence {
     public LaboratorioEntity update(LaboratorioEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando laboratorio con id = ", entity.getId());
         return em.merge(entity);
+    }
+    
+    public boolean addExam(LaboratorioEntity entity, ExamenEntity exam){
+        LaboratorioEntity laboratorio = null;
+
+        TypedQuery query = em.createQuery("Select e From LaboratorioEntity e where e.id = :id", LaboratorioEntity.class);
+
+        query = query.setParameter("id", entity.getId());
+
+        List<LaboratorioEntity> sameId = query.getResultList();
+        if (!sameId.isEmpty()) {
+            laboratorio = sameId.get(0);
+        }
+
+        if (laboratorio != null) {
+            laboratorio.addExamen(exam);
+            return true;
+        }
+        return false;
     }
 
     /**
