@@ -1,7 +1,6 @@
 (function (ng) {
     // Definición del módulo
-    var mod = ng.module("farmaciaModule", ['ui.router']);
-
+    var mod = ng.module("farmaciaModule", ['ui.router', 'uiGmapgoogle-maps']);
     // Configuración de los estados del módulo
     mod.config(['$stateProvider', function ($stateProvider) {
             // En basePath se encuentran los templates y controladores de módulo
@@ -37,6 +36,11 @@
                         controller: 'farmaciasDetailCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'detail/farmacias.detail.html'
+                    },
+                    'mapView': {
+                        controller: 'mapCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'detail/farmacias.map.html'
                     }
                 }
             }).state('addMedicamento', {

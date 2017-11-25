@@ -5,10 +5,9 @@
   "main": "src/main/webapp/index.html",
   "dependencies": {
     "angular-ui-router": "~0.2.15",
-    "angular": "angularjs#^1.6.4",
+    "angular": "^1.5.8",
     "bootstrap": "^3.3.7",
-    "angular-bootstrap": "^0.13.4",
-    "jquery": "^3.2.1"
+    "angular-bootstrap": "^0.13.4"  
   },
   "overrides": {
     "bootstrap": {
