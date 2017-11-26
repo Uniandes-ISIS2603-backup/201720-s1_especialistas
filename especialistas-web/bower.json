@@ -7,7 +7,13 @@
     "angular-ui-router": "~0.2.15",
     "angular": "^1.5.8",
     "bootstrap": "^3.3.7",
+<<<<<<< HEAD
     "angular-bootstrap": "^0.13.4"  
+=======
+    "angular-bootstrap": "^0.13.4",
+    "jquery": "^3.2.1",
+    "uikit": "^3"
+>>>>>>> 1759b17cd40416fee1e88b46442a489712cb66e5
   },
   "overrides": {
     "bootstrap": {

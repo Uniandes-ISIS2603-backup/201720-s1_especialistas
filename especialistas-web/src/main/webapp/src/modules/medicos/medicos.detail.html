@@ -1,23 +1,19 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="panel panel-default"> 
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-4">
-                <dl>     
-                    <dt>Nombre</dt>
-                    <dd>{{medico.nombre}}</dd>
-
-                    <hr>
-                    <dt>Especialización</dt>
-                    <dd>{{medico.especializacion}}</dd>
-
-                    <hr>
-                    <a class="btn btn-default btn-sm" ui-sref="medicoUpdate({medicoId: medico.id})">Actualizar datos <span class="glyphicon glyphicon-edit"></span></a>
-                    <a class="btn btn-danger btn-sm" ui-sref="medicoDelete({medicoId: medico.id})">Borrar Médico <span class="glyphicon glyphicon-trash"></span></a>
-
-                </dl>
-            </div>
-            <div class="col-md-8" ui-view="childrenView"></div>
-        </div>
+<div class="row">
+    <div class="col col-md-3">
+        <img width="200px" height="200px"
+             src="https://www.tenvinilo.com/vinilos-decorativos/img/large/adhesivo-medico-detalle-4723.jpg">
     </div>
+    <div class="col col-md-9">
+        <font color="#355384">
+        <h3>NOMBRE</h3>
+        </font>
+        {{medico.nombre}}
+        <font color="#355384">
+        <h3>ESPECIALIZACIÓN</h3>
+        </font>
+        {{medico.especializacion}}
+    </div>
+</div>
+<div class="row">
+    <div ui-view="childrenView"></div>
 </div>

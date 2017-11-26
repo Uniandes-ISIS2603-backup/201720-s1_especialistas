@@ -17,24 +17,24 @@ and open the template in the editor.
                 top: 0px;
                 left: 0px;
                 display: flex;
+                padding: 0px;
             }
 
             #barra-sup h1{
                 font-size: 30px;
                 background-color: rgba(0, 0, 0, .075);
-                height:  100% !important;
-                padding-top: 15px;
-                margin: 0px;
+                padding-left: 30px;
+                padding-top: 8px;
             }
             
             #barra-lateral{
                 position: fixed;
                 height: calc( 100% - 60px );
-                background: #2E3840;
                 top: 60px;
                 left: 0px;
                 padding: 0px;
                 padding-top: 20px;
+                overflow: hidden;
             }
 
             .list1{
@@ -54,8 +54,7 @@ and open the template in the editor.
             }
 
             .list1 a:hover{
-                background: rgba(255, 255, 255, .15);
-                color: #FFF;
+                background: rgba(0, 0, 0, .04);
             }
 
             .list1 a:link{
@@ -63,17 +62,22 @@ and open the template in the editor.
             }
             
             .principal{
-                position: absolute;
-                right: 0px;
                 top: 100px;
+                z-index: -1;
+                    position: absolute;
+    right: 30px;
+    padding: 0px;
+    padding-left: 30px;
             }
 
+            .usuario{
+                padding-top: 10px;
+            }
             .usuario-padre{
                 border-radius: 5px;
                 border: 1px solid #eee;
                 overflow: hidden;
                 padding: 0px;
-                margin: 5px;
             }
 
             .pacman{
@@ -91,30 +95,26 @@ and open the template in the editor.
             }
 
             .add{
-                width: 100%;
-                height: 100%;
-                background: #fff;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 100px;
-                transition: 0.5s;
-                text-shadow: -2px -2px #eee;
-                cursor: pointer;
-                margin-left: 0 !important;
+                width: 50px;
+                height: 50px;
+                background: #00b3ee;
+                font-size: 30px;
+                text-align: center;
+                color: #fff;
+                border-radius: 25px;
+                position: fixed;
+                bottom: 50px;
+                right: 50px;
             }
 
             .add:hover{
-                font-size: 120px;
-                text-shadow: -5px -5px #ddd;
-
+                color: #fff;
+                background: #41c7ef;
                 text-decoration: none;
             }
 
             .add:link{
+                color: #fff;
                 text-decoration: none;
             }
             
@@ -122,21 +122,37 @@ and open the template in the editor.
                 
             }
             
-        #map_canvas {
-            height: 70%;
-            width: 70%;
-            margin: 0px;
-        }
-
-        #map_canvas {
-            position: relative;
-        }
-
-        .angular-google-map-container {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        }
- 
+            .alfax{
+                padding: 0px;
+            }
+            
+            .alfax img{
+                width: 100%;
+            }
+            
+            th{
+                text-align: left !important;
+            }
+            
+            dl{
+                
+                margin-top: 20px;
+                padding-left: 10px;
+            }
+            .img-responsive{
+                margin-top: 15px;
+                width: 100%;            }
+            
+            .ocul{
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background: #fbfbfb;
+                top: 0px;
+                left: 0px;
+                z-index: -2;
+            }
+            
+            .olp{
+                height: fit-content;
+            }

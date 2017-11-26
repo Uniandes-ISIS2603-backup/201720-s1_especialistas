@@ -57,6 +57,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('examAdd', {
+                url: '/laboratorios/{laboratorioId:int}/addExam',
+                param: {
+                    laboratorioId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'add/examen.add.html',
+                        controller: 'examenAddCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
 
         }]);
