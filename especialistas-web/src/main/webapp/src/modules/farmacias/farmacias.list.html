@@ -1,23 +1,21 @@
-
-<div class="col col-md-12">
-    <table class="table table-striped">
+    <table class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
         <thead>
             <tr>
-                <th>NOMBRE</th>
+                <th class="uk-table-shrink"></th>
+                <th class="uk-table-expand">NOMBRE</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="farmacia in farmacias">
-                <td id="{{$index}}-nombre"><a ui-sref="farmaciaDetail({id: farmacia.id})">{{farmacia.nombre}}</a>
+                <td><input class="uk-checkbox" type="checkbox"></td>
+                <td id="{{$index}}-nombre">
+                    <a ui-sref="farmaciaDetail({id: farmacia.id})">{{farmacia.nombre}}</a>
                 </td>
             <tr>
                 <td>
-                    <button type="button" class="btn btn-success" ui-sref="farmaciaCreate">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                    </button>
+                    <a ui-sref="farmaciaCreate">Agregar</a>
                 </td>
             </tr>
         </tbody>
     </table>
-</div>
 

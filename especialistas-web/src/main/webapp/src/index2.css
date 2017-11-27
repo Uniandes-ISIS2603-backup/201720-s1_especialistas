@@ -25,6 +25,7 @@ and open the template in the editor.
                 background-color: rgba(0, 0, 0, .075);
                 padding-left: 30px;
                 padding-top: 8px;
+                margin: 0px;
             }
             
             #barra-lateral{
@@ -62,12 +63,11 @@ and open the template in the editor.
             }
             
             .principal{
-                top: 100px;
-                z-index: -1;
-                    position: absolute;
-    right: 30px;
-    padding: 0px;
-    padding-left: 30px;
+                top: 115px;
+                position: absolute;
+                right: 30px;
+                padding: 0px;
+                padding-left: 30px;
             }
 
             .usuario{
@@ -155,4 +155,35 @@ and open the template in the editor.
             
             .olp{
                 height: fit-content;
+            }
+            
+            table{
+                border-radius: 5px;
+            }
+
+            body{
+                width: 100%;
+            }
+
+            .navega{
+                position: absolute;
+                right: 0px;
+                top: 60px;
+                padding: 20px;
+                padding-left: 30px;
+            }
+
+            .imgm img{
+                width: 45px;
+                height: 45px;
+
+            }
+
+            .imgm{
+                position: absolute;
+                right: 0px;
+                padding-right: 20px;
+                padding-top: 10px;
+                text-align: left;
+                color: #fff;
             }
