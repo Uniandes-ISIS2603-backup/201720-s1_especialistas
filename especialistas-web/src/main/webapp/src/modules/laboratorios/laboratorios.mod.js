@@ -34,6 +34,11 @@
                         templateUrl: basePath + 'laboratorios.detail.html',
                         controller: 'labDetailCtrl',
                         controllerAs: 'ctrl'
+                    },
+                    'mapView': {
+                        controller: 'labMapCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'lab.map.html'
                     }
                 }
             }).state('labCreate', {
