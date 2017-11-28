@@ -54,6 +54,7 @@
                 }
             }).state('ordenesMedicasCreate', {
                 url: '/ordenesMedicas/nuevo',
+                
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'create/ordenesMedicas.create.html',

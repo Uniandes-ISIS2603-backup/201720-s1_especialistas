@@ -5,11 +5,16 @@
   "main": "src/main/webapp/index.html",
   "dependencies": {
     "angular-ui-router": "~0.2.15",
-    "angular": "angularjs#^1.6.4",
     "bootstrap": "^3.3.7",
-    "angular-bootstrap": "^0.13.4",
+    "angular-bootstrap": "^0.13.4",  
     "jquery": "^3.2.1",
-    "uikit": "^3"
+    "uikit": "^3",  
+    "angular": "angularjs#^1.6.4", 
+    "angular": "^1.5.0",
+    "google-maps-utility-library-v3-markerwithlabel": "1.1.10",
+    "google-maps-utility-library-v3-infobox": "^1.1.14",
+    "google-maps-utility-library-v3-keydragzoom": "^2.0.9",
+    "angular-google-maps": "^2.0.5"
   },
   "overrides": {
     "bootstrap": {

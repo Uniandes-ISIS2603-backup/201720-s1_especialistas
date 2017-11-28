@@ -1,28 +1,29 @@
-<div class="container-fluid">
-    <div class="col-md-12">
-        <table class="table table-striped">
+
+        <table class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
+            
             <thead>
                 <tr>
+                    <td></td>
                     <th>ID</th> 
                     <th>Referencia</th>    
                     <th>Precio</th>
                     <th>Paga</th>
                     <th>MetodoPago</th>
                     <th>Usuario</th>
+                    <th></th> 
 
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="pago in pagosRecords">
+                    <td><input class="uk-checkbox" type="checkbox"></td>
                     <td id="{{$index}}-id">{{pago.id}}</td>
                     <td id="{{$index}}-ref">{{pago.ref}}</td>
                     <td id="{{$index}}-precio">{{pago.precio}}</td>
-                    <td id="{{$index}}-pai"><span ng-show="pago.pai == true" class="glyphicon glyphicon-ok" aria-hidden="true" style="color: #4cae4c"></span><span ng-show="pago.pai == false" class="glyphicon glyphicon-remove" aria-hidden="true" style="color: #f25"></span></td>
+                    <td id="{{$index}}-pai"><span ng-show="pago.pai == true" uk-icon="icon: check" aria-hidden="true" style="color: #4cae4c"></span><span ng-show="pago.pai == false" uk-icon="icon: close" aria-hidden="true" style="color: #f25"></span></td>
                     <td id="{{$index}}-metodo">{{pago.metodo}}</td>
                     <td id="{{$index}}-metodo">{{pago.usuario.nombre}}</td>
-                    <td id="{{$index}}-metodo"><a href="#" style="color: #f44" ui-sref="pagosDelete({pagoId: pago.id})"><span class="glyphicon glyphicon-trash" aria-hidden="true" style="color: #f25"></span></a></td>
+                    <td id="{{$index}}-metodo"><a href="#" uk-icon="icon: trash" style="color: #f44" ui-sref="pagosDelete({pagoId: pago.id})"></a></td>
                 </tr>
             </tbody>
         </table>
-    </div>
-</div>

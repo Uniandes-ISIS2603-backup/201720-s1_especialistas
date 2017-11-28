@@ -3,6 +3,7 @@
         //External dependencies
         'ui.router',
         'ui.bootstrap',
+        'uiGmapgoogle-maps',
         //Internal modules dependencies
         'medicoModule',
         'horaModule',
@@ -21,7 +22,12 @@
         
     ]);
     //Resuelve problemas de las promesas
-    app.config(['$qProvider', function ($qProvider) {
+    app.config(['$qProvider', 'uiGmapGoogleMapApiProvider', function ($qProvider, uiGmapGoogleMapApiProvider) {
+            uiGmapGoogleMapApiProvider.configure({
+           key: 'AIzaSyC0zuiSaih-_7wSh5WwzKYxgdH4ml9Kgwc',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization'
+    });         
             $qProvider.errorOnUnhandledRejections(false);               
     }]);
     

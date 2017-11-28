@@ -1,32 +1,17 @@
-<div class="col-sm-12">
     <div class="usuario" ng-repeat="usuario in usuariosRecords">
-        <div class="col-sm-4 col-lg-3 pacman">
-            <div class="usuario-padre">
-                <a ui-sref="usuarioDetail({usuarioId: usuario.id})">
+        <div class="pacman">
+            <div class="usuario-padre uk-card uk-card-default uk-card-hover">
+                <div ui-sref="usuarioDetail({usuarioId: usuario.id})" class="alfax uk-card-header">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5PiRLyIsW9zpkhazNEVeuuFcPvyjWLlfnSBkQOL2ZS_p8DTgP" alt="">
-                </a>
+                </div>
                 <div class="usuario-data">
                     {{usuario.nombre}} <br>
                     {{usuario.cedula}} 
 
-                    <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: usuario.id})">Eliminar</a>
-                    <a href="#" ui-sref="usuarioUpdate({usuarioId: usuario.id})">Editar</a>
+                    <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: usuario.id})" uk-icon="icon: trash"></a>
+                    <a href="#" style="color: #44b3ee" ui-sref="usuarioUpdate({usuarioId: usuario.id})" uk-icon="icon: pencil"></a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-4 col-lg-3 pacman">
-        <div class="usuario-padre">
-            
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5PiRLyIsW9zpkhazNEVeuuFcPvyjWLlfnSBkQOL2ZS_p8DTgP" alt="">
-                <div class="usuario-data">
-                    <p></p><br>
-                    <a class="add" ui-sref="usuariosCrear">
-                        +
-                    </a>
-                    <a href="#">#</a>
-                </div>
-            
-        </div>
-    </div>
-</div>
+    <a class="add" ui-sref="usuariosCrear">+</a>

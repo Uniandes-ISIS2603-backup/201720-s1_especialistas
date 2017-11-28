@@ -1,8 +1,8 @@
 (function (ng) {
     var mod = ng.module("hospitalesModule");
     mod.constant("hospitalesContext", "api/hospitales");
-    mod.controller('hospitalCtrl', ['$scope', '$http', 'hospitalesContext', '$state',
-        function ($scope, $http, hospitalesContext, $state) {
+    mod.controller('hospitalCtrl', ['$scope', '$http', 'hospitalesContext', '$state', '$rootScope',
+        function ($scope, $http, hospitalesContext, $state,$rootScope) {
             $http.get(hospitalesContext).then(function (response) {
                 $scope.hospitalesRecords = response.data;
             });
@@ -12,6 +12,7 @@
                     $scope.currentHospital = response.data;
                     $scope.consultorios = response.data.consultorios;
                 });
+                $rootScope.idHos=$state.params.hospitalId;
             }
         }
     ]);

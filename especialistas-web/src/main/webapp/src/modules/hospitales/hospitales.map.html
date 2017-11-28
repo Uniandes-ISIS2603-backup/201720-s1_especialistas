@@ -1,0 +1,26 @@
+<alert class="alert alert-danger" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="map_canvas" >
+        <style type="text/css">
+        ui-gmap-google-map,#map_canvas {
+            height: 200px;
+            width: 200px;
+            margin: 0;
+            margin-top: 70px;
+        }
+
+        #map_canvas {
+            position: relative;
+        }
+
+        .angular-google-map-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+    <ui-gmap-google-map style="" center="map.center" zoom="map.zoom" draggable="true" options="options">
+    <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'"></ui-gmap-markers>
+    </ui-gmap-google-map>
+</div>

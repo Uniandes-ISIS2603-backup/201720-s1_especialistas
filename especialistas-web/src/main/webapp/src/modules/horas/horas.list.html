@@ -4,3 +4,25 @@
   </button>
   <button type="button" class="list-group-item list-group-item-info" ui-sref="horasCreate">Añadir nueva</button>
 </div>
+<table class="table table-bordered table-responsive">
+    <tr>
+        <td>Hora</td>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miercoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+        <th>Sábado</th>
+        <th>Domingo</th>
+    </tr>
+    <tr ng-repeat="franja in franjas">
+        <th>{{franja| date:'h:mm a'}}</th>
+        <td id="{franja.$index}-0"></td>
+        <td id="{franja.$index}-1"></td>
+        <td id="{franja.$index}-2"></td>
+        <td id="{franja.$index}-3"></td>
+        <td id="{franja.$index}-4"></td>
+        <td id="{franja.$index}-5"></td>
+        <td id="{franja.$index}-6"></td>
+    </tr>
+</table>

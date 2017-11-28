@@ -55,6 +55,11 @@
                         templateUrl: basePath + 'hospitales.detail.html',
                         controller: 'hospitalCtrl',
                         controllerAs: 'ctrl'
+                    },
+                    'mapView': {
+                        controller: 'HospitalMapCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'hospitales.map.html'
                     }
                 }
             }).state('hospitalUpdate', {

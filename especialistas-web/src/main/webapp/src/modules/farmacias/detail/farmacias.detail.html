@@ -1,59 +1,35 @@
 <div class="row">
-    <div class="col col-md-3">
-        <img width="200px" height="200px" src="https://previews.123rf.com/images/macrovector/macrovector1512/macrovector151200455/49542092-concepto-de-farmacia-con-el-edificio-de-la-farmacia-m-dica-ilustraci-n-vectorial-en-el-interior-plan-Foto-de-archivo.jpg">
-    </div>
-    <div class="col col-md-9">
-        <font color="#355384">
+    <div class="col col-md-12">
         <h3>NOMBRE</h3>
-        </font>
         {{currentRecord.nombre}}
-        <font color="#355384">
-        <h3>RADIO</h3>
-        </font>
-        {{currentRecord.radio}}
-        <font color="#355384">
-        <h3>NOMBRE UBICACIÓN</h3>
-        </font>
-        {{currentRecord.ubicacion.nombre}}
-        <font color="#355384">
-        <h3>LATITUD</h3>
-        </font>
-        {{currentRecord.ubicacion.latitud}}
-        <font color="#355384">
-        <h3>LONGITUD</h3>
-        </font>
-        {{currentRecord.ubicacion.longitud}}
     </div>
 </div>
 <hr>
-<div class="row">
-    <font color="#355384">
+<div class="container-fluid">
     <h3>MEDICAMENTOS</h3>
-    </font>
     <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>NOMBRE</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="medicamento in currentMedicamentos">
-                        <td>{{medicamento.id}}</td>
-                        <td><a ui-sref="medicamentoDetail({id: medicamento.id})">{{medicamento.nombre}}</a></td>
+                        <td id="{{$index}}-nombreMed"><a ui-sref="medicamentoDetail({id: medicamento.id})">{{medicamento.nombre}}</a></td>
                     </tr>
-                        
-                    <tr>
-                        
-                        <td>
+                    <tr><td>
                             <button type="button" class="btn btn-success" ui-sref="addMedicamento({id: currentRecord.id})">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true" >AGREGAR MEIDICAMENTO</span>
                             </button>
+           
                             <button type="button" class="btn btn-danger" ui-sref="deleteMedicamento({id: currentRecord.id})">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true" >ELIMINAR MEDICAMENTO</span>
                             </button>
-                        </td>
-                    </tr>
+                        </td></tr>
                 </tbody>
             </table>
 </div>
+
+        
+
+
