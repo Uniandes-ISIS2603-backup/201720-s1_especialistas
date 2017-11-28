@@ -1,7 +1,7 @@
-        angular.module('farmaciaModule')
-            .controller('mapCtrl',['$scope','$stateParams','$http', function($scope,$rootScope,$http) {
+        angular.module('hospitalesModule')
+            .controller('HospitalMapCtrl',['$scope','$stateParams','$http', function($scope,$rootScope,$http) {
        
-            $http.get("api/farmacias/"+$rootScope.id).then(function (response) {
+            $http.get("api/hospitales/"+$rootScope.hospitalId).then(function (response) {
                 
                var rec=response.data;
                 $scope.map = {center: {latitude: rec.ubicacion.latitud, longitude: rec.ubicacion.longitud }, zoom: 12,
@@ -15,7 +15,7 @@
                     longitude: -120.6680
                   }
                 } };
-                        var createRandomMarker = function(i, bounds, idKey) {
+              var createRandomMarker = function(i, bounds, idKey) {
 
               if (idKey == null) {
                 idKey = "id";
@@ -36,28 +36,6 @@
               markers.push(createRandomMarker(i, $scope.map.bounds));
             }
             $scope.randomMarkers = markers;
-            
-            $scope.circles = [
-            {
-                id: 1,
-                center: {
-                    latitude: $scope.map.center.latitude,
-                    longitude: $scope.map.center.longitude
-                },
-                radius: rec.radio*1000,
-                stroke: {
-                    color: '#00F',
-                    weight: 2,
-                    opacity: 1
-                },
-                fill: {
-                    color: '#009',
-                    opacity: 0.5
-                },
-                geodesic: true, // optional: defaults to false
-                clickable: true, // optional: defaults to true
-            }
-        ];
             
             });
             $scope.options = {

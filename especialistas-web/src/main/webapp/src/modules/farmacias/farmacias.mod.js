@@ -38,7 +38,7 @@
                         templateUrl: basePath + 'detail/farmacias.detail.html'
                     },
                     'mapView': {
-                        controller: 'mapCtrl',
+                        controller: 'FarmaciaMapCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'detail/farmacias.map.html'
                     }
