@@ -4,7 +4,9 @@
             <div class="imgm">
                 Usuario X &nbsp;&nbsp;
                 <img class="uk-border-circle"  src="http://i0.kym-cdn.com/entries/icons/medium/000/005/180/YaoMingMeme.jpg" ng-show="tipoUser===1" ui-sref="usuarioDetail ({usuarioId: idUser})">
-                <img class="uk-border-circle"  src="http://i0.kym-cdn.com/entries/icons/medium/000/005/180/YaoMingMeme.jpg" ng-show="tipoUser===2" ui-sref="medicoDetail ({medicoId: idUser})">                <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
+                <img class="uk-border-circle"  src="http://i0.kym-cdn.com/entries/icons/medium/000/005/180/YaoMingMeme.jpg" ng-show="tipoUser===2" ui-sref="horasList ({medicoId: idUser})">                <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
+                <img class="uk-border-circle"  src="http://i0.kym-cdn.com/entries/icons/medium/000/005/180/YaoMingMeme.jpg" ng-show="tipoUser===3" >                <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
+
             </div>
         </div>
 
@@ -14,7 +16,7 @@
         <div id="barra-lateral" class="uk-width-1-6@xl uk-width-1-5@l uk-card-default uk-card-body uk-box-shadow-large">
             <ul class="list1">
                     <a ng-show="tipoUser===1" ui-sref="usuarioDetail ({usuarioId: idUser})"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
-                   <a ng-show="tipoUser===2" ui-sref="medicoDetail ({medicoId: idUser})"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
+                   <a ng-show="tipoUser===2" ui-sref="horasList ({medicoId: idUser})"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
                     <a ui-sref="hospitalesList"><span uk-icon="icon: location"></span>&nbsp;&nbsp;Hospitales</a>
                     <a ui-sref="usuariosList" ng-show="tipoUser!==1 && tipoUser!==2"><span uk-icon="icon: users"></span>&nbsp;&nbsp;Usuarios</a>
                     <a ui-sref="tarjetasList"  ng-show="tipoUser!==1 && tipoUser!==2"><span uk-icon="icon: credit-card"></span>&nbsp;&nbsp;Tarjetas</a>
