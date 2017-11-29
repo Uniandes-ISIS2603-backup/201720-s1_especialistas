@@ -1,5 +1,5 @@
                        <!--LOGIN-->
-        <div class="log">
+                       <div class="log" >
             <div class="img"></div>
 
 
@@ -10,8 +10,18 @@
             </div>
             <div>
                 <div class="uk-card-body">
-                    <h3 class="uk-card-title">Asanar</h3>
+
+                    <h3 class="uk-card-title">Viva Santafecito</h3>
+
                     <p>Ingresa para.</p>
+                    <select style="color:black; position: absolute;top: 96px; right: 260px;" ng-model="e" id="meds" class="col-sm-6" >
+                        <option  value='med' ng-selected='true'>
+                            medico
+                         </option>    
+                        <option  value='usu'>
+                            usuario
+                         </option>                          
+                    </select>                    
                     <form>
 
                             <div class="uk-margin">
@@ -30,7 +40,8 @@
 
                             <div class="uk-margin">
                                 <div class="uk-inline" style="width: 100%">
-                                    <input  type="submit"   ui-sref="logInUser ({usuarioId:userId})" class="uk-button uk-button-primary" style="width: 100%;">
+                                    <input ng-show="e==='usu'" type="submit"   ui-sref="logInUser ({usuarioId:userId})" class="uk-button uk-button-primary" style="width: 100%;">
+                                    <input ng-show="e==='med'" type="submit"   ui-sref="logInMed ({usuarioId:userId})" class="uk-button uk-button-primary" style="width: 100%;">
                                 </div>
                             </div>
 
