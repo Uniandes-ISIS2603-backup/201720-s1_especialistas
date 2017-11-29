@@ -172,6 +172,55 @@
                 </ul>
         </div>
 
+        
+               <!--LOGIN-->
+        <div class="log">
+            <div class="img"></div>
+
+
+            <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="src/fondo.jpg" alt="" uk-cover style="left: -300px">
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">Media Left</h3>
+                    <p>Ingresa para.</p>
+                    <form>
+
+                            <div class="uk-margin">
+                                <div class="uk-inline" style="width: 100%">
+                                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                    <input class="uk-input" type="text" placeholder="Usuario" name="uname" required id="userInput" ng-model="userId">
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <div class="uk-inline" style="width: 100%">
+                                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                    <input class="uk-input" type="password" required="required" placeholder="Contraseña">
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <div class="uk-inline" style="width: 100%">
+                                    <input  type="submit"   ui-sref="logInUser ({usuarioId:userId})" class="uk-button uk-button-primary" style="width: 100%;">
+                                </div>
+                            </div>
+
+                            
+
+
+                        </form>
+                </div>
+            </div>
+        </div>
+
+
+            
+        </div>
+
         <!--NAV-->
         <ul class="uk-breadcrumb navega uk-width-5-6@xl uk-width-3-4@l">
             <li><a href="#">Item</a></li>
@@ -181,7 +230,6 @@
         </ul>
         </div>
         
-            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}}</alert>
 
         <div ui-view="mainView" class="uk-grid-small principal uk-width-5-6@xl uk-width-3-4@l uk-child-width-1-4@l uk-child-width-1-6@xl" uk-grid>
             
