@@ -9,7 +9,7 @@
             if($scope.idd!==undefined)
             {
                 $http.get(usuarioContext+'/'+$scope.idd).then(function (response){
-                    if(response.data.rol=='ADMINISTRADOR')
+                    if(response.data.rol==='ADMINISTRADOR')
                     {
                         $rootScope.tipoUser=3;                    
                     }
