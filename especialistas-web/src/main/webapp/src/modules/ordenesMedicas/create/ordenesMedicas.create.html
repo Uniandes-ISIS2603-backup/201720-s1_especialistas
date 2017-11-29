@@ -10,6 +10,12 @@
                         <label for="descripcion">Descripcion</label>
                         <input id="descripcion" required ng-model="descripcion" class="form-control"/>
                     </div>
+                    <div class="form-group">
+        <label for="examenes">Examenes</label>
+        <select multiple class="form-control" id="examenNuevo" required ng-model="examenNuevo">
+            <option ng-repeat="examen in examenes" value={{examen}}>{{examen.nombre}}</option>
+        </select>
+    </div>
                         
                    <div class="form-group" ng-if="!ordenMedica.$valid">
                         <div class="alert alert-warning" >
