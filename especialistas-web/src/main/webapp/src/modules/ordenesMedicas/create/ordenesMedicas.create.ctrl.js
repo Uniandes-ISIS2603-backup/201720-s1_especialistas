@@ -8,6 +8,9 @@
            $http.get("api/examenes").then(function (response) {
                 $scope.examenes = response.data;
             });
+            $http.get("api/medicamentos").then(function (response) {
+                $scope.medicamentos = response.data;
+            });
 
                
 
@@ -21,10 +24,19 @@
                 }
                 $scope.examenesDeOrdenes=a;
                 
+                b=[];
+                for(i=0; i<$scope.medicamentoNuevo.length; i++)
+                {
+                    b.push({'id' : $scope.$eval($scope.medicamentoNuevo[i]).id})
+                    
+                }
+                $scope.medicamentosDeOrdenes = b;
+                
             $http.post(ordenesMedicasContext , {
                 descripcion: $scope.descripcion,
                 cita : $rootScope.glovalCita,
-                examenes:a
+                examenes : a,
+                medicamentos : b
                 
                 
                 
