@@ -19,11 +19,12 @@ delete from LaboratorioEntity;
 
 delete from ExamenEntity;
 
-insert into UsuarioEntity (id, cedula, nombre) values (8,123456,'juan');
-insert into UsuarioEntity (id, cedula, nombre) values (9,123456,'pedro');
-insert into UsuarioEntity (id, cedula, nombre) values (10,123456,'paulo');
-insert into UsuarioEntity (id, cedula, nombre) values (11,123456,'leon');
-insert into UsuarioEntity (id, cedula, nombre) values (12,123456,'kira');
+insert into UsuarioEntity (id, cedula, nombre,rol) values (8,123456,'juan','USUARIO');
+insert into UsuarioEntity (id, cedula, nombre,rol) values (9,123456,'pedro','USUARIO');
+insert into UsuarioEntity (id, cedula, nombre,rol) values (10,123456,'paulo','USUARIO');
+insert into UsuarioEntity (id, cedula, nombre,rol) values (11,123456,'Ryusaky','USUARIO');
+insert into UsuarioEntity (id, cedula, nombre,rol) values (12,123456,'kira','USUARIO');
+insert into UsuarioEntity (id, cedula, nombre,rol) values (1,1256,'Admin','ADMINISTRADOR');
 
 
 delete from TarjetaEntity;
