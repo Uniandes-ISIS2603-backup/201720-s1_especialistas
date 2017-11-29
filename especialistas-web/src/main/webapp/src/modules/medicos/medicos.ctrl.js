@@ -11,6 +11,7 @@
                 $http.get(medicosContext + '/' + $state.params.medicoId).then(function (response) {
                     $scope.medico = response.data;
                     $scope.agenda = response.data.agenda;
+                    $state.go('horasList', {medicoId: $state.params.medicoId}, {reload: true});
                 });
             }
         }
