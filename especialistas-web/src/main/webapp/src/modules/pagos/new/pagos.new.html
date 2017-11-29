@@ -1,31 +1,31 @@
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createAuthor">Create new Author</label>
+            <div class="panel-heading"><label ng-if="!edit" id="createAuthor"><strong>Crear un nuevo pago</strong></label>
                 <label ng-if="edit" id="editAuthor">Editar Pago</label></div>
             <div class="panel-body">
                 <form ng-submit="createPago()" name="pago">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="pagoRef" class="col-sm-2">Referencia</label>
-                            <input id="pagoName" required ng-model="pagoRef" class="col-sm-6"/>
+                            <label for="pagoRef" class="col-sm-2">Referencia</label><br>
+                            <input id="pagoRef" required ng-model="pagoRef" class="col-sm-6"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="pagoPrecio" class="col-sm-2">Precio</label>
-                            <input id="pagoName" required ng-model="pagoPrecio" class="col-sm-6"/>
+                            <label for="pagoPrecio" class="col-sm-2">Precio</label><br>
+                            <input id="pagoPrecio" required ng-model="pagoPrecio" class="col-sm-6"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="pagoName" class="col-sm-2">Paga</label>
+                            <label for="pagoName" class="col-sm-2">Paga</label><br>
                             <input id="pagoName" required ng-model="pagoPaga" class="col-sm-6"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="pagoName" class="col-sm-2">Metodo</label>
+                            <label for="pagoName" class="col-sm-2">Método</label><br>
                             <input id="pagoName" required ng-model="pagoMetodo" class="col-sm-6"/>
                         </div>
                     </div>
@@ -61,14 +61,14 @@
                         <div class="form-group col-sm-4" ng-if="!pago.$valid">
 
                             <div class="alert alert-warning" >
-                                <strong>Warning!</strong><p>All inputs are required*</p>
+                                <br><strong>Advertencia!</strong><p>Todos los campos deben estar llenos*</p>
                             </div> 
                         </div> 
                     </div> 
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
                             <input ng-show="pago.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="pagosList">Cancel</a>
+                            <a class="btn btn-info" ui-sref="pagosList">Cancelar</a>
                         </div>
                     </div>
                 </form>

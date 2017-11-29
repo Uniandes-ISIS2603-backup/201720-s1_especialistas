@@ -40,12 +40,12 @@
     </tr>
     <tr ng-repeat="franja in franjas">
         <th>{{franja| date:'h:mm a'}}</th>
-        <td id="{franja.$index}-0"></td>
-        <td id="{franja.$index}-1"></td>
-        <td id="{franja.$index}-2"></td>
-        <td id="{franja.$index}-3"></td>
-        <td id="{franja.$index}-4"></td>
-        <td id="{franja.$index}-5"></td>
-        <td id="{franja.$index}-6"></td>
+        <td id="{franja.$index}-0"><span uk-icon="icon: check" ng-show="hayCita(franja, 0)"></span></td>
+        <td id="{franja.$index}-1"><span uk-icon="icon: check" ng-show="hayCita(franja, 1)"></span></td>
+        <td id="{franja.$index}-2"><span uk-icon="icon: check" ng-show="hayCita(franja, 2)"></span></td>
+        <td id="{franja.$index}-3"><span uk-icon="icon: check" ng-show="hayCita(franja, 3)"></span></td>
+        <td id="{franja.$index}-4"><span uk-icon="icon: check" ng-show="hayCita(franja, 4)"></span></td>
+        <td id="{franja.$index}-5"><span uk-icon="icon: check" ng-show="hayCita(franja, 5)"></span></td>
+        <td id="{franja.$index}-6"><span uk-icon="icon: check" ng-show="hayCita(franja, 6)"></span></td>
     </tr>
 </table>

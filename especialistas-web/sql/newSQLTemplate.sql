@@ -10,8 +10,8 @@
 
 delete from CitaEntity;
 
-insert into CitaEntity (id, comentarios) values (100,'xxxxxx');
-insert into CitaEntity (id, comentarios) values (200,' ');
+insert into CitaEntity (id, comentarios,hora_id) values (100,'Revision general',101);
+insert into CitaEntity (id, comentarios,hora_id) values (200,'Chequeo de avances del tumor',102);
 
 delete from UsuarioEntity;
 
@@ -58,9 +58,9 @@ insert into MedicoEntity(id, nombre, especializacion) values (204, 'Juan Perez',
 insert into MedicoEntity(id, nombre, especializacion) values (205, 'Pedro Perez', 0);
 insert into MedicoEntity(id, nombre, especializacion) values (206, 'Juan Rodriguez', 1);
 
-insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (101, timestamp('2017-07-22 03:00:00'), timestamp('2017-07-22 05:00:00'), 204);
-insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (102, timestamp('2018-07-22 12:00:00'), timestamp('2018-07-22 15:00:00'), 204);
-insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (103, timestamp('2017-08-22 18:00:00'), timestamp('2017-08-22 21:00:00'), 204);
+insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (101, timestamp('2017-11-27 09:00:00'), timestamp('2017-11-27 09:20:00'), 204);
+insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (102, timestamp('2017-11-29 12:00:00'), timestamp('2017-11-29 12:20:00'), 204);
+insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (103, timestamp('2017-11-31 15:00:00'), timestamp('2017-11-31 15:20:00'), 204);
 
 
 delete from ConsultorioEntity;
@@ -76,11 +76,16 @@ insert into ConsultorioEntity(id, referenciaConsultorio) values (2, 'bbb');
 
 update HoraEntity set consultorio_id = 1;
 
-insert into LaboratorioEntity (id, nombre) values (2, 'nuevo lab');
+insert into LaboratorioEntity (id, nombre) values (2, 'Clinilab');
 insert into LaboratorioEntity (id, nombre) values (20, 'Laboratorio Central');
+insert into LaboratorioEntity (id, nombre) values (20, 'Laboratorio Clínico Sanitas');
 
-insert into ExamenEntity (id, nombre, precio, recomendacion ) values(3, 'sangre', 2000, 'ir en ayunas');
-insert into ExamenEntity (id, nombre, precio, recomendacion ) values(54, 'examen', 548000, 'ninguna');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(3, 'análisis de sangre', 10000, 'ayuno de 8 a 12 horas');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(54, 'electrocardiograma', 25500, 'ninguna');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(155, 'tilt test', 175000, 'asistir con ropa cómoda');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(256, 'audiometría', 35000, 'asistir con los canales auditivos limpios');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(257, 'análisis de orina', 12000, 'ayuno de 8 a 12 horas');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(256, '', 35000, 'asistir con los canales auditivos limpios');
 
 delete from HosEntity;
 
@@ -89,5 +94,5 @@ insert into HosEntity (id, nombre) values (600, 'Hospital de carros');
 
 delete from ConsEntity;
 
-insert into ConsEntity (id, numero,hospital_id) values (600, 'ABC123',500);
-insert into ConsEntity (id, numero,hospital_id) values (700, 'BCD234',600);
+insert into ConsEntity (id, numero,hospital) values (600, 'ABC123',500);
+insert into ConsEntity (id, numero,hospital) values (700, 'BCD234',600);
