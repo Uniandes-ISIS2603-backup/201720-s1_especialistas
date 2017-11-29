@@ -1,34 +1,15 @@
-<div class="container-fluid">
-    <div class="panel-group">
-        <div class="panel panel-info">
-            <div class="panel-heading"><label id="createHora">Agregar hora</label></div>
-            <div class="panel-body">
-                <form ng-submit="createHora()" name="hora">
-                    <div class="form-group">
-                        <label for="horaInicio">Hora Inicio</label>
-                        <input type="datetime-local" id="horaInicio" required ng-model="horaInicio" class="form-control"/>
-                    </div>
-                        <div class="form-group">
-                        <label for="consultorioHora">Consultorio</label>
-                        <select class="form-control" id="consultorioHora" required ng-model="consultorioHora">
-                            <option ng-repeat="consultorio in consultorios" value={{consultorio}}>{{consultorio.numero}}</option>
-                        </select>
-                    </div>
-                    <div class="form-group" ng-if="!hora.$valid">
-                        <div class="alert alert-warning" >
-                            <strong>Atención!</strong><p>Todos los campos son obligatorios</p>
-                        </div> 
-                    </div> 
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="hora.$valid" type="submit" value="Guardar" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="horasList">Cancelar</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<form class="uk-form" ng-submit="createHora()" name="hora">
+    <label class="uk-form-label" for="horaInicio">Hora Inicio</label>
+    <input class="uk-input" type="datetime-local" id="horaInicio" required ng-model="horaInicio"/>
+    <label class="uk-form-label" for="consultorioHora">Consultorio</label>
+    <select class="uk-select" id="consultorioHora" required ng-model="consultorioHora">
+        <option ng-repeat="consultorio in consultorios" value={{consultorio}}>{{consultorio.numero}}</option>
+    </select>
+    <div class="uk-alert uk-alert-warning">
+        <strong>Atención!</strong><p>Todos los campos son obligatorios</p>
+    </div> 
+    <input ng-show="hora.$valid" type="submit" value="Guardar" class="uk-button uk-button-success"/>
+    <a class="uk-button" ui-sref="horasList">Cancelar</a>
+</form>
 
 
