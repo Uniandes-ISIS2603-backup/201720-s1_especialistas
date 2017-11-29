@@ -3,6 +3,7 @@
 
     mod.config(['$stateProvider', function ($stateProvider) {
             var basePath = 'src/modules/medicos/';
+            var basePathUs = 'src/modules/usuarios/';
             $stateProvider.state('medicosList', {
                 url: '/medicos',
                 views: {
@@ -56,6 +57,16 @@
                         controller: 'medicoDeleteCtrl',
                         controllerAs: 'ctrl'
                     }
+                }
+            }).state('logInMed', {
+               params: {
+                    usuarioId: null
+                },
+                 views: {
+                    'all':{
+                        templateUrl: basePathUs + 'login/index.html',
+                        controller: 'medLogin',
+                        controllerAs: 'ctrl'}
                 }
             });
         }

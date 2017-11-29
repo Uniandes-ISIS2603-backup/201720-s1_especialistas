@@ -3,7 +3,6 @@
     mod.constant("consultoriosContext", "api/hospitales");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/consultorios/';
-            $urlRouterProvider.otherwise("/consultoriosList");
             $stateProvider.state('consultorios', {
                 url: '/consultorios',
                 views: {

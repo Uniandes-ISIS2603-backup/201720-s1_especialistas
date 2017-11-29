@@ -1,9 +1,21 @@
         angular.module('farmaciaModule')
             .controller('FarmaciaMapCtrl',['$scope','$stateParams','$http', function($scope,$rootScope,$http) {
-       
+             console.log($rootScope.id);
+      $scope.map = {center: {latitude: 4.3334, longitude: -74.0454 }, zoom: 12,
+                bounds: {
+                  northeast: {
+                    latitude: 45.1451,
+                    longitude: -80.6680
+                  },
+                  southwest: {
+                    latitude: 30.000,
+                    longitude: -120.6680
+                  }
+                } };
             $http.get("api/farmacias/"+$rootScope.id).then(function (response) {
                 
                var rec=response.data;
+               console.log(rec);
                 $scope.map = {center: {latitude: rec.ubicacion.latitud, longitude: rec.ubicacion.longitud }, zoom: 12,
                 bounds: {
                   northeast: {
