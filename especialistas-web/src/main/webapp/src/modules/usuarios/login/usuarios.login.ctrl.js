@@ -16,6 +16,7 @@
                     else{
                         $rootScope.tipoUser=1;
                     }
+                    console.log($rootScope.tipoUser);
                 },function(response){
                    $state.go('logOut');
                 });

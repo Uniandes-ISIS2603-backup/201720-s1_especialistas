@@ -1,6 +1,17 @@
         angular.module('hospitalesModule')
             .controller('HospitalMapCtrl',['$scope','$stateParams','$http', function($scope,$rootScope,$http) {
        
+             $scope.map = {center: {latitude: 4.3334, longitude: -74.0454 }, zoom: 10,
+                bounds: {
+                  northeast: {
+                    latitude: 45.1451,
+                    longitude: -80.6680
+                  },
+                  southwest: {
+                    latitude: 30.000,
+                    longitude: -120.6680
+                  }
+                } };
             $http.get("api/hospitales/"+$rootScope.hospitalId).then(function (response) {
                 
                var rec=response.data;
