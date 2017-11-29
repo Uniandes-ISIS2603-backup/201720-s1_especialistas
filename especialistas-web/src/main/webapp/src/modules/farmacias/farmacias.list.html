@@ -12,7 +12,7 @@
                     <a ui-sref="farmaciaDetail({id: farmacia.id})">{{farmacia.nombre}}</a>
                 </td>
             <tr>
-                <td>
+                <td ng-show="tipoUser!==1 && tipoUser!==2">
                     <a ui-sref="farmaciaCreate">Agregar</a>
                 </td>
             </tr>

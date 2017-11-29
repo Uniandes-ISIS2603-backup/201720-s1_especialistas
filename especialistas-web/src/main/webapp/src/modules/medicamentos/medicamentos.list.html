@@ -14,7 +14,7 @@
                     <td id="{{$index}}-precio">{{medicamento.precio}}</td>
                 </tr>
                 <tr>
-                    <td>
+                    <td ng-show="tipoUser!==1 && tipoUser!==2">
                         <a ui-sref="medicamentoCreate">Agregar</a>
                     </td>
                 </tr>
