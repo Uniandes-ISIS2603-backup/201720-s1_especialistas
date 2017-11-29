@@ -6,7 +6,7 @@
         function ($scope, $http, $state, examenContext) {
             $scope.deleteExam = function(){
                 $http.delete(examenContext + '/' + $state.params.examenId, {}).then(function (response) {
-                    $state.go('laboratoriosList', {id: response.data.id}, {reload: true});
+                    $state.go('examenesList', {id: response.data.id}, {reload: true});
                 });
             };
         }

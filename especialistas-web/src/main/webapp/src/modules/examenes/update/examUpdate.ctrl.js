@@ -18,10 +18,9 @@
                     precio: $scope.precioExam,
                     recomendacion: $scope.recomendacionExam
                 }).then(function(response) {
-                    $state.go('laboratoriosList', {id: response.data.id}, {reload:true});
+                    $state.go('examenesList', {id: response.data.id}, {reload:true});
                 });
-            };
-           
+            };           
         }
     ]);
 }

@@ -27,6 +27,24 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('examenesList', {
+                url: '/examenes',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'get/examenes.list.html',
+                        controller: 'examenCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('examenCreate', {
+                url: '/examenes',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'post/examen.new.html',
+                        controller: 'examenNewCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             }).state('examenDelete', {
                 url: '/examenes/{examenId}/delete',
                 params :{
