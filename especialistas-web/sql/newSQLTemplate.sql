@@ -58,9 +58,9 @@ insert into MedicoEntity(id, nombre, especializacion) values (204, 'Juan Perez',
 insert into MedicoEntity(id, nombre, especializacion) values (205, 'Pedro Perez', 0);
 insert into MedicoEntity(id, nombre, especializacion) values (206, 'Juan Rodriguez', 1);
 
-insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (101, timestamp('2017-07-22 09:00:00'), timestamp('2017-07-22 09:20:00'), 204);
-insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (102, timestamp('2018-07-22 12:00:00'), timestamp('2018-07-22 12:20:00'), 204);
-insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (103, timestamp('2017-08-22 15:00:00'), timestamp('2017-08-22 15:20:00'), 204);
+insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (101, timestamp('2017-11-27 09:00:00'), timestamp('2017-11-27 09:20:00'), 204);
+insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (102, timestamp('2017-11-29 12:00:00'), timestamp('2017-11-29 12:20:00'), 204);
+insert into HoraEntity(id, horaInicio, horaFin, medico_id) values (103, timestamp('2017-11-31 15:00:00'), timestamp('2017-11-31 15:20:00'), 204);
 
 
 delete from ConsultorioEntity;

@@ -29,7 +29,7 @@
                             hora.setTime(hora.getTime() + 24*3600*1000);
                         }
                         for(i in $scope.citas){
-                            temp = new Date($scope.citas[i].hora.horaInicio)
+                            temp = new Date($scope.citas[i].hora.horaInicio);
                             if(temp.getDay() == hora.getDay() && temp.getHours() == hora.getHours() && temp.getMinutes() == hora.getMinutes()){
                                 return true;
                             }
