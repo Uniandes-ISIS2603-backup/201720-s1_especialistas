@@ -7,7 +7,7 @@
             $scope.citaParaOrdenId = $rootScope.glovalCitaId;
             $scope.deleteOrden = function () {
                 $http.delete(ordenesMedicasContext + '/' + $scope.ordenId, {}).then(function (response) {
-                    $state.go('citasDetail({citasId: citaParaOrdenId})', {citasParaOrdenId: $rootScope.glovalCitaId}, {reload: true});
+                    $state.go('citasDetail', {citasId: $rootScope.glovalCitaId}, {reload: true});
                 });
             };
         }

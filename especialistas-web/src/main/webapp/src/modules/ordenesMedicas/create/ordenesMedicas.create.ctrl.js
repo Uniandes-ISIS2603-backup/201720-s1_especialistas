@@ -17,7 +17,7 @@
                 
                 
             }).then(function (response) {
-                $state.go('citasDetail', {citasId: response.cita.id}, {reload: true});
+                $state.go('citasDetail', {citasId: $rootScope.glovalCitaId}, {reload: true});
             });
             };
         }
