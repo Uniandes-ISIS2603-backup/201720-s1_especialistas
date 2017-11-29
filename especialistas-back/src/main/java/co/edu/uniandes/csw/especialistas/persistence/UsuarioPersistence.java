@@ -33,6 +33,7 @@ public class UsuarioPersistence {
      */
     public UsuarioEntity create(UsuarioEntity entity) {
         LOGGER.info("Creando un nuevo usuario");
+        entity.setRol("USUARIO");
         em.persist(entity);
         LOGGER.info("Creado un usuario nuevo");
         return entity;

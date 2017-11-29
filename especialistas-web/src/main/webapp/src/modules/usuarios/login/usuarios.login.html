@@ -1,0 +1,33 @@
+       <div class="forms">
+            <h3 style="margin-top: 55px;">Usuario</h3>
+            <form id="formaUsuario" >
+
+                    <div class="imgcontainer">
+                    <img width="200px" height="200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5PiRLyIsW9zpkhazNEVeuuFcPvyjWLlfnSBkQOL2ZS_p8DTgP" alt="">
+                    </div>
+
+                    <div id="formato1" class="container">
+                        <label><b style="color:white">Usuario</b></label>
+                        <input type="text" placeholder="Enter Username" name="uname" required id="userInput" ng-model="userId">
+
+                        <input  type="submit"   ui-sref="logInUser ({usuarioId:userId})">
+
+                    </div>
+
+            <h3>Medico</h3>
+
+                </form>
+                        <form id="formaMedico" >
+
+                    <div class="imgcontainer">
+                             <img width="200px" height="200px" src="https://www.tenvinilo.com/vinilos-decorativos/img/large/adhesivo-medico-detalle-4723.jpg">
+                    </div>
+
+                    <div id="formato1" class="container">
+                        <label><b style="color:white">Usuario</b></label>
+                        <input type="text" placeholder="Enter Username" name="uname" required id="userInput" ng-model="medId">
+
+                        <input  type="submit"  ui-sref="logInMed ({usuarioId:medId})">
+
+                    </div>
+        </div>

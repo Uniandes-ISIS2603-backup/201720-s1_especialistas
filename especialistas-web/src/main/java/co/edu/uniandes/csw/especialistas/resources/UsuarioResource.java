@@ -81,7 +81,7 @@ public class UsuarioResource {
     public UsuarioDetailDTO getUsuarioByID(@PathParam("id") Long id){
         UsuarioEntity entity = logic.getUsuarioById(id);
         if (entity == null) {
-            throw new WebApplicationException("1 No existe un usuario con el id " + id);
+            throw new WebApplicationException("1 No existe un usuario con el id " + id,404);
             
         }
         return new UsuarioDetailDTO(entity);

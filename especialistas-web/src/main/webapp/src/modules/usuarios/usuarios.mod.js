@@ -1,8 +1,9 @@
 (function (ng) {
     var mod = ng.module("usuarioModule", ['ui.router']);
 
-    mod.config(['$stateProvider', function ($stateProvider) {
+    mod.config(['$stateProvider','$urlRouterProvider', function ($stateProvider,$urlRouterProvider) {
             var basePath = 'src/modules/usuarios/';
+            $urlRouterProvider.otherwise("logOut");
             $stateProvider.state('usuariosList', {
                 url: '/usuarios/list',
                 views: {
@@ -55,6 +56,25 @@
                         templateUrl: basePath + 'new/usuarios.new.html',
                         controller: 'usuarioUpdateCtrl'
                     }
+                }
+            }).state('logInUser', {
+                url:'home',
+               params: {
+                    usuarioId: null
+                },
+                 views: {
+                    'all':{
+                        templateUrl: basePath + 'login/index.html',
+                        controller: 'usuariosLogin',
+                        controllerAs: 'ctrl'}
+                }
+            }).state('logOut', {
+                url: 'logOut',
+                views: {
+                    'all':{
+                        templateUrl: basePath + 'login/usuarios.login.html',
+                        controller: 'usuariosLogin',
+                        controllerAs: 'ctrl'}
                 }
             });
         }
