@@ -148,8 +148,9 @@
             <h1 class="uk-width-1-6@xl uk-width-1-5@l">Asanar</h1>
             <div class="imgm">
                 Usuario X &nbsp;&nbsp;
-                <img class="uk-border-circle"  src="http://i0.kym-cdn.com/entries/icons/medium/000/005/180/YaoMingMeme.jpg" ng-show="tipoUser===1" ui-sref="usuarioDetail ({usuarioId: idUser})">
-                <img class="uk-border-circle"  src="http://i0.kym-cdn.com/entries/icons/medium/000/005/180/YaoMingMeme.jpg" ng-show="tipoUser===2" ui-sref="medicoDetail ({medicoId: idUser})">
+                <img class="uk-border-circle"  src="http://i0.kym-cdn.com/entries/icons/medium/000/005/180/YaoMingMeme.jpg" ng-show="tipoUser===1" ui-sref="usuarioDetail ({usuarioId: idUser})"> <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
+                <img class="uk-border-circle"  src="http://i0.kym-cdn.com/entries/icons/medium/000/005/180/YaoMingMeme.jpg" ng-show="tipoUser===2" ui-sref="horasList ({medicoId: idUser})"> <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
+                <img class="uk-border-circle"  src="http://i0.kym-cdn.com/entries/icons/medium/000/005/180/YaoMingMeme.jpg" ng-show="tipoUser===3" ><div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>})">
                 <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
             </div>
         </div>
