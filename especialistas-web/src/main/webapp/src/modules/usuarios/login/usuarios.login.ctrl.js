@@ -16,7 +16,9 @@
                     else{
                         $rootScope.tipoUser=1;
                     }
+                    $rootScope.idUser=$scope.idd;
                     console.log($rootScope.tipoUser);
+                    console.log($rootScope.idUser);                                        
                 },function(response){
                    $state.go('logOut');
                 });

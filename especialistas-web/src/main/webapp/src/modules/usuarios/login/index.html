@@ -1,6 +1,4 @@
-                    <div class="ocul"></div>
-        
-        <!--BARRA SUPERIOR-->
+                <!--BARRA SUPERIOR-->
         <div id="barra-sup">
             <h1 class="uk-width-1-6@xl uk-width-1-5@l">Asanar</h1>
             <div class="imgm">
@@ -15,17 +13,18 @@
         <!--BARRA LATERAL-->
         <div id="barra-lateral" class="uk-width-1-6@xl uk-width-1-5@l uk-card-default uk-card-body uk-box-shadow-large">
             <ul class="list1">
-                    <a href="#"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
+                    <a ui-sref="usuarioDetail ({usuarioId: idUser})"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
                     <a ui-sref="hospitalesList"><span uk-icon="icon: location"></span>&nbsp;&nbsp;Hospitales</a>
                     <a ui-sref="usuariosList" ng-show="tipoUser!==1 && tipoUser!==2"><span uk-icon="icon: users"></span>&nbsp;&nbsp;Usuarios</a>
-                    <a ui-sref="tarjetasList"><span uk-icon="icon: credit-card"></span>&nbsp;&nbsp;Tarjetas</a>
-                    <a ui-sref="pagosList"><span uk-icon="icon: list"></span>&nbsp;&nbsp;Pagos</a>
-                    <a ui-sref="farmaciasList"><span uk-icon="icon: lifesaver"></span>&nbsp;&nbsp;Farmacias</a>
+                    <a ui-sref="tarjetasList"  ng-show="tipoUser!==1 && tipoUser!==2"><span uk-icon="icon: credit-card"></span>&nbsp;&nbsp;Tarjetas</a>
+                    <a ui-sref="pagosList" ng-show="tipoUser!==1 && tipoUser!==2"><span uk-icon="icon: list"></span>&nbsp;&nbsp;Pagos</a>
+                    <a ui-sref="farmaciasList" ng-show="tipoUser!==2"><span uk-icon="icon: lifesaver"></span>&nbsp;&nbsp;Farmacias</a>
                     <a ui-sref="medicamentosList"><span uk-icon="icon: grid"></span>&nbsp;&nbsp;Medicamentos</a>
-                    <a ui-sref="medicosList"><span uk-icon="icon: star"></span>&nbsp;&nbsp;Médicos</a>
+                    <a ui-sref="medicosList" ng-show="tipoUser!==2"><span uk-icon="icon: star"></span>&nbsp;&nbsp;Médicos</a>
                     <a ui-sref="laboratoriosList"><span uk-icon="icon: search"></span>&nbsp;&nbsp;Laboratorios</a>
-                    <a ui-sref="examenesList"><span uk-icon="icon: search"></span>&nbsp;&nbsp;Exámenes</a>
-                    <a ui-sref="citasList"><span uk-icon="icon: calendar"></span>&nbsp;&nbsp;Citas</a>
+                    <a ui-sref="examenesList" ng-show="tipoUser!==1 && tipoUser!==2"><span uk-icon="icon: search"></span>&nbsp;&nbsp;Exámenes</a>
+                    <a ui-sref="citasList" ng-show="tipoUser!==1 && tipoUser!==2"><span uk-icon="icon: calendar"></span>&nbsp;&nbsp;Citas</a>
+
                 </ul>
         </div>
 
@@ -36,11 +35,4 @@
             <li class="uk-disabled"><a href="#">Disabled</a></li>
             <li><span href="#">Active</span></li>
         </ul>
-        </div>
         
-        <div ui-view="mainView" class="uk-grid-small principal uk-width-5-6@xl uk-width-3-4@l uk-child-width-1-4@l uk-child-width-1-6@xl" uk-grid>
-            
-       </div>
-        <div ui-view="mapView"  >
-            
-       </div>

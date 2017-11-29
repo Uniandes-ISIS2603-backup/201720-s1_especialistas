@@ -10,7 +10,9 @@
             {
                 $http.get(usuarioContext+'/'+$scope.idd).then(function (response){
                     $rootScope.tipoUser=2;
+                    $rootScope.idUser=$scope.idd;
                     console.log($rootScope.tipoUser);
+                    console.log($rootScope.idUser);                    
                 },function(response){
                    $state.go('logOut');
                 });
