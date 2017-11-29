@@ -3,6 +3,7 @@
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading"><label ng-if="!edit" id="createOrdenMedica">Agregar orden</label>
+                <h2>    </h2>
                 <label ng-if="edit" id="editCita">Editar Información</label></div>
             <div class="panel-body">
                 <form ng-submit="createOrdenMedica()" name="ordenMedica">
@@ -16,6 +17,7 @@
             <option ng-repeat="examen in examenes" value={{examen}}>{{examen.nombre}}</option>
         </select>
     </div>
+                    <h3>    </h3>
                         
                    <div class="form-group" ng-if="!ordenMedica.$valid">
                         <div class="alert alert-warning" >
