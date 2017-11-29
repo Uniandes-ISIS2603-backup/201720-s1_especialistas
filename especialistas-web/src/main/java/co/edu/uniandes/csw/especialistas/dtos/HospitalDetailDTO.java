@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Clase que modela el DetailDTO de un hospital
+ *
  * @author jl.patarroyo
  */
 public class HospitalDetailDTO extends HospitalDTO {
@@ -20,7 +21,7 @@ public class HospitalDetailDTO extends HospitalDTO {
      * Atributo que modela los consultorios del hospital
      */
     private List<ConsultorioDTO> consultorios;
-    
+
     /**
      * Constructor vacío
      */
@@ -30,14 +31,15 @@ public class HospitalDetailDTO extends HospitalDTO {
 
     /**
      * Constructor del DTO a partir de una entidad
+     *
      * @param entity entidad con la información del hospital
      */
     public HospitalDetailDTO(HospitalEntity entity) {
         super(entity);
         List<ConsultorioEntity> listaEntidades = entity.getConsultorios();
         consultorios = new ArrayList<>();
-        if(listaEntidades != null){
-            for(ConsultorioEntity entidad:listaEntidades){
+        if (listaEntidades != null) {
+            for (ConsultorioEntity entidad : listaEntidades) {
                 ConsultorioDTO dto = new ConsultorioDTO(entidad);
                 consultorios.add(dto);
             }
@@ -46,6 +48,7 @@ public class HospitalDetailDTO extends HospitalDTO {
 
     /**
      * Setter del atributo consultorios
+     *
      * @return lista de consultorios del hospital
      */
     public List<ConsultorioDTO> getConsultorios() {
@@ -54,6 +57,7 @@ public class HospitalDetailDTO extends HospitalDTO {
 
     /**
      * Setter del atributo consultorios
+     *
      * @param consultorios lista de consultorios
      */
     public void setConsultorios(List<ConsultorioDTO> consultorios) {
@@ -62,17 +66,20 @@ public class HospitalDetailDTO extends HospitalDTO {
 
     /**
      * Método encargado de convertir el actual DTO a una entidad
+     *
      * @return entidad con la información del hospital
      */
     @Override
     public HospitalEntity toEntity() {
         HospitalEntity entidadHospital = super.toEntity();
         List<ConsultorioEntity> listaConsultorios = new ArrayList<>();
-        for(ConsultorioDTO dto:consultorios){
-            ConsultorioEntity entidad = dto.toEntity();
-            listaConsultorios.add(entidad);
+        if (consultorios != null) {
+            for (ConsultorioDTO dto : consultorios) {
+                ConsultorioEntity entidad = dto.toEntity();
+                listaConsultorios.add(entidad);
+            }
+            entidadHospital.setConsultorios(listaConsultorios);
         }
-        entidadHospital.setConsultorios(listaConsultorios);
         return entidadHospital;
     }
 }
