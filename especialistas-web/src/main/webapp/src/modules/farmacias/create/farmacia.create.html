@@ -1,25 +1,25 @@
 <form ng-submit="createFarmacia()" name="farmacia">
     <div class="form-group">
         <label for="farmaciaName">Nombre Farmacia</label>
-        <input class="form-control" id="farmaciaName" required ng-model="farmaciaName" placeholder="Ingrese el nombre">
+        <input class="form-control uk-input" id="farmaciaName" required ng-model="farmaciaName" placeholder="Ingrese el nombre">
     </div>
     <div class="form-group">
         <label for="farmaciaRadio">Radio de alcance</label>
-        <input class="form-control" id="farmaciaRadio" required ng-model="farmaciaRadio" placeholder="e.g. 15">
+        <input class="form-control uk-input" id="farmaciaRadio" required ng-model="farmaciaRadio" placeholder="e.g. 15">
     </div>
     <div class="form-group">
         <label for="farmaciaName">Nombre de la Ubicación</label>
-        <input class="form-control" id="ubicacionName" required ng-model="ubicacionName" placeholder="Ingrese el nombre de la ubicación">
+        <input class="form-control uk-input" id="ubicacionName" required ng-model="ubicacionName" placeholder="Ingrese el nombre de la ubicación">
     </div>
     <div class="form-group">
         <label for="farmaciaName">Latitud</label>
-        <input type="number" min="-4.25" max="11.91" step="0.1" class="form-control" id="latitudUbicacion" required ng-model="latitudUbicacion" placeholder="e.g. 2.6">
+        <input type="number" min="-4.25" max="11.91" step="0.1" class="form-control uk-input" id="latitudUbicacion" required ng-model="latitudUbicacion" placeholder="e.g. 2.6">
     </div>
     <div class="form-group">
         <label for="farmaciaName">Longitud</label>
-        <input type="number" min="-76.6" max="-67.18" step="0.1" class="form-control" id="longitudUbicacion" required ng-model="longitudUbicacion" placeholder="e.g. 2.6">
+        <input type="number" min="-76.6" max="-67.18" step="0.1" class="form-control uk-input" id="longitudUbicacion" required ng-model="longitudUbicacion" placeholder="e.g. 2.6">
     </div>
     <input ng-show="farmacia.$valid" type="submit" value="Save" class="btn btn-success"/>
-    <button type="reset" class="btn btn-info">Reiniciar</button>
+    <br><button type="reset" class="uk-button">Reiniciar</button>
     <a class="btn btn-danger" ui-sref="farmaciasList"> Cancelar </a>
 </form>

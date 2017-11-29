@@ -2,13 +2,13 @@
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading"><label ng-if="!edit" id="createAuthor">Crear una nueva tarjeta</label>
-                <label ng-if="edit" id="editAuthor">Editar Tarjeta</label></div>
+                <label ng-if="edit" id="editAuthor"><strong>Editar Tarjeta</strong></label></div>
             <div class="panel-body">
                 <form ng-submit="createTarjeta()" name="tarjeta">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="tarjetaName" class="col-sm-2">Numero</label>
-                            <input id="tarjetaName" required ng-model="tarjetaNumero" class="col-sm-6"/>
+                            <label for="tarjetaName" class="col-sm-2">Número</label><br>
+                            <input id="tarjetaName" required ng-model="tarjetaNumero" class="col-sm-6 uk-input"/>
                         </div>
                     </div>
                     

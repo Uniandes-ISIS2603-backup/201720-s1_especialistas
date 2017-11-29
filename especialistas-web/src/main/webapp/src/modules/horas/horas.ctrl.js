@@ -24,6 +24,20 @@
 
                     }
                     $scope.franjas = franjas;
+                    $scope.darIdHora = function (hora, dia) {
+                        for(i in $scope.agenda){
+                            temp = new Date($scope.agenda[i].horaInicio);
+                            if(temp.getHours() == hora.getHours() && temp.getMinutes() == hora.getMinutes() && temp.getDay() == dia){
+                                return $scope.agenda[i].id;
+                            }
+                        }
+                        return -1;
+                    }
+                    $scope.hayCita = function (hora, dia) {
+                        return $scope.darIdHora(hora, dia) != -1
+                    }
+                    
+                    
                 });
             }
         }

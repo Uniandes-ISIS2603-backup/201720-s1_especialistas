@@ -25,12 +25,9 @@
                     }
                     $scope.franjas = franjas;
                     $scope.hayCita = function (hora, dia) {
-                        for(i = 0; i < dia; i++){
-                            hora.setTime(hora.getTime() + 24*3600*1000);
-                        }
                         for(i in $scope.citas){
                             temp = new Date($scope.citas[i].hora.horaInicio);
-                            if(temp.getDay() == hora.getDay() && temp.getHours() == hora.getHours() && temp.getMinutes() == hora.getMinutes()){
+                            if(temp.getHours() == hora.getHours() && temp.getMinutes() == hora.getMinutes() && temp.getDay() == dia){
                                 return true;
                             }
                         }

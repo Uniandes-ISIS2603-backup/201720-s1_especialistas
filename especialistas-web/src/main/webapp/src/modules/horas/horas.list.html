@@ -1,10 +1,5 @@
-<div class="list-group">
-  <button ng-repeat="hora in agenda" type="button" class="list-group-item" ui-sref="horaDetail({horaId: hora.id})">
-      {{hora.horaInicio| date:'MMM d, h:mm a'}}
-  </button>
-  <button type="button" class="list-group-item list-group-item-info" ui-sref="horasCreate">Añadir nueva</button>
-</div>
-<table class="table table-bordered table-responsive">
+<button type="button" class="uk-button" ui-sref="horasCreate">Añadir nueva</button>
+<table class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
     <tr>
         <td>Hora</td>
         <th>Lunes</th>
@@ -17,12 +12,12 @@
     </tr>
     <tr ng-repeat="franja in franjas">
         <th>{{franja| date:'h:mm a'}}</th>
-        <td id="{franja.$index}-0"></td>
-        <td id="{franja.$index}-1"></td>
-        <td id="{franja.$index}-2"></td>
-        <td id="{franja.$index}-3"></td>
-        <td id="{franja.$index}-4"></td>
-        <td id="{franja.$index}-5"></td>
-        <td id="{franja.$index}-6"></td>
+        <td id="{franja.$index}-0"><span uk-icon="icon: check" ng-show="hayCita(franja, 0)" ui-sref="horaDetail({horaId: darIdHora(franja, 0)})"></span></td>
+        <td id="{franja.$index}-1"><button uk-icon="icon: check" ng-show="hayCita(franja, 1)" ui-sref="horaDetail({horaId: darIdHora(franja, 1)})"></button></td>
+        <td id="{franja.$index}-2"><button uk-icon="icon: check" ng-show="hayCita(franja, 2)" ui-sref="horaDetail({horaId: darIdHora(franja, 2)})"></button></td>
+        <td id="{franja.$index}-3"><button uk-icon="icon: check" ng-show="hayCita(franja, 3)" ui-sref="horaDetail({horaId: darIdHora(franja, 3)})"></button></td>
+        <td id="{franja.$index}-4"><button uk-icon="icon: check" ng-show="hayCita(franja, 4)" ui-sref="horaDetail({horaId: darIdHora(franja, 4)})"></button></td>
+        <td id="{franja.$index}-5"><button uk-icon="icon: check" ng-show="hayCita(franja, 5)" ui-sref="horaDetail({horaId: darIdHora(franja, 5)})"></button></td>
+        <td id="{franja.$index}-6"><button uk-icon="icon: check" ng-show="hayCita(franja, 6)" ui-sref="horaDetail({horaId: darIdHora(franja, 6)})"></button></td>
     </tr>
 </table>

@@ -121,7 +121,6 @@ public class LaboratorioDTO {
             detail.setNombre(a.getnombre());
             detail.setPrecio(a.getPrecio());
             detail.setRecomendacion(a.getRecomedacion());
-            //detail.setLaboratorios(laboratorios);
             exams.add(detail);
         }
         return exams;

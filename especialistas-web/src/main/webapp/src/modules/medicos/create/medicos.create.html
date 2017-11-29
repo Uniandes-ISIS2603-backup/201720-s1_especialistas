@@ -2,16 +2,16 @@
 
     <div class="form-group">
         <label for="nombre">Nombre</label>
-        <input class="form-control" id="nombreMedico" required ng-model="nombreMedico" placeholder="Ingrese el nombre">
+        <input class="form-control uk-input" id="nombre" required ng-model="nombreMedico" placeholder="Ingrese el nombre">
     </div>
     <div class="form-group">
         <label for="especializacionMedico">Especialización</label>
-        <select class="form-control" id="especializacionMedico" required ng-model="especializacionMedico">
+        <select class="form-control uk-input" id="especializacionMedico" required ng-model="especializacionMedico" >
             <option ng-repeat="especializacion in especializaciones">{{especializacion.value}}</option>
         </select>
     </div>
-    <input ng-show="medico.$valid" type="submit" value="Save" class="btn btn-success"/>
-    <button type="reset" class="btn btn-info">Reiniciar</button>
-    <a class="btn btn-danger" ui-sref="medicosList"> Cancelar </a>
+    <input ng-show="medico.$valid" type="submit" value="Guardar" class="btn btn-success"/>
+    <br><button type="reset" class="uk-button">Reiniciar</button>
+    <a class="uk-button-danger uk-button" ui-sref="medicosList"> Cancelar </a>
 
 </form>

@@ -2,23 +2,23 @@
     
     <div class="form-group">
         <label for="hospitalName">Nombre Hospital</label>
-        <input class="form-control" id="hospitalName" required ng-model="hospitalName" placeholder="Ingrese el nombre">
+        <input class="form-control uk-input" id="hospitalName" required ng-model="hospitalName" placeholder="Ingrese el nombre">
     </div>
     <div class="form-group">
         <label for="hospitalUbicacionName">Nombre Ubicación</label>
-        <input class="form-control" id="hospitalUbicacionName" required ng-model="hospitalUbicacionName" placeholder="e.g. Barrios Unidos">
+        <input class="form-control uk-input" id="hospitalUbicacionName" required ng-model="hospitalUbicacionName" placeholder="e.g. Barrios Unidos">
     </div>
     <div class="form-group">
         <label for="hospitalUbicacionLatitud">Latitud</label>
-        <input type="number" min="-4.25" max="11.91" step="0.1" class="form-control" id="hospitalUbicacionLatitud" required ng-model="hospitalUbicacionLatitud" placeholder="e.g. 1.100">
+        <input type="number" min="-4.25" max="11.91" step="0.1" class="form-control uk-input" id="hospitalUbicacionLatitud" required ng-model="hospitalUbicacionLatitud" placeholder="e.g. 1.100">
     </div>
     <div class="form-group">
         <label for="hospitalUbicacionLongitud">Longitud</label>
-        <input type="number" min="-76.6" max="-67.18" step="0.1" class="form-control" id="hospitalUbicacionLongitud" required ng-model="hospitalUbicacionLongitud" placeholder="e.g. 1.100">
+        <input type="number" min="-76.6" max="-67.18" step="0.1" class="form-control uk-input" id="hospitalUbicacionLongitud" required ng-model="hospitalUbicacionLongitud" placeholder="e.g. 1.100">
     </div>
     <input ng-show="hospital.$valid" type="submit" value="Save" class="btn btn-success"/>
-    <button type="reset" class="btn btn-info">Reiniciar</button>
-    <a class="btn btn-danger" ui-sref="hospitalesList"> Cancelar </a>
+    <br><button type="reset" class="uk-button-primary uk-button">Reiniciar</button>
+    <a class="uk-button uk-button" ui-sref="hospitalesList"> Cancelar </a>
     
 </form>
 
