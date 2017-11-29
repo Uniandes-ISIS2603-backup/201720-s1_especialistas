@@ -15,8 +15,8 @@
                     
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="usuarioDescription" class="col-sm-2">Cedula:</label>
-                            <textarea id="usuarioCedula" class="uk-textarea" rows="5" required ng-model="usuarioCedula" class="col-sm-6"></textarea>
+                            <label for="usuarioCedula" class="col-sm-2">Cédula</label><br>
+                            <input id="usuarioCedula"  class="uk-input" required ng-model="usuarioCedula" class="col-sm-6"/>
                         </div>
                     </div>
 
@@ -24,7 +24,7 @@
                         <div class="form-group col-sm-4" ng-if="!usuario.$valid">
 
                             <div class="alert alert-warning" >
-                                <strong>Warning!</strong><p>All inputs are required*</p>
+                                <strong>Advertencia!</strong><p>Todos los campos deben estra llenos*</p>
                             </div> 
                         </div> 
                     </div> 
@@ -32,7 +32,7 @@
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
                             <input ng-show="usuario.$valid" type="submit" value="Guardar" class="uk-button uk-button-primary" class="btn btn-success"/>
-                            <a class="uk-button uk-button-default" ui-sref="usuariosList">Cancel</a>
+                            <a class="uk-button uk-button-default" ui-sref="usuariosList">Cancelar</a>
                         </div>
                     </div>
                 </form>
@@ -41,5 +41,6 @@
         </div>
     </div>
 </div>
+    
 
 

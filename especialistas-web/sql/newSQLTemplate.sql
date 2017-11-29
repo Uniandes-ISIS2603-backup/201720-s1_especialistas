@@ -68,9 +68,9 @@ update HoraEntity set consultorio_id = 1;
 
 delete from LaboratorioEntity;
 
-insert into LaboratorioEntity (id, nombre) values (2, 'Clinilab');
-insert into LaboratorioEntity (id, nombre) values (20, 'Laboratorio Central');
-insert into LaboratorioEntity (id, nombre) values (20, 'Laboratorio Clínico Sanitas');
+insert into LaboratorioEntity (id, nombre) values (5, 'Clinilab');
+insert into LaboratorioEntity (id, nombre) values (6, 'Laboratorio Central');
+insert into LaboratorioEntity (id, nombre) values (7, 'Laboratorio Clínico Sanitas');
 
 delete from ExamenEntity;
 
