@@ -76,11 +76,16 @@ insert into ConsultorioEntity(id, referenciaConsultorio) values (2, 'bbb');
 
 update HoraEntity set consultorio_id = 1;
 
-insert into LaboratorioEntity (id, nombre) values (2, 'nuevo lab');
+insert into LaboratorioEntity (id, nombre) values (2, 'Clinilab');
 insert into LaboratorioEntity (id, nombre) values (20, 'Laboratorio Central');
+insert into LaboratorioEntity (id, nombre) values (20, 'Laboratorio Clínico Sanitas');
 
-insert into ExamenEntity (id, nombre, precio, recomendacion ) values(3, 'sangre', 2000, 'ir en ayunas');
-insert into ExamenEntity (id, nombre, precio, recomendacion ) values(54, 'examen', 548000, 'ninguna');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(3, 'análisis de sangre', 10000, 'ayuno de 8 a 12 horas');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(54, 'electrocardiograma', 25500, 'ninguna');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(155, 'tilt test', 175000, 'asistir con ropa cómoda');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(256, 'audiometría', 35000, 'asistir con los canales auditivos limpios');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(257, 'análisis de orina', 12000, 'ayuno de 8 a 12 horas');
+insert into ExamenEntity (id, nombre, precio, recomendacion ) values(256, '', 35000, 'asistir con los canales auditivos limpios');
 
 delete from HosEntity;
 
