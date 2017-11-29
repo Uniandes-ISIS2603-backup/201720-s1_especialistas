@@ -30,7 +30,7 @@
         <font color="#355384">
         <h3>EXÁMENES</h3>
         </font>
-        <table class="table table-condensed">
+        <table  class="table table-condensed">
             <thead>
                 <tr>
                     <th>NOMBRE</th>
@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-success" ui-sref="examAdd({laboratorioId: laboratorioActual.id})">
+                        <button type="button" class="btn btn-success" ng-show="tipoUser!==1 && tipoUser!==2" ui-sref="examAdd({laboratorioId: laboratorioActual.id})">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
                         </button>
                     </td>

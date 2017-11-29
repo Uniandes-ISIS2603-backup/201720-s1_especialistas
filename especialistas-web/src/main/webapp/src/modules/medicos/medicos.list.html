@@ -1,4 +1,4 @@
-    <table class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
+    <table ng-show="tipoUser!==1 && tipoUser!==2" class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
         <thead>
             <tr>
                 <th></th>
@@ -23,9 +23,29 @@
                     <a href="#" uk-icon="icon: pencil" style="color: #44b3ee" ui-sref="medicoUpdate({medicoId: medico.id})"></a>
                 </td>
             </tr>
-            <tr>
+            <tr >
                 <td>
                     <a ui-sref="medicosCreate">Agregar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table ng-show="tipoUser!==3" class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
+        <thead>
+            <tr>
+                <th></th>
+                <th>NOMBRE</th>
+                <th>ESPECIALIZACION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="medico in medicosRecords">
+                <td><input class="uk-checkbox" type="checkbox"></td>
+                <td id="{{$index}}-nombre"><a ui-sref="medicoDetail({medicoId: medico.id})">{{medico.nombre}}</a>
+                </td>
+                <td>
+                    {{medico.especializacion}}
                 </td>
             </tr>
         </tbody>

@@ -21,8 +21,8 @@
                 <dt>nombre</dt>
                 <dd>{{currentUsuario.nombre}}</dd>
                 <div class="usuario-data">
-                    <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: currentUsuario.id})">Eliminar</a>
-                    <a href="#" ui-sref="usuarioUpdate({usuarioId: currentUsuario.id})">Editar</a>
+                    <a href="#" style="color: #f44" ui-sref="usuariosDelete({usuarioId: currentUsuario.id})" ng-show="tipoUser!==1 && tipoUser!==2">Eliminar</a>
+                    <a href="#" ui-sref="usuarioUpdate({usuarioId: currentUsuario.id})" ng-show="tipoUser!==1 && tipoUser!==2">Editar</a>
                 </div>
 
             </dl>

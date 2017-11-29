@@ -17,13 +17,13 @@
                     <tr ng-repeat="medicamento in currentMedicamentos">
                         <td id="{{$index}}-nombreMed"><a ui-sref="medicamentoDetail({id: medicamento.id})">{{medicamento.nombre}}</a></td>
                     </tr>
-                    <tr><td>
+                    <tr ng-show="tipoUser!==1 && tipoUser!==2"><td>
                             <button type="button" class="btn btn-success" ui-sref="addMedicamento({id: currentRecord.id})">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true" >AGREGAR MEIDICAMENTO</span>
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
                             </button>
            
                             <button type="button" class="btn btn-danger" ui-sref="deleteMedicamento({id: currentRecord.id})">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true" >ELIMINAR MEDICAMENTO</span>
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
                             </button>
                         </td></tr>
                 </tbody>
