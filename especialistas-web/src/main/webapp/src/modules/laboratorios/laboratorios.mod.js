@@ -40,11 +40,15 @@
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'lab.map.html'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'laboratoriosList',
+                    label:'laboratorio'
                 }
             }).state('labCreate', {
                 url: '/laboratorios/create',
                 views: {
-                    'mainView': {
+                    'mainView': {                                                         
                         templateUrl: basePath + 'post/laboratorio.new.html',
                         controller: 'labNewCtrl',
                         controllerAs: 'ctrl'
