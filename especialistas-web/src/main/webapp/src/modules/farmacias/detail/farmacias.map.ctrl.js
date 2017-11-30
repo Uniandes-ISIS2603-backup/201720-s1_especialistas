@@ -1,6 +1,5 @@
         angular.module('farmaciaModule')
             .controller('FarmaciaMapCtrl',['$scope','$stateParams','$http', function($scope,$rootScope,$http) {
-             console.log($rootScope.id);
       $scope.map = {center: {latitude: 4.3334, longitude: -74.0454 }, zoom: 10,
                 bounds: {
                   northeast: {
@@ -15,7 +14,6 @@
             $http.get("api/farmacias/"+$rootScope.id).then(function (response) {
                 
                var rec=response.data;
-               console.log(rec);
                 $scope.map = {center: {latitude: rec.ubicacion.latitud, longitude: rec.ubicacion.longitud }, zoom: 10,
                 bounds: {
                   northeast: {
