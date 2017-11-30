@@ -25,10 +25,9 @@
 
                     }
                     $scope.franjas = franjas;
-                    $scope.semana = [0,1,2,3,4,5,6];
                     $scope.darIdHora = function (hora, dia) {
                         for(i in $scope.agenda){
-                            if (object.hasOwnProperty(i)) {
+                            if ($scope.agenda.hasOwnProperty(i)) {
                                 temp = new Date($scope.agenda[i].horaInicio);
                                 if(temp.getHours() === hora.getHours() && temp.getMinutes() === hora.getMinutes() && temp.getDay() === dia){
                                     return $scope.agenda[i].id;
