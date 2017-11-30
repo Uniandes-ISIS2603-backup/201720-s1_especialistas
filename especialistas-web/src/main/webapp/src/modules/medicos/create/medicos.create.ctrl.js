@@ -14,7 +14,7 @@
                     especializacion: $scope.especializacionMedico,
                     agenda : []
                 }).then(function (response) {
-                    $state.go('horasList', {medicoId: response.data.id}, {reload: true});
+                    $state.go('medicosList', {medicoId: response.data.id}, {reload: true});
                 });
             };
         }

@@ -22,9 +22,10 @@
     </div>
     <br>
     <div class="uk-button-group">
-        <button type="reset" class="uk-button-secondary uk-button">Reiniciar</button>
-        <button class="uk-button uk-button-default" ui-sref="examenesList">Cancelar</button>
-        <button ng-show="examen.$valid" type="submit" class="uk-button-secondary uk-button">Guardar</button>
+        <button type="submit" class="uk-button-secondary uk-button" id="butGuardar">Guardar</button>
+        <button type="reset" class="uk-button-secondary uk-button" id="butReset">Reiniciar</button>
+        <button class="uk-button uk-button-default" ui-sref="examenesList" id="butCancelar">Cancelar</button>
+        
     </div>
 </form>
 

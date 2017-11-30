@@ -1,30 +1,25 @@
-<div class="row">
-    <div class="col col-md-12">
-        <h3>NOMBRE</h3>
-        {{currentRecord.nombre}}
-    </div>
-</div>
-<hr>
-<div class="container-fluid">
+<div class="uk-height-1-2">
+    <h3>NOMBRE: </h3>{{currentRecord.nombre}}
+
     <h3>MEDICAMENTOS</h3>
     <table class="table table-condensed">
-                <thead>
-                    <tr>
-                        <th>NOMBRE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="medicamento in currentMedicamentos">
-                        <td id="{{$index}}-nombreMed"><a ui-sref="medicamentoDetail({id: medicamento.id})">{{medicamento.nombre}}</a></td>
-                    </tr>
-                    <tr ng-show="tipoUser!==1 && tipoUser!==2"><td>
-                            <a uk-icon="icon: plus" ui-sref="addMedicamento({id: currentRecord.id})"></a>
-                            <a uk-icon="trash" ui-sref="deleteMedicamento({id: currentRecord.id})"></a>
-                        </td></tr>
-                </tbody>
-            </table>
+        <thead>
+            <tr>
+                <th>NOMBRE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="medicamento in currentMedicamentos">
+                <td id="{{$index}}-nombreMed"><a ui-sref="medicamentoDetail({id: medicamento.id})">{{medicamento.nombre}}</a></td>
+            </tr>
+            <tr ng-show="tipoUser !== 1 && tipoUser !== 2"><td>
+                    <a uk-icon="icon: plus" ui-sref="addMedicamento({id: currentRecord.id})"></a>
+                    <a uk-icon="trash" ui-sref="deleteMedicamento({id: currentRecord.id})"></a>
+                </td></tr>
+        </tbody>
+    </table>
 </div>
 
-        
+
 
 

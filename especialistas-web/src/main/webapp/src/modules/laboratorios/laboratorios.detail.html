@@ -1,59 +1,44 @@
-
 <div class="row">
     <div class="col-md-3">
         <img height="200px" width="200px" 
              src="http://cdn.onlinewebfonts.com/svg/img_463148.png"
-              </div>
+    </div>
     <div class="col-md-9">
         <div class="row">
-            <font color="#355384">
-            <h3>NOMBRE</h3>
-            </font>
-            {{laboratorioActual.nombre}}
-            <font color="#355384">
-            <h3>NOMBRE UBICACIÓN</h3>
-            </font>
-            {{laboratorioActual.ubicacion.nombre}}
-            <font color="#355384">
-            <h3>LATITUD</h3>
-            </font>
-            {{laboratorioActual.ubicacion.latitud}}
-            <font color="#355384">
-            <h3>LONGITUD</h3>
-            </font>
-            {{laboratorioActual.ubicacion.longitud}}
+            <h3>NOMBRE: </h3>{{laboratorioActual.nombre}}
+
+            <h3>UBICACIÓN: </h3>{{laboratorioActual.ubicacion.nombre}}
+
+            <h3>LATITUD: </h3>{{laboratorioActual.ubicacion.latitud}}
+
+            <h3>LONGITUD: </h3>{{laboratorioActual.ubicacion.longitud}}
+
+            <h3>EXÁMENES</h3>
+            <table  class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>PRECIO</th>
+                        <th>RECOMENDACIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="examen in examenesLab">
+                        <td><a ui-sref="examDetail({examenId : examen.id})" >{{examen.nombre}}</a></td>
+                        <td>{{examen.precio}}</td>
+                        <td>{{examen.recomendacion}}</td>
+                        <td>
+                            <a ng-show="tipoUser !== 1 && tipoUser !== 2" uk-icon="icon: trash" ui-sref="examenDelete({examenId: examenActual.id})" style="color: #f44"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br>
+                            <a uk-icon="icon: plus" ng-show="tipoUser !== 1 && tipoUser !== 2" ui-sref="examAdd({laboratorioId: laboratorioActual.id})"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <font color="#355384">
-        <h3>EXÁMENES</h3>
-        </font>
-        <table  class="table table-condensed">
-            <thead>
-                <tr>
-                    <th>NOMBRE</th>
-                    <th>PRECIO</th>
-                    <th>RECOMENDACIONES</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="examen in examenesLab">
-                    <td><a ui-sref="examDetail({examenId : examen.id})" >{{examen.nombre}}</a></td>
-                    <td>{{examen.precio}}</td>
-                    <td>{{examen.recomendacion}}</td>
-                    <td>
-                        <a ng-show="tipoUser!==1 && tipoUser!==2" uk-icon="icon: trash" ui-sref="examenDelete({examenId: examenActual.id})" style="color: #f44"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <br>
-                        <a uk-icon="icon: plus" ng-show="tipoUser!==1 && tipoUser!==2" ui-sref="examAdd({laboratorioId: laboratorioActual.id})"></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </div>

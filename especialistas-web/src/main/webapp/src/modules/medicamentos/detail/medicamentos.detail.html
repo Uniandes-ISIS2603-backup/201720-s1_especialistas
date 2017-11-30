@@ -1,21 +1,21 @@
 <alert class="alert alert-danger" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
-    <h4>
-        Información
-    </h4>
+    <h2>
+        INFORMACIÓN MEDICAMENTO
+    </h2>
     <table class="table table-striped col-md-4">
         <tbody>
-            <tr> <td>Name:</td> <td id="{{$index}}-medicamentoName">{{currentRecord.nombre}}</td> </tr> 
-            <tr>  <td>Precio:</td><td id="{{$index}}-medicamentoPrecio">{{currentRecord.precio}}</td></tr>
+            <tr> <td><h3>NOMBRE: </h3></td> <td id="{{$index}}-medicamentoName">{{currentRecord.nombre}}</td> </tr> 
+            <tr>  <td><h3>PRECIO: </h3></td><td id="{{$index}}-medicamentoPrecio">{{currentRecord.precio}}</td></tr>
         </tbody>
     </table>
-    <h4>
-        farmacias
-    </h4>
+    <h2>
+        FARMACIAS
+    </h2>
     <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Nombre</th>    
+                    <th>NOMBRE</th>    
                 </tr>
             </thead>
             <tbody>
