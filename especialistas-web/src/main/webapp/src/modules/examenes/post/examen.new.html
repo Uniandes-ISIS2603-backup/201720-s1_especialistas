@@ -1,5 +1,5 @@
 <form ng-submit="createExam()" name="examen">
-    
+
     <div class="form-group">
         <label for="examenName">Nombre Examen</label>
         <input class="form-control" id="examenName" required ng-model="examenName" placeholder="Ingrese el nombre">
@@ -12,9 +12,9 @@
         <label for="examenRecommend">Recomendaciones</label>
         <textarea class="form-control" id="examenRecommend" required ng-model="examenRecom" ></textarea>
     </div>
-    <input ng-show="examen.$valid" type="submit" value="Save" class="btn btn-success"/>
-    <button type="reset" class="btn btn-info">Reiniciar</button>
-    <a class="btn btn-danger" ui-sref="examenesList"> Cancelar </a>
-    
+    <button ng-show="examen.$valid" type="submit"  class="btn btn-success">Guardar</button>
+    <button type="reset" class="uk-button uk-button-primary">Reiniciar</button>
+    <a class="uk-button-default" ui-sref="examenesList"> Cancelar </a>
+
 </form>
 

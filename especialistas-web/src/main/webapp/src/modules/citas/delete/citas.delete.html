@@ -1,6 +1,8 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="center-block well text-center uk-width-1-1">
-    <h1>¿Está seguro que quiere eliminar esta cita?</h1>
-    <button id="confirm-delete" ng-click="deleteCita()" class="uk-button uk-button-primary">Eliminar</button>
-    <a id="cancel-delete" ui-sref="citasList" class="uk-button uk-button-default">Cancelar</a>
+    <h1>¿Desea eliminar esta cita?</h1>
+    <div class="uk-button-group">
+        <button id="confirm-delete" ng-click="deleteCita()" class="uk-button uk-button-secondary">Eliminar</button>
+        <button id="cancel" ui-sref="citasList" class="uk-button uk-button-default">Cancelar</button>
+    </div>
 </div>

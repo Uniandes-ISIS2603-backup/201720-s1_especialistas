@@ -1,46 +1,44 @@
 <div class="uk-card uk-card-default uk-card-body uk-width-1-1">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><legend class="uk-legend" ng-if="!edit" id="createAuthor">Crear nuevo Usuario</legend>
-                
+            <div class="panel-heading"><legend class="uk-legend" ng-if="!edit" id="createAuthor"><strong>Crear nuevo Usuario</strong></legend>
+
                 <legend ng-if="edit" id="editAuthor" class="uk-legend">Editar Usuario</legend>
-            <div class="panel-body">
-                <form ng-submit="createUsuario()" name="usuario">
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="usuarioName" class="col-sm-2">Nombre</label>
-                            <input id="usuarioName" class="uk-input" required ng-model="usuarioName" class="col-sm-6"/>
+                <div class="panel-body">
+                    <form ng-submit="createUsuario()" name="usuario">
+                        <div class="form-group row">
+                            <br><div class="form-group col-md-6">
+                                <label for="usuarioName" class="col-sm-2">Nombre</label>
+                                <input id="usuarioName" required ng-model="usuarioName" class="col-sm-6 uk-input form-control"/>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="usuarioCedula" class="col-sm-2">Cédula</label><br>
-                            <input id="usuarioCedula"  class="uk-input" required ng-model="usuarioCedula" class="col-sm-6"/>
+
+                        <div class="form-group row">
+                            <div class="form-group col-md-6">
+                                <label for="usuarioCedula" class="col-sm-2">Cédula</label><br>
+                                <input id="usuarioCedula" required ng-model="usuarioCedula" class="col-sm-6 form-control uk-input"/>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <div class="form-group col-sm-4" ng-if="!usuario.$valid">
+                        <div class="form-group row">
+                            <div class="form-group col-sm-4" ng-if="!usuario.$valid">
 
-                            <div class="alert alert-warning" >
-                                <strong>Advertencia!</strong><p>Todos los campos deben estra llenos*</p>
+                                <div class="alert alert-warning" >
+                                    <strong>Advertencia!</strong><p>Todos los campos deben estar llenos*</p>
+                                </div> 
                             </div> 
                         </div> 
-                    </div> 
-                    <br>
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="usuario.$valid" type="submit" value="Guardar" class="uk-button uk-button-primary" class="btn btn-success"/>
-                            <a class="uk-button uk-button-default" ui-sref="usuariosList">Cancelar</a>
+                        <br>
+                        <div class="uk-button-group">
+                            <button id="confirm-delete" ng-show="usuario.$valid" type="submit" class="uk-button uk-button-secondary">Guardar</button>
+                            <button id="cancel" ui-sref="usuariosList" class="uk-button uk-button-default">Cancelar</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
-    
+
 
 

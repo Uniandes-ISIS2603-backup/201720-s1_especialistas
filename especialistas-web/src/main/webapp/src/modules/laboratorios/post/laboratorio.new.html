@@ -1,5 +1,5 @@
 <form ng-submit="createLab()" name="laboratorio">
-    
+
     <div class="form-group">
         <label for="laboratorioName">Nombre Laboratorio</label>
         <input class="form-control uk-input" id="laboratorioName" required ng-model="labName" placeholder="Ingrese el nombre">
@@ -16,9 +16,12 @@
         <label for="laboratorioUbicacionLongitud">Longitud</label>
         <input type="number" min="-76.6" max="-67.18" step="0.1" class="form-control uk-input" id="laboratorioUbicacionLongitud" required ng-model="ubicacionLongitud" placeholder="e.g. 1.100">
     </div>
-    <input ng-show="laboratorio.$valid" type="submit" value="Save" class="btn btn-success uk-input"/>
-    <button type="reset" class="btn btn-info">Reiniciar</button>
-    <a class="btn btn-danger" ui-sref="laboratoriosList"> Cancelar </a>
-    
+    <br>
+    <div class="uk-button-group">
+        <button type="reset" class="uk-button uk-button-secondary">Reiniciar</button>
+        <button type="reset" class="uk-button uk-button-default" ui-sref="laboratoriosList">Cancelar</button>
+        <button ng-show="laboratorio.$valid" type="submit" class="uk-button uk-button-secondary">Guardar</button>
+    </div>
+
 </form>
 

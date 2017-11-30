@@ -2,31 +2,31 @@
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading"><label ng-if="!edit" id="createAuthor"><strong>Crear un nuevo pago</strong></label>
-                <label ng-if="edit" id="editAuthor">Editar Pago</label></div>
+                <label ng-if="edit" id="editAuthor"><strong>Editar Pago</strong></label></div>
             <div class="panel-body">
                 <form ng-submit="createPago()" name="pago">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="pagoRef" class="col-sm-2">Referencia</label><br>
-                            <input id="pagoRef" required ng-model="pagoRef" class="col-sm-6"/>
+                            <input id="pagoRef" required ng-model="pagoRef" class="col-sm-6 form-control uk-input"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="pagoPrecio" class="col-sm-2">Precio</label><br>
-                            <input id="pagoPrecio" required ng-model="pagoPrecio" class="col-sm-6"/>
+                            <input id="pagoPrecio" required ng-model="pagoPrecio" class="col-sm-6 form-control uk-input"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="pagoName" class="col-sm-2">Paga</label><br>
-                            <input id="pagoName" required ng-model="pagoPaga" class="col-sm-6"/>
+                            <input id="pagoName" required ng-model="pagoPaga" class="col-sm-6 form-control uk-input"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="pagoName" class="col-sm-2">Método</label><br>
-                            <input id="pagoName" required ng-model="pagoMetodo" class="col-sm-6"/>
+                            <input id="pagoName" required ng-model="pagoMetodo" class="col-sm-6 form-control uk-input"/>
                         </div>
                     </div>
                     
@@ -65,11 +65,10 @@
                             </div> 
                         </div> 
                     </div> 
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="pago.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="pagosList">Cancelar</a>
-                        </div>
+                    <br>
+                    <div class="uk-button-group">
+                        <button ng-show="pago.$valid" type="submit" class="uk-button uk-button-secondary">Guardar</button>
+                        <button class="uk-button uk-button-default" ui-sref="pagosList">Cancelar</button>
                     </div>
                 </form>
 

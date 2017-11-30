@@ -10,8 +10,11 @@
             <option ng-repeat="especializacion in especializaciones">{{especializacion.value}}</option>
         </select>
     </div>
-    <input ng-show="medico.$valid" type="submit" value="Guardar" class="btn btn-success"/>
-    <br><button type="reset" class="uk-button">Reiniciar</button>
-    <a class="uk-button-danger uk-button" ui-sref="medicosList"> Cancelar </a>
+    <br>
+    <div class="uk-button-group">
+        <button type="reset" class="uk-button uk-button-secondary">Reiniciar</button>
+        <button class="uk-button uk-button-default" ui-sref="medicosList">Cancelar</button>
+        <button ng-show="medico.$valid" type="submit" class="uk-button uk-button-secondary">Guardar</button>
+    </div>
 
 </form>

@@ -6,19 +6,16 @@
                     </div> 
 
                     <div id="agregar-existente" class="form-group row">
-                        <label>Seleccione un examen</label>
-                        <select class="form-control col-sm-6" id="nombreExamen" required ng-model="examenX">
+                        <label><strong>Seleccione un examen</strong></label><br> 
+                        <select class="form-control col-sm-6 uk-input" id="nombreExamen" required ng-model="examenX">
                             <option ng-repeat="examn in examenesList" value={{examn}}>{{examn.nombre}}</option>
                         </select>
                         <br><br>
-
                     </div> 
-
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="examen.$valid" type="submit" value="Guardar" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="laboratoriosList">Cancelar</a>
-                        </div>
+                    <br>
+                    <div class="uk-button-group">
+                        <button ui-sref="laboratoriosList" class="uk-button uk-button-default">Cancelar</button>
+                        <button class="uk-button uk-button-secondary" type="submit" ng-show="examen.$valid">Guardar</button>
                     </div>
                 </form>
 

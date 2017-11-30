@@ -2,16 +2,19 @@
 
     <div class="form-group">
         <label for="comentarios">Comentarios</label>
-        <input class="form-control" id="hospitalName" required ng-model="comentarios" placeholder="Ingrese los comentarios">
+        <input class="form-control uk-input" id="hospitalName" required ng-model="comentarios" placeholder="Ingrese los comentarios">
     </div>
     <div class="form-group">
         <label for="horaNueva">Hora</label>
-        <select class="form-control" id="horaNueva" required ng-model="horaNueva">
+        <select class="form-control uk-input" id="horaNueva" required ng-model="horaNueva">
             <option ng-repeat="hora in horas" value={{hora}}>{{hora.horaInicio}}-{{hora.horaFin}} </option>
         </select>
     </div>
-    <input ng-show="cita.$valid" type="submit" value="Save" class="btn btn-success"/>
-    <button type="reset" class="btn btn-info">Reiniciar</button>
-    <a class="btn btn-danger" ui-sref="citasList"> Cancelar </a>
+    <br>
+    <div class="uk-button-group">
+        <button type="reset" class="uk-button uk-button-secondary">Reiniciar</button>
+        <button type="button"  class="uk-button uk-button-default" ui-sref="citasList">Cancelar</button>
+        <button ng-show="cita.$valid" type="submit" class="uk-button uk-button-secondary">Guardar</button>
+    </div>
 
 </form>
