@@ -221,3 +221,17 @@ body{
     background-image: url(fondo2.jpg);
     filter: blur(8px);
 }
+
+#butGuardar{
+    background: #05ad08;
+}
+
+#butReset{
+    background: #efefef;
+    color:#000;
+}
+
+#butCancelar{
+    background:#efefef;
+    color:#000;
+}
