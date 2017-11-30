@@ -19,8 +19,8 @@
 
                     }).then(function (response){
                         //pago creado correctamente
-                        $state.go('pagosList',{
-                            pagoId: response.data.id
+                        $state.go('usuarioDetail' ,{
+                                usuarioId: $state.params.usuarioId
                         },
                         {
                             reload: true
@@ -32,4 +32,4 @@
         }
     ]);
 }
-)(angular);
+)(angular); 

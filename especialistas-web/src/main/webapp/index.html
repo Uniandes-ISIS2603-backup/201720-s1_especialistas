@@ -380,7 +380,7 @@
         <div id="barra-sup">
             <h1 class="uk-width-1-6@xl uk-width-1-5@l">ASANAR</h1>
         </div>
-        <div  ui-view="all">       
+        <div  ui-view="all" style="width: 100%;padding: 0px">       
             <div class="ocul"></div>
 
             <!--BARRA SUPERIOR-->
@@ -389,7 +389,7 @@
                 <div class="imgm">
                     Usuario {{idUser}} &nbsp;&nbsp;
                     <img class="uk-border-circle"  src="src/Santa_Fe.PNG" ng-show="tipoUser === 1" ui-sref="usuarioDetail ({usuarioId: idUser})"> <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
-                    <img class="uk-border-circle"  src="src/Santa_Fe.PNG" ng-show="tipoUser === 2" ui-sref="horasList ({medicoId: idUser})"> <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
+                    <img class="uk-border-circle"  src="src/Santa_Fe.PNG" ng-show="tipoUser === 2" ui-sref="horasList ({medicoId: idUser})"> 
                     <img class="uk-border-circle"  src="src/Santa_Fe.PNG" ng-show="tipoUser === 3" >
                     <div uk-dropdown>Tipo Usuario <br>
                         <a  ui-sref="logOut"> salir 
@@ -401,7 +401,7 @@
 
 
             <!--BARRA LATERAL-->
-            <div id="barra-lateral" class="uk-width-1-6@xl uk-width-1-5@l uk-card-default uk-card-body ">
+            <div id="barra-lateral" class="uk-width-1-6@xl uk-width-1-5@l uk-card-default uk-card-body uk-width-1-1">
                 <ul class="list1">
                     <a ng-show="tipoUser === 1" ui-sref="usuarioDetail ({usuarioId: idUser})" class="elemento"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
                     <a ng-show="tipoUser === 2" ui-sref="medicoDetail ({medicoId: idUser})" class="elemento"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
@@ -433,7 +433,7 @@
                         <div class="uk-card-body">
                             <h3 class="uk-card-title">ASANAR</h3>
                             <p>Ingresa para.</p>
-                            <select style="color:black; position: absolute;top: 96px; right: 260px;" ng-model="e" id="meds">
+                            <select style="color:black; position: absolute; right: 260px;" ng-model="e" id="meds">
                                 <option  value='med' ng-selected="true" selected="selected">
                                     medico
                                 </option>    
