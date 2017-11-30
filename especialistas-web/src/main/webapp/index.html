@@ -151,8 +151,11 @@
                     Usuario X &nbsp;&nbsp;
                     <img class="uk-border-circle"  src="src/Santa_Fe.PNG" ng-show="tipoUser === 1" ui-sref="usuarioDetail ({usuarioId: idUser})"> <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
                     <img class="uk-border-circle"  src="src/Santa_Fe.PNG" ng-show="tipoUser === 2" ui-sref="horasList ({medicoId: idUser})"> <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
-                    <img class="uk-border-circle"  src="src/Santa_Fe.PNG" ng-show="tipoUser === 3" ><div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> salir <span uk-icon="icon: sign-out"></span></a></div>
-                    <div uk-dropdown>Tipo Usuario <br><a  ui-sref="logOut"> Salir <span uk-icon="icon: sign-out"></span></a></div>
+                    <img class="uk-border-circle"  src="src/Santa_Fe.PNG" ng-show="tipoUser === 3" >
+                    <div uk-dropdown>Tipo Usuario <br>
+                        <a  ui-sref="logOut"> salir 
+                            <span uk-icon="icon: sign-out"></span>
+                        </a></div>
                 </div>
             </div>
 
@@ -185,7 +188,7 @@
                 <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
                     <div class="uk-card-media-left uk-cover-container">
                         <img src="src/fondo.jpg" alt="" uk-cover style="left: -300px">
-                        <canvas width="600" height="400"></canvas>
+                        <canvas width="600" height="500"></canvas>
                     </div>
                     <div>
                         <div class="uk-card-body">
@@ -242,15 +245,18 @@
                 <li><span href="#">Active</span></li>
             </ul>
 
-
-
         </div>
 
-        <div ui-view="mainView" class="uk-grid-small principal uk-width-5-6@xl uk-width-3-4@l uk-child-width-1-4@l uk-child-width-1-6@xl" uk-grid>
+        <!--VISTAS-->
+        <div class="uk-grid-small principal uk-width-5-6@xl uk-width-3-4@l uk-child-width-1-1" uk-grid>
 
-        </div>
-        <div ui-view="mapView"  >
+            <div ui-view="mainView" class="uk-grid-small uk-child-width-1-4@l uk-child-width-1-6@xl" uk-grid>
 
+            </div>
+
+            <div ui-view="mapView" style="margin-bottom: 50px">
+
+            </div>
         </div>
     </body>
 </html>

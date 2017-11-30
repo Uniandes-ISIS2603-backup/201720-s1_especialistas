@@ -1,4 +1,4 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div ui-view="detailView"></div>
+<div ui-view="detailView" class="uk-grid-small uk-child-width-2-3 uk-width-1-1" uk-grid></div>
 <div ui-view="listView"></div>
-<div ui-view="mapView"></div>
+<div ui-view="mapView" class="uk-width-1-1"></div>
