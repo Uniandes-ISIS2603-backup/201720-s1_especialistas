@@ -7,6 +7,7 @@
             $scope.createTarjeta = function (){
                 
                 if (($state.params.usuarioId !== undefined) && ($state.params.usuarioId !== null)) {
+                    
                     $http.post(tarjetaContext , {
                         numero: $scope.tarjetaNumero,
                         usuario:{
@@ -16,8 +17,9 @@
 
                     }).then(function (response){
                         //tarjeta creado correctamente
-                        $state.go('tarjetasList',{
-                            tarjetaId: response.data.id
+                        $state.go(
+                            'usuarioDetail' ,{
+                                usuarioId: $state.params.usuarioId
                         },
                         {
                             reload: true

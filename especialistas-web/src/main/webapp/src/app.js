@@ -4,6 +4,7 @@
         'ui.router',
         'ui.bootstrap',
         'uiGmapgoogle-maps',
+        'ncy-angular-breadcrumb',
         //Internal modules dependencies
         'medicoModule',
         'horaModule',

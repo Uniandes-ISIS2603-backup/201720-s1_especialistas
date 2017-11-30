@@ -24,7 +24,11 @@
                         controller: 'tarjetasNewController',
                         controllerAs: 'ctrl'
                     }
-                }
+                },
+                ncyBreadcrumb: {
+                            parent: 'tarjetasList',
+                            label: 'tarjetas'
+                          }
             }).state('tarjetasDelete', {
                 url: '/tarjetas/delete/{tarjetaId:int}',
                 param: {
