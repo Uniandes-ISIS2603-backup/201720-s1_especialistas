@@ -20,6 +20,30 @@
 
                         $scope.codigo = $.md5('4Vj8eK4rloUd272L48hsrarnUA~508029~'+referenceCode+'~'+pago.precio+'~COP');
                         
+                        setTimeout(function(){
+                            $http.get("http://proyectoseneca.esy.es/confirmationr.php?id=" + idPago).then(function(response){
+
+                                $http.get(pagoContext + '/' + idPago).then(function (response) {
+                                    var pago = response.data;
+                                    $rootScope.pagoRef2 = pago.ref;
+                                    $rootScope.pagoPrecio2 = pago.precio;
+                                    $rootScope.pagoMetodo2 = pago.metodo;
+                                    $rootScope.usuarioId2 = pago.usuario.id;
+                                    $rootScope.usuarioNombre2 = pago.usuario.nombre;
+                                });
+
+                                $http.put(pagoContext + '/' + idPago, {
+                                    ref: $rootScope.pagoRef2,
+                                    precio: $rootScope.pagoPrecio2,
+                                    pai: true,
+                                    metodo: $rootScope.pagoMetodo2,
+                                    usuario:{
+                                        id: $rootScope.usuarioId2,
+                                        nombre: $rootScope.usuarioNombre2
+                                    }
+                                }).then(function(response){});
+                            });
+                         }, 300000);
 
                     });
 
