@@ -74,7 +74,10 @@
                 }
             })
             .state('citasCreate', {
-                url: '/citas/nuevo',
+                url: '/citas/nuevo/{usuarioId:int}',
+                param:{
+                  usuarioId: null  
+                },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'create/citas.create.html',

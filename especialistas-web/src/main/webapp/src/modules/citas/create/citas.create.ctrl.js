@@ -4,7 +4,8 @@
     mod.controller('citasCreateCtrl', ['$scope', '$http', 'citasContext', '$state', '$rootScope',
         function ($scope, $http, citasContext, $state, $rootScope) {
             $rootScope.edit = false;
-            
+
+
             $http.get("api/horas").then(function (response) {
                 $scope.horas = response.data;
             });
@@ -12,14 +13,16 @@
 
 
             $scope.createCita = function () {
-            $http.post(citasContext , {
-                comentarios: $scope.comentarios,
-                usuario: null,
-                ordenesMedicas: [],
-                hora : {'id': $scope.$eval($scope.horaNueva).id}
-            }).then(function (response) {
-                $state.go('citasList', {citaId: response.data.id}, {reload: true});
-            });
+                if (($state.params.usuarioId !== undefined) && ($state.params.usuarioId !== null)) {
+                    $http.post(citasContext, {
+                        comentarios: $scope.comentarios,
+                        usuario: {id : $state.params.usuarioId},
+                        ordenesMedicas: [],
+                        hora: {'id': $scope.$eval($scope.horaNueva).id}
+                    }).then(function (response) {
+                        $state.go('citasList', {citaId: response.data.id}, {reload: true});
+                    });
+                }
             };
         }
     ]);
