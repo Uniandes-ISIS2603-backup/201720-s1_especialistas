@@ -38,6 +38,10 @@
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'detail/medicamentos.detail.html'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'medicamentosList',
+                    label:'medicamento'
                 }
             });
         }

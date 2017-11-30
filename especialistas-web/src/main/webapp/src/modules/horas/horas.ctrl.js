@@ -7,7 +7,8 @@
                 $http.get(medicosContext + '/' + $state.params.medicoId + '/agenda').then(function (response) {
                     $scope.agenda = response.data;
                     dia = new Date();
-                    dia = new Date($scope.agenda[0].horaInicio);
+                    if($scope.agenda.length > 0)
+                        dia = new Date($scope.agenda[0].horaInicio);
                     while(dia.getDay() !== 0)
                         dia.setTime(dia.getTime() - 24*3600*1000);
                     franjas = [];
