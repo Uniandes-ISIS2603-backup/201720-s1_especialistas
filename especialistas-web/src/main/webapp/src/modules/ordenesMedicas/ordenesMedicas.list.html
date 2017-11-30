@@ -13,21 +13,18 @@
                 <td id="{{$index}}-nombre"><a ui-sref="ordenesMedicasDetail({ordenesMedicasId: orden.id})">{{orden.descripcion}}</a>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" ui-sref="ordenesMedicasDelete({ordenesMedicasId: orden.id})">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
+                    <a uk-icon="icon: trash" style="color: #f44" ui-sref="ordenesMedicasDelete({ordenesMedicasId: orden.id})">
+                        
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info" ui-sref="ordenesMedicas({ordenesMedicasId: hospital.id})">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </button>
+                    <a uk-icon="icon: pencil" ui-sref="ordenesMedicasCreate({ordenesMedicasId: orden.id})">
+                        
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button type="button" class="btn btn-success" ui-sref="ordenesMedicasCreate">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                    </button>
+                    <a ui-sref="ordenesMedicasCreate">AGREGAR</a>
+                       
                 </td>
             </tr>
         </tbody>

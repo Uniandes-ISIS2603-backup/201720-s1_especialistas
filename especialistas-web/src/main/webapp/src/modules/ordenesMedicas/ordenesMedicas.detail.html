@@ -1,11 +1,9 @@
 <div class="col col-md-6">
-    <font color="#355384">
-    <h3>Descripción</h3>
-    </font>
-    {{currentOrden.descripcion}}
+    <h3>DESCRIPCIÓN: </h3>{{currentOrden.descripcion}}
+    
     <h5>        </h5>
-    <h4>Examenes</h4>
+    <h4>EXÁMENES</h4>
     <div ng-repeat="examen in currentOrden.examenes" value={{examen}}><a ui-sref="examDetail ({examenId:examen.id})">{{examen.nombre}}</a></div>
-    <h4>Medicamentos</h4>
+    <h4>MEDICAMENTOS</h4>
     <div ng-repeat="medicamento in currentOrden.medicamentos" value={{medicamento}}><a ui-sref="medicamentoDetail ({id:medicamento.id})">{{medicamento.nombre}}</a></div>
 </div>

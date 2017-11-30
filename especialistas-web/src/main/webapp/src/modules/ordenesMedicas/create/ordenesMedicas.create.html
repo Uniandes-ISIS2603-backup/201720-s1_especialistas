@@ -35,8 +35,9 @@
                     </div> 
                     <br>
                     <div class="uk-button-group">
-                        <button id="cancel" ui-sref="citasDetail({citasId: citaParaOrdenId})" class="uk-button uk-button-default">Cancelar</button>
-                        <button ng-show="ordenMedica.$valid" class="uk-button uk-button-secondary">Guardar</button>
+                        <button class="uk-button uk-button-secondary" id="butGuardar">Guardar</button>
+                        <button id="butCancelar" ui-sref="citasDetail({citasId: citaParaOrdenId})" class="uk-button uk-button-default">Cancelar</button>
+                        
                     </div>
                 </form>
             </div>
