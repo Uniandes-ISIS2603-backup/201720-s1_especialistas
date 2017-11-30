@@ -17,9 +17,7 @@
                         $rootScope.tipoUser=1;
                     }
                     $rootScope.primera=0;
-                    $rootScope.idUser=$scope.idd;
-                    console.log($rootScope.tipoUser);
-                    console.log($rootScope.idUser);                                        
+                    $rootScope.idUser=$scope.idd;                                     
                 },function(response){
                    $state.go('logOut');
                 });
