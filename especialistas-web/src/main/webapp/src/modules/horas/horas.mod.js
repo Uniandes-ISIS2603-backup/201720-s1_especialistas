@@ -48,6 +48,10 @@
             }).state('horasCreate', {
                 url: '/nuevo',
                 parent: 'horas',
+                params: {
+                    "hora" : null,
+                    "dia": 0
+                },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'create/horas.create.html',
