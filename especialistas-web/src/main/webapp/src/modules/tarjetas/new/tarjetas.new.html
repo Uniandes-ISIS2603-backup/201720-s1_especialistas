@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createAuthor">Crear una nueva tarjeta</label>
+            <div class="panel-heading"><label ng-if="!edit" id="createAuthor"><strong>Crear una nueva tarjeta</strong></label>
                 <label ng-if="edit" id="editAuthor"><strong>Editar Tarjeta</strong></label></div>
             <div class="panel-body">
                 <form ng-submit="createTarjeta()" name="tarjeta">
@@ -11,9 +11,6 @@
                             <input id="tarjetaName" required ng-model="tarjetaNumero" class="col-sm-6 uk-input"/>
                         </div>
                     </div>
-                    
-                    
-
                     <div class="form-group row">
                         <div class="form-group col-sm-4" ng-if="!tarjeta.$valid">
 
@@ -22,11 +19,10 @@
                             </div> 
                         </div> 
                     </div> 
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="tarjeta.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="tarjetasList">Cancel</a>
-                        </div>
+                    <br>
+                    <div class="uk-button-group">
+                            <br><button ng-show="tarjeta.$valid" type="submit" class="uk-button-secondary uk-button">Guardar</button>
+                            <button type="submit" class="uk-button-default uk-button" ui-sref="tarjetasList">Cancelar</button>
                     </div>
                 </form>
 

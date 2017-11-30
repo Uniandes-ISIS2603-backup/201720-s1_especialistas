@@ -40,19 +40,17 @@
             </thead>
             <tbody>
                 <tr ng-repeat="examen in examenesLab">
-                    <td><a ui-sref="examDetail({examenId : examen.id})">{{examen.nombre}}</a></td>
+                    <td><a ui-sref="examDetail({examenId : examen.id})" >{{examen.nombre}}</a></td>
                     <td>{{examen.precio}}</td>
                     <td>{{examen.recomendacion}}</td>
                     <td>
-                        <button type="button" class="btn btn-danger" ui-sref="examenDelete({examenId: examenActual.id})">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+                        <a ng-show="tipoUser!==1 && tipoUser!==2" uk-icon="icon: trash" ui-sref="examenDelete({examenId: examenActual.id})" style="color: #f44"></a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-success" ng-show="tipoUser!==1 && tipoUser!==2" ui-sref="examAdd({laboratorioId: laboratorioActual.id})">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                        </button>
+                        <br>
+                        <a uk-icon="icon: plus" ng-show="tipoUser!==1 && tipoUser!==2" ui-sref="examAdd({laboratorioId: laboratorioActual.id})"></a>
                     </td>
                 </tr>
             </tbody>

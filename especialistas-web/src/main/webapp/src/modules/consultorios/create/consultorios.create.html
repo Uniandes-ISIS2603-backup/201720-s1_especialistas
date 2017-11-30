@@ -2,13 +2,15 @@
     
     <div class="form-group">
         <label for="consultorioNumber">Número</label>
-        <input class="form-control" id="consultorioNumber" required ng-model="consultorioNumber" placeholder="Ingrese el número del consultorio">
+        <input class="form-control uk-input" id="consultorioNumber" required ng-model="consultorioNumber" placeholder="Ingrese el número del consultorio">
         <label>Hospital:{{currentHospital.nombre}}</label>
         
     </div>
-    <input ng-show="consultorio.$valid" type="submit" value="Save" class="btn btn-success"/>
-    <button type="reset" class="btn btn-info">Reiniciar</button>
-    <a class="btn btn-danger" ui-sref="consultoriosList"> Cancelar </a>
-    
+    <br>
+    <div class="uk-button-group">
+        <button type="reset" class="uk-button uk-button-secondary">Reiniciar</button>
+        <button ui-sref="consultoriosList" class="uk-button uk-button-default">Cancelar</button>
+        <button ng-show="consultorio.$valid" type="submit" class="uk-button uk-button-secondary">Guardar</button>
+    </div>    
 </form>
 

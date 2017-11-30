@@ -1,35 +1,34 @@
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createAuthor">Crear una nueva farmacia</label>
-            <div class="panel-body">
-                <form ng-submit="deleteMedicamento(e)" name="farmacia">
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <select style="color:black;" ng-model="e" id="meds" class="col-sm-6" >
-                                <option ng-repeat="medicamento in currentMedicamentos" id="{{$index}}-nombre" value="{{medicamento.id}}">
-                                    {{medicamento.nombre}}
-                                 </option>                               
-                            </select>
+            <div class="panel-heading"><label ng-if="!edit" id="createAuthor"><strong>Eliminar medicamento</strong></label>
+                <div class="panel-body">
+                    <form ng-submit="deleteMedicamento(e)" name="farmacia">
+                        <div class="form-group row">
+                            <div class="form-group col-md-6">
+                                <select style="color:black;" ng-model="e" id="meds" class="col-sm-6 uk-input" >
+                                    <option ng-repeat="medicamento in currentMedicamentos" id="{{$index}}-nombre" value="{{medicamento.id}}">
+                                        {{medicamento.nombre}}
+                                    </option>                               
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="form-group col-sm-4" ng-if="!usuario.$valid">
+                        <div class="form-group row">
+                            <div class="form-group col-sm-4" ng-if="!farmacia.$valid">
 
-                            <div class="alert alert-warning" >
-                                <strong>Warning!</strong><p>All inputs are required*</p>
+                                <div class="alert alert-warning" >
+                                    <strong>Advertencia!</strong><p>todos los campos deben estar llenos*</p>
+                                </div> 
                             </div> 
                         </div> 
-                    </div> 
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="farmacia.$valid" type="submit"  value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="farmaciasList">Cancel</a>
+                        <br>
+                        <div class="uk-button-group">
+                            <button ng-show="farmacia.$valid" type="submit" class="uk-button uk-button-secondary">Eliminar</button>
+                            <button class="uk-button uk-button-default" ui-sref="farmaciasList">Cancelar</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>

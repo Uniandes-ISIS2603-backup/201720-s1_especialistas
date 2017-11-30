@@ -1,9 +1,8 @@
-
 <div class="row">
     <div class="col-md-3">
         <img height="200px" width="200px" 
-             src="http://ferncare.org/wp-content/uploads/2015/09/patient_icon_big.png"
-              </div>
+             src="http://ferncare.org/wp-content/uploads/2015/09/patient_icon_big.png">
+    </div>
     <div class="col-md-9">
         <div class="row">
             <font color="#355384">
@@ -18,12 +17,8 @@
             <h3>RECOMENDACIONES</h3>
             </font>
             {{examenActual.recomendacion}}
-            <font color="#355384">
-            <br><button type="button" class="btn btn-info" ui-sref="examenUpdate({examenId: examenActual.id})">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-             </button> <br>
-            <button type="button" class="btn btn-success" id="Volver-lista" ui-sref="examenesList">
-            <span class="glyphicon glyphicon-chevron-left"></span></button>
         </div>
+        <br>
+            <button class="uk-button uk-button-default" ui-sref="examenesList" >Volver</button>
     </div>
 </div>

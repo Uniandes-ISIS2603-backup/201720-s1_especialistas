@@ -35,7 +35,7 @@
                 <tr>
                     <th>ID</th>
                     <th>NÚMERO</th>
-                    <th>ELIMINAR</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -43,15 +43,12 @@
                     <td>{{consultorio.id}}</td>
                     <td><a ui-sref="consultorioDetail({consultorioId: consultorio.id})">{{consultorio.numero}}</a></td>
                     <td>
-                        <button type="button" class="btn btn-danger" ui-sref="consultorioDelete({hospitalId: currentHospital.id, consultorioId: consultorio.id})">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+                        <a uk-icon="icon: trash" style="color: #f44" ui-sref="consultorioDelete({hospitalId: currentHospital.id, consultorioId: consultorio.id})"></a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-success" ui-sref="consultoriosCreate({hospitalId: currentHospital.id})">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
-                        </button>
+                        <br><a uk-icon="icon: plus" ui-sref="consultoriosCreate({hospitalId: currentHospital.id})"></a>
                     </td>
                 </tr>
             </tbody>

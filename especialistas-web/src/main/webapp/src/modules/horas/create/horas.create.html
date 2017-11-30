@@ -6,11 +6,11 @@
                 <form ng-submit="createHora()" name="hora">
                     <div class="form-group">
                         <label for="horaInicio">Hora Inicio</label>
-                        <input type="datetime-local" id="horaInicio" required ng-model="horaInicio" class="form-control"/>
+                        <input type="datetime-local" id="horaInicio" required ng-model="horaInicio" class="form-control uk-input"/>
                     </div>
-                        <div class="form-group">
+                    <div class="form-group">
                         <label for="consultorioHora">Consultorio</label>
-                        <select class="form-control" id="consultorioHora" required ng-model="consultorioHora">
+                        <select class="form-control uk-input" id="consultorioHora" required ng-model="consultorioHora">
                             <option ng-repeat="consultorio in consultorios" value={{consultorio}}>{{consultorio.numero}}</option>
                         </select>
                     </div>
@@ -19,11 +19,10 @@
                             <strong>Atención!</strong><p>Todos los campos son obligatorios</p>
                         </div> 
                     </div> 
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="hora.$valid" type="submit" value="Guardar" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="horasList">Cancelar</a>
-                        </div>
+                    <br>
+                    <div class="uk-button-group">
+                        <button id="cancel" ui-sref="horasList" class="uk-button uk-button-default">Cancelar</button>
+                        <button ng-show="hora.$valid" class="uk-button uk-button-secondary">Guardar</button>
                     </div>
                 </form>
             </div>
