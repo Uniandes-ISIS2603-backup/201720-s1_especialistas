@@ -27,15 +27,17 @@
                     $scope.semana = [0,1,2,3,4,5,6];
                     $scope.darIdHora = function (hora, dia) {
                         for(i in $scope.agenda){
-                            temp = new Date($scope.agenda[i].horaInicio);
-                            if(temp.getHours() == hora.getHours() && temp.getMinutes() == hora.getMinutes() && temp.getDay() == dia){
-                                return $scope.agenda[i].id;
+                            if (object.hasOwnProperty(i)) {
+                                temp = new Date($scope.agenda[i].horaInicio);
+                                if(temp.getHours() === hora.getHours() && temp.getMinutes() === hora.getMinutes() && temp.getDay() === dia){
+                                    return $scope.agenda[i].id;
+                                }
                             }
                         }
                         return -1;
                     }
                     $scope.hayCita = function (hora, dia) {
-                        return $scope.darIdHora(hora, dia) != -1
+                        return $scope.darIdHora(hora, dia) !== -1
                     }
                     
                     
