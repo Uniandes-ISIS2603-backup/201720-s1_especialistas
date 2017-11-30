@@ -31,6 +31,10 @@
                         controller: 'hospitalesCreateController',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'hospitalesList',
+                    label:'hospital nuevo'
                 }
             }).state('hospitalDelete', {
                 url: '/hospitales/delete/{hospitalId:int}',
@@ -43,6 +47,10 @@
                         controller: 'hospitalDeleteController',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'hospitalesList',
+                    label:'hospital'
                 }
             }).state('hospitalDetail', {
                 url: '/{hospitalId:int}/detail',
@@ -78,6 +86,10 @@
                         controller: 'hospitalUpdateCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'hospitalesList',
+                    label:'hospital'
                 }
             });
         }

@@ -1,29 +1,44 @@
-    <table class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
-        <thead>
-            <tr>
-                <th></th>
-                <th>NOMBRE</th>
-                <th>ELIMINAR</th>
-                <th>EDITAR</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="examen in examenesRecords">
-                <td><input class="uk-checkbox" type="checkbox"></td>
-                <td id="{{$index}}-nombre"><a ui-sref="examDetail({examenId: examen.id})">{{examen.nombre}}</a>
-                </td>
-                <td>
-                    <a href="#" uk-icon="icon: trash" style="color: #f44" ui-sref="examenDelete({examenId: examen.id})"></a>
-                </td>
-                <td>
-                    <a href="#"  uk-icon="icon: pencil" style="color: #44b3ee" ui-sref="examenUpdate({examenId: examen.id})"></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a  ui-sref="examenCreate">Agregar</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<button ui-sref="exam>
+<table ng-show="tipoUser !== 1 && tipoUser !== 2"  class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
+    <thead>
+        <tr>
+            <th></th>
+            <th>NOMBRE</th>
+            <th>ELIMINAR</th>
+            <th>EDITAR</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="examen in examenesRecords">
+            <td><input class="uk-checkbox" type="checkbox"></td>
+            <td id="{{$index}}-nombre"><a ui-sref="examDetail({examenId: examen.id})">{{examen.nombre}}</a>
+            </td>
+            <td>
+                <a href="#" uk-icon="icon: trash" style="color: #f44" ui-sref="examenDelete({examenId: examen.id})"></a>
+            </td>
+            <td>
+                <a href="#"  uk-icon="icon: pencil" style="color: #44b3ee" ui-sref="examenUpdate({examenId: examen.id})"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a  ui-sref="examenCreate">Agregar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table ng-show="tipoUser !== 3" class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
+    <thead>
+        <tr>
+            <th></th>
+            <th>NOMBRE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="examen in examenesRecords">
+            <td><input class="uk-checkbox" type="checkbox"></td>
+            <td id="{{$index}}-nombre"><a ui-sref="examDetail({examenId: examen.id})">{{examen.nombre}}</a>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
