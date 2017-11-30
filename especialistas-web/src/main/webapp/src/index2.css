@@ -30,10 +30,35 @@ and open the template in the editor.
     color: #fff;
 }
 
+@media screen and (min-width: 960px) {
+    #barra-lateral{
+        position: fixed;
+        height: calc( 100% - 60px ) !important;
+    }
+    .principal{
+        position: absolute;
+    }
+
+    .navega{
+        visibility: visible !important;
+    }
+    #meds{
+        top: 96px; 
+    }
+}
+#meds{
+    bottom: 190px;
+}
+.navega{
+    visibility: hidden;
+}
+
+
 #barra-lateral{
-    position: fixed;
-    height: calc( 100% - 60px );
-    top: 60px;
+    
+    
+    height: fit-content;
+    margin-top: 60px;
     left: 0px;
     padding: 0px;
     padding-top: 20px;
@@ -75,7 +100,6 @@ and open the template in the editor.
 
 .principal{
     top: 115px;
-    position: absolute;
     right: 30px;
     padding: 0px;
     padding-left: 30px;
