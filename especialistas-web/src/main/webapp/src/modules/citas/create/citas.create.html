@@ -4,17 +4,26 @@
         <label for="comentarios">Comentarios</label>
         <input class="form-control uk-input" id="hospitalName" required ng-model="comentarios" placeholder="Ingrese los comentarios">
     </div>
+    <br>
+    <div class="form-group">
+        <label for="especializacionMedico">Especialización</label>
+        <select class="form-control uk-input" id="especializacionMedico" required ng-model="especializacionMedico" >
+            <option ng-repeat="especializacion in especializaciones">{{especializacion.value}}</option>
+        </select>
+    </div>
+    
+    <br>
     <div class="form-group">
         <label for="horaNueva">Hora</label>
         <select class="form-control uk-input" id="horaNueva" required ng-model="horaNueva">
-            <option ng-repeat="hora in horas" value={{hora}}>{{hora.horaInicio}}-{{hora.horaFin}} </option>
+            <option ng-repeat="hora in horas" value={{hora}}>{{hora.horaInicio|date:'MMM d, h:mm a'}}</option>
         </select>
     </div>
     <br>
     <div class="uk-button-group">
         <button ng-show="cita.$valid" type="submit" class="uk-button uk-button-secondary" id="butGuardar">Guardar</button>
         <button type="reset" class="uk-button uk-button-secondary" id="butReset">Reiniciar</button>
-        <button type="button"  class="uk-button uk-button-default" ui-sref="citasList" id="butCancelar">Cancelar</button>
+        <button type="button"  class="uk-button uk-button-default" ui-sref="usuarioDetail({usuarioId:idUser})" id="butCancelar">Cancelar</button>
         
     </div>
 

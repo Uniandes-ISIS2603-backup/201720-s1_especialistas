@@ -6,6 +6,7 @@
             if($state.params.medicoId !== undefined){
                 $http.get(medicosContext + '/' + $state.params.medicoId + '/agenda').then(function (response) {
                     $scope.agenda = response.data;
+                    dia = new Date();
                     dia = new Date($scope.agenda[0].horaInicio);
                     while(dia.getDay() !== 0)
                         dia.setTime(dia.getTime() - 24*3600*1000);
@@ -26,15 +27,17 @@
                     $scope.franjas = franjas;
                     $scope.darIdHora = function (hora, dia) {
                         for(i in $scope.agenda){
-                            temp = new Date($scope.agenda[i].horaInicio);
-                            if(temp.getHours() == hora.getHours() && temp.getMinutes() == hora.getMinutes() && temp.getDay() == dia){
-                                return $scope.agenda[i].id;
+                            if ($scope.agenda.hasOwnProperty(i)) {
+                                temp = new Date($scope.agenda[i].horaInicio);
+                                if(temp.getHours() === hora.getHours() && temp.getMinutes() === hora.getMinutes() && temp.getDay() === dia){
+                                    return $scope.agenda[i].id;
+                                }
                             }
                         }
                         return -1;
                     }
                     $scope.hayCita = function (hora, dia) {
-                        return $scope.darIdHora(hora, dia) != -1
+                        return $scope.darIdHora(hora, dia) !== -1
                     }
                     
                     

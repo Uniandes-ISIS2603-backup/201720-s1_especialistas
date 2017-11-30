@@ -40,6 +40,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('pagosPagar', {
+                url: '/pagos/pagar/{pagoId:int}',
+                param: {
+                    pagoId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'pagos.pagar.html',
+                        controller: 'pagosPagarController',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
         }
     ]);

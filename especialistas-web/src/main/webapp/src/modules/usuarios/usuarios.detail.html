@@ -34,6 +34,7 @@
 
 <div class="uk-float-right uk-width-3-4@m">
 <div class="uk-card uk-card-default uk-card-body">
+
     <h4>
         Pagos
     </h4>
@@ -52,7 +53,9 @@
                     <td id="{{$index}}-id">{{pago.id}}</td>
                     <td id="{{$index}}-ref">{{pago.ref}}</td>
                     <td id="{{$index}}-precio">{{pago.precio}}</td>
-                    <td id="{{$index}}-pai"><span ng-show="pago.pai == true" uk-icon="icon: check" aria-hidden="true" style="color: #4cae4c"></span><span ng-show="pago.pai == false" uk-icon="icon: close" aria-hidden="true" style="color: #f25"></span></td>
+                    <td id="{{$index}}-pai"><span ng-show="pago.pai == true" uk-icon="icon: check" aria-hidden="true" style="color: #4cae4c"></span><span ng-show="pago.pai == false" uk-icon="icon: close" aria-hidden="true" style="color: #f25"></span>
+                    <a href="#" ui-sref="pagosPagar({pagoId: pago.id,pagoP: pago.precio})"> Pagar2</a>
+                    </td>
                     <td id="{{$index}}-metodo">{{pago.metodo}}</td>
                 </tr>
             </tbody>

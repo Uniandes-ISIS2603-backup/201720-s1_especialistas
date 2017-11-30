@@ -1,4 +1,4 @@
-<div class="col col-md-12">
+<div class="uk-width-1-1">
     <table class="uk-table uk-table-small uk-table-hover uk-table-divider uk-width-1-1 uk-card uk-card-default">
         <thead>
             <tr>
@@ -19,11 +19,6 @@
                 <a href="#" uk-icon="icon: pencil" style="color: #44b3ee" ui-sref="citasUpdate({citasId: cita.id})"></a>
             </td>
         </tr>
-        <tr>
-            <td>
-                <a ui-sref="citasCreate">Agregar</a>
-            </td>
-        </tr>
     </table>
 </div>
 
@@ -39,7 +34,7 @@
         <th>Domingo</th>
     </tr>
     <tr ng-repeat="franja in franjas">
-        <th>{{franja| date:'h:mm a'}}</th>
+        <th>{{franja| date:'h:mm'}}</th>
         <td id="{franja.$index}-0"><span uk-icon="icon: check" ng-show="hayCita(franja, 0)"></span></td>
         <td id="{franja.$index}-1"><span uk-icon="icon: check" ng-show="hayCita(franja, 1)"></span></td>
         <td id="{franja.$index}-2"><span uk-icon="icon: check" ng-show="hayCita(franja, 2)"></span></td>
