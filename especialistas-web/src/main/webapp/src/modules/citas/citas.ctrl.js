@@ -26,7 +26,7 @@
                     $scope.franjas = franjas;
                     $scope.hayCita = function (hora, dia) {
                         for(i in $scope.citas){
-                            if (object.hasOwnProperty(i)) {
+                            if ($scope.citas.hasOwnProperty(i)) {
                                 temp = new Date($scope.citas[i].hora.horaInicio);
                                 if(temp.getHours() === hora.getHours() && temp.getMinutes() === hora.getMinutes() && temp.getDay() === dia){
                                     return true;
