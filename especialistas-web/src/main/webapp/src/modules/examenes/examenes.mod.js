@@ -14,6 +14,10 @@
                         controller: 'examenDetailCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'examenesList',
+                    label: 'examenes'
                 }
             }).state('examenUpdate', {
                 url: '/examenes/{examenId}/update',

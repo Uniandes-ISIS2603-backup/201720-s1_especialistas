@@ -42,6 +42,10 @@
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'detail/farmacias.map.html'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'farmaciasList',
+                    label:'farmacia'
                 }
             }).state('addMedicamento', {
                 url: '/farmacias/:id/medicamento/add/',

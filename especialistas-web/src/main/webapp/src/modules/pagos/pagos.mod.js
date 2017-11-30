@@ -23,6 +23,10 @@
                         controller: 'pagosNewController',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'pagosList',
+                    label:'pago'
                 }
             }).state('pagosDelete', {
                 url: '/pagos/delete/{pagoId:int}',

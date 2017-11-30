@@ -24,6 +24,10 @@
                         controller: 'medicoCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'medicosList',
+                    label:'medico'
                 }
             }).state('medicosCreate', {
                 url: '/medicos/nuevo',

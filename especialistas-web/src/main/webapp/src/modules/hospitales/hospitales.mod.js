@@ -61,6 +61,10 @@
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'hospitales.map.html'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'hospitalesList',
+                    label:'hospital'
                 }
             }).state('hospitalUpdate', {
                 url: '/{hospitalId:int}/udpate',
