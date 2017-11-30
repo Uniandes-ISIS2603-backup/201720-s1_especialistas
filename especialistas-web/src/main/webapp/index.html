@@ -404,7 +404,7 @@
             <div id="barra-lateral" class="uk-width-1-6@xl uk-width-1-5@l uk-card-default uk-card-body uk-width-1-1">
                 <ul class="list1">
                     <a ng-show="tipoUser === 1" ui-sref="usuarioDetail ({usuarioId: idUser})" class="elemento"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
-                    <a ng-show="tipoUser === 2" ui-sref="medicoDetail ({medicoId: idUser})" class="elemento"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
+                    <a ng-show="tipoUser === 2" ui-sref="horasList ({medicoId: idUser})" class="elemento"><span uk-icon="icon: home"></span>&nbsp;&nbsp;Página Principal</a>
                     <a ui-sref="hospitalesList" class="elemento"><span uk-icon="icon: location"></span>&nbsp;&nbsp;Hospitales</a>
                     <a ui-sref="usuariosList" ng-show="tipoUser !== 1 && tipoUser !== 2" class="elemento"><span uk-icon="icon: users"></span>&nbsp;&nbsp;Usuarios</a>
                     <a ui-sref="tarjetasList"  ng-show="tipoUser !== 1 && tipoUser !== 2" class="elemento"><span uk-icon="icon: credit-card"></span>&nbsp;&nbsp;Tarjetas</a>

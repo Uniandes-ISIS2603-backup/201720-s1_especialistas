@@ -8,8 +8,8 @@
             $scope.addMedicamento = function (idMedicamento){
                 $http.put(farmaciasContext+"/"+$stateParams.id+"/medicamentos/"+idMedicamento).then(function (response){
                     //usuario creado correctamente
-                    $state.go('farmaciasList',{
-                        farmaciaId: response.data.id
+                    $state.go('farmaciaDetail',{
+                        id: $state.params.id
                     },
                     {
                         reload: true
