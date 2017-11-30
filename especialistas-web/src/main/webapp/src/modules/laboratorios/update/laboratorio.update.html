@@ -32,14 +32,15 @@
 
                     <div class="form-group row">
                         <div class="form-group col-sm-4" ng-if="!laboratorio.$valid">
-
-
+                            <div class="alert alert-warning" >
+                                <strong>Advertencia!</strong><p>Todos los campos deben estar llenos*</p>
+                            </div>                         
                         </div> 
                     </div> 
                     <br>
                     <div class="uk-button-group">
                         <button ui-sref="laboratoriosList" class="uk-button uk-button-default">Cancelar</button>
-                        <button type="submit" value="Guardar" class="uk-button uk-button-primary">Guardar</button>
+                        <button type="submit" value="Guardar" class="uk-button uk-button-secondary">Guardar</button>
                     </div>
                 </form>
 

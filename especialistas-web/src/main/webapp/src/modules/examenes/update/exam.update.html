@@ -1,39 +1,39 @@
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createExam">Actualizar examen</label></div>
+            <div class="panel-heading"><label ng-if="!edit" id="createExam"><strong>Actualizar examen</strong></label></div>
             <div class="panel-body">
                 <form ng-submit="updateExam()" name="examen">
-<div class="form-group row">
-    <div class="form-group col-md-6">
-        <br><label for="examen-nombre" class="col-sm-4">Nombre:</label>
-        <input id="examen-nombre" required ng-model="nombreExam" class="col-sm-6 form-control"/>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <br><label for="examen-nombre" class="col-sm-4">Nombre:</label>
+                            <input id="examen-nombre" required ng-model="nombreExam" class="col-sm-6 form-control uk-input"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="examen-precio" class="col-sm-4">Precio:</label>
-                            <input type="number" min="5000" max="1000000" step="100" id="examen-precio" required ng-model="precioExam" class="col-sm-6 form-control"/>
+                            <input type="number" min="5000" max="1000000" step="100" id="examen-precio" required ng-model="precioExam" class="col-sm-6 form-control uk-input"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="exam-recomend" class="col-sm-4">Recomendaciones:</label>
-                            <textarea id="exam-recomend" required  ng-model="recomendacionExam" class="col-sm-6 form-control"/></textarea>
+                            <textarea id="exam-recomend" required  ng-model="recomendacionExam" class="col-sm-6 form-control uk-input"/></textarea>
                         </div>
                     </div>
-                    
-                    <div class="form-group row">
-                        <div class="form-group col-sm-4" ng-if="!usuario.$valid">
 
-                          
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!examen.$valid">
+                            <div class="alert alert-warning" >
+                                <strong>Advertencia!</strong><p>Todos los campos deben estar llenos*</p>
+                            </div> 
                         </div> 
                     </div> 
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input  type="submit" value="Guardar" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref='examenesList'>Cancel</a>
-                        </div>
+                    <br>
+                    <div class="uk-button-group">
+                        <button ui-sref="examenesList" class="uk-button uk-button-default">Cancelar</button>
+                        <button type="submit" value="Guardar" class="uk-button uk-button-secondary">Guardar</button>
                     </div>
                 </form>
 

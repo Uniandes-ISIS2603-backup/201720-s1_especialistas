@@ -1,5 +1,7 @@
 <div class="center-block well text-center uk-width-1-1">
     <h1>¿Desea eliminar este examen?</h1>
-    <button id="confirmar-eliminacion" ng-click="deleteExam()" class="uk-button uk-button-primary">Eliminar</button>
-    <a id="cancelar-eliminacion" ui-sref="examenesList" class="uk-button uk-button-default">Cancelar</a>
+    <div class="uk-button-group">
+        <button class="uk-button uk-button-secondary" ng-click="deleteExam()">Eliminar</button>
+        <button class="uk-button uk-button-default" ui-sref="examenesList">Cancelar</button>
+    </div>
 </div>
