@@ -17,14 +17,15 @@
                         
                         $scope.reff = referenceCode;
                         
+                        $rootScope.idPago = idPago;
 
                         $scope.codigo = $.md5('4Vj8eK4rloUd272L48hsrarnUA~508029~'+referenceCode+'~'+pago.precio+'~COP');
                         
                         setTimeout(function(){
-                            $http.get("http://proyectoseneca.esy.es/confirmationr.php?id=" + idPago).then(function(response){
+                            $http.get("http://proyectoseneca.esy.es/confirmationr.php?id=" + $rootScope.idPago).then(function(response){
                                 var nani = response.data;
                                 if(nani.pago === true){
-                                    $http.get(pagoContext + '/' + idPago).then(function (response) {
+                                    $http.get(pagoContext + '/' + $rootScope.idPago).then(function (response) {
                                         var pago = response.data;
                                         $rootScope.pagoRef2 = pago.ref;
                                         $rootScope.pagoPrecio2 = pago.precio;
@@ -33,7 +34,7 @@
                                         $rootScope.usuarioNombre2 = pago.usuario.nombre;
                                     });
 
-                                    $http.put(pagoContext + '/' + idPago, {
+                                    $http.put(pagoContext + '/' + $rootScope.idPago, {
                                         ref: $rootScope.pagoRef2,
                                         precio: $rootScope.pagoPrecio2,
                                         pai: true,
