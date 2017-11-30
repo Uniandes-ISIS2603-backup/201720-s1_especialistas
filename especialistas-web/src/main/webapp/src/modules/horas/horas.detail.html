@@ -1,29 +1,18 @@
-<div class="panel panel-default"> 
-    <div class="panel-body">
-        <div class="row">
-            <dl class="col-md-6">
-                <dt>Día y Hora</dt>
-                <dd>{{hora.horaInicio| date:'MMM d, h:mm a'}}</dd>        
-            </dl>
+<dl class="col-md-6">
+    <dt>Día y Hora</dt>
+    <dd>{{hora.horaInicio| date:'MMM d, h:mm a'}}</dd>        
+</dl>
 
-            <dl class="col-md-6">
-                <dt>Paciente</dt>
-                <dd ng-if="!hayCita">Cita sin asignar</dd>
-                <dd ng-if="hayCita"><a ui-sref="citasDetail({citasId: cita.id})">{{cita.usuario.nombre}}</a></dd>
-            </dl>
-        </div>
-        <div class="row">
-            <dl class="col-md-6">
-                <dt>Consultorio</dt>
-                <dd><a ui-sref="consultorioDetail({consultorioId: consultorio.id})">{{consultorio.numero}}</a></dd>
-            </dl>
+<dl class="col-md-6">
+    <dt>Paciente</dt>
+    <dd ng-if="!hayCita">Cita sin asignar</dd>
+    <dd ng-if="hayCita"><a ui-sref="citasDetail({citasId: cita.id})">{{cita.usuario.nombre}}</a></dd>
+</dl>
+        <dt>Consultorio</dt>
+        <dd><a ui-sref="consultorioDetail({consultorioId: consultorio.id})">{{consultorio.numero}}</a></dd>
+    </dl>
 
-            <dl class="col-md-6">
-                <dt>Hospital</dt>
-                <dd><a ui-sref="hospitalDetail({hospitalId: consultorio.hospital.id})">{{consultorio.hospital.nombre}}</a></dd>
-            </dl>
-        </div>
-        <div class="col-md-5"></div>
-        <a class="btn btn-danger btn-sm col-md-2" ui-sref="horaDelete({horaId: hora.id})">Borrar <span class="glyphicon glyphicon-trash"></span></a>
-    </div>
-</div>
+    <dl class="col-md-6">
+        <dt>Hospital</dt>
+        <dd><a ui-sref="hospitalDetail({hospitalId: consultorio.hospital.id})">{{consultorio.hospital.nombre}}</a></dd>
+<a class="btn btn-danger btn-sm col-md-2" ui-sref="horaDelete({horaId: hora.id})">Borrar <span class="glyphicon glyphicon-trash"></span></a>
