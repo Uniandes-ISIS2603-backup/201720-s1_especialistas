@@ -13,8 +13,8 @@
                 <td id="{{$index}}-nombreMed"><a ui-sref="medicamentoDetail({id: medicamento.id})">{{medicamento.nombre}}</a></td>
             </tr>
             <tr ng-show="tipoUser !== 1 && tipoUser !== 2"><td>
-                    <a uk-icon="icon: plus" ui-sref="addMedicamento({id: currentRecord.id})"></a>
-                    <a uk-icon="trash" ui-sref="deleteMedicamento({id: currentRecord.id})"></a>
+                    <a uk-icon="icon: plus"  ui-sref="addMedicamento({id: currentRecord.id})"></a>
+                    <a uk-icon="trash" style="color: #f44" ui-sref="deleteMedicamento({id: currentRecord.id})"></a>
                 </td></tr>
         </tbody>
     </table>
