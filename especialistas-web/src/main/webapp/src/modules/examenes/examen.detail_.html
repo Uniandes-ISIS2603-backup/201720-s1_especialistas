@@ -10,6 +10,9 @@
             <h3>PRECIO: </h3>{{examenActual.precio}}
             
             <h3>RECOMENDACIONES: </h3>{{examenActual.recomendacion}}
+            
+            <h3>LABORATORIOS: </h3>
+            <a ng-repeat="labs in examenActual.laboratorios" ui-sref="labDetail({laboratorioId: labs.id})">{{labs.nombre}}</a>
         </div>
         <br>
             <button class="uk-button uk-button-default" ui-sref="examenesList" >VOLVER</button>
