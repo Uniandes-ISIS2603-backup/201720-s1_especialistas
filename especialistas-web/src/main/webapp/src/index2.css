@@ -9,204 +9,215 @@ and open the template in the editor.
 */
 
 #barra-sup{
-                position: fixed;
-                width: 100%;
-                height: 60px;
-                background: #41c7ef;
-                z-index: 2;
-                top: 0px;
-                left: 0px;
-                display: flex;
-                padding: 0px;
-            }
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background:#c13236;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    padding: 0px;
+}
 
-            #barra-sup h1{
-                font-size: 30px;
-                background-color: rgba(0, 0, 0, .075);
-                padding-left: 30px;
-                padding-top: 8px;
-                margin: 0px;
-            }
-            
-            #barra-lateral{
-                position: fixed;
-                height: calc( 100% - 60px );
-                top: 60px;
-                left: 0px;
-                padding: 0px;
-                padding-top: 20px;
-                overflow: hidden;
-            }
+#barra-sup h1{
+    font-size: 30px;
+    background-color: #c13236;
+    padding-left: 30px;
+    padding-top: 8px;
+    margin: 0px;
+    font-family: "Roboto";
+    color: #fff;
+}
 
-            .list1{
-                position: relative;
-                width: 100%;
-                text-decoration: none;
-                padding: 0px;
-            }
+#barra-lateral{
+    position: fixed;
+    height: calc( 100% - 60px );
+    top: 60px;
+    left: 0px;
+    padding: 0px;
+    padding-top: 20px;
+    overflow: hidden;
+    font-family: "Roboto";
+    border-right: 1px solid;
+    border-right-color: #ebebeb;
+}
 
-            .list1 a{
-                width: 100%;
-                height: 50px;
-                display: flex;
-                align-items: center;
-                padding-left: 30px;
-                transition-duration: 0.5s;
-            }
+.elemento{
+    color: #000;
+}
 
-            .list1 a:hover{
-                background: rgba(0, 0, 0, .04);
-            }
+.list1{
+    position: relative;
+    width: 100%;
+    text-decoration: none;
+    padding: 0px;
+    color:#c13236;
+}
 
-            .list1 a:link{
-                text-decoration: none;
-            }
-            
-            .principal{
-                top: 115px;
-                position: absolute;
-                right: 30px;
-                padding: 0px;
-                padding-left: 30px;
-            }
+.list1 a{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    transition-duration: 0.5s;
+}
 
-            .usuario{
-                padding-top: 10px;
-            }
-            .usuario-padre{
-                border-radius: 5px;
-                border: 1px solid #eee;
-                overflow: hidden;
-                padding: 0px;
-            }
+.list1 a:hover{
+    background: #f2dada;
+    color: #000;
+}
 
-            .pacman{
-                padding: 0px;
-            }
+.list1 a:link{
+    text-decoration: none;
+}
 
-            .usuario-data{
-                padding: 20px;
-            }
+.principal{
+    top: 115px;
+    position: absolute;
+    right: 30px;
+    padding: 0px;
+    padding-left: 30px;
+}
 
-            .usuario-data a{
-                float: right;
-                margin-left: 10px;
-                margin-bottom: 10px;
-            }
+.usuario{
+    padding-top: 10px;
+}
+.usuario-padre{
+    border-radius: 5px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    padding: 0px;
+}
 
-            .add{
-                width: 50px;
-                height: 50px;
-                background: #00b3ee;
-                font-size: 30px;
-                text-align: center;
-                color: #fff;
-                border-radius: 25px;
-                position: fixed;
-                bottom: 50px;
-                right: 50px;
-            }
+.pacman{
+    padding: 0px;
+}
 
-            .add:hover{
-                color: #fff;
-                background: #41c7ef;
-                text-decoration: none;
-            }
+.usuario-data{
+    padding: 20px;
+}
 
-            .add:link{
-                color: #fff;
-                text-decoration: none;
-            }
-            
-            .img-responsive{
-                
-            }
-            
-            .alfax{
-                padding: 0px;
-            }
-            
-            .alfax img{
-                width: 100%;
-            }
-            
-            th{
-                text-align: left !important;
-            }
-            
-            dl{
-                
-                margin-top: 20px;
-                padding-left: 10px;
-            }
-            .img-responsive{
-                margin-top: 15px;
-                width: 100%;            }
-            
-            .ocul{
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                background: #fbfbfb;
-                top: 0px;
-                left: 0px;
-                z-index: -2;
-            }
-            
-            .olp{
-                height: fit-content;
-            }
-            
-            table{
-                border-radius: 5px;
-            }
+.usuario-data a{
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
 
-            body{
-                width: 100%;
-            }
+.add{
+    width: 50px;
+    height: 50px;
+    background: #00b3ee;
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+    border-radius: 25px;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
 
-            .navega{
-                position: absolute;
-                right: 0px;
-                top: 60px;
-                padding: 20px;
-                padding-left: 30px;
-            }
+.add:hover{
+    color: #fff;
+    background: #41c7ef;
+    text-decoration: none;
+}
 
-            .imgm img{
-                width: 45px;
-                height: 45px;
+.add:link{
+    color: #fff;
+    text-decoration: none;
+}
 
-            }
+.img-responsive{
 
-            .imgm{
-                position: absolute;
-                right: 0px;
-                padding-right: 20px;
-                padding-top: 10px;
-                text-align: left;
-                color: #fff;
-            }
+}
 
-            .log{
-                position: fixed;
-                top: 0px;
-                left: 0px;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: #fff;
-                z-index: 999;
-            }
+.alfax{
+    padding: 0px;
+}
 
-            .log .img{
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0px;
-                left: 0px;
-                background-image: url(fondo2.jpg);
-                filter: blur(8px);
-            }
+.alfax img{
+    width: 100%;
+}
+
+th{
+    text-align: left !important;
+}
+
+dl{
+
+    margin-top: 20px;
+    padding-left: 10px;
+}
+.img-responsive{
+    margin-top: 15px;
+    width: 100%;            }
+
+.ocul{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fbfbfb;
+    top: 0px;
+    left: 0px;
+    z-index: -2;
+}
+
+.olp{
+    height: fit-content;
+}
+
+table{
+    border-radius: 5px;
+}
+
+body{
+    width: 100%;
+}
+
+.navega{
+    position: absolute;
+    right: 0px;
+    top: 60px;
+    padding: 20px;
+    padding-left: 30px;
+}
+
+.imgm img{
+    width: 45px;
+    height: 45px;
+
+}
+
+.imgm{
+    position: absolute;
+    right: 0px;
+    padding-right: 20px;
+    padding-top: 10px;
+    text-align: left;
+    color: #fff;
+}
+
+.log{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    z-index: 999;
+}
+
+.log .img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-image: url(fondo2.jpg);
+    filter: blur(8px);
+}

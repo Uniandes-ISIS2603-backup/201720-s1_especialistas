@@ -9,134 +9,133 @@ and open the template in the editor.
 */
 
 #barra-sup{
-                position: fixed;
-                width: 100%;
-                height: 60px;
-                background: #41c7ef;
-                z-index: 2;
-                top: 0px;
-                left: 0px;
-                display: flex;
-            }
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background: #41c7ef;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    display: flex;
+}
 
-            #barra-sup h1{
-                font-size: 30px;
-                background-color: rgba(0, 0, 0, .075);
-                height:  100% !important;
-                padding-top: 15px;
-                margin: 0px;
-            }
-            
-            #barra-lateral{
-                position: fixed;
-                height: calc( 100% - 60px );
-                background: #2E3840;
-                top: 60px;
-                left: 0px;
-                padding: 0px;
-                padding-top: 20px;
-            }
+#barra-sup h1{
+    font-size: 30px;
+    background-color: rgba(0, 0, 0, .075);
+    height:  100% !important;
+    padding-top: 15px;
+    margin: 0px;
+}
 
-            .list1{
-                position: relative;
-                width: 100%;
-                text-decoration: none;
-                padding: 0px;
-            }
+#barra-lateral{
+    position: fixed;
+    height: calc( 100% - 60px );
+    background: #2E3840;
+    top: 60px;
+    left: 0px;
+    padding: 0px;
+    padding-top: 20px;
+}
 
-            .list1 a{
-                width: 100%;
-                height: 50px;
-                display: flex;
-                align-items: center;
-                padding-left: 30px;
-                transition-duration: 0.5s;
-            }
+.list1{
+    position: relative;
+    width: 100%;
+    text-decoration: none;
+    padding: 0px;
+}
 
-            .list1 a:hover{
-                background: rgba(255, 255, 255, .15);
-                color: #FFF;
-            }
+.list1 a{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    transition-duration: 0.5s;
+}
 
-            .list1 a:link{
-                text-decoration: none;
-            }
-            
-            .principal{
-                position: absolute;
-                right: 0px;
-                top: 100px;
-            }
+.list1 a:hover{
+    background: rgba(255, 255, 255, .15);
+    color: #FFF;
+}
 
-            .usuario-padre{
-                border-radius: 5px;
-                border: 1px solid #eee;
-                overflow: hidden;
-                padding: 0px;
-                margin: 5px;
-            }
+.list1 a:link{
+    text-decoration: none;
+}
 
-            .pacman{
-                padding: 0px;
-            }
+.principal{
+    position: absolute;
+    right: 0px;
+    top: 100px;
+}
 
-            .usuario-data{
-                padding: 20px;
-            }
+.usuario-padre{
+    border-radius: 5px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    padding: 0px;
+    margin: 5px;
+}
 
-            .usuario-data a{
-                float: right;
-                margin-left: 10px;
-                margin-bottom: 10px;
-            }
+.pacman{
+    padding: 0px;
+}
 
-            .add{
-                width: 100%;
-                height: 100%;
-                background: #fff;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 100px;
-                transition: 0.5s;
-                text-shadow: -2px -2px #eee;
-                cursor: pointer;
-                margin-left: 0 !important;
-            }
+.usuario-data{
+    padding: 20px;
+}
 
-            .add:hover{
-                font-size: 120px;
-                text-shadow: -5px -5px #ddd;
+.usuario-data a{
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
 
-                text-decoration: none;
-            }
+.add{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    transition: 0.5s;
+    text-shadow: -2px -2px #eee;
+    cursor: pointer;
+    margin-left: 0 !important;
+}
 
-            .add:link{
-                text-decoration: none;
-            }
-            
-            .img-responsive{
-                
-            }
-            
-        #map_canvas {
-            height: 70%;
-            width: 70%;
-            margin: 0px;
-        }
+.add:hover{
+    font-size: 120px;
+    text-shadow: -5px -5px #ddd;
 
-        #map_canvas {
-            position: relative;
-        }
+    text-decoration: none;
+}
 
-        .angular-google-map-container {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        }
- 
+.add:link{
+    text-decoration: none;
+}
+
+.img-responsive{
+
+}
+
+#map_canvas {
+    height: 70%;
+    width: 70%;
+    margin: 0px;
+}
+
+#map_canvas {
+    position: relative;
+}
+
+.angular-google-map-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
