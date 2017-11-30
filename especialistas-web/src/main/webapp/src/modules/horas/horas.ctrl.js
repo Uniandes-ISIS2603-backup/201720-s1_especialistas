@@ -36,10 +36,10 @@
                             }
                         }
                         return -1;
-                    }
+                    };
                     $scope.hayCita = function (hora, dia) {
-                        return $scope.darIdHora(hora, dia) !== -1
-                    }
+                        return $scope.darIdHora(hora, dia) !== -1;
+                    };
                     
                     
                 });

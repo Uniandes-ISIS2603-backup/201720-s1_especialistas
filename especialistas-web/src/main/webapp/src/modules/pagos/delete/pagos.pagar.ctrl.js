@@ -13,7 +13,7 @@
 
                         var referenceCode = Math.floor(Math.random() * (9999999999 - 100230033 + 1)) + 100230033;
                         
-                        var referenceCode = pago.id+referenceCode;
+                        referenceCode = pago.id+referenceCode;
                         
                         $scope.reff = referenceCode;
                         
