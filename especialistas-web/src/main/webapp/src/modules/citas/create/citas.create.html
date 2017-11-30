@@ -16,7 +16,7 @@
     <div class="form-group">
         <label for="horaNueva">Hora</label>
         <select class="form-control uk-input" id="horaNueva" required ng-model="horaNueva">
-            <option ng-repeat="hora in horas" value={{hora}}>{{hora.horaInicio}}-{{hora.horaFin}} </option>
+            <option ng-repeat="hora in horas" value={{hora}}>{{hora.horaInicio|date:'MMM d, h:mm a'}}</option>
         </select>
     </div>
     <br>
