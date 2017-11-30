@@ -14,6 +14,10 @@
                         controller: 'examenDetailCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'examenesList',
+                    label: 'examen'
                 }
             }).state('examenUpdate', {
                 url: '/examenes/{examenId}/update',
@@ -26,6 +30,10 @@
                         controller: 'examenUpdateCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'examenesList',
+                    label: 'examen'
                 }
             }).state('examenesList', {
                 url: '/examenes',
@@ -44,6 +52,10 @@
                         controller: 'examenNewCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'examenesList',
+                    label: 'examen nuevo'
                 }
             }).state('examenDelete', {
                 url: '/examenes/{examenId}/delete',
@@ -56,6 +68,10 @@
                         controller: 'examenDeleteCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                ncyBreadcrumb: {
+                    parent: 'examenesList',
+                    label: 'examen'
                 }
             });
         }]);
